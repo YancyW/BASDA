@@ -1,6 +1,6 @@
 # Usage
 
- ./Analyse_Root path.dat
+ ./BASDA path.dat
 
 ## input 
 

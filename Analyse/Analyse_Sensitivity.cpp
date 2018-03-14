@@ -19,7 +19,7 @@ void Analyse_Sensitivity_Pre(CDraw &para){
 	Avariable info=para.var.var[3];
 	plot.Get_Input_File(para, info, input_sigfile_name, input_bkgfile_name);
 	plot.Get_Histogram(para, info, output_folder);
-	Analyse_Sensitivity(para, plot, output_file_name, output_folder);
+	//Analyse_Sensitivity(para, plot, output_file_name, output_folder);
 	ShowMessage(2,"finish analyse sensitivity.");
 }
 
@@ -47,6 +47,7 @@ void Analyse_Sensitivity_Complete(CDraw &para){
 			for(unsigned int i=1;i<file_name.output.size();i++){
 				input_bkgfile_name.push_back(file_name.output[i].CUT_file);
 			}
+		//input_bkgfile_name.push_back(file_name.output_total.CUT_file);
 		}
 	}
 	APlot plot;

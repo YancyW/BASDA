@@ -1,17 +1,16 @@
-TARGET=Analyse_Root
+TARGET=BASDA
 
 CXX=g++
-FLAGS=-std=c++14 -g 
-#-Wall
+FLAGS=-std=c++14  -Wextra  -Wall ${shell root-config --cflags}
 
-RootPath=/home/yancy/Software/executable/root/build
-YAMLPath=/home/yancy/Software/lib/yaml-cpp/
+RootPath=/cvmfs/ilc.desy.de/sw/x86_64_gcc48_sl6/v01-17-11/root/6.08.00
+YAMLPath=/afs/desy.de/user/y/ywang/Software/Lib/yaml-cpp-master/
 
 INCLUDE = -I. -I..  -I$(RootPath)/include  \
 		  -I${YAMLPath}/include
 
-LIBS =  -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui ${YAMLPath}/libyaml-cpp.a 
-ROOTLIBS = -L/home/yancy/Software/executable/root/build/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic -lTreePlayer
+LIBS =  -L${YAMLPath} -lyaml-cpp -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui 
+ROOTLIBS := $(shell root-config --libs) -lXMLIO
 
 SRCS = \
 $(TARGET).cpp \

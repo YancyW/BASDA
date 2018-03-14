@@ -251,9 +251,11 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 			_sig_Tree[i]->GetEntry(ievt);
 			_sig_histo_total->Fill(_value,_weight);
 
-			_sig_histo[i]->Fill(_value,_weight);
-			weight_sig += _weight;
-			weight_sig_total += _weight;
+			if(_value>-100){
+				_sig_histo[i]->Fill(_value,_weight);
+				weight_sig += _weight;
+				weight_sig_total += _weight;
+			}
 		}
 		ShowMessage(3,"MC number, simulated number",nEvent,weight_sig);
 		info.leg->AddEntry(_sig_histo[i],"sig","l");
@@ -272,15 +274,18 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 			_bkg_Tree[i]->GetEntry(ievt);
 			_bkg_histo_total->Fill(_value,_weight);
 
-			_bkg_histo[i]->Fill(_value,_weight);
-			weight_bkg += _weight;
-			weight_bkg_total += _weight;
+			if(_value>-100){
+				_bkg_histo[i]->Fill(_value,_weight);
+				weight_bkg += _weight;
+				weight_bkg_total += _weight;
+			}
 		}
 
 		ShowMessage(3,"MC number, simulated number",nEvent,weight_bkg);
 
 		boost::filesystem::path dir(_bkg_File[i]->GetName());
-		std::string bkg_leg_name=dir.stem().string();
+		//std::string bkg_leg_name=dir.stem().string();
+		std::string bkg_leg_name="bkg";
 		info.leg->AddEntry(_bkg_histo[i],bkg_leg_name.c_str(),"l");
 		Set_Line_Style(para,info,_bkg_histo[i],i+_bkg_num,i+_bkg_num);
 		ss->Add(_bkg_histo[i]);
