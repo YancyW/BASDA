@@ -1,0 +1,21 @@
+PROCESS          : zh
+
+RECORD_FILE      : '../../Event_Analyse_nh_test_l/tmp/nh_115.dat' 
+OUTPUT_FILE      : '../../Event_Analyse_nh_test_l/data'
+EVENT_FILE       : '../../Event_Analyse_nh_test_l/results'
+SINGLE_PLOT      : '../../Event_Analyse_nh_test_l/plot'
+COMBINE_PLOT     : '../../Event_Analyse_nh_test_l/plot_compare'
+HORIZONTAL_SUMMARY_PLOT : '../../Event_Analyse_nh_test_l/plot_summary'
+
+DEBUG_FILE       : './control/debug.dat'
+ANALYSIS_FILE    : './control/Event.dat'
+FLOW_FILE        : './control/flow_test_l.dat'
+PLOT_FILE        : './control/Plot.dat'
+INPUT_FILE       : './control/file.dat'
+
+CUT_FILE         : './control/Cut/Cut_nh.dat'
+VAR_FILE         : './control/Var/Var_nh_115.dat' 
+SENSITIVITY_FILE : './control/Sensitivity.dat'
+MASS_SCAN_FILE   : './control/Mass_Scan.dat'
+BKG_SORT_FILE    : './control/Bkg_Sort.dat'
+SCENARIO_FILE    : './control/Scenario_test_l.dat'

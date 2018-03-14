@@ -1,0 +1,29 @@
+#pragma once
+#ifndef GLOBAL_PARA_FILE 
+#define GLOBAL_PARA_FILE
+#include "TStyle.h"
+#include <string> 
+#include <vector>
+#include "yaml-cpp/yaml.h"
+
+#include "Lib/MessageFormat.h"
+#include "Function/Fbasic.h"
+#include "RWpara/RWbasic.h"
+#include "Function/Ffile.h"
+#include "Class/Path.h"
+
+
+class CFile{
+	private:
+	public:
+		Int_t                    file_num               ;
+		Int_t                    channel_num            ;
+		std::vector<std::string> file                   ;
+		std::vector<std::string> file_descrip           ;
+		void                     Read_File(CPath path)  ;
+		std::string              root_head_name         ;
+		std::string              root_head_BDT_name     ;
+};
+
+
+#endif

@@ -1,0 +1,350 @@
+#include "Make_Table.h"
+#include "AnalyseClass/File.h"
+float Print_file_Pre(CDraw &para, float lumi, std::ostream& out, std::vector<std::pair<std::string,File_Num> > &fileList){
+
+	out<< " \\begin{center}\n" ;
+	out<< " \\begin{tiny}\n" ;
+	out<< " \\begin{tabular}{|" ;
+	for(unsigned int i=0;i<fileList.size()+3;i++){
+		if(i!=fileList.size()+2){
+			out<< "c| " ;
+		}
+		else{
+			out<< "c|}" << std::endl;
+		}
+	}
+
+	out<< " \\hline" <<std::endl ;
+	for(unsigned int i=0;i<fileList.size();i++){
+		if(i==0){
+			if(lumi==0){
+				out<< " $\\int L dt ="<<para.flow.lumi<<" fb^{-1} $ & " << "$"<< fileList[i].second.data[0].first<< "$  & ";
+				lumi=1;
+			}
+			else{
+				out<< " $\\int L dt ="<<lumi<<" fb^{-1} $ & " << "$"<< fileList[i].second.data[0].first<< "$  & ";
+			}
+		}
+		else if(i==fileList.size()-1){
+			out<< "$" <<fileList[i].second.data[0].first<< "$  & efficienty & significance \\\\" <<std::endl;
+		}
+		else{ 
+			out<< "$"<< fileList[i].second.data[0].first<< "$  & ";
+		}
+	}
+
+	std::vector<float> f4l,f4sl,f4h,f2l,f2h,sig,bk;
+	for(unsigned int j=0;j<fileList[0].second.data.size();j++){
+		sig .push_back(0);
+		bk  .push_back(0);
+		f4l .push_back(0);
+		f4sl.push_back(0);
+		f4h .push_back(0);
+		f2l .push_back(0);
+		f2h .push_back(0);
+	}
+
+	std::string s4  ("4f");
+	std::string sl  ("{l}" );
+	std::string ssl ("{sl}");
+	std::string sh  ("{h}" );
+	std::string s2  ("2f");
+	std::string ssig1("higgs");
+	std::string ssig2("nh");
+
+	std::size_t found_class,found_fs; 
+	float signal_ori=(fileList[0].second.data)[1].second*lumi;
+	for(unsigned int j=1;j<fileList[0].second.data.size();j++){
+		out<< " \\hline" <<std::endl ;
+		float total=0;
+		float signal=0;
+		for(unsigned int i=0;i<fileList.size();i++){
+			found_class = fileList[i].second.data[0].first.find(s4);
+			if (found_class!=std::string::npos){
+				found_fs= fileList[i].second.data[0].first.find(sl);
+				if (found_fs!=std::string::npos){
+					f4l[j]+=fileList[i].second.data[j].second*lumi;
+				}
+				found_fs= fileList[i].second.data[0].first.find(ssl);
+				if (found_fs!=std::string::npos){
+					f4sl[j]+=fileList[i].second.data[j].second*lumi;
+				}
+				found_fs= fileList[i].second.data[0].first.find(sh);
+				if (found_fs!=std::string::npos){
+					f4h[j]+=fileList[i].second.data[j].second*lumi;
+				}
+				bk[j]+=fileList[i].second.data[j].second*lumi;
+			}
+
+			found_class = fileList[i].second.data[0].first.find(s2);
+			if (found_class!=std::string::npos){
+				found_fs= fileList[i].second.data[0].first.find(sl);
+				if (found_fs!=std::string::npos){
+					f2l[j]+=fileList[i].second.data[j].second*lumi;
+				}
+				found_fs= fileList[i].second.data[0].first.find(sh);
+				if (found_fs!=std::string::npos){
+					f2h[j]+=fileList[i].second.data[j].second*lumi;
+				}
+				bk[j]+=fileList[i].second.data[j].second*lumi;
+			}
+
+			found_class = fileList[i].second.data[0].first.find(ssig1);
+			if (found_class!=std::string::npos){
+				sig[j]+=fileList[i].second.data[j].second*lumi;
+			}
+
+			found_class = fileList[i].second.data[0].first.find(ssig2);
+			if (found_class!=std::string::npos){
+				sig[j]+=fileList[i].second.data[j].second*lumi;
+			}
+
+
+			if(i==0){
+				out<< "$" << fileList[i].second.data[j].first << "$  & ";
+				out<< fileList[i].second.data[j].second*lumi<< " & ";
+				signal+=fileList[i].second.data[j].second*lumi;
+			}
+			else if(i!=0&&i!=fileList.size()-1){
+				out<< fileList[i].second.data[j].second*lumi<< " & ";
+				total+=fileList[i].second.data[j].second*lumi;
+			}
+			else if(i!=0&&i==fileList.size()-1){
+				total+=fileList[i].second.data[j].second*lumi;
+				out<< fileList[i].second.data[j].second*lumi<< " & " << signal/signal_ori << " & " <<signal/std::sqrt(signal+total) << "\\\\"<<std::endl;
+			}
+			else {
+				out<< "what is this?";
+			}
+		}
+	}
+
+	out<< " \\hline" <<std::endl ;
+	out<< " \\end{tabular}" <<std::endl ;
+	out<< " \\end{tiny}" <<std::endl ;
+	out<< " \\end{center}" <<std::endl ;
+
+
+	// ------------------------------------------------------------------------------------------------------
+	// plot table for classified results
+	out<< " \\begin{center}\n" ;
+	out<< " \\begin{tiny}\n" ;
+	out<< " \\begin{tabular}{|c|c|c|c|c|c|c|c|}" ;
+	out<< " \\hline" <<std::endl ;
+	out<< " $\\int L dt =250 fb^{-1} $ & " << "$"<< "sig"<< "$  & ";
+	out<< "$"<< "2f_{l}"<< "$  & ";
+	out<< "$"<< "4f_{l}"<< "$  & ";
+	out<< "$"<< "4f_{sl}"<< "$  & ";
+	out<< "$"<< "total~bk"<< "$  & ";
+	out<< " efficienty & significance \\\\" <<std::endl;
+
+	for(unsigned int j=1;j<fileList[0].second.data.size();j++){
+		out<< " \\hline" <<std::endl ;
+		out<< "$" << fileList[0].second.data[j].first << "$  & ";
+		out<< sig [j]<< " & ";
+		out<< f2l [j]<< " & ";
+		out<< f4l [j]<< " & ";
+		out<< f4sl[j]<< " & ";
+		out<< bk  [j]<< " & ";
+		out<< sig[j]/signal_ori  << " & " <<sig[j]/std::sqrt(sig[j]+bk[j]) << "\\\\"<<std::endl;
+	}
+	out<< " \\hline" <<std::endl ;
+	out<< " \\end{tabular}" <<std::endl ;
+	out<< " \\end{tiny}" <<std::endl ;
+	out<< " \\end{center}" <<std::endl ;
+
+	int last_num=fileList[0].second.data.size()-1;
+	return(sig[last_num]/std::sqrt(sig[last_num]+bk[last_num]));
+}
+
+
+float Print_file(CDraw &para, float lumi, std::ostream& out, std::vector<std::pair<std::string,File_Num> > &fileList){
+
+	out<< " \\begin{center}\n" ;
+	out<< " \\begin{tiny}\n" ;
+	out<< " \\begin{tabular}{|" ;
+	for(unsigned int i=0;i<fileList.size()+3;i++){
+		if(i!=fileList.size()+2){
+			out<< "c| " ;
+		}
+		else{
+			out<< "c|}" << std::endl;
+		}
+	}
+
+	out<< " \\hline" <<std::endl ;
+	for(unsigned int i=0;i<fileList.size();i++){
+		if(i==0){
+			if(lumi==0){
+				out<< " $\\int L dt ="<<para.flow.lumi<<" fb^{-1} $ & " << "$"<< fileList[i].second.data[0].first<< "$  & ";
+				lumi=1;
+			}
+			else{
+				out<< " $\\int L dt ="<<lumi<<" fb^{-1} $ & " << "$"<< fileList[i].second.data[0].first<< "$  & ";
+			}
+		}
+		else if(i==fileList.size()-1){
+			out<< "$" <<fileList[i].second.data[0].first<< "$  & efficienty & significance \\\\" <<std::endl;
+		}
+		else{ 
+			out<< "$"<< fileList[i].second.data[0].first<< "$  & ";
+		}
+	}
+
+	std::vector<float> bk;
+    std::vector< std::pair<std::string,std::vector<std::vector<float> > > > data;
+	data.resize(para.bkg_sort.sort.size());
+    for(unsigned int k=0;k<para.bkg_sort.sort.size();k++){
+		data[k].second.resize(para.bkg_sort.sort[k].second.size());
+    	for(unsigned int l=0;l<para.bkg_sort.sort[k].second.size();l++){
+			data[k].second[l].resize(fileList[0].second.data.size());
+    	}
+    }
+	for(unsigned int j=0;j<fileList[0].second.data.size();j++){
+		bk  .push_back(0);
+	}
+
+	std::size_t found_class,found_fs; 
+	float signal_ori=(fileList[0].second.data)[1].second*lumi;
+	for(unsigned int j=1;j<fileList[0].second.data.size();j++){
+		out<< " \\hline" <<std::endl ;
+		float total=0;
+		float signal=0;
+		for(unsigned int i=0;i<fileList.size();i++){
+    		for(unsigned int k=0;k<para.bkg_sort.sort.size();k++){
+//				out << "\n" << "k " << k << " " << para.bkg_sort.sort[k].first << std:: endl; 
+    			found_class = fileList[i].second.data[0].first.find(para.bkg_sort.sort[k].first);
+    			if (found_class!=std::string::npos){
+    				for(unsigned int l=0;l<para.bkg_sort.sort[k].second.size();l++){
+//						out << "\n" << "l " << l << " " << para.bkg_sort.sort[k].second[l]<< std:: endl; 
+    					found_fs= fileList[i].second.data[0].first.find(para.bkg_sort.sort[k].second[l]);
+    					if (found_fs!=std::string::npos){
+							data[k].second[l][j]+=fileList[i].second.data[j].second*lumi;
+    					}
+    					if(k!=0){
+    						bk[j]+=fileList[i].second.data[j].second*lumi;
+    					}
+    				}
+    			}
+    		}
+
+			if(i==0){
+				out<< "$" << fileList[i].second.data[j].first << "$  & ";
+				out<< fileList[i].second.data[j].second*lumi<< " & ";
+				signal+=fileList[i].second.data[j].second*lumi;
+			}
+			else if(i!=0&&i!=fileList.size()-1){
+				out<< fileList[i].second.data[j].second*lumi<< " & ";
+				total+=fileList[i].second.data[j].second*lumi;
+			}
+			else if(i!=0&&i==fileList.size()-1){
+				total+=fileList[i].second.data[j].second*lumi;
+				out<< fileList[i].second.data[j].second*lumi<< " & " << signal/signal_ori << " & " <<signal/std::sqrt(signal+total) << "\\\\"<<std::endl;
+			}
+			else {
+				out<< "what is this?";
+			}
+		}
+	}
+
+	out<< " \\hline" <<std::endl ;
+	out<< " \\end{tabular}" <<std::endl ;
+	out<< " \\end{tiny}" <<std::endl ;
+	out<< " \\end{center}" <<std::endl ;
+	out<< " " <<std::endl ;
+	out<< " " <<std::endl ;
+
+
+	// ------------------------------------------------------------------------------------------------------
+    // plot table for classified results
+    out<< " \\begin{center}\n" ;
+    out<< " \\begin{tiny}\n" ;
+    out<< " \\begin{tabular}{|c|c|c|c|c|c|c|c|}" ;
+    out<< " \\hline" <<std::endl ;
+    out<< " $\\int L dt =250 fb^{-1} $ & ";
+    for(unsigned int k=0;k<para.bkg_sort.sort.size();k++){
+    	for(unsigned int l=0;l<para.bkg_sort.sort[k].second.size();l++){
+    		out<< "$"<< para.bkg_sort.sort[k].first+"_{"+para.bkg_sort.sort[k].second[l]+"}"<< "$  & ";
+    	}
+    }
+    out<< "$"<< "total~bk"<< "$  & ";
+    out<< " efficienty & significance \\\\" <<std::endl;
+
+    for(unsigned int j=1;j<fileList[0].second.data.size();j++){
+    	out<< " \\hline" <<std::endl ;
+    	out<< "$" << fileList[0].second.data[j].first << "$  & ";
+    	for(unsigned int k=0;k<para.bkg_sort.sort.size();k++){
+    		for(unsigned int l=0;l<para.bkg_sort.sort[k].second.size();l++){
+      			out<< data[k].second[l][j] << " & ";
+    		}
+    	}
+    	out<< bk  [j]<< " & ";
+      	out<< data[0].second[0][j]/signal_ori  << " & " <<data[0].second[0][j]/std::sqrt(data[0].second[0][j]+bk[j]) << "\\\\"<<std::endl;
+    }
+    out<< " \\hline" <<std::endl ;
+    out<< " \\end{tabular}" <<std::endl ;
+    out<< " \\end{tiny}" <<std::endl ;
+    out<< " \\end{center}" <<std::endl ;
+
+	int last_num=fileList[0].second.data.size()-1;
+  	return(data[0].second[0][last_num]/std::sqrt(data[0].second[0][last_num]+bk[last_num]));
+}
+
+
+
+float Make_Table(CDraw &para, float lumi, std::vector<std::string> yaml_file,std::string out_file_name,bool IsRecord){
+
+
+	ShowMessage(2,"make tables");
+	ShowMessage(2,"use following input data for significance:");
+	std::ofstream out_file;
+	out_file.open(out_file_name);
+
+
+	std::vector<std::pair<std::string,File_Num> >  fileList;
+	std::vector<PolNum*> polnum; 
+
+	File_Num combine_results;
+
+	for(unsigned int i=0;i<yaml_file.size();i++){
+		if(i==0){
+			ShowMessage(2,"sig file",yaml_file[i]);
+		}
+		else{
+			ShowMessage(2,"bkg file",yaml_file[i]);
+		}
+		YAML::Node file_node = YAML::LoadFile(yaml_file[i]);
+
+		YAML::Node nodes = file_node["filenum"];
+
+		for(YAML::const_iterator it=nodes.begin(); it != nodes.end(); ++it){
+			if(it->first.as<std::string>()=="total result"){
+				fileList.push_back(std::make_pair(it->first.as<std::string>(),it->second.as<File_Num>()));
+				break;
+			}
+		}
+
+	}
+
+	float significance=Print_file(para,lumi,out_file,fileList);
+	ShowMessage(2,"final significance:  ",significance);
+	return(significance);
+}
+
+
+void Make_Table_Pre(CDraw &para){
+	AFile file_name;
+	get_file_name(para,file_name);
+
+	std::ofstream sig_file;
+	sig_file.open(file_name.significance);
+
+	std::vector<std::string> ana_out_name;
+	for(int i=0;i<file_name.Output_Num();i++){
+		ana_out_name.push_back(file_name.output[i].ana_data);
+	}
+	Make_Table(para,0,ana_out_name,file_name.output_table,true);
+
+	sig_file.close();
+}
+

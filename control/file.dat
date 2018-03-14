@@ -1,0 +1,10 @@
+FILE_NUM          : 1
+FILE_0            :  /media/yancy/新加卷/Code/Data/Event_Light_Higgs/origin_data/xection_aa.dat
+
+CHANNEL_NUM       : 1
+FILE_DESCRIP_0    : all 
+#FILE_DESCRIP_0    : nh 
+#FILE_DESCRIP_1    : 4f_{zz}^{l} 
+
+Root_Head_Name     : datatest
+Root_Head_BDT_Name : datatrain

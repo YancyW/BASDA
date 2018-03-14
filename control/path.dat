@@ -1,0 +1,23 @@
+PROCESS          : zh
+
+OUTPUT_FOLDER    : '../../Data/Event_Analyse'
+
+RECORD_FILE      : 'tmp/nh_115.dat' 
+OUTPUT_FILE      : 'data'
+EVENT_FILE       : 'results'
+SINGLE_PLOT      : 'plot'
+COMBINE_PLOT     : 'plot_compare'
+HORIZONTAL_SUMMARY_PLOT : 'Event_Analyse/plot_summary'
+
+DEBUG_FILE       : './control/debug.dat'
+ANALYSIS_FILE    : './control/Event.dat'
+FLOW_FILE        : './control/flow.dat'
+PLOT_FILE        : './control/Plot.dat'
+INPUT_FILE       : './control/file.dat'
+
+CUT_FILE         : './control/Cut/Cut_nh.dat'
+VAR_FILE         : './control/Var/Var_nh_115.dat' 
+SENSITIVITY_FILE : './control/Sensitivity.dat'
+MASS_SCAN_FILE   : './control/Mass_Scan.dat'
+BKG_SORT_FILE    : './control/Bkg_Sort.dat'
+SCENARIO_FILE    : './control/Scenario.dat'

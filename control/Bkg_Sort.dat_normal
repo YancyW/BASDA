@@ -1,0 +1,20 @@
+sort_num   : 3
+
+each_sort_num_0 : 1
+each_sort_num_1 : 3
+each_sort_num_2 : 3
+
+each_sort_name_0 : nh 
+each_sort_name_1 : 4f
+each_sort_name_2 : 2f
+
+nh_0: 50;Higgs_{50} 
+
+4f_0 : l
+4f_1 : sl
+4f_2 : h
+
+2f_0 : l
+2f_1 : sl
+2f_2 : h
+
