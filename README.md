@@ -5,7 +5,7 @@ This package is developed for releasing you from programming and unphysical labo
 All operation can be done by only change the input config file.
 
 ## Manual
-The introduction pdf/pptx is in [introduction](./doc/BASDA_introduction.pdf)
+The introduction pdf/pptx is in [introduction](./doc/BASDA_Introduction.pdf)
 The complete manual is in [USAGE](./doc/USAGE.md)
 The licence is in [Licence](./doc/LICENCE)
 
