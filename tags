@@ -28,6 +28,7 @@ ANALYSE_FIND_CUT_H	Analyse/Analyse_Find_Cut.h	3;"	d
 ANALYSE_MASS_SCAN_H	Analyse/Analyse_Mass_Scan.h	3;"	d
 ANALYSE_Pre_CUT_H	Analyse/Analyse_Pre_Cut.h	3;"	d
 ANALYSE_ROOT_H	Analyse_Root.h	3;"	d
+ANALYSE_ROOT_H	BASDA.h	3;"	d
 ANALYSE_SUMMARIZE_PLOT_H	Analyse/Analyse_Summarize_Plot.h	3;"	d
 ANALYSE_VARIABLE_H	AnalyseClass/Variable.h	3;"	d
 ANALYSIS_CLASS_COUNTER_H	AnalyseClass/Counter.h	2;"	d
@@ -122,9 +123,13 @@ Cal_Pol	RWpara/RWScenario.cpp	/^void CScenario::Cal_Pol(){$/;"	f	class:CScenario
 CalculateCL	TSysLimit/TSysLimit.cpp	/^void TSysLimit::CalculateCL(Double_t signalScale,$/;"	f	class:TSysLimit
 Choose_Print_File	Lib/MessageFormat.cpp	/^std::ostream& Choose_Print_File(bool IsRecord, std::string file_name){$/;"	f
 Class	Class/BKG_Sort.h	/^		std::string Class(){$/;"	f	class:CBKG_Sort_basic
+Clear	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Figure::Clear(){$/;"	f	class:Analyse_Figure
+Clear	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Clear(){$/;"	f	class:Analyse_Multi_File
+Clear	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Single_File::Clear(){$/;"	f	class:Analyse_Single_File
 Clear	AnalyseClass/Counter.cpp	/^void ACounter::Clear(){$/;"	f	class:ACounter
 Clear	AnalyseClass/File.cpp	/^void AFile::Clear(){$/;"	f	class:AFile
 Clear	AnalyseClass/File.h	/^		void Clear(){$/;"	f	class:AFile_Name
+Clear	AnalyseClass/Plot.cpp	/^void APlot::Clear(){$/;"	f	class:APlot
 Clear	Class/Judge.h	/^		void Clear(){_Exist=false;}$/;"	f	class:AJudge
 ClearResults	TSysLimit/TSysLimit.cpp	/^void TSysLimit::ClearResults(Int_t nTotal) {$/;"	f	class:TSysLimit
 Copy	AnalyseClass/Variable.cpp	/^void Avariable::Copy(Avariable var){$/;"	f	class:Avariable
@@ -258,7 +263,7 @@ Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Multi_File::Get_Cut(int fil
 Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Single_File::Get_Cut(AVariable &var,ACut &cut){$/;"	f	class:Analyse_Single_File
 Get_Event	Class/DrawClass.h	/^		void Get_Event(long long int num){$/;"	f	class:CDraw
 Get_Event	Class/Event.h	/^		void Get_Event(long long int num){$/;"	f	class:CEvent
-Get_Histogram	AnalyseClass/Plot.cpp	/^bool APlot::Get_Histogram(CDraw &para, Avariable &info,std::string output_folder){$/;"	f	class:APlot
+Get_Histogram	AnalyseClass/Plot.cpp	/^bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_folder){$/;"	f	class:APlot
 Get_Input_File	AnalyseClass/Plot.cpp	/^bool APlot::Get_Input_File(CDraw &para, Avariable &info, std::vector<std::string> input_sig, std::vector<std::string> input_bkg){$/;"	f	class:APlot
 Get_Significance	Function/FCalc.cpp	/^float Get_Significance(float sig, float bkg){$/;"	f
 Get_VarName	Function/Fbasic.h	41;"	d
@@ -404,7 +409,6 @@ Read_Cut	RWpara/RWCut.cpp	/^void ACut:: Read_Cut(CPath &path){$/;"	f	class:ACut
 Read_Debug	RWpara/RWDebug.cpp	/^void CDebug::  Read_Debug(CPath path){$/;"	f	class:CDebug
 Read_Event	RWpara/RWEvent.cpp	/^void CEvent::  Read_Event(CPath path){$/;"	f	class:CEvent
 Read_File	RWpara/RWFile.cpp	/^void CFile::  Read_File(CPath path){$/;"	f	class:CFile
-Read_File	RWpara/RWfile.cpp	/^void CFile::  Read_File(CPath path){$/;"	f	class:CFile
 Read_Flow	RWpara/RWFlow.cpp	/^void CFlow::   Read_Flow(CPath path){$/;"	f	class:CFlow
 Read_Mass_Scan	RWpara/RWMass_Scan.cpp	/^void CMass_Scan:: Read_Mass_Scan(CPath &path){$/;"	f	class:CMass_Scan
 Read_Path	RWpara/RWPath.cpp	/^void CPath::Read_Path(std::string steering_file){$/;"	f	class:CPath
@@ -751,6 +755,7 @@ log_min	AnalyseClass/Variable.h	/^		float         log_min    ;$/;"	m	class:Avari
 log_switch	AnalyseClass/Variable.h	/^		bool          log_switch ;$/;"	m	class:Avariable
 lumi	Class/Scenario.h	/^	float                   lumi;$/;"	m	class:CScenario_Basic
 main	Analyse_Root.cpp	/^int main(int argc, char*argv[]) {$/;"	f
+main	BASDA.cpp	/^int main(int argc, char*argv[]) {$/;"	f
 mass	Class/Mass_Scan.h	/^		std::vector<float> mass;$/;"	m	class:CMass_Scan
 mass_num	Class/Mass_Scan.h	/^		Int_t              mass_num;$/;"	m	class:CMass_Scan
 mass_scan	Class/DrawClass.h	/^		CMass_Scan         mass_scan    ;$/;"	m	class:CDraw
@@ -881,6 +886,8 @@ y_max	AnalyseClass/Variable.h	/^		float         y_max      ;$/;"	m	class:Avariab
 y_min	AnalyseClass/Variable.h	/^		float         y_min      ;$/;"	m	class:Avariable
 y_name	AnalyseClass/Variable.h	/^		std::string   y_name     ;$/;"	m	class:Avariable
 ~ACounter	AnalyseClass/Counter.h	/^		~ACounter(){$/;"	f	class:ACounter
+~APlot	AnalyseClass/Plot.h	/^		~APlot(){$/;"	f	class:APlot
+~Analyse_Figure	AnalyseClass/AnalyseClass.h	/^		~Analyse_Figure(){$/;"	f	class:Analyse_Figure
 ~Analyse_Multi_File	AnalyseClass/AnalyseClass.h	/^		~Analyse_Multi_File(){$/;"	f	class:Analyse_Multi_File
 ~Analyse_Single_File	AnalyseClass/AnalyseClass.cpp	/^Analyse_Single_File::~Analyse_Single_File(){$/;"	f	class:Analyse_Single_File
 ~CScenario	Class/Scenario.h	/^		~CScenario(){$/;"	f	class:CScenario
