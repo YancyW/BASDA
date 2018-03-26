@@ -15,3 +15,4 @@ Add cut and draw figures
 - 2018/03/25: v0.04
     - generallize this code with more setting options 
     - save all intermedia data/plots/root files.
+    - write introduction for BASDA (pdf/pptx)
