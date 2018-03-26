@@ -1,4 +1,4 @@
-TARGET=Analyse_Root
+TARGET=BASDA
 
 CXX=g++
 FLAGS=-std=c++14 -g 
