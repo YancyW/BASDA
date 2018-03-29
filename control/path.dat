@@ -19,8 +19,6 @@ BKG_SORT_FILE    : './control/Bkg_Sort.dat'
 CUT_FILE         : './control/Cut/Cut_nh.dat'
 VAR_FILE         : './control/Var/Var_nh_115.dat' 
 
-MASS_SCAN_FILE   : './control/Mass_Scan.dat'
-
 
 #Advanced input setting
 PLOT_FILE        : './control/advanced/Plot.dat'
@@ -28,3 +26,5 @@ DEBUG_FILE       : './control/advanced/debug.dat'
 ANALYSIS_FILE    : './control/advanced/Event.dat'
 SENSITIVITY_FILE : './control/advanced/Sensitivity.dat'
 SCENARIO_FILE    : './control/advanced/Scenario.dat'
+MASS_SCAN_FILE   : './control/Mass_Scan.dat'
+
