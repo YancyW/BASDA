@@ -134,10 +134,11 @@ bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color
 }
 
 
-std::string APlot::Set_Stack_Title(CDraw& para, std::string name){
-	std::string stack_title= "";
+std::vector<std::string> APlot::Set_Stack_Title(CDraw& para, std::string name){
+	std::vector<std::string> stack_title= {"",""};
+	stack_title[0]= name;
 	if(para.plot.setting.show_title){
-		stack_title= name;
+		stack_title[1]= name;
 	}
 	return(stack_title);
 }
@@ -235,8 +236,8 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 	info.leg->SetHeader(leg_name.c_str(),"l");
 	info.c=new TCanvas(info.c_name.c_str()," ",info.c_width,info.c_height);
 	gPad->SetGrid();
-	std::string stack_title = Set_Stack_Title(para, info.title_name+"_limit");
-	THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
+	std::vector<std::string> stack_title = Set_Stack_Title(para, info.title_name+"_limit");
+	THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );
 
 
 	ShowMessage(2,"Begin to fill data for signal.");
@@ -284,8 +285,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 		ShowMessage(3,"MC number, simulated number",nEvent,weight_bkg);
 
 		boost::filesystem::path dir(_bkg_File[i]->GetName());
-		//std::string bkg_leg_name=dir.stem().string();
-		std::string bkg_leg_name="bkg";
+		std::string bkg_leg_name=dir.stem().string();
 		info.leg->AddEntry(_bkg_histo[i],bkg_leg_name.c_str(),"l");
 		Set_Line_Style(para,info,_bkg_histo[i],i+_bkg_num,i+_bkg_num);
 		ss->Add(_bkg_histo[i]);
@@ -309,8 +309,8 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 	ShowMessage(2,"Begin to generate combined plot.");
 	info.c=new TCanvas(info.c_name.c_str()," ",info.c_width,info.c_height);
 	gPad->SetGrid();
-	std::string stack_total_title = Set_Stack_Title(para, info.title_name+"_total_limit");
-	THStack *ss_total = new THStack(stack_total_title.c_str(),stack_total_title.c_str() );
+	std::vector<std::string> stack_total_title = Set_Stack_Title(para, info.title_name+"_total_limit");
+	THStack *ss_total = new THStack(stack_total_title[0].c_str(),stack_total_title[1].c_str() );
 
 
 	info.leg->AddEntry(_sig_histo_total,"sig","l");

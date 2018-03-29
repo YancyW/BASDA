@@ -129,7 +129,7 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 		delete in_file[i];
 	}
 
-	ShowMessage(2,"return");
+	ShowMessage(2,"Finish Direct Cut");
 	return;
 }
 

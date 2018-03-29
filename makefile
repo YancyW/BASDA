@@ -1,7 +1,7 @@
 TARGET=BASDA
 
 CXX=g++
-FLAGS=-std=c++14 -g 
+FLAGS=-std=c++11 -g 
 #-Wall
 
 RootPath=/home/yancy/Software/executable/root/build

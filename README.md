@@ -5,9 +5,9 @@ This package is developed for releasing you from programming and unphysical labo
 All operation can be done by only change the input config file.
 
 ## Manual
- - The introduction pdf/pptx is in [introduction](./doc/BASDA_Introduction.pdf)
- - The complete manual is in [USAGE](./doc/USAGE.md)
- - The licence is in [Licence](./doc/LICENCE)
+ - The introduction pdf/pptx is in [introduction](./doc/BASDA_Introduction.pdf).
+ - The complete manual is in [USAGE](./doc/USAGE.md).
+ - The licence is in [Licence](./doc/LICENCE).
 
 ## change.log
 - 2017/7/1 :  v0.01 
@@ -22,4 +22,4 @@ All operation can be done by only change the input config file.
 - 2018/03/25: v0.04
     - generallize this code with more setting options 
     - save all intermedia data/plots/root files.
-    - write introduction for BASDA (pdf/pptx)
+    - write introduction for BASDA (pdf/pptx).

@@ -188,6 +188,7 @@ void get_file_name(CDraw &para, AFile &file_name){
 	file_name.sensitivity   =event_LIMIT_folder_name+"sensitivity_"  +mass_str+".root";
 	file_name.output_MVA    =event_MVA_folder_name+file_name.input[0].name+"_MVA.root";
 	file_name.dataset_MVA   =event_MVA_folder_name+file_name.input[0].name+"_dataset";
+	file_name.plot_CUT      =event_CUT_folder_name+"all_plots.root";
 	//file_name.dataset_MVA =file_name.input[0].name+"_dataset";
 
 	ShowMessage(2);

@@ -12,8 +12,8 @@ void CBKG_Sort:: Read_BKG_Sort(CPath &path){
 
 	RW_element("sort_num" ,bkg_node,this->_sort_num);
 	for(int i=0;i<_sort_num;i++){
-		RW_vector_element("each_sort_num"      ,i,bkg_node,input_class_vec);
-		RW_vector_element("each_sort_name"     ,i,bkg_node,input_class_name);
+		RW_vector_element("sub_sort_num"      ,i,bkg_node,input_class_vec);
+		RW_vector_element("sub_sort_name"     ,i,bkg_node,input_class_name);
 	}
 
 	sort.resize(_sort_num);

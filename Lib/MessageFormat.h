@@ -91,7 +91,7 @@ void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddat
 
 
 template <typename TMess1, typename TMess2,typename TMess3> 
-void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddata, TMess3 ddata3){
+void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddata, TMess3 ddata2){
 	std::cout.setf(std::ios::left);
 	std::string fill1="";
 	std::string fill2="      ";
@@ -118,15 +118,15 @@ void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddat
 		default:fill=fill1;
 	}
 
-	file_name << fill << std::left << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata3 <<  "\n";
-	std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata3 <<  std::endl;
+	file_name << fill << std::left << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2 <<  "\n";
+	std::cout << fill <<              std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2 <<  std::endl;
 }
 
 
 
 
 template <typename TMess1, typename TMess2,typename TMess3, typename TMess4> 
-void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddata, TMess3 ddata3, TMess4 ddata4){
+void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddata, TMess3 ddata2, TMess4 ddata3){
 	std::cout.setf(std::ios::left);
 	std::string fill1="";
 	std::string fill2="      ";
@@ -153,15 +153,15 @@ void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddat
 		default:fill=fill1;
 	}
 
-	file_name << fill << std::left << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata3 << ", " << ddata4 <<  "\n";
-	std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata3 << ", " << ddata4 <<  std::endl;
+	file_name << fill << std::left << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2 << ", " << ddata3 <<  "\n";
+	std::cout << fill <<              std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2 << ", " << ddata3 <<  std::endl;
 }
 
 
 
 
 template <typename TMess1, typename TMess2,typename TMess3, typename TMess4, typename TMess5> 
-void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddata, TMess3 ddata3, TMess4 ddata4, TMess5 ddata5){
+void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddata, TMess3 ddata2, TMess4 ddata3, TMess5 ddata4){
 	std::cout.setf(std::ios::left);
 	std::string fill1="";
 	std::string fill2="      ";
@@ -188,8 +188,8 @@ void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddat
 		default:fill=fill1;
 	}
 
-	file_name << fill << std::left << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata3 << ", " << ddata4 << ", " << ddata5 << "\n";
-	std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata3 << ", " << ddata4 << ", " << ddata5 << std::endl;
+	file_name << fill << std::left << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2 << ", " << ddata3 << ", " << ddata4 << "\n";
+	std::cout << fill <<              std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2 << ", " << ddata3 << ", " << ddata4 << std::endl;
 }
 
 
@@ -206,7 +206,7 @@ void RecordMessage(std::ofstream &file_name, int level, TMess1 mess, TMess2 ddat
 
 
 template <typename TMess1, typename TMess2,typename TMess3, typename TMess4, typename TMess5> 
-void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm, TMess4 ddata4, TMess5 ddata5){
+void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata2, TMess4 ddata3, TMess5 ddata4){
 	std::cout.setf(std::ios::left);
 	std::string fill1="";
 	std::string fill2="      ";
@@ -234,13 +234,13 @@ void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm, TMes
 		default:fill=fill1;
 	}
 
-		std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata_comm << ", " << ddata4 << ", " << ddata5 << std::endl;
+		std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2<< ", " << ddata3 << ", " << ddata4 << std::endl;
 }
 
 
 
 template <typename TMess1, typename TMess2,typename TMess3, typename TMess4> 
-void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm, TMess4 ddata4){
+void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata2, TMess4 ddata3){
 	std::cout.setf(std::ios::left);
 	std::string fill1="";
 	std::string fill2="      ";
@@ -268,14 +268,14 @@ void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm, TMes
 		default:fill=fill1;
 	}
 
-		std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata_comm << ", " << ddata4 << std::endl;
+		std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2<< ", " << ddata3 << std::endl;
 }
 
 
 
 
 template <typename TMess1, typename TMess2,typename TMess3> 
-void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm){
+void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata2){
 	std::cout.setf(std::ios::left);
 	std::string fill1="";
 	std::string fill2="      ";
@@ -303,7 +303,7 @@ void ShowMessage(Int_t level, TMess1 mess, TMess2 ddata, TMess3 ddata_comm){
 		default:fill=fill1;
 	}
 
-		std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata_comm << std::endl;
+		std::cout << fill << std::setw(66-fillnum) << std::setfill(' ') << mess  << ":    " << ddata << ", " << ddata2<< std::endl;
 }
 
 

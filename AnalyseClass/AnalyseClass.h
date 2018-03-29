@@ -36,6 +36,7 @@ class Analyse_Figure{
 		TH1F*       hvariable_final ;
 
 		float       pass            ;
+		long int    event           ;
 
 		~Analyse_Figure(){
 			Clear();
@@ -46,6 +47,12 @@ class Analyse_Figure{
 		void Init();
 
 		void Clear();
+
+		TH1F* Hist_Origin();
+		TH1F* Hist_Before();
+		TH1F* Hist_After();
+		TH1F* Hist_Final();
+		TH1F* Hist(std::string label);
 
 		void Plot(float &variable, TH1F* &hvariable,float weight);
 		void Plot_Origin(float &variable, float weight);
@@ -177,14 +184,8 @@ class Analyse_Multi_File : public APlot{
 		void Record_Information     ( int filenum,std::ofstream &myfile, std::string sample_name ) ;
 		void Record_Tot_Information ( std::ofstream &myfile, std::string sample_name             ) ;
 
-		void Draw_Origin            ( CDraw& para,AFile& file_name                                           ) ;
-		void Draw_Before            ( CDraw& para,AFile& file_name                                           ) ;
-		void Draw_After             ( CDraw& para,AFile& file_name                                           ) ;
-		void Draw_Final             ( CDraw& para,AFile& file_name                                           ) ;
-		void Draw_Sort_Origin       ( CDraw& para,AFile& file_name                                           ) ;
-		void Draw_Sort_Before       ( CDraw& para,AFile& file_name                                           ) ;
-		void Draw_Sort_After        ( CDraw& para,AFile& file_name                                           ) ;
-		void Draw_Sort_Final        ( CDraw& para,AFile& file_name                                           ) ;
+		void Draw_Single            ( CDraw& para,AFile& file_name ,std::string hist_label                   ) ;
+		void Draw_Sort              ( CDraw& para,AFile& file_name ,std::string hist_label                   ) ;
 
 		void Fill_Figure            ( );
 

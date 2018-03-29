@@ -4,10 +4,12 @@
 #include <string>
 #include <vector>
 #include "yaml-cpp/yaml.h"
+#include <iostream>
 
 class AFile_Data{
 	public:
 		std::vector< std::pair<std::string,float> > data;
+		std::vector< std::pair<std::string,float> > event;
 		float weight;
 
 		AFile_Data(){
@@ -77,6 +79,10 @@ class AFile_List{
 
 		float Data_Content(int j,int i){
 			return(_list[i].second.data[j].second);
+		}
+
+		float Event_Content(int j,int i){
+			return(_list[i].second.event[j].second);
 		}
 
 		float Data_Sig(int k){
@@ -157,7 +163,22 @@ namespace YAML{
 				int i=0;
 				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
 					switch(i){
-						default:fnum.data.push_back(std::make_pair(it->first.as<std::string>(),it->second.as<float>()));break;
+						default:
+    						if(it->second.IsSequence()){
+    							std::vector<float> input_val = it->second.as<std::vector<float> >();
+    						//fnum.data.push_back(std::make_pair(it->first.as<std::string>(),it->second.as<float>()));break;
+    							if(input_val.size()==2){
+    								fnum.data.push_back(std::make_pair(it->first.as<std::string>(),input_val[0]));
+    								fnum.event.push_back(std::make_pair(it->first.as<std::string>(),input_val[1]));
+    							}
+    							else if(input_val.size()==1){
+    								fnum.data.push_back(std::make_pair(it->first.as<std::string>(),input_val[0]));
+    							}
+    						}
+							else if(it->second.IsScalar()){
+    							fnum.data.push_back(std::make_pair(it->first.as<std::string>(),it->second.as<float>()));
+    						}
+							break;
 					}
 					i++;
 				}

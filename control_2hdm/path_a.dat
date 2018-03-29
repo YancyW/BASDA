@@ -1,0 +1,30 @@
+PROCESS          : zh
+
+# output folder
+OUTPUT_FOLDER    : '../../Data/Event_Analyse_2hdm'
+
+RECORD_FILE      : 'tmp/tmp_a.dat' 
+OUTPUT_FILE      : 'data_a'
+EVENT_FILE       : 'results_a'
+SINGLE_PLOT      : 'plot_a'
+COMBINE_PLOT     : 'plot_compare_a'
+HORIZONTAL_SUMMARY_PLOT : 'plot_summary_a'
+
+
+# input folder
+FLOW_FILE        : './control_2hdm/flow.dat'
+INPUT_FILE       : './control_2hdm/file_a.dat'
+BKG_SORT_FILE    : './control_2hdm/Bkg_Sort.dat'
+
+CUT_FILE         : './control_2hdm/Cut/Cut_2hdm_a.dat'
+VAR_FILE         : './control_2hdm/Var/Var_2hdm_a.dat' 
+
+MASS_SCAN_FILE   : './control_2hdm/Mass_Scan.dat'
+
+
+#Advanced input setting
+PLOT_FILE        : './control_2hdm/Plot.dat'
+DEBUG_FILE       : './control_2hdm/debug.dat'
+ANALYSIS_FILE    : './control_2hdm/Event.dat'
+SENSITIVITY_FILE : './control_2hdm/Sensitivity.dat'
+SCENARIO_FILE    : './control_2hdm/Scenario.dat'

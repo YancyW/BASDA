@@ -24,12 +24,14 @@ void Print_Complete_Channel(CDraw &para, float lumi, std::ostream& out, AFile_Li
 		for(int i=0;i<fileList.File_Num();i++){
 
 			float data_ij=0;
+			long int event_ij=0;
 			if(j==1){// row --- no cut 
 				data_ij = fileList.Data_Content(j,i);
 			}
 			else{
 				data_ij = fileList.Data_Content(j,i)*lumi;
 			}
+			event_ij = fileList.Event_Content(j,i);
 
 			std::vector<std::pair<std::string, int> > pos;
 			pos = para.bkg_sort.Find_Class(fileList.File_Name(i));
@@ -39,7 +41,8 @@ void Print_Complete_Channel(CDraw &para, float lumi, std::ostream& out, AFile_Li
 				Print_Table_First_Column(out, fileList.Data_Name(j), true);
 			}
 
-			Print_Table_First_Column(out, data_ij);
+			std::string data_str=Float_to_String(data_ij)+" ("+ Int_to_String(event_ij)+ ")";
+			Print_Table_First_Column(out, data_str);
 
 			if(i==fileList.Last_File_Num()){
 				float total     = data.Data_Bkg(j-1);

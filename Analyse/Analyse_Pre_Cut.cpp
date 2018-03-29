@@ -56,7 +56,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			filename_i               .push_back(file_name.input[i].basic_file[j]         );
 			in_file_i                .push_back(new TFile(filename_i[j].c_str())         );
 			in_file_i[j]->cd();
-			MyLCTuple_i              .push_back((TTree*)in_file_i[j]->Get("datatrain")   );
+			MyLCTuple_i              .push_back((TTree*)in_file_i[j]->Get(para.file.root_head_MVA_name.c_str())   );
 			nevent_i                 .push_back(MyLCTuple_i[j]->GetEntries()             );
 			if(filenum_i[i]!=1){
 				weight_i             .push_back(xection_i[j]/nevent_i[j]*para.scenario.pol[j]);
@@ -129,7 +129,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			}
 			otfile->cd();
 
-			datatrain= new TTree( "datatrain" , "events" );
+			datatrain= new TTree(para.file.root_head_MVA_name.c_str() , "events" );
 			rootvar     .resize(para.var.num);
 			rootvar_vec .resize(para.var.num_vec);
 
@@ -145,7 +145,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			}
 
 			if(para.flow.BDT_training){
-				datatest= new TTree( "datatest" , "events" );
+				datatest= new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num;i++){
 					if(para.var.var[i].title_name=="BDTG"){
@@ -167,7 +167,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			otfile_MVA->cd();
 
 			if(para.flow.BDT_training){
-				datatest_MVA = new TTree( "datatest" , "events" );
+				datatest_MVA = new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest_MVA->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num;i++){
 					if(para.var.var[i].title_name=="BDTG"){

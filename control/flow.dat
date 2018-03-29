@@ -1,27 +1,35 @@
-cut               : true 
-record_output     : false 
-
-level             : 5
-hmass             : 115 
-working_scenario  : running 
+#operation
 
 #BeginObject      : Complete_Run 
 #BeginObject      : Complete_Pol 
 #BeginObject      : Complete_Direct_Cut
 #BeginObject      : Make_Complete_Table 
 #BeginObject      : Sensitivity 
-BeginObject      : Complete_Sensitivity 
 #BeginObject      : Pre_Cut 
 #BeginObject      : BDT_Train 
 #BeginObject      : BDT_Attach
 #BeginObject      : Summarize_Plot 
+BeginObject       : Direct_Cut_ReWeight
 #BeginObject      : Direct_Cut
 #BeginObject      : Make_Table 
 
+
+# choose signal process and work scenario
+signal_property   : 125 
+working_scenario  : running 
+
+
+# choose special setting 
+
+cut               : true 
+record_output     : false 
 plot             : true 
-#plot_object      : final_cut
 plot_object      : before_cut 
 record_event     : true 
-BDT_training     : true 
-BDT_level        : 1 
-BDT_weight       : 2 
+MVA_training     : true 
+MVA_level        : 2 
+MVA_weight       : 1 
+
+
+#some keywords for future
+level             : 5

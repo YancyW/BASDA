@@ -58,6 +58,7 @@ class AFile{
 		std::string              sensitivity   ;
 		std::string              output_MVA    ;
 		std::string              dataset_MVA   ;
+		std::string              plot_CUT      ;
 
 		int Input_Num(){
 			return(input.size());

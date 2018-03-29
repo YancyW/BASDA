@@ -14,12 +14,14 @@ void Analyse_Figure::Init(Avariable &info, std::string name){
 		hvariable_final  = new TH1F(hname_final .c_str(),info.title_name.c_str(),info.x_bin,info.x_min,info.x_max);
 	}
 	pass = 0.0;
+	event= 0;
 }
 
 
 
 void Analyse_Figure::Init(){
 	pass = 0.0;
+	event =0;
 	hvariable_origin = NULL;
 	hvariable_before = NULL;
 	hvariable_after  = NULL;
@@ -28,12 +30,42 @@ void Analyse_Figure::Init(){
 
 void Analyse_Figure::Clear(){
 	pass = 0.0;
-////delete hvariable_origin;
-////delete hvariable_before;
-////delete hvariable_after ;
-////delete hvariable_final ;
+	event =0;
 }
 
+TH1F* Analyse_Figure::Hist_Origin(){
+	return(hvariable_origin);
+}
+
+TH1F* Analyse_Figure::Hist_Before(){
+	return(hvariable_before);
+}
+
+TH1F* Analyse_Figure::Hist_After(){
+	return(hvariable_after);
+}
+
+TH1F* Analyse_Figure::Hist_Final(){
+	return(hvariable_final);
+}
+
+TH1F* Analyse_Figure::Hist(std::string label){
+	if(label == "origin"){
+		return(hvariable_origin);
+	}
+	else if(label == "before"){
+		return(hvariable_before);
+	}
+	else if(label == "after"){
+		return(hvariable_after);
+	}
+	else if(label == "final"){
+		return(hvariable_final);
+	}
+	else{
+		ShowMessage(2,"wrong input for Analyse_Figure::Hist");
+	}
+}
 
 void Analyse_Figure::Plot(float &variable, TH1F* &hvariable,float weight){
 	hvariable->Fill(variable,weight);
@@ -60,10 +92,12 @@ void Analyse_Figure::Plot_Final(float &variable, float weight){
 
 void Analyse_Figure::Set_Pass(float weight){
 	pass = weight;
+	event= 1;
 }
 
 void Analyse_Figure::Add_Pass(float weight){
 	pass += weight;
+	event++;
 }
 
 
@@ -279,16 +313,16 @@ bool Analyse_Single_File::Use_Cut(Avariable &var, float weight, Analyse_Figure &
 
 
 void Analyse_Single_File::Record_Information(std::ofstream &myfile, AVariable& var, ACut &cut, std::string sample_name){
-	RecordMessage(myfile,3,"total result"                          , ""                    );
-	RecordMessage(myfile,4,sample_name                             , 0                     );
-	RecordMessage(myfile,4,"no cut MC event " , figure[_var_num+2].pass  );
-	RecordMessage(myfile,4,"no cut          " , figure[_var_num  ].pass  );
+	RecordMessage(myfile,3,"total result"     , ""                                                   );
+	RecordMessage(myfile,4,sample_name        , "[ 0"                                        , "0 ]" );
+	RecordMessage(myfile,4,"no cut MC event " , "[ "+Float_to_String(figure[_var_num+2].pass), Float_to_String(figure[_var_num+2].event)+" ]" );
+	RecordMessage(myfile,4,"no cut          " , "[ "+Float_to_String(figure[_var_num  ].pass), Float_to_String(figure[_var_num  ].event)+" ]" );
 	for(int i=0;i<cut.cut_num;i++){
 		int index=cut.cut[i];
 		std::string var_name = var.var[index].latex_name + " \\in [ " + Float_to_String(var.var[index].cut_min) + " ," + Float_to_String(var.var[index].cut_max) + " ] ";
-		RecordMessage(myfile,4,var_name          , figure[index].pass    );
+		RecordMessage(myfile,4,var_name       , "[ "+Float_to_String(figure[index     ].pass), Float_to_String(figure[index     ].event)+" ]" );
 	}
-	RecordMessage(myfile,4,"all~cut "       , figure[_var_num+1].pass);
+	RecordMessage(myfile,4,"all~cut "         , "[ "+Float_to_String(figure[_var_num+1].pass), Float_to_String(figure[_var_num+1].event)+" ]" );
 }
 
 
@@ -342,7 +376,7 @@ void Analyse_Multi_File::Init(CDraw &para, AFile &file_name){
 		_extra_weight  = para.flow.BDT_weight * para.scenario.Lumi();
 	}
 
-	_root_file = TFile::Open( "root_plot" , "RECREATE" );
+	_root_file = TFile::Open( file_name.plot_CUT.c_str() , "RECREATE" );
 	_list      = new TList();
 	_Has_Drawn = false;
 
@@ -492,14 +526,20 @@ void Analyse_Multi_File::Add_Tot_Pass(int filenum){
 
 	for(int i=0;i<_cut.cut_num;i++){
 		int index=_cut.cut[i];
-		_which_sort    ->figure[index].pass+=file[filenum].figure[index].pass;
-		file[_file_num] .figure[index].pass+=file[filenum].figure[index].pass;
+		_which_sort    ->figure[index].pass   +=file[filenum].figure[index     ].pass ;
+		_which_sort    ->figure[index].event  +=file[filenum].figure[index     ].event;
+		file[_file_num] .figure[index].pass   +=file[filenum].figure[index     ].pass ;
+		file[_file_num] .figure[index].event  +=file[filenum].figure[index     ].event;
 	}
-	_which_sort    ->figure[_var_num]  .pass  +=file[filenum].figure[_var_num]  .pass;
-	_which_sort    ->figure[_var_num+1].pass  +=file[filenum].figure[_var_num+1].pass;
+	_which_sort    ->figure[_var_num]  .pass  +=file[filenum].figure[_var_num  ].pass ;
+	_which_sort    ->figure[_var_num]  .event +=file[filenum].figure[_var_num  ].event;
+	_which_sort    ->figure[_var_num+1].pass  +=file[filenum].figure[_var_num+1].pass ;
+	_which_sort    ->figure[_var_num+1].event +=file[filenum].figure[_var_num+1].event;
 
-	file[_file_num] .figure[_var_num]  .pass  +=file[filenum].figure[_var_num]  .pass;
-	file[_file_num] .figure[_var_num+1].pass  +=file[filenum].figure[_var_num+1].pass;
+	file[_file_num] .figure[_var_num]  .pass  +=file[filenum].figure[_var_num  ].pass ;
+	file[_file_num] .figure[_var_num]  .event +=file[filenum].figure[_var_num  ].event;
+	file[_file_num] .figure[_var_num+1].pass  +=file[filenum].figure[_var_num+1].pass ;
+	file[_file_num] .figure[_var_num+1].event +=file[filenum].figure[_var_num+1].event;
 }
 
 bool Analyse_Multi_File::Get_Cut(int filenum){
@@ -521,275 +561,31 @@ void Analyse_Multi_File::Record_Information(int filenum,std::ofstream &myfile, s
 void Analyse_Multi_File::Record_Tot_Information(std::ofstream &myfile, std::string sample_name){
 	ShowMessage(2,"combine all bkg results");
 	RecordMessage(myfile,3,"result for all bkg "                , ""                    );
-	RecordMessage(myfile,4,sample_name                             , 0                     );
-	RecordMessage(myfile,4,"no~cut "       , file[_file_num].figure[_var_num].pass  );
+	RecordMessage(myfile,4,sample_name     , "[ 0"                                      , "0 ]" );
+	RecordMessage(myfile,4,"no~cut "       , "[ "+ Float_to_String(file[_file_num].figure[_var_num  ].pass), Float_to_String(file[_file_num].figure[_var_num  ].event)+" ]" );
 	for(int i=0;i<_cut.cut_num;i++){
 		int index=_cut.cut[i];
 		std::string var_name = var.var[index].latex_name + " \\in [ " + Float_to_String(var.var[index].cut_min) + " ," + Float_to_String(var.var[index].cut_max) + " ] ";
-		RecordMessage(myfile,4,var_name                            , file[_file_num].figure[index].pass    );
+		RecordMessage(myfile,4,var_name    , "[ "+ Float_to_String(file[_file_num].figure[index     ].pass), Float_to_String(file[_file_num].figure[index     ].event)+" ]" );
 	}
-	RecordMessage(myfile,4,"all~cut "       , file[_file_num].figure[_var_num+1].pass);
+	RecordMessage(myfile,4,"all~cut "      , "[ "+ Float_to_String(file[_file_num].figure[_var_num+1].pass), Float_to_String(file[_file_num].figure[_var_num+1].event)+" ]" );
 }
 
-void Analyse_Multi_File::Draw_Sort_Origin(CDraw& para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for sorted origin results!");
+void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string hist_label){
+	ShowMessage(2,"generate plot for results!");
 	for(int j=0;j<_var_num;j++){
 		Avariable info=var.var[j];
 		ShowMessage(3,"generate plot for variable",info.title_name);
 		if(info.plot_switch){
 			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
+			std::string leg_title = info.latex_name;
+			info.leg->SetHeader(leg_title.c_str(),"l");
 			std::string cname=info.c_name+"_"+Int_to_String(j);
 			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
 
 			gPad->SetGrid();
-			std::string stack_title=Set_Stack_Title(para,info.title_name+"_sort_origin");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
-
-			for(int nf=0;nf<file_name.Output_Num();nf++){
-				_Find_Which_Sort(para,file_name,nf);
-				_which_sort->figure[j].hvariable_origin->Add(file[nf].figure[j].hvariable_origin);
-			}
-
-			int i=0;
-			for(int k=0;k<para.bkg_sort.Num();k++){
-				for(int l=0;l<para.bkg_sort.sort[k].Sub_Num();l++){
-					if(k==0&&l==0){i++;continue;}
-					double maxi = sort[k].second[l].figure[j].hvariable_origin->GetMaximum();
-					if(maxi>0){
-						std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
-						info.leg->AddEntry(sort[k].second[l].figure[j].hvariable_origin,sort_name.c_str(),"l");
-						bool set_line=Set_Line_Style(para,info,sort[k].second[l].figure[j].hvariable_origin,i,i);
-						ss->Add(sort[k].second[l].figure[j].hvariable_origin);
-						i++;
-					}
-					if(k==para.bkg_sort.Num()-1 && l==para.bkg_sort.sort[k].Sub_Num()-1){
-						double maxi0 = sort[0].second[0].figure[j].hvariable_origin->GetMaximum();
-						if(maxi0>0){
-							std::string sort_name = para.bkg_sort.sort[0].Legend(0); 
-							info.leg->AddEntry(sort[0].second[0].figure[j].hvariable_origin,sort_name.c_str(),"l");
-							Set_Line_Style(para,info,sort[0].second[0].figure[j].hvariable_origin,0,0);
-							ss->Add(sort[0].second[0].figure[j].hvariable_origin);
-						}
-					}
-				}
-			}
-
-
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-
-			info.leg->Draw();
-
-			_list->Add(ss);
-
-
-			//print to png
-			Print_Plot(info, file_name.folder[2]+info.title_name+"_origin.png");
-			delete info.c;
-			info.leg->Clear();
-		}
-	}
-}
-
-void Analyse_Multi_File::Draw_Sort_Before(CDraw& para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for sorted results before cuts!");
-	for(int j=0;j<_var_num;j++){
-		if(std::find(_cut.cut.begin(),_cut.cut.end(),j) == _cut.cut.end()){continue;}
-		Avariable info=var.var[j];
-		ShowMessage(3,"generate plot for variable",info.title_name);
-		if(info.plot_switch){
-			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
-			std::string cname=info.c_name+"_"+Int_to_String(j);
-			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
-
-			gPad->SetGrid();
-			std::string stack_title= Set_Stack_Title(para,info.title_name+"_sort_before");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
-
-			for(int nf=0;nf<file_name.Output_Num();nf++){
-				_Find_Which_Sort(para,file_name,nf);
-				_which_sort->figure[j].hvariable_before->Add(file[nf].figure[j].hvariable_before);
-			}
-
-			int i=0;
-			for(int k=0;k<para.bkg_sort.Num();k++){
-				for(int l=0;l<para.bkg_sort.sort[k].Sub_Num();l++){
-					if(k==0&&l==0){i++;continue;}
-					double maxi = sort[k].second[l].figure[j].hvariable_before->GetMaximum();
-					if(maxi>0){
-						std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
-						info.leg->AddEntry(sort[k].second[l].figure[j].hvariable_before,sort_name.c_str(),"l");
-						Set_Line_Style(para,info,sort[k].second[l].figure[j].hvariable_before,i,i);
-						ss->Add(sort[k].second[l].figure[j].hvariable_before);
-						i++;
-					}
-					if(k==para.bkg_sort.Num()-1 && l==para.bkg_sort.sort[k].Sub_Num()-1){
-						double maxi0 = sort[0].second[0].figure[j].hvariable_before->GetMaximum();
-						if(maxi0>0){
-							std::string sort_name = para.bkg_sort.sort[0].Legend(0); 
-							info.leg->AddEntry(sort[0].second[0].figure[j].hvariable_before,sort_name.c_str(),"l");
-							Set_Line_Style(para,info,sort[0].second[0].figure[j].hvariable_before,0,0);
-							ss->Add(sort[0].second[0].figure[j].hvariable_before);
-						}
-					}
-				}
-			}
-
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-			info.leg->Draw();
-			_list->Add(ss);
-
-
-			//print to png
-			Print_Plot(info, file_name.folder[2]+info.title_name+"_before.png");
-			delete info.c;
-			info.leg->Clear();
-		}
-	}
-}
-
-
-void Analyse_Multi_File::Draw_Sort_After(CDraw& para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for sorted results after cuts!");
-	for(int j=0;j<_var_num;j++){
-		if(std::find(_cut.cut.begin(),_cut.cut.end(),j) == _cut.cut.end()){continue;}
-		Avariable info=var.var[j];
-		ShowMessage(3,"generate plot for variable",info.title_name);
-		if(info.plot_switch){
-			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
-			std::string cname=info.c_name+"_"+Int_to_String(j);
-			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
-
-			gPad->SetGrid();
-			std::string stack_title= Set_Stack_Title(para,info.title_name+"_sort_after");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
-
-			for(int nf=0;nf<file_name.Output_Num();nf++){
-				_Find_Which_Sort(para,file_name,nf);
-				_which_sort->figure[j].hvariable_after->Add(file[nf].figure[j].hvariable_after);
-			}
-
-			int i=0;
-			for(int k=0;k<para.bkg_sort.Num();k++){
-				for(int l=0;l<para.bkg_sort.sort[k].Sub_Num();l++){
-					if(k==0&&l==0){i++;continue;}
-					double maxi = sort[k].second[l].figure[j].hvariable_after->GetMaximum();
-					if(maxi>0){
-						std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
-						info.leg->AddEntry(sort[k].second[l].figure[j].hvariable_after,sort_name.c_str(),"l");
-						Set_Line_Style(para,info,sort[k].second[l].figure[j].hvariable_after,i,i);
-						ss->Add(sort[k].second[l].figure[j].hvariable_after);
-						i++;
-					}
-					if(k==para.bkg_sort.Num()-1 && l==para.bkg_sort.sort[k].Sub_Num()-1){
-						double maxi0 = sort[0].second[0].figure[j].hvariable_after->GetMaximum();
-						if(maxi0>0){
-							std::string sort_name = para.bkg_sort.sort[0].Legend(0); 
-							info.leg->AddEntry(sort[0].second[0].figure[j].hvariable_after,sort_name.c_str(),"l");
-							Set_Line_Style(para,info,sort[0].second[0].figure[j].hvariable_after,0,0);
-							ss->Add(sort[0].second[0].figure[j].hvariable_after);
-						}
-					}
-				}
-			}
-
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-			info.leg->Draw();
-			_list->Add(ss);
-
-
-			//print to png
-			Print_Plot(info, file_name.folder[2]+info.title_name+"_after.png");
-			delete info.c;
-			info.leg->Clear();
-		}
-	}
-}
-
-void Analyse_Multi_File::Draw_Sort_Final(CDraw& para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for sorted final results!");
-	for(int j=0;j<_var_num;j++){
-		Avariable info=var.var[j];
-		ShowMessage(3,"generate plot for variable",info.title_name);
-		if(info.plot_switch){
-			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
-			std::string cname=info.c_name+"_"+Int_to_String(j);
-			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
-
-			gPad->SetGrid();
-			std::string stack_title= Set_Stack_Title(para,info.title_name+"_sort_final");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
-
-			for(int nf=0;nf<file_name.Output_Num();nf++){
-				_Find_Which_Sort(para,file_name,nf);
-				_which_sort->figure[j].hvariable_final->Add(file[nf].figure[j].hvariable_final);
-			}
-
-			int i=0;
-			for(int k=0;k<para.bkg_sort.Num();k++){
-				for(int l=0;l<para.bkg_sort.sort[k].Sub_Num();l++){
-					if(k==0&&l==0){i++;continue;}
-					double maxi = sort[k].second[l].figure[j].hvariable_final->GetMaximum();
-					if(maxi>0){
-						std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
-						info.leg->AddEntry(sort[k].second[l].figure[j].hvariable_final,sort_name.c_str(),"l");
-						Set_Line_Style(para,info,sort[k].second[l].figure[j].hvariable_final,i,i);
-						ss->Add(sort[k].second[l].figure[j].hvariable_final);
-						i++;
-					}
-					if(k==para.bkg_sort.Num()-1 && l==para.bkg_sort.sort[k].Sub_Num()-1){
-						double maxi0 = sort[0].second[0].figure[j].hvariable_final->GetMaximum();
-						if(maxi0>0){
-							std::string sort_name = para.bkg_sort.sort[0].Legend(0); 
-							info.leg->AddEntry(sort[0].second[0].figure[j].hvariable_final,sort_name.c_str(),"l");
-							Set_Line_Style(para,info,sort[0].second[0].figure[j].hvariable_final,0,0);
-							ss->Add(sort[0].second[0].figure[j].hvariable_final);
-						}
-					}
-				}
-			}
-
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-
-			info.leg->Draw();
-
-			_list->Add(ss);
-
-
-			//print to png
-			Print_Plot(info, file_name.folder[2]+info.title_name+"_final.png");
-			delete info.c;
-			info.leg->Clear();
-		}
-	}
-}
-
-void Analyse_Multi_File::Draw_Origin(CDraw &para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for origin results!");
-	for(int j=0;j<_var_num;j++){
-		Avariable info=var.var[j];
-		ShowMessage(3,"generate plot for variable",info.title_name);
-		if(info.plot_switch){
-			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
-			std::string cname=info.c_name+"_"+Int_to_String(j);
-			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
-
-			gPad->SetGrid();
-			std::string stack_title= Set_Stack_Title(para,info.title_name+"_origin");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
+			std::vector<std::string> stack_title= Set_Stack_Title(para,info.title_name+"_"+hist_label);
+			THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );
 
 			for(int nf=0;nf<file_name.Output_Num()+1;nf++){
 				int i;
@@ -800,169 +596,117 @@ void Analyse_Multi_File::Draw_Origin(CDraw &para, AFile& file_name){
 				else{
 					i=nf;
 				}
-				info.leg->AddEntry(file[i].figure[j].hvariable_origin,file_name.output[i].name.c_str(),"l");
-			//	bool set_line=Set_Line_Style(para,info,file[i].figure[j].hvariable_origin,i,i);
-				ss->Add(file[i].figure[j].hvariable_origin);
+				TH1F* hist_tmp = (TH1F*) file[i].figure[j].Hist(hist_label)->Clone();
+                info.leg->AddEntry(hist_tmp,file_name.output[i].name.c_str(),"l");
+                bool set_line=Set_Line_Style(para,info,hist_tmp,i,i);
+                ss->Add(hist_tmp);
+
 			}
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-			info.leg->Draw();
-			_list->Add(ss);
+
+			if(ss->GetNhists()>0){
+				_root_file->cd();
+				ss->Draw("HIST,nostack");
+				ss->Write();
+				std::cout << ss->GetName()<< std::endl;
+				Set_Stack_Style(para,info,ss,gPad);
+
+				std::string leg_name = stack_title[0]+"_legend";
+				info.leg->SetName(leg_name.c_str());
+				info.leg->Draw();
+				info.leg->Write();
+				_list->Add(ss);
 
 
-			//print to png
-			Print_Plot(info, file_name.folder[1]+info.title_name+"_origin.png");
-			delete info.c;
-			info.leg->Clear();
+				//print to png
+				Print_Plot(info, file_name.folder[1]+info.title_name+"_"+hist_label+".png");
+				delete info.c;
+				info.leg->Clear();
+			}
 		}
 	}
 }
 
-
-
-void Analyse_Multi_File::Draw_Before(CDraw &para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for results before cuts!");
-	for(int j=0;j<_var_num;j++){
-		if(std::find(_cut.cut.begin(),_cut.cut.end(),j) == _cut.cut.end()){continue;}
-		Avariable info=var.var[j];
-		ShowMessage(3,"generate plot for variable",info.title_name);
-		if(info.plot_switch){
-			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
-			std::string cname=info.c_name+"_"+Int_to_String(j);
-			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
-
-			gPad->SetGrid();
-			std::string stack_title= Set_Stack_Title(para,info.title_name+"_before");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
-
-			for(int nf=0;nf<file_name.Output_Num()+1;nf++){
-				int i;
-				if(nf==0){continue;}
-				if(nf==file_name.Output_Num()){
-					i=0;
-				}
-				else{
-					i=nf;
-				}
-				//bool set_line=Set_Line_Style(para,info,file[i].figure[j].hvariable_before,i,i);
-				info.leg->AddEntry(file[i].figure[j].hvariable_before,file_name.output[i].name.c_str(),"l");
-				ss->Add(file[i].figure[j].hvariable_before);
-			}
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-			info.leg->Draw();
-			_list->Add(ss);
-
-
-			//print to png
-			Print_Plot(info, file_name.folder[1]+info.title_name+"_before.png");
-			delete info.c;
-			info.leg->Clear();
-		}
-	}
-}
-void Analyse_Multi_File::Draw_After(CDraw &para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for results after cuts!");
-	for(int j=0;j<_var_num;j++){
-		if(std::find(_cut.cut.begin(),_cut.cut.end(),j) == _cut.cut.end()){continue;}
-		Avariable info=var.var[j];
-		ShowMessage(3,"generate plot for variable",info.title_name);
-		if(info.plot_switch){
-			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
-			std::string cname=info.c_name+"_"+Int_to_String(j);
-			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
-
-			gPad->SetGrid();
-			std::string stack_title= Set_Stack_Title(para,info.title_name+"_after");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
-
-			for(int nf=0;nf<file_name.Output_Num()+1;nf++){
-				int i;
-				if(nf==0){continue;}
-				if(nf==file_name.Output_Num()){
-					i=0;
-				}
-				else{
-					i=nf;
-				}
-				//bool set_line=Set_Line_Style(para,info,file[i].figure[j].hvariable_after,i,i);
-				info.leg->AddEntry(file[i].figure[j].hvariable_after,file_name.output[i].name.c_str(),"l");
-				ss->Add(file[i].figure[j].hvariable_after);
-			}
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-			info.leg->Draw();
-			_list->Add(ss);
-
-
-			//print to png
-			Print_Plot(info, file_name.folder[1]+info.title_name+"_after.png");
-			delete info.c;
-			info.leg->Clear();
-			//	delete ss;
-		}
-	}
-}
-void Analyse_Multi_File::Draw_Final(CDraw &para, AFile& file_name){
-	ShowMessage(2,"generate combined plot for final results!");
+void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string hist_label){
+	ShowMessage(2,"generate combined plot for sorted results!");
 	for(int j=0;j<_var_num;j++){
 		Avariable info=var.var[j];
 		ShowMessage(3,"generate plot for variable",info.title_name);
 		if(info.plot_switch){
 			info.leg->Clear();
-			std::string leg_name  = info.latex_name;
-			info.leg->SetHeader(leg_name.c_str(),"l");
+			std::string leg_header = info.latex_name;
+			info.leg->SetHeader(leg_header.c_str(),"l");
 			std::string cname=info.c_name+"_"+Int_to_String(j);
-			ShowMessage(2,"cname",cname);
 			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
 
 			gPad->SetGrid();
-			std::string stack_title = Set_Stack_Title(para, info.title_name+"_final");
-			THStack *ss = new THStack(stack_title.c_str(),stack_title.c_str() );
+			std::vector<std::string> stack_title= Set_Stack_Title(para,info.title_name+"_sort_"+hist_label);
+			THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );
 
-			for(int nf=0;nf<file_name.Output_Num()+1;nf++){
-				int i;
-				if(nf==0){continue;}
-				if(nf==file_name.Output_Num()){
-					i=0;
-				}
-				else{
-					i=nf;
-				}
-				//bool set_line=Set_Line_Style(para,info,file[i].figure[j].hvariable_final,i,i);
-				info.leg->AddEntry(file[i].figure[j].hvariable_final,file_name.output[i].name.c_str(),"l");
-				ss->Add(file[i].figure[j].hvariable_final);
+			for(int nf=0;nf<file_name.Output_Num();nf++){
+				_Find_Which_Sort(para,file_name,nf);
+				_which_sort->figure[j].Hist(hist_label)->Add(file[nf].figure[j].Hist(hist_label));
 			}
 
-			ss->Draw("HIST,nostack");
-			Set_Stack_Style(para,info,ss,gPad);
-			info.leg->Draw();
-			_list->Add(ss);
-			_Has_Drawn = true;
+			int i=0;
+			for(int k=0;k<para.bkg_sort.Num();k++){
+				for(int l=0;l<para.bkg_sort.sort[k].Sub_Num();l++){
+					if(k==0&&l==0){i++;continue;}
+					double maxi = sort[k].second[l].figure[j].Hist(hist_label)->GetMaximum();
+					if(maxi>0){
+						std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
+						TH1F* hist_tmp = (TH1F*) sort[k].second[l].figure[j].Hist(hist_label)->Clone();
+						info.leg->AddEntry(hist_tmp,sort_name.c_str(),"l");
+						Set_Line_Style(para,info,hist_tmp,i,i);
+						ss->Add(hist_tmp);
+						i++;
+					}
+					if(k==para.bkg_sort.Num()-1 && l==para.bkg_sort.sort[k].Sub_Num()-1){
+					    double maxi0 = sort[0].second[0].figure[j].Hist(hist_label)->GetMaximum();
+					    if(maxi0>0){
+					    	std::string sort_name = para.bkg_sort.sort[0].Legend(0); 
+					    	TH1F* hist_tmp = (TH1F*) sort[0].second[0].figure[j].Hist(hist_label)->Clone();
+					    	info.leg->AddEntry(hist_tmp,sort_name.c_str(),"l");
+					    	Set_Line_Style(para,info,hist_tmp,0,0);
+					    	ss->Add(hist_tmp);
+						}
+					}
+				}
+			}
+
+			if(ss->GetNhists()>0){
+				_root_file->cd();
+				ss->Draw("HIST,nostack");
+				ss->Write();
+				Set_Stack_Style(para,info,ss,gPad);
+
+				std::string leg_name = stack_title[0]+"_legend";
+				info.leg->SetName(leg_name.c_str());
+				info.leg->Draw();
+				info.leg->Write();
+
+				_list->Add(ss);
 
 
-			//print to png
-			Print_Plot(info, file_name.folder[1]+info.title_name+"_final.png");
+				//print to png
+				Print_Plot(info, file_name.folder[2]+info.title_name+"_"+hist_label+".png");
+			}
 			delete info.c;
 			info.leg->Clear();
-			//	delete ss;
 		}
 	}
 }
-
 
 void Analyse_Multi_File::Fill_Figure(){
 	_root_file->cd();
 	file[_file_num]._root_file->cd();
-	if(!_Has_Drawn){
+	std::cout <<"list name"<< file[_file_num]._root_file->GetName() << std::endl;
+
+	if(_Has_Drawn){
 		return;
 	}
-	_list->Print();
 	_list->Write();
+	
+	ShowMessage(2,"All figures are printed!");
 }
 
 
@@ -972,16 +716,16 @@ void Analyse_Multi_File::Draw_Figure(CDraw& para,AFile& file_name){
 		if(!para.flow.record_output){
 			freopen(para.path.record_file.c_str() ,"a",stdout);
 		}
-		Draw_Origin(para, file_name);
-		Draw_Before(para, file_name);
-		Draw_After (para, file_name);
-		Draw_Final (para, file_name);
+		Draw_Single(para, file_name,"origin");
+		Draw_Single(para, file_name,"before");
+		Draw_Single(para, file_name,"after" );
+		Draw_Single(para, file_name,"final" );
 
 		ShowMessage(2,"generate combined plot!");
-		Draw_Sort_Origin(para, file_name);
-		Draw_Sort_Before(para, file_name);
-		Draw_Sort_After (para, file_name);
-		Draw_Sort_Final (para, file_name);
+    	Draw_Sort(para, file_name,"origin");
+    	Draw_Sort(para, file_name,"before");
+    	Draw_Sort(para, file_name,"after" );
+    	Draw_Sort(para, file_name,"final" );
 
 		Fill_Figure();
 		if(!para.flow.record_output){

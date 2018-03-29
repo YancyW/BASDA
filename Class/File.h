@@ -22,7 +22,7 @@ class CFile{
 		std::vector<std::string> file_descrip           ;
 		void                     Read_File(CPath path)  ;
 		std::string              root_head_name         ;
-		std::string              root_head_BDT_name     ;
+		std::string              root_head_MVA_name     ;
 };
 
 

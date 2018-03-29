@@ -85,7 +85,7 @@ class APlot{
 		bool Get_Histogram (CDraw &para, Avariable &info, std::string output_folder);
 
 		bool Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color_index, int linestyle_index);
-		std::string Set_Stack_Title(CDraw& para, std::string name);
+		std::vector<std::string> Set_Stack_Title(CDraw& para, std::string name);
 		void Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualPad* pad);
 		void Print_Plot(Avariable& info, std::string name);
 };

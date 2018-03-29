@@ -47,12 +47,12 @@ void Analyse_BDT_Train(CDraw &para, AFile &file_name){
 	//TFile *inputS = TFile::Open( fileS );
 	ShowMessage(2,"The input signal file is",file_name.output[0].Unpol_file);
 
-	TChain chainsigtrain(para.file.root_head_BDT_name.c_str());
+	TChain chainsigtrain(para.file.root_head_MVA_name.c_str());
 	chainsigtrain.Add(file_name.output[0].Unpol_file.c_str());
 	TChain chainsigtest(para.file.root_head_name.c_str());
 	chainsigtest.Add(file_name.output[0].Unpol_file.c_str());
 
-	TChain chainbgtrain(para.file.root_head_BDT_name.c_str());
+	TChain chainbgtrain(para.file.root_head_MVA_name.c_str());
 	TChain chainbgtest(para.file.root_head_name.c_str());
 
 	for(int i=1;i<file_name.Output_Num();i++){
