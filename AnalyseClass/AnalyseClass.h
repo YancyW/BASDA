@@ -67,28 +67,30 @@ class Analyse_Figure{
 
 class Analyse_Single_File{
 	private:
-	float               	     _lumi      ;
-	int							 _var_num   ; 
-	std::vector<float>           _rootvar   ; 
+		float               	     _lumi      ;
+		int							 _var_num   ; 
+		std::vector<float>           _rootvar   ; 
 
 
-	int							 _tree_num  ; 
-	std::vector<TTree*>          _tree      ; 
+		int							 _tree_num  ; 
+		std::vector<TTree*>          _tree      ; 
 
-	float                        _out_weight; 
-	float                        _extra_weight ; 
+		float                        _out_weight; 
+		float                        _extra_weight ; 
 
-	int							 _figure_num; 
+		int							 _figure_num; 
 
-	bool                         _record_switch;
-	bool                         _plot_switch  ;
+		bool                         _record_switch;
+		bool                         _plot_switch  ;
 
 	public:
-	std::string                  _name      ;
-	TFile*                       _root_file ; 
+		std::string                  _name      ;
+		TFile*                       _root_file ; 
 
 		std::vector<Analyse_Figure>  figure ; 
-		float                        in_weight ; 
+		float                        in_weight   ; 
+		double                       in_weight_d ; 
+		int                          in_weight_i ; 
 
 
 		Analyse_Single_File()               ; 

@@ -2,11 +2,12 @@ FILE_NUM          : 1
 FILE_0            : ./control_2hdm/xection_a.dat
 
 CHANNEL_NUM       : 1
-FILE_DESCRIP_0    : all 
-FILE_DESCRIP_3    : sig_{tj}^{HA} 
-FILE_DESCRIP_1    : wtata_{l}^{l} 
-FILE_DESCRIP_2    : tt_{l}^{l} 
-FILE_DESCRIP_3    : tt_{sl}^{sl} 
+FILE_DESCRIP_0    : s_{s}^{l} 
+#FILE_DESCRIP_0    : all 
+#FILE_DESCRIP_3    : sig_{tj}^{HA} 
+#FILE_DESCRIP_1    : wtata_{l}^{l} 
+#FILE_DESCRIP_2    : tt_{l}^{l} 
+#FILE_DESCRIP_3    : tt_{sl}^{sl} 
 
 Root_Head_Name     : datatrain
 Root_Head_BDT_Name : datatrain

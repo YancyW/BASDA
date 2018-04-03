@@ -285,7 +285,8 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 		ShowMessage(3,"MC number, simulated number",nEvent,weight_bkg);
 
 		boost::filesystem::path dir(_bkg_File[i]->GetName());
-		std::string bkg_leg_name=dir.stem().string();
+		//std::string bkg_leg_name=dir.stem().string();
+		std::string bkg_leg_name="";
 		info.leg->AddEntry(_bkg_histo[i],bkg_leg_name.c_str(),"l");
 		Set_Line_Style(para,info,_bkg_histo[i],i+_bkg_num,i+_bkg_num);
 		ss->Add(_bkg_histo[i]);

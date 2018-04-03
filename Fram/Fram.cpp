@@ -21,8 +21,11 @@ void Fram(CDraw &para)
 	else if (para.flow.begin_object == "Pre_Cut" ){
 		Analyse_Pre_Cut(para);
 	}
-	else if (para.flow.begin_object == "Direct_Cut" || para.flow.begin_object == "Direct_Cut_ReWeight" ){
+	else if (para.flow.begin_object == "Direct_Cut" || para.flow.begin_object == "Direct_Cut_ReWeight"){
 		Analyse_Direct_Cut_Pre(para);
+	}
+	else if (para.flow.begin_object == "Direct_Cut_NoMVA" ){
+		Analyse_Cut_NoMVA_Pre(para);
 	}
 	else if (para.flow.begin_object == "BDT_Train" ){
 		Analyse_BDT_Train_Pre(para);

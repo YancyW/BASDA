@@ -6,6 +6,10 @@ void AVariable::Read_Var(CPath &path){
 	ShowMessage(3, "variable file name",file_name);
 	YAML::Node var_node = YAML::LoadFile(file_name);
 
+	YAML::Node weight_nodes = var_node["weight"];
+	RW_element("Exist"       , weight_nodes,this->weight_exist);
+	RW_element("Weight_Type" , weight_nodes,this->weight_type);
+
 	YAML::Node nodes = var_node["variable"];
 	int k=0;
 	for(YAML::const_iterator it=nodes.begin(); it != nodes.end(); ++it){

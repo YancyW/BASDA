@@ -107,8 +107,11 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 	for(int cnum=0;cnum<filenum;cnum++){
 		ShowMessage(1,"dealing with", file_name.output[cnum].name);
 		std::ofstream myfile;
-		ShowMessage(1,"the analyse file is", file_name.output[cnum].ana_Unpol);
-		myfile.open(file_name.output[cnum].ana_Unpol);
+		if(para.flow.begin_object == "Pre_Cut"){
+			ShowMessage(1,"the analyse file is", file_name.output[cnum].ana_Unpol);
+			myfile.open(file_name.output[cnum].ana_Unpol);
+			RecordMessage(myfile,1,"filenum", "");
+		}
 
 
 		TFile* otfile;
@@ -182,7 +185,6 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 		}
 
 
-		RecordMessage(myfile,1,"filenum", "");
 		for(int i=0;i<filenum_i[cnum];i++){
 
 			if(i==0){
@@ -236,55 +238,66 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				// add cuts
 				float event_rate=event/(float)total_event;
 
-				if(para.flow.BDT_level==1){
-					Fill_Tree(para,event_rate,datatest_MVA);
-				}
-				pass[cnum][i][cut.pre_cut_num+1]+=out_weight;
-
-				bool pass_cut=true;
-				for(int icut=0;icut<cut.pre_cut_num;icut++){
-					if(!Apply_Cut(para, out_weight,  cut.pre_cut[icut],pass[cnum][i][icut])){
-						pass_cut=false;
-						break;
+				if(para.flow.begin_object == "Pre_Cut"){
+					if(para.flow.BDT_level==1){
+						Fill_Tree(para,event_rate,datatest_MVA);
 					}
-				}
+					pass[cnum][i][cut.pre_cut_num+1]+=out_weight;
 
-				if(!pass_cut){
-					continue;
+					bool pass_cut=true;
+					for(int icut=0;icut<cut.pre_cut_num;icut++){
+						if(!Apply_Cut(para, out_weight,  cut.pre_cut[icut],pass[cnum][i][icut])){
+							pass_cut=false;
+							break;
+						}
+					}
+
+					if(!pass_cut){
+						continue;
+					}
+					if(para.flow.BDT_level==2){
+						Fill_Tree(para,event_rate,datatest_MVA);
+					}
+					Fill_Tree(para,event_rate,datatest,datatrain);
+					pass[cnum][i][cut.pre_cut_num]+=out_weight;
 				}
-				if(para.flow.BDT_level==2){
+				else if(para.flow.begin_object == "Direct_Cut_NoMVA"){
 					Fill_Tree(para,event_rate,datatest_MVA);
 				}
-				Fill_Tree(para,event_rate,datatest,datatrain);
-				pass[cnum][i][cut.pre_cut_num]+=out_weight;
+
 			}
 
-			for(int icut=0;icut<=cut.pre_cut_num+1;icut++){
-				pass[cnum][filenum_i[cnum]][icut]+=pass[cnum][i][icut];
+			if(para.flow.begin_object == "Pre_Cut"){
+				for(int icut=0;icut<=cut.pre_cut_num+1;icut++){
+					pass[cnum][filenum_i[cnum]][icut]+=pass[cnum][i][icut];
+				}
+				nevent         [cnum][filenum_i[cnum]]+=nevent         [cnum][i];
+
+				RecordMessage(myfile,3,filename                      [cnum][i], ""                 );
+				RecordMessage(myfile,4,"weight                         "      , weight          [cnum][i]);
+				RecordMessage(myfile,4,"no cut MC event                "      , nevent          [cnum][i]);
+				RecordMessage(myfile,4,"no cut                         "      , pass[cnum][i][cut.pre_cut_num+1]);
+
+				for(int icut=0;icut<cut.pre_cut_num;icut++){
+					RecordMessage(myfile,4,para.var.var[cut.pre_cut[icut]].latex_name     , pass[cnum][i][icut]);
+				}
+				RecordMessage(myfile,4,"all~cut"     , pass[cnum][i][cut.pre_cut_num]);
 			}
-			nevent         [cnum][filenum_i[cnum]]+=nevent         [cnum][i];
 
-			RecordMessage(myfile,3,filename                      [cnum][i], ""                 );
-			RecordMessage(myfile,4,"weight                         "      , weight          [cnum][i]);
-			RecordMessage(myfile,4,"no cut MC event                "      , nevent          [cnum][i]);
-			RecordMessage(myfile,4,"no cut                         "      , pass[cnum][i][cut.pre_cut_num+1]);
+		}
 
+		if(para.flow.begin_object == "Pre_Cut"){
+			RecordMessage(myfile,3,"total result"                    , ""                                    );
+			RecordMessage(myfile,4,file_name.input[cnum].latex       , 0                                     );
+			RecordMessage(myfile,4,"no cut MC event                " , nevent         [cnum][filenum_i[cnum]]);
+			RecordMessage(myfile,4,"no cut                         " , pass[cnum][filenum_i[cnum]][cut.pre_cut_num+1]);
 			for(int icut=0;icut<cut.pre_cut_num;icut++){
-				RecordMessage(myfile,4,para.var.var[cut.pre_cut[icut]].latex_name     , pass[cnum][i][icut]);
+				RecordMessage(myfile,4, para.var.var[cut.pre_cut[icut]].latex_name     , pass[cnum][filenum_i[cnum]][icut]);
 			}
-			RecordMessage(myfile,4,"all~cut"     , pass[cnum][i][cut.pre_cut_num]);
-		}
+			RecordMessage(myfile,4,"all~cut"     , pass[cnum][filenum_i[cnum]][cut.pre_cut_num]);
 
-		RecordMessage(myfile,3,"total result"                    , ""                                    );
-		RecordMessage(myfile,4,file_name.input[cnum].latex       , 0                                     );
-		RecordMessage(myfile,4,"no cut MC event                " , nevent         [cnum][filenum_i[cnum]]);
-		RecordMessage(myfile,4,"no cut                         " , pass[cnum][filenum_i[cnum]][cut.pre_cut_num+1]);
-		for(int icut=0;icut<cut.pre_cut_num;icut++){
-			RecordMessage(myfile,4, para.var.var[cut.pre_cut[icut]].latex_name     , pass[cnum][filenum_i[cnum]][icut]);
+			myfile.close();
 		}
-		RecordMessage(myfile,4,"all~cut"     , pass[cnum][filenum_i[cnum]][cut.pre_cut_num]);
-
-		myfile.close();
 
 		ShowMessage(2);
 		if(para.flow.record_event){
@@ -311,7 +324,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			delete in_file[i][j];
 		}
 	}
-	
+
 	return;
 }
 

@@ -17,13 +17,33 @@
 
 class Avariable{
 	private:
+		float         minimum;
+		float         maximum;
+		double        minimum_d;
+		double        maximum_d;
+		int           minimum_i;
+		int           maximum_i;
 	public:
 
-		float         variable   ;
-		float         cut_min    ;
-		float         cut_max    ;
-		float         cut_min_pre;
-		float         cut_max_pre;
+		std::string   variable_type;
+
+		float         variable     ;
+		float         cut_min      ;
+		float         cut_max      ;
+		float         cut_min_pre  ;
+		float         cut_max_pre  ;
+
+		double        variable_d   ;
+		double        cut_min_d    ;
+		double        cut_max_d    ;
+		double        cut_min_pre_d;
+		double        cut_max_pre_d;
+
+		int           variable_i   ;
+		int           cut_min_i    ;
+		int           cut_max_i    ;
+		int           cut_min_pre_i;
+		int           cut_max_pre_i;
 
 		TCanvas*      c          ;
 		std::string   c_name     ;
@@ -56,37 +76,58 @@ class Avariable{
 		int           line_width ; 
 
 		Avariable(){
-			variable    =-100.1 ;
-			cut_min     =-100000.1 ;
-			cut_max     = 100000.1 ;
-			cut_min_pre =-100000.1 ;
-			cut_max_pre = 100000.1 ;
+			minimum      =-100000.1;
+			maximum      = 100000.1;
+			minimum_d    =-100000.1;
+			maximum_d    = 100000.1;
+			minimum_i    =-100000;
+			maximum_i    = 100000;
 
-		    c_name      = ""    ;
-		    c_width     = 1.0   ;
-		    c_height    = 1.0   ;
-		    leg_left    = 1.0   ;
-		    leg_up      = 1.0   ;
-		    leg_right   = 1.0   ;
-		    leg_down    = 1.0   ;
-		    leg_header  = ""    ;
-		    title_name  = ""    ;
-		    latex_name  = ""    ;
-		    x_name      = ""    ;
-		    x_bin       = 1     ;
-		    x_min       = 0.0001;
-		    x_max       = 1.0001;
-		    y_name      = ""    ;
-		    y_bin       = 1     ;
-		    y_min       = 0.0001;
-		    y_max       = 1.0001;
-		    cut_switch  = false ;
-		    plot_switch = false ;
-		    log_switch  = false ;
-			log_min     = 0.1   ;
-		    norm_switch = false ;
-		    BDT_switch  = false ;
-			show_title  = false ;
+			variable_type= "F"   ;
+
+			variable     = minimum  ;
+			cut_min      = minimum  ;
+			cut_max      = maximum  ;
+			cut_min_pre  = minimum  ;
+			cut_max_pre  = maximum  ;
+
+			variable_d   = minimum_d;
+			cut_min_d    = minimum_d;
+			cut_max_d    = maximum_d;
+			cut_min_pre_d= minimum_d;
+			cut_max_pre_d= maximum_d;
+
+			variable_i   = minimum_i; 
+			cut_min_i    = minimum_i; 
+			cut_max_i    = maximum_i; 
+			cut_min_pre_i= minimum_i; 
+			cut_max_pre_i= maximum_i; 
+
+		    c_name       = ""    ;
+		    c_width      = 1000.0   ;
+		    c_height     = 700.0   ;
+		    leg_left     = 0.6   ;
+		    leg_up       = 0.6   ;
+		    leg_right    = 0.9   ;
+		    leg_down     = 0.9   ;
+		    leg_header   = ""    ;
+		    title_name   = ""    ;
+		    latex_name   = ""    ;
+		    x_name       = ""    ;
+		    x_bin        = 1     ;
+		    x_min        = 0.0   ;
+		    x_max        = 1.0   ;
+		    y_name       = ""    ;
+		    y_bin        = 1     ;
+		    y_min        = 0.0   ;
+		    y_max        = 1.0   ;
+		    cut_switch   = false ;
+		    plot_switch  = false ;
+		    log_switch   = false ;
+			log_min      = 0.1   ;
+		    norm_switch  = false ;
+		    BDT_switch   = false ;
+			show_title   = false ;
 			with_color_or_line = -1;
 			line_width  = -1;
 		}
@@ -97,6 +138,48 @@ class Avariable{
 			//c=new TCanvas(c_name.c_str()," ",c_width,c_height);
 			leg=new TLegend(leg_left,leg_up,leg_right,leg_down);
 			leg->SetHeader(leg_header.c_str(),"C");
+		}
+
+		bool Is_Minimum(float val){
+			if(val==minimum){
+				return(true);
+			}
+			return(false);
+		}
+
+		bool Is_Minimum(double val){
+			if(val==minimum_d){
+				return(true);
+			}
+			return(false);
+		}
+
+		bool Is_Minimum(int val){
+			if(val==minimum_i){
+				return(true);
+			}
+			return(false);
+		}
+
+		bool Is_Maximum(float val){
+			if(val==maximum){
+				return(true);
+			}
+			return(false);
+		}
+
+		bool Is_Maximum(double val){
+			if(val==minimum_d){
+				return(true);
+			}
+			return(false);
+		}
+
+		bool Is_Maximum(int val){
+			if(val==maximum_i){
+				return(true);
+			}
+			return(false);
 		}
 };
 
@@ -119,6 +202,8 @@ class Avariable_vec{
 
 class AVariable{
 	public:
+		std::string weight_type;
+		bool        weight_exist;
 		int num;
 		int num_vec;
 		int numBDT;
@@ -129,6 +214,7 @@ class AVariable{
 		void Read_Var(CPath &path);
 
 		AVariable(){
+			weight_type = "F";
 			num=0;
 			num_vec=0;
 			numBDT=0;
@@ -143,7 +229,10 @@ namespace YAML{
 		struct convert<Avariable>{
 			static bool decode(const Node& node, Avariable& var){ 
 				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
-					if(it->first.as<std::string>()=="Canvas_name"){
+					if(it->first.as<std::string>()=="variable_type"){
+						RW_element(it->first.as<std::string>(), it, var.variable_type);
+					}
+					else if(it->first.as<std::string>()=="Canvas_name"){
 						RW_element(it->first.as<std::string>(), it, var.c_name);
 					}
 					else if(it->first.as<std::string>()=="Canvas_width"){
@@ -198,22 +287,65 @@ namespace YAML{
 						RW_element(it->first.as<std::string>(), it, var.y_max);
 					}
 					else if(it->first.as<std::string>()=="cut_min"){
-						RW_element(it->first.as<std::string>(), it, var.cut_min);
-						if(var.cut_min_pre<-100000.09&&var.cut_min_pre>-100000.11){
+						if(var.variable_type=="F"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min);
+						}
+						else if(var.variable_type=="D"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_d);
+							var.cut_min = static_cast<float> (var.cut_min_d);
+						}
+						else if(var.variable_type=="I"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_i);
+							var.cut_min = static_cast<float> (var.cut_min_i);
+						}
+						if(var.Is_Minimum(var.cut_min_pre)){
 							var.cut_min_pre = var.cut_min;
 						}
 					}
 					else if(it->first.as<std::string>()=="cut_max"){
 						RW_element(it->first.as<std::string>(), it, var.cut_max);
-						if(var.cut_max_pre>100000.09&&var.cut_max_pre<100000.11){
+						if(var.variable_type=="F"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max);
+						}
+						else if(var.variable_type=="D"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_d);
+							var.cut_max = static_cast<float> (var.cut_max_d);
+						}
+						else if(var.variable_type=="I"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_i);
+							var.cut_max = static_cast<float> (var.cut_max_i);
+						}
+						if(var.Is_Maximum(var.cut_max_pre)){
 							var.cut_max_pre = var.cut_max;
 						}
 					}
 					else if(it->first.as<std::string>()=="cut_min_pre"){
 						RW_element(it->first.as<std::string>(), it, var.cut_min_pre);
+						if(var.variable_type=="F"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_pre);
+						}
+						else if(var.variable_type=="D"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_pre_d);
+							var.cut_min_pre = static_cast<float> (var.cut_min_pre_d);
+						}
+						else if(var.variable_type=="I"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_pre_i);
+							var.cut_min_pre = static_cast<float> (var.cut_min_pre_i);
+						}
 					}
 					else if(it->first.as<std::string>()=="cut_max_pre"){
 						RW_element(it->first.as<std::string>(), it, var.cut_max_pre);
+						if(var.variable_type=="F"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_pre);
+						}
+						else if(var.variable_type=="D"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_pre_d);
+							var.cut_max_pre = static_cast<float> (var.cut_max_pre_d);
+						}
+						else if(var.variable_type=="I"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_pre_i);
+							var.cut_max_pre = static_cast<float> (var.cut_max_pre_i);
+						}
 					}
 					else if(it->first.as<std::string>()=="cut_switch"){
 						RW_element(it->first.as<std::string>(), it, var.cut_switch);

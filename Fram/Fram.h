@@ -5,6 +5,7 @@
 #include "Analyse/Analyse_Find_Cut.h"
 #include "Analyse/Analyse_Pre_Cut.h"
 #include "Analyse/Analyse_Direct_Cut.h"
+#include "Analyse/Analyse_Cut_NoMVA.h"
 #include "Analyse/Analyse_BDT_Train.h"
 #include "Analyse/Analyse_BDT_Attach.h"
 #include "Analyse/Analyse_Sensitivity.h"

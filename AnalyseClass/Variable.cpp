@@ -2,16 +2,16 @@
 #include "AnalyseClass/Variable.h"
 
 void Avariable::Copy(Avariable var){
-	if(this->cut_min<-100000.09&&this->cut_min>-100000.11){
+	if(this->cut_min==minimum){
 		this->cut_min= var.cut_min;
 	}
-	if(this->cut_max>100000.09&&this->cut_max<100000.11){
+	if(this->cut_max==maximum){
 		this->cut_max= var.cut_max;
 	}
-	if(this->cut_min_pre<-100000.09&&this->cut_min_pre>-100000.11){
+	if(this->cut_min_pre==minimum){
 		this->cut_min_pre= this->cut_min;
 	}
-	if(this->cut_max_pre>100000.09&&this->cut_max_pre<100000.11){
+	if(this->cut_max_pre==maximum){
 		this->cut_max_pre= this->cut_max;
 	}
 	if(this->c_name==""){
@@ -50,10 +50,10 @@ void Avariable::Copy(Avariable var){
 	if(this->x_bin==1){
 		this->x_bin= var.x_bin;
 	}
-	if(this->x_min==0.0001){
+	if(this->x_min==0.0){
 		this->x_min= var.x_min;
 	}
-	if(this->x_max==1.0001){
+	if(this->x_max==1.0){
 		this->x_max= var.x_max;
 	}
 	if(this->y_name==""){
@@ -62,10 +62,10 @@ void Avariable::Copy(Avariable var){
 	if(this->y_bin==1){
 		this->y_bin= var.y_bin;
 	}
-	if(this->y_min==0.0001){
+	if(this->y_min==0.0){
 		this->y_min= var.y_min;
 	}
-	if(this->y_max==1.0001){
+	if(this->y_max==1.0){
 		this->y_max= var.y_max;
 	}
 	if(this->log_min==0.1){

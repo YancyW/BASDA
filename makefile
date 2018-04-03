@@ -1,7 +1,7 @@
 TARGET=BASDA
 
 CXX=g++
-FLAGS=-std=c++11 -g 
+FLAGS=-std=c++14 -g 
 #-Wall
 
 RootPath=/home/yancy/Software/executable/root/build
@@ -26,6 +26,7 @@ Analyse/Analyse_Find_Cut.cpp  Analyse/Make_Table.cpp \
 Analyse/Make_Complete_Table.cpp \
 Analyse/Analyse_Pre_Cut.cpp \
 Analyse/Analyse_Direct_Cut.cpp\
+Analyse/Analyse_Cut_NoMVA.cpp \
 Analyse/Analyse_Complete.cpp\
 Analyse/Abasic.cpp Analyse/Analyse_BDT_Train.cpp Analyse/Analyse_BDT_Attach.cpp \
 Analyse/Analyse_Sensitivity.cpp\

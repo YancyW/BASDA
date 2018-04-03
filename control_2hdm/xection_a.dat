@@ -11,3 +11,5 @@ root_file_125:
 #       /home/yancy/Code/Data/Event_Draw_2hdm//events_a/ttll.root  :  6.19 
 #   tjtata_{sl}^{l}:
 #       /home/yancy/Code/Data/Event_Draw_2hdm//events_a/tjtata.root  :  2.36
+    s_{s}^{l}:
+        /home/yancy/Code/Data/Event_Draw_2hdm//events_a/alldata_precuts.root  : 133980 
