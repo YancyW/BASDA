@@ -8,15 +8,12 @@
         <in>Analyse_Complete.cpp</in>
         <in>Analyse_Complete.h</in>
         <in>Analyse_Cut_NoMVA.cpp</in>
-        <in>Analyse_Cut_NoMVA.h</in>
         <in>Analyse_Direct_Cut.cpp</in>
         <in>Analyse_Direct_Cut.h</in>
         <in>Analyse_Find_Cut.cpp</in>
         <in>Analyse_Find_Cut.h</in>
         <in>Analyse_MVA_Attach.cpp</in>
-        <in>Analyse_MVA_Attach.h</in>
         <in>Analyse_MVA_Train.cpp</in>
-        <in>Analyse_MVA_Train.h</in>
         <in>Analyse_Mass_Scan.cpp</in>
         <in>Analyse_Mass_Scan.h</in>
         <in>Analyse_Pre_Cut.cpp</in>
@@ -57,6 +54,7 @@
         <in>File.h</in>
         <in>Flow.h</in>
         <in>Judge.h</in>
+        <in>MVA.h</in>
         <in>Mass_Scan.h</in>
         <in>Path.cpp</in>
         <in>Path.h</in>
@@ -75,6 +73,8 @@
         </df>
       </df>
       <df name="control_2hdm">
+        <df name="advanced">
+        </df>
         <df name="Cut">
         </df>
         <df name="Var">
@@ -179,8 +179,6 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
-        <gdb_signals>
-        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>
