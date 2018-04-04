@@ -22,9 +22,10 @@ VAR_FILE         : './control/Var/Var_nh_115.dat'
 
 #Advanced input setting
 PLOT_FILE        : './control/advanced/Plot.dat'
+MVA_FILE         : './control/advanced/MVA.dat'
 DEBUG_FILE       : './control/advanced/debug.dat'
 ANALYSIS_FILE    : './control/advanced/Event.dat'
 SENSITIVITY_FILE : './control/advanced/Sensitivity.dat'
 SCENARIO_FILE    : './control/advanced/Scenario.dat'
-MASS_SCAN_FILE   : './control/Mass_Scan.dat'
+MASS_SCAN_FILE   : './control/advanced/Mass_Scan.dat'
 

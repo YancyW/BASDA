@@ -19,12 +19,13 @@ BKG_SORT_FILE    : './control_2hdm/Bkg_Sort_test.dat'
 CUT_FILE         : './control_2hdm/Cut/Cut_2hdm_test.dat'
 VAR_FILE         : './control_2hdm/Var/Var_2hdm_test.dat' 
 
-MASS_SCAN_FILE   : './control_2hdm/Mass_Scan.dat'
-
 
 #Advanced input setting
-PLOT_FILE        : './control_2hdm/Plot.dat'
-DEBUG_FILE       : './control_2hdm/debug.dat'
-ANALYSIS_FILE    : './control_2hdm/Event.dat'
-SENSITIVITY_FILE : './control_2hdm/Sensitivity.dat'
-SCENARIO_FILE    : './control_2hdm/Scenario.dat'
+PLOT_FILE        : './control_2hdm/advanced/Plot.dat'
+MVA_FILE         : './control_2hdm/advanced/MVA.dat'
+DEBUG_FILE       : './control_2hdm/advanced/debug.dat'
+ANALYSIS_FILE    : './control_2hdm/advanced/Event.dat'
+SENSITIVITY_FILE : './control_2hdm/advanced/Sensitivity.dat'
+SCENARIO_FILE    : './control_2hdm/advanced/Scenario.dat'
+MASS_SCAN_FILE   : './control_2hdm/advanced/Mass_Scan.dat'
+

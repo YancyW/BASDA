@@ -42,4 +42,8 @@ void CDraw::Read(){
     this->plot.Read_Plot(path);
 	default_plot = plot;
     Jplot= true;
+
+    this->MVA.Read_MVA(path);
+	default_MVA = MVA;
+    JMVA= true;
 }

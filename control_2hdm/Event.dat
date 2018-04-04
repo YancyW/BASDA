@@ -1,6 +1,0 @@
-#show many first events want to be analyses
-first_events_num   : -1 
-
-#which events want to analysse
-special_events_num : -1
-

@@ -46,4 +46,21 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : false 
+   v2:
+        title_name           : "nJets"
+        variable_type        : "I"
+        cut_min              : 0 
+        cut_max              : 2
+        latex_name           : "N_{j}"
+        leg_left             : 0.6
+        leg_up               : 0.7
+        leg_right            : 0.8
+        leg_down             : 0.9           
+        xaxis_name           : "N_{j}"                    
+        xaxis_bin            : 5 
+        xaxis_min            : 0 
+        xaxis_max            : 5                                    
+        cut_switch           : true 
+        plot_switch          : true 
+        normalization_switch : false 
 variable_vec:

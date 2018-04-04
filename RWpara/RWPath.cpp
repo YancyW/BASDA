@@ -34,6 +34,7 @@ void CPath::Read_Path(std::string steering_file){
 	RW_element("ANALYSIS_FILE"          ,path_node,this->analyse_file          );
 	RW_element("FLOW_FILE"              ,path_node,this->flow_file             );
 	RW_element("PLOT_FILE"              ,path_node,this->plot_file             );
+	RW_element("MVA_FILE"               ,path_node,this->MVA_file              );
 	RW_element("INPUT_FILE"             ,path_node,this->input_file            );
 
 	RW_element("CUT_FILE"               ,path_node,this->cut_file              );

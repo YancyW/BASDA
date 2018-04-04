@@ -183,6 +183,14 @@ class Avariable{
 			}
 			return(false);
 		}
+
+		float Minimum(){
+			return(minimum);
+		}
+
+		float Maximum(){
+			return(maximum);
+		}
 };
 
 class Avariable_vec{

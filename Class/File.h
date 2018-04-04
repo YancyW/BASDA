@@ -20,9 +20,10 @@ class CFile{
 		Int_t                    channel_num            ;
 		std::vector<std::string> file                   ;
 		std::vector<std::string> file_descrip           ;
-		void                     Read_File(CPath path)  ;
 		std::string              root_head_name         ;
 		std::string              root_head_MVA_name     ;
+
+		void                     Read_File(CPath path)  ;
 };
 
 

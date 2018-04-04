@@ -19,7 +19,7 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	std::map<std::string,int> Use;
 
 	// --- Boosted Decision Trees
-	Use["BDTG"]             = 1; // uses Adaptive Boost
+	Use[para.MVA.MVA_type]             = 1; // uses Adaptive Boost
 
 	ShowMessage(2,"Start TMVAClassification");
 
@@ -29,15 +29,16 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
 			"!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
 
-	TMVA::DataLoader *dataloader=new TMVA::DataLoader(file_name.dataset_MVA.c_str());
-	ShowMessage(2,"The dataset for MVA is",file_name.dataset_MVA);
+	std::string dataset_name = file_name.dataset_MVA+"_"+para.MVA.MVA_type;
+	TMVA::DataLoader *dataloader=new TMVA::DataLoader(dataset_name.c_str());
+	ShowMessage(2,"The dataset for MVA is",dataset_name);
 
 	std::string cuts_des = "";
 	std::string cutb_des = "";
 	for(int i=0;i<para.var.numMVA;i++){
 		dataloader->AddVariable(para.var.MVA[i].title_name.c_str(), 'F' );
-		cuts_des+=  para.var.MVA[i].title_name+">-100";
-		cutb_des+=  para.var.MVA[i].title_name+">-100";
+		cuts_des+=  para.var.MVA[i].title_name+">"+Float_to_String(para.var.var[0].Minimum());
+		cutb_des+=  para.var.MVA[i].title_name+">"+Float_to_String(para.var.var[0].Minimum());
 		if(i!=para.var.numMVA-1){
 			cuts_des+= "&&";
 			cutb_des+= "&&";
@@ -83,13 +84,15 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	TCut mycuts = cuts_des.c_str();
 	TCut mycutb = cutb_des.c_str();
 
-	dataloader->PrepareTrainingAndTestTree( mycuts, mycutb, "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
+	//dataloader->PrepareTrainingAndTestTree( mycuts, mycutb, "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
+	dataloader->PrepareTrainingAndTestTree( mycuts, mycutb, para.MVA.MVA_event_setting.c_str() );
 
 	ShowMessage(2);
 	ShowMessage(2, "Booking Start");
-	if (Use["BDTG"]) {
-		factory->BookMethod(dataloader,  TMVA::Types::kBDT, "BDTG",
-            "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=5" );
+	if (Use[para.MVA.MVA_type]) {
+////	factory->BookMethod(dataloader,  TMVA::Types::kBDT, "BDTG",
+////        "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=5" );
+		factory->BookMethod(dataloader,  TMVA::Types::kBDT, para.MVA.MVA_type.c_str(),para.MVA.MVA_method_setting.c_str() );
 	} // Adaptive Boost
 
 	ShowMessage(2, "Training Start");
