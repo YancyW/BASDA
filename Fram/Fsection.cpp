@@ -4,17 +4,18 @@
 void StartProcess(){
 	ShowMessage();
 	ShowMessage(1,"--------------------------------------------------------------------------------------------------------------------");
-    ShowMessage(1,"-                                          AnalyseRoot release 0.0.1                                               -");
+    ShowMessage(1,"-                                                    BASDA                                                         -");
+    ShowMessage(1,"-                                     Beautiful_And_Simple_Drawing_Atificer                                        -");
+    ShowMessage(1,"-                                                release 0.0.5                                                     -");
     ShowMessage(1,"-                                                  Yan Wang                                                        -");
     ShowMessage(1,"-                                        email:wangyan728@ihep.ac.cn                                               -");
     ShowMessage(1,"-                                           or:yan.wang@desy.de                                                    -");
 	ShowMessage(1,"-                                                                                                                  -");
-    ShowMessage(1,"-                                 A software package for analysis and plot at ilc.                                 -");
+    ShowMessage(1,"-                                     A software package for analysis and plot.                                    -");
 	ShowMessage(1,"-                                                                                                                  -");
     ShowMessage(1,"-                                Please cite if you use this package or part of my code.                           -");
 	ShowMessage(1,"-                                                                                                                  -");
-    ShowMessage(1,"-                     AnalyseRoot is provided without warranty under the terms of the GNU GPLv2.                   -");
-    ShowMessage(1,"-                                                 It uses Root lib.                                                -");
+    ShowMessage(1,"-                           BASDA is provided without warranty under the terms of the GNU GPLv2.                   -");
 	ShowMessage(1,"-                                                                                                                  -");
 	ShowMessage(1,"--------------------------------------------------------------------------------------------------------------------");
 	ShowMessage();

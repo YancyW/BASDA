@@ -14,6 +14,7 @@ class CMVA{
 	    float                   MVA_weight           ;
 		std::string             MVA_event_setting    ;
 		std::string             MVA_method_setting   ;
+		std::string             MVA_factory_setting  ;
 
 		void                    Read_MVA(CPath path) ;
 };

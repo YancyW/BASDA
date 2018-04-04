@@ -23,3 +23,6 @@ All operation can be done by only change the input config file.
     - generallize this code with more setting options 
     - save all intermedia data/plots/root files.
     - write introduction for BASDA (pdf/pptx).
+- 2018/04/04: v0.05
+    - support double and integer input 
+    - split setting for MVA into config file

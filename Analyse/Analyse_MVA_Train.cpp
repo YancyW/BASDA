@@ -26,8 +26,8 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	TFile* outputFile = TFile::Open( file_name.output_MVA.c_str(), "RECREATE" );
 	ShowMessage(2,"The output file is",file_name.output_MVA);
 
-	TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
-			"!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
+	TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,para.MVA.MVA_factory_setting.c_str());
+//			"!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
 
 	std::string dataset_name = file_name.dataset_MVA+"_"+para.MVA.MVA_type;
 	TMVA::DataLoader *dataloader=new TMVA::DataLoader(dataset_name.c_str());
