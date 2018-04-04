@@ -138,7 +138,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			datatrain->Branch( "weight"              , &out_weight );        
 			for(int i=0;i<para.var.num;i++){
-				if(para.var.var[i].title_name=="BDTG"){
+				if(para.var.var[i].title_name=="MVA"){
 					continue;
 				}
 				datatrain->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -147,11 +147,11 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				datatrain->Branch( para.var.vec[i].title_name.c_str() , &rootvar_vec[i] );        
 			}
 
-			if(para.flow.BDT_training){
+			if(para.flow.MVA_training){
 				datatest= new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num;i++){
-					if(para.var.var[i].title_name=="BDTG"){
+					if(para.var.var[i].title_name=="MVA"){
 						continue;
 					}
 					datatest->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -169,11 +169,11 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			}
 			otfile_MVA->cd();
 
-			if(para.flow.BDT_training){
+			if(para.flow.MVA_training){
 				datatest_MVA = new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest_MVA->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num;i++){
-					if(para.var.var[i].title_name=="BDTG"){
+					if(para.var.var[i].title_name=="MVA"){
 						continue;
 					}
 					datatest_MVA->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -203,7 +203,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			//loop for init variables which are prepared for plot 
 			for(int j=0;j<para.var.num;j++){
-				if(para.var.var[j].title_name=="BDTG"){
+				if(para.var.var[j].title_name=="MVA"){
 					continue;
 				}
 				Avariable info=para.var.var[j];
@@ -227,7 +227,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 				if(para.flow.record_event){
 					for(int j=0;j<para.var.num;j++){
-						if(para.var.var[j].title_name=="BDTG"){
+						if(para.var.var[j].title_name=="MVA"){
 							continue;
 						}
 						rootvar[j]=para.var.var[j].variable;
@@ -239,7 +239,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				float event_rate=event/(float)total_event;
 
 				if(para.flow.begin_object == "Pre_Cut"){
-					if(para.flow.BDT_level==1){
+					if(para.flow.MVA_level==1){
 						Fill_Tree(para,event_rate,datatest_MVA);
 					}
 					pass[cnum][i][cut.pre_cut_num+1]+=out_weight;
@@ -255,7 +255,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 					if(!pass_cut){
 						continue;
 					}
-					if(para.flow.BDT_level==2){
+					if(para.flow.MVA_level==2){
 						Fill_Tree(para,event_rate,datatest_MVA);
 					}
 					Fill_Tree(para,event_rate,datatest,datatrain);
@@ -303,13 +303,13 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 		if(para.flow.record_event){
 			otfile->cd();
 			datatrain->Write();
-			if(para.flow.BDT_training){
+			if(para.flow.MVA_training){
 				datatest->Write();
 			}
 			otfile->Close();
 
 			otfile_MVA->cd();
-			if(para.flow.BDT_training){
+			if(para.flow.MVA_training){
 				datatest_MVA->Write();
 			}
 			otfile_MVA->Close();

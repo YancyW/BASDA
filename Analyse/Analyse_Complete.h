@@ -51,14 +51,14 @@
 #include "Abasic.h"
 #include "Analyse_Direct_Cut.h"
 #include "Analyse_Pre_Cut.h"
-#include "Analyse_BDT_Attach.h"
-#include "Analyse_BDT_Train.h"
+#include "Analyse_MVA_Attach.h"
+#include "Analyse_MVA_Train.h"
 #include "Make_Complete_Table.h"
 #include "AnalyseClass/File.h"
 #include "Analyse_Sensitivity.h"
 
 void Analyse_Complete(CDraw &para);
-void Analyse_Complete_Pol(CDraw &para, bool BDT_train_switch,std::string &BDT_dataset);
+void Analyse_Complete_Pol(CDraw &para, bool MVA_train_switch,std::string &MVA_dataset);
 void Analyse_Complete_Direct_Cut(CDraw &para);
 
 #endif

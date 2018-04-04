@@ -24,7 +24,7 @@ variable:
         plot_switch          : true 
         log_yaxis            : false 
         normalization_switch : true 
-        BDT                  : false 
+        MVA                  : false 
    v1:
         title_name           : "jet_pt1"
         cut_min              : 20

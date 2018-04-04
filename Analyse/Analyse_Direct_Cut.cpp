@@ -14,7 +14,7 @@ void Analyse_Direct_Cut_Pre(CDraw &para){
 	for(int i=0;i<file_name.Output_Num();i++){
 		ana_out_name.push_back(file_name.output[i].ana_data);
 	}
-	float sig=Make_Table(para,0,ana_out_name,file_name.output_table,true);
+	float sig=Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table,true);
 
 	RecordMessage(sig_file,2,"significance is", sig);
 
@@ -106,7 +106,9 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 
 
 	std::ofstream myfile_tot;
-	myfile_tot.open(file_name.output_total.ana_data);
+	if(filenum>1){
+		myfile_tot.open(file_name.output_total.ana_data);
+	}
 
 
 	//loop for all input files
@@ -139,9 +141,6 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			}
 
 			for(int k=0;k<analyse.Var_Num();k++){
-				if(analyse.var.var[k].title_name=="weight"){
-					continue;
-				}
 				if(analyse.var.var[k].variable_type=="I"){
 					analyse.var.var[k].variable = static_cast<float> (analyse.var.var[k].variable_i);
 				}
@@ -179,7 +178,9 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 	}
 
 
-	analyse.Record_Tot_Information(myfile_tot,file_name.output_total.latex);
+	if(filenum>1){
+		analyse.Record_Tot_Information(myfile_tot,file_name.output_total.latex);
+	}
 
 	analyse.Draw_Figure(para,file_name);
 

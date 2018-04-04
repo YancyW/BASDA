@@ -93,7 +93,7 @@ void Make_Complete_Table_Pre(CDraw &para){
 	ShowMessage(2,"make tables for all beam polariazation combination");
 
 	std::ofstream sig_file;
-	std::string combined_folder = para.default_path.output_file+"/"+Num_To_String(para.flow.hmass)+"/data_combine_"+Num_To_String(para.flow.hmass)+".dat";
+	std::string combined_folder = para.default_path.output_file+"/"+para.flow.signal_property+"/data_combine_"+para.flow.signal_property+".dat";
 	ShowMessage(2,"combined significance is in ",combined_folder);
 	Create_File_Folder(combined_folder);
 	sig_file.open(combined_folder);

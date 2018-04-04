@@ -26,6 +26,7 @@ class Avariable{
 	public:
 
 		std::string   variable_type;
+		std::string   setting_type;
 
 		float         variable     ;
 		float         cut_min      ;
@@ -70,7 +71,7 @@ class Avariable{
 		bool          log_switch ;
 		float         log_min    ;
 		bool          norm_switch;
-		bool          BDT_switch ;
+		bool          MVA_switch ;
 		bool          show_title ;
 		int           with_color_or_line; 
 		int           line_width ; 
@@ -84,6 +85,7 @@ class Avariable{
 			maximum_i    = 100000;
 
 			variable_type= "F"   ;
+			setting_type = "default";
 
 			variable     = minimum  ;
 			cut_min      = minimum  ;
@@ -126,7 +128,7 @@ class Avariable{
 		    log_switch   = false ;
 			log_min      = 0.1   ;
 		    norm_switch  = false ;
-		    BDT_switch   = false ;
+		    MVA_switch   = false ;
 			show_title   = false ;
 			with_color_or_line = -1;
 			line_width  = -1;
@@ -206,20 +208,20 @@ class AVariable{
 		bool        weight_exist;
 		int num;
 		int num_vec;
-		int numBDT;
+		int numMVA;
 		int cut_level;
 		std::vector<Avariable> var;
 		std::vector<Avariable_vec> vec;
-		std::vector<Avariable> BDT;
+		std::vector<Avariable> MVA;
 		void Read_Var(CPath &path);
 
 		AVariable(){
 			weight_type = "F";
 			num=0;
 			num_vec=0;
-			numBDT=0;
+			numMVA=0;
 			var.clear();
-			BDT.clear();
+			MVA.clear();
 		}
 };
 
@@ -231,6 +233,9 @@ namespace YAML{
 				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
 					if(it->first.as<std::string>()=="variable_type"){
 						RW_element(it->first.as<std::string>(), it, var.variable_type);
+					}
+					else if(it->first.as<std::string>()=="setting_type"){
+						RW_element(it->first.as<std::string>(), it, var.setting_type);
 					}
 					else if(it->first.as<std::string>()=="Canvas_name"){
 						RW_element(it->first.as<std::string>(), it, var.c_name);
@@ -362,8 +367,8 @@ namespace YAML{
 					else if(it->first.as<std::string>()=="normalization_switch"){
 						RW_element(it->first.as<std::string>(), it, var.norm_switch);
 					}
-					else if(it->first.as<std::string>()=="BDT"){
-						RW_element(it->first.as<std::string>(), it, var.BDT_switch);
+					else if(it->first.as<std::string>()=="MVA"){
+						RW_element(it->first.as<std::string>(), it, var.MVA_switch);
 					}
 					else if(it->first.as<std::string>()=="show_title"){
 						RW_element(it->first.as<std::string>(), it, var.show_title);

@@ -6,14 +6,14 @@ void Analyse_Summarize_Plot_Pre(CDraw &para){
 	std::vector<std::string> sig_name;
 
 	for(int i=0;i<para.mass_scan.mass_num;i++){
-		para.flow.hmass = para.mass_scan.mass[i];
+		para.flow.signal_property= para.mass_scan.mass[i];
 		get_file_name(para,file_name);
 		if(para.flow.plot_object=="final_cut"){
 			sig_name.push_back(file_name.output_total.CUT_file);
 		}
 		else if(para.flow.plot_object=="before_cut"){
 			ShowMessage(2,file_name.output[0].CUT_file);
-			ShowMessage(2,"mass",para.flow.hmass);
+			ShowMessage(2,"mass",para.flow.signal_property);
 			sig_name.push_back(file_name.output[0].CUT_file);
 		}
 	}

@@ -59,7 +59,7 @@ void Analyse_Sensitivity_Complete(CDraw &para){
 
 void Analyse_Sensitivity(CDraw &para, APlot &plot, std::string output_file_name, std::string output_folder){
 
-	Double_t _xvalue=para.flow.hmass;
+	Float_t _xvalue=atof(para.flow.signal_property.c_str());
 	Double_t ExpCL = para.sensitivity.ExpCL; 
 	ShowMessage(2," Expected Confidence level is:",ExpCL);  
 
@@ -91,7 +91,7 @@ void Analyse_Sensitivity(CDraw &para, APlot &plot, std::string output_file_name,
 ////sys_names[4]="select";   
 ////TH1F *histBgrSys[NSYS][2];
 ////TH1F *histSignalSys[NSYS][2];
-////for(Int_t s=0;s<NSYS;s++) {
+////for(Int_t s=0;s<NSYS;s++) .c_str(){
 ////	for(Int_t ds=0;ds<2;ds++) {
 ////		TString name("Sys_error_");
 ////		name += sys_names[s];

@@ -21,13 +21,13 @@ class CFlow{
 		std::string             plot_object          ;
 		Bool_t                  record_output        ;
 		Int_t                   level                ;
-		float                   hmass                ;
+		std::string             signal_property      ;
 		std::string             working_scenario     ;
 		std::string             begin_object         ;
 		Bool_t                  record_event         ;
-		Bool_t                  BDT_training         ;
-		Int_t                   BDT_level            ;
-	    float                   BDT_weight           ;
+		Bool_t                  MVA_training         ;
+		Int_t                   MVA_level            ;
+	    float                   MVA_weight           ;
 
 		void                    Read_Flow(CPath path);
 };

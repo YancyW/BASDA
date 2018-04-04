@@ -12,8 +12,8 @@ void Fram(CDraw &para)
 		Analyse_Complete(para);
 	}
 	else if (para.flow.begin_object == "Complete_Pol" ){
-		std::string BDT_dataset="../../Event_Analyse_nh/results-1-1/115_MVA/nh_115_115_dataset";
-		Analyse_Complete_Pol(para,true,BDT_dataset);
+		std::string MVA_dataset="../../Event_Analyse_nh/results-1-1/115_MVA/nh_115_115_dataset";
+		Analyse_Complete_Pol(para,true,MVA_dataset);
 	}
 	else if (para.flow.begin_object == "Complete_Direct_Cut" ){
 		Analyse_Complete_Direct_Cut(para);
@@ -27,11 +27,11 @@ void Fram(CDraw &para)
 	else if (para.flow.begin_object == "Direct_Cut_NoMVA" ){
 		Analyse_Cut_NoMVA_Pre(para);
 	}
-	else if (para.flow.begin_object == "BDT_Train" ){
-		Analyse_BDT_Train_Pre(para);
+	else if (para.flow.begin_object == "MVA_Train" ){
+		Analyse_MVA_Train_Pre(para);
 	}
-	else if (para.flow.begin_object == "BDT_Attach" ){
-		Analyse_BDT_Attach_Pre(para);
+	else if (para.flow.begin_object == "MVA_Attach" ){
+		Analyse_MVA_Attach_Pre(para);
 	}
 	else if (para.flow.begin_object == "Sensitivity" ){
 		Analyse_Sensitivity_Pre(para);

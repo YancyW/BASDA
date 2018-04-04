@@ -10,7 +10,7 @@ void Analyse_Mass_Scan_Pre(CDraw &para){
 
 
 	for(int i=0;i<para.mass_scan.mass_num;i++){
-		para.flow.hmass = para.mass_scan.mass[i];
+		para.flow.signal_property= para.mass_scan.mass[i];
         get_file_name(para,file_name);
         mass_root.push_back(file_name.output_total.CUT_file);
 	}

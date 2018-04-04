@@ -373,7 +373,7 @@ void Analyse_Multi_File::Init(CDraw &para, AFile &file_name){
 		_extra_weight = 1;
 	}
 	else{
-		_extra_weight  = para.flow.BDT_weight * para.scenario.Lumi();
+		_extra_weight  = para.flow.MVA_weight * para.scenario.Lumi();
 	}
 
 	_root_file = TFile::Open( file_name.plot_CUT.c_str() , "RECREATE" );
@@ -452,6 +452,7 @@ void Analyse_Multi_File::Root_Init_Var(int filenum){
 
 
 void Analyse_Multi_File::Root_Endow_Weight(int filenum){
+	_which_sort   ->in_weight = file[filenum].in_weight;
 	_which_sort   ->Root_Endow_Weight();
 	file[filenum]  .Root_Endow_Weight();
 	file[_file_num].Root_Endow_Weight();
@@ -546,6 +547,10 @@ bool Analyse_Multi_File::Get_Cut(int filenum){
 
 	bool judge=file[filenum].Get_Cut(var,_cut);
 
+	if(judge){
+		_which_sort   ->Root_Endow_Var(var);
+	}
+
 	return(judge);
 }
 
@@ -572,7 +577,7 @@ void Analyse_Multi_File::Record_Tot_Information(std::ofstream &myfile, std::stri
 }
 
 void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string hist_label){
-	ShowMessage(2,"generate plot for results!");
+	ShowMessage(2,"generate plot for "+hist_label+" results!");
 	for(int j=0;j<_var_num;j++){
 		Avariable info=var.var[j];
 		ShowMessage(3,"generate plot for variable",info.title_name);
@@ -607,7 +612,6 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 				_root_file->cd();
 				ss->Draw("HIST,nostack");
 				ss->Write();
-				std::cout << ss->GetName()<< std::endl;
 				Set_Stack_Style(para,info,ss,gPad);
 
 				std::string leg_name = stack_title[0]+"_legend";
@@ -627,7 +631,7 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 }
 
 void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string hist_label){
-	ShowMessage(2,"generate combined plot for sorted results!");
+	ShowMessage(2,"generate combined plot for sorted "+hist_label+" results!");
 	for(int j=0;j<_var_num;j++){
 		Avariable info=var.var[j];
 		ShowMessage(3,"generate plot for variable",info.title_name);
@@ -648,18 +652,11 @@ void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string his
 			}
 
 			int i=0;
+			std::cout << "sort: " << para.bkg_sort.Num() << std::endl;
 			for(int k=0;k<para.bkg_sort.Num();k++){
+				std::cout << "sub sort: " << para.bkg_sort.sort[k].Sub_Num() << std::endl;
 				for(int l=0;l<para.bkg_sort.sort[k].Sub_Num();l++){
-					if(k==0&&l==0){i++;continue;}
-					double maxi = sort[k].second[l].figure[j].Hist(hist_label)->GetMaximum();
-					if(maxi>0){
-						std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
-						TH1F* hist_tmp = (TH1F*) sort[k].second[l].figure[j].Hist(hist_label)->Clone();
-						info.leg->AddEntry(hist_tmp,sort_name.c_str(),"l");
-						Set_Line_Style(para,info,hist_tmp,i,i);
-						ss->Add(hist_tmp);
-						i++;
-					}
+					if(k==0 && l==0 && (k!=para.bkg_sort.Num()-1||l!=para.bkg_sort.sort[k].Sub_Num()-1)){i++;continue;}
 					if(k==para.bkg_sort.Num()-1 && l==para.bkg_sort.sort[k].Sub_Num()-1){
 					    double maxi0 = sort[0].second[0].figure[j].Hist(hist_label)->GetMaximum();
 					    if(maxi0>0){
@@ -668,6 +665,18 @@ void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string his
 					    	info.leg->AddEntry(hist_tmp,sort_name.c_str(),"l");
 					    	Set_Line_Style(para,info,hist_tmp,0,0);
 					    	ss->Add(hist_tmp);
+						}
+					}
+					else{
+						double maxi = sort[k].second[l].figure[j].Hist(hist_label)->GetMaximum();
+						std::cout << "sort: " <<sort[k].second[l].figure[j].Hist(hist_label)->GetName() << sort[k].second[l].figure[j].Hist(hist_label)->GetMaximum()<< std::endl;
+						if(maxi>0){
+							std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
+							TH1F* hist_tmp = (TH1F*) sort[k].second[l].figure[j].Hist(hist_label)->Clone();
+							info.leg->AddEntry(hist_tmp,sort_name.c_str(),"l");
+							Set_Line_Style(para,info,hist_tmp,i,i);
+							ss->Add(hist_tmp);
+							i++;
 						}
 					}
 				}
@@ -699,7 +708,11 @@ void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string his
 void Analyse_Multi_File::Fill_Figure(){
 	_root_file->cd();
 	file[_file_num]._root_file->cd();
-	std::cout <<"list name"<< file[_file_num]._root_file->GetName() << std::endl;
+	TObjLink *lnk = _list->FirstLink();
+	while (lnk) {
+		std::cout <<"list name"<< lnk->GetObject()->GetName()<<std::endl;
+		lnk = lnk->Next();
+	}
 
 	if(_Has_Drawn){
 		return;
@@ -716,12 +729,14 @@ void Analyse_Multi_File::Draw_Figure(CDraw& para,AFile& file_name){
 		if(!para.flow.record_output){
 			freopen(para.path.record_file.c_str() ,"a",stdout);
 		}
+		ShowMessage(2,"The plots will be stored in ",file_name.folder[1]);
 		Draw_Single(para, file_name,"origin");
 		Draw_Single(para, file_name,"before");
 		Draw_Single(para, file_name,"after" );
 		Draw_Single(para, file_name,"final" );
 
 		ShowMessage(2,"generate combined plot!");
+		ShowMessage(2,"The plots will be stored in ",file_name.folder[2]);
     	Draw_Sort(para, file_name,"origin");
     	Draw_Sort(para, file_name,"before");
     	Draw_Sort(para, file_name,"after" );

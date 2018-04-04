@@ -34,8 +34,8 @@ bool Apply_Cut(CDraw &para, std::vector<TH1F*> &hvariable, std::vector<TH1F*> &h
 
 
 void Fill_Tree(CDraw &para, float event_rate, TTree* data0, TTree* data1, TTree* data2){
-	if(para.flow.BDT_training ){
-		if(event_rate<1/para.flow.BDT_weight){
+	if(para.flow.MVA_training ){
+		if(event_rate<1/para.flow.MVA_weight){
 			data0->Fill();
 			data2->Fill();
 		}
@@ -50,8 +50,8 @@ void Fill_Tree(CDraw &para, float event_rate, TTree* data0, TTree* data1, TTree*
 
 
 void Fill_Tree(CDraw &para, float event_rate, TTree* data0, TTree* data1){
-	if(para.flow.BDT_training ){
-		if(event_rate<1/para.flow.BDT_weight){
+	if(para.flow.MVA_training ){
+		if(event_rate<1/para.flow.MVA_weight){
 			data0->Fill();
 		}
 		else{
@@ -65,7 +65,7 @@ void Fill_Tree(CDraw &para, float event_rate, TTree* data0, TTree* data1){
 
 
 void Fill_Tree(CDraw &para, float event_rate, TTree* data0){
-	if(event_rate<1/para.flow.BDT_weight)
+	if(event_rate<1/para.flow.MVA_weight)
 	{
 		data0->Fill();
 	}

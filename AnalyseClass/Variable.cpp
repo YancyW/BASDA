@@ -17,22 +17,22 @@ void Avariable::Copy(Avariable var){
 	if(this->c_name==""){
 		this->c_name= var.c_name;
 	}
-	if(this->c_width==1.0){
+	if(this->c_width==1000.0){
 		this->c_width= var.c_width;
 	}
-	if(this->c_height==1.0){
+	if(this->c_height==700.0){
 		this->c_height= var.c_height;
 	}
-	if(this->leg_left==1.0){
+	if(this->leg_left==0.6){
 		this->leg_left= var.leg_left;
 	}
-	if(this->leg_up==1.0){
+	if(this->leg_up==0.6){
 		this->leg_up= var.leg_up;
 	}
-	if(this->leg_right==1.0){
+	if(this->leg_right==0.9){
 		this->leg_right= var.leg_right;
 	}
-	if(this->leg_down==1.0){
+	if(this->leg_down==0.9){
 		this->leg_down= var.leg_down;
 	}
 	if(this->leg_header==""){
@@ -68,8 +68,32 @@ void Avariable::Copy(Avariable var){
 	if(this->y_max==1.0){
 		this->y_max= var.y_max;
 	}
+	if(this->cut_switch==false){
+		this->cut_switch= var.cut_switch;
+	}
+	if(this->plot_switch==false){
+		this->plot_switch= var.plot_switch;
+	}
+	if(this->log_switch==false){
+		this->log_switch= var.log_switch;
+	}
 	if(this->log_min==0.1){
 		this->log_min= var.log_min;
+	}
+	if(this->norm_switch==false){
+		this->norm_switch= var.norm_switch;
+	}
+	if(this->MVA_switch==false){
+		this->MVA_switch= var.MVA_switch;
+	}
+	if(this->show_title==false){
+		this->show_title= var.show_title;
+	}
+	if(this->with_color_or_line==-1){
+		this->with_color_or_line= var.with_color_or_line;
+	}
+	if(this->line_width==-1){
+		this->line_width= var.line_width;
 	}
 }
 

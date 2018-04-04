@@ -52,7 +52,7 @@ Debug_7    : false
 #for Analyse/ANSubjettiness
 Debug_8    : false 
 
-#for Analyse/BDT_Attach
+#for Analyse/MVA_Attach
 Debug_9    : false 
 
 

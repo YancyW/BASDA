@@ -11,7 +11,7 @@ void Analyse_Complete(CDraw &para){
 	std::string combine_plot            = para.path.combine_plot ;
 	std::string horizontal_summary_plot = para.path.horizontal_summary_plot ;
 
-	std::string BDT_dataset             = "";
+	std::string MVA_dataset             = "";
 
 
 	bool only_lr                        = false;
@@ -36,7 +36,7 @@ void Analyse_Complete(CDraw &para){
 
 			para.path.Create_Folder();
 
-			Analyse_Complete_Pol(para,true,BDT_dataset);
+			Analyse_Complete_Pol(para,true,MVA_dataset);
 		}
 	}
 
@@ -56,7 +56,7 @@ void Analyse_Complete(CDraw &para){
 }
 
 
-void Analyse_Complete_Pol(CDraw &para, bool BDT_train_switch,std::string &BDT_dataset){
+void Analyse_Complete_Pol(CDraw &para, bool MVA_train_switch,std::string &MVA_dataset){
 
 			AFile file_name;
 
@@ -77,9 +77,9 @@ void Analyse_Complete_Pol(CDraw &para, bool BDT_train_switch,std::string &BDT_da
 			RecordMessage(sig_file,2,"horizontal_summary_plot ",para.path.horizontal_summary_plot);
 
     		Analyse_Pre_Cut_Content(para,file_name);
-    		Analyse_BDT_Train(para,file_name);
-    		BDT_dataset = file_name.dataset_MVA;
-    		Analyse_BDT_Attach(para,file_name);
+    		Analyse_MVA_Train(para,file_name);
+    		MVA_dataset = file_name.dataset_MVA;
+    		Analyse_MVA_Attach(para,file_name);
 			Analyse_Direct_Cut(para,file_name);
 
 			std::vector<std::string> ana_out_name;
@@ -87,7 +87,7 @@ void Analyse_Complete_Pol(CDraw &para, bool BDT_train_switch,std::string &BDT_da
 				ana_out_name.push_back(file_name.output[i].ana_data);
 			}
 
-			float sig=Make_Table(para,0,ana_out_name,file_name.output_table,true);
+			float sig=Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table,true);
 
 			RecordMessage(sig_file,2,"significance is", sig);
 
@@ -144,7 +144,7 @@ void Analyse_Complete_Direct_Cut(CDraw &para){
     		for(int i=0;i<file_name.Output_Num();i++){
     			ana_out_name.push_back(file_name.output[i].ana_data);
     		}
-    		float sig=Make_Table(para,0,ana_out_name,file_name.output_table,true);
+			float sig=Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table,true);
 
     		RecordMessage(sig_file,2,"significance is", sig);
 

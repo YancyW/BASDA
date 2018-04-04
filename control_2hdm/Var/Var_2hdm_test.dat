@@ -28,7 +28,7 @@ variable:
         plot_switch          : true 
         log_yaxis            : false 
         normalization_switch : true 
-        BDT                  : false 
+        MVA                  : false 
    v1:
         title_name           : "costh_Z"
         variable_type        : "F"
@@ -39,11 +39,11 @@ variable:
         leg_up               : 0.7
         leg_right            : 0.8
         leg_down             : 0.9           
-        xaxis_name           : "P_{T}^{j1}"                    
+        xaxis_name           : "costh_{Z}"                    
         xaxis_bin            : 100 
         xaxis_min            : -1
         xaxis_max            : 1                                    
         cut_switch           : true 
         plot_switch          : true 
-        normalization_switch : true 
+        normalization_switch : false 
 variable_vec:
