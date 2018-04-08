@@ -31,7 +31,8 @@ void CDraw::Read(){
 	default_mass_scan = mass_scan;
     Jmass_scan = true;
 
-    this->bkg_sort.Read_BKG_Sort(path);
+    //this->bkg_sort.Read_BKG_Sort(path);
+    this->bkg_sort.Read_BKG_Sort_Test(path);
 	default_bkg_sort = bkg_sort;
     Jbkg_sort= true;
 
@@ -43,7 +44,7 @@ void CDraw::Read(){
 	default_plot = plot;
     Jplot= true;
 
-    this->MVA.Read_MVA(path);
+    this->MVA.Read_MVA(path,flow);
 	default_MVA = MVA;
     JMVA= true;
 }

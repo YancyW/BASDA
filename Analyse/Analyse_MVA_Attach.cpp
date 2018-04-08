@@ -23,7 +23,7 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 	}
 
 	// --- Book the MVA methods
-	std::string weight_file=file_name.dataset_MVA+" "+para.MVA.MVA_type+"/weights/TMVAClassification_MVA.weights.xml";
+	std::string weight_file=file_name.dataset_MVA+" "+para.MVA.MVA_Type()+"/weights/TMVAClassification_MVA.weights.xml";
 	reader->BookMVA("mymethod",weight_file.c_str());
 
 	for(int i=0;i<file_name.Output_Num();i++){

@@ -71,7 +71,7 @@ class CBKG_Sort_basic{
 
 		std::string Class(){
 			if(!_Used.Exist()){
-				ShowMessage(2,"In CBKG_Sort_basic, Legend: This Sort didn't set first.");
+				ShowMessage(2,"In CBKG_Sort_basic, Class: This Sort didn't set first.");
 				return("");
 			}
 			return(_class_name);
@@ -79,7 +79,7 @@ class CBKG_Sort_basic{
 
 		std::vector<std::string> Sub_Class(){
 			if(!_Used.Exist()){
-				ShowMessage(2,"In CBKG_Sort_basic, Legend: This Sort didn't set first.");
+				ShowMessage(2,"In CBKG_Sort_basic, vector Sub_Class: This Sort didn't set first.");
 				std::vector<std::string> tmp;
 				return(tmp);
 			}
@@ -88,7 +88,7 @@ class CBKG_Sort_basic{
 
 		std::string Sub_Class(int ith){
 			if(!_Used.Exist()){
-				ShowMessage(2,"In CBKG_Sort_basic, Legend: This Sort didn't set first.");
+				ShowMessage(2,"In CBKG_Sort_basic, Sub_Class: This Sort didn't set first.");
 				return("");
 			}
 			if(ith < _sub_class_num){
@@ -100,14 +100,14 @@ class CBKG_Sort_basic{
 
 		std::string Name(int ith){
 			if(!_Used.Exist()){
-				ShowMessage(2,"In CBKG_Sort_basic, Legend: This Sort didn't set first.");
+				ShowMessage(2,"In CBKG_Sort_basic, Name: This Sort didn't set first.");
 				return("");
 			}
 			if(ith < _sub_class_num){
 				std::string name = _class_name + "_" + _sub_class_name[ith];
 				return(name);
 			}
-			ShowMessage(2,"Error: in CBKG_Sort_basic::Sub_Class, input num exceed max");
+			ShowMessage(2,"Error: in CBKG_Sort_basic::Name, input num exceed max");
 			return("Wrong");
 		}
 
@@ -119,19 +119,19 @@ class CBKG_Sort_basic{
 			if(ith < _sub_class_num){
 				return(_sub_class_legend[ith]);
 			}
-			ShowMessage(2,"Error: in CBKG_Sort_basic::Sub_Class, input num exceed max");
+			ShowMessage(2,"Error: in CBKG_Sort_basic::Legend, input num exceed max");
 			return("Wrong");
 		}
 
 		std::string Default_Sub_Legend(int ith){
 			if(!_Used.Exist()){
-				ShowMessage(2,"In CBKG_Sort_basic, Default_Legend: This Sort didn't set first.");
+				ShowMessage(2,"In CBKG_Sort_basic, Default_Sub_Legend: This Sort didn't set first.");
 				return("");
 			}
 			if(ith < _sub_class_num){
 				return(_default_sub_class_legend[ith]);
 			}
-			ShowMessage(2,"Error: in CBKG_Sort_basic::Sub_Class, input num exceed max");
+			ShowMessage(2,"Error: in CBKG_Sort_basic::Default_Sub_Legend, input num exceed max");
 			return("Wrong");
 		}
 
@@ -143,16 +143,17 @@ class CBKG_Sort_basic{
 			if(ith < _sub_class_num){
 				return(_default_class_legend[ith]);
 			}
-			ShowMessage(2,"Error: in CBKG_Sort_basic::Sub_Class, input num exceed max");
+			ShowMessage(2,"Error: in CBKG_Sort_basic::Default_Legend, input num exceed max");
 			return("Wrong");
 		}
 
 		std::pair<std::string, int> Find_Sub_Class(std::string str){
 			std::pair<std::string, int> pos;
+			std::vector<std::string> strNew=Find_Str_in_Filename(str);
 
 			bool exist_sub_class= false;
 			for(int l=0;l<_sub_class_num;l++){
-				if (Find_Str(str, _default_sub_class_legend[l])){
+				if ("{"+strNew[2]+"}" ==  _default_sub_class_legend[l]){
 					pos.first  = _default_sub_class_legend[l];
 					pos.second = l;
 					exist_sub_class = true;
@@ -192,10 +193,11 @@ class CBKG_Sort{
 		std::vector<std::pair<std::string, int> > Find_Class(std::string str){
 
 			std::vector<std::pair<std::string,int> > pos;
+			std::vector<std::string> strNew=Find_Str_in_Filename(str);
 
 			bool exist_class= false;
 			for(int k=0;k<_sort_num; k++){
-				if (Find_Str(str, sort[k].Class())){
+				if (strNew[0] == sort[k].Class()){
 					pos.push_back(std::make_pair(sort[k].Class(), k)); 
 					std::pair<std::string,int> sub_pair = sort[k].Find_Sub_Class(str); 
 					if(sub_pair.first!="Null"){
@@ -211,6 +213,8 @@ class CBKG_Sort{
 		}
 
 		void Read_BKG_Sort(CPath &path);
+
+		void Read_BKG_Sort_Test(CPath &path);
 };
 
 #endif

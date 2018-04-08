@@ -17,6 +17,7 @@ class CPath{
 	public:
 		std::string   process          ;
 		std::string   output_folder    ;
+		std::string   input_folder     ;
 
 		std::string   record_file      ;
 

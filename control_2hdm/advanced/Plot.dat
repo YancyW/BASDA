@@ -1,3 +1,7 @@
+drawing:
+    single_plot            : ["origin", "before", "after", "final"]
+    class_plot             : ["origin", "before", "after", "final"]
+
 setting:
         show_title         : false 
         with_color_or_line : 2 

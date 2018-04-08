@@ -6,17 +6,18 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <typeinfo>
 
 /*
-template <typename TVector_equal>
-std::vector<TVector_equal> operator = (std::vector<TVector_equal> V1){
-	std::vector <TVector_equal> Vnew;
+   template <typename TVector_equal>
+   std::vector<TVector_equal> operator = (std::vector<TVector_equal> V1){
+   std::vector <TVector_equal> Vnew;
 
-	Vnew.resize(V1.size());
-	copy(V1.begin(),V1.end(),Vnew.begin());
-	return(Vnew);
-}
-*/
+   Vnew.resize(V1.size());
+   copy(V1.begin(),V1.end(),Vnew.begin());
+   return(Vnew);
+   }
+   */
 
 template <typename TVector_add>
 std::vector<TVector_add> operator + (std::vector<TVector_add> V1, std::vector<TVector_add> V2){
@@ -26,8 +27,8 @@ std::vector<TVector_add> operator + (std::vector<TVector_add> V1, std::vector<TV
 	copy(V1.begin(),V1.end(),Vnew.begin());
 	copy(V2.begin(),V2.end(),Vnew.begin()+V1.size());
 
-//	stable_sort(Vnew.begin(),Vnew.end());
-//	reverse(Vnew.begin(),Vnew.end());
+	//	stable_sort(Vnew.begin(),Vnew.end());
+	//	reverse(Vnew.begin(),Vnew.end());
 	return(Vnew);
 }
 
@@ -39,8 +40,8 @@ std::vector<TVector_add> operator +=(std::vector<TVector_add> V1, std::vector<TV
 	copy(V1.begin(),V1.end(),Vnew.begin());
 	copy(V2.begin(),V2.end(),Vnew.begin()+V1.size());
 
-//	stable_sort(Vnew.begin(),Vnew.end());
-//	reverse(Vnew.begin(),Vnew.end());
+	//	stable_sort(Vnew.begin(),Vnew.end());
+	//	reverse(Vnew.begin(),Vnew.end());
 	return(Vnew);
 }
 
@@ -133,6 +134,23 @@ std::vector<TVector_minus> operator -=(std::vector<TVector_minus> V1, std::vecto
 //	Pnew.setPair();
 //	return(Pnew);
 //}
+/*
+template <typename TVector_exist>
+bool Vec_Exist(std::vector<TVector_exist> &V1, TVector_exist input){
+	if(V1.size()==0){return(false);}
+
+	typename std::vector<TVector_exist>::iterator ret;
+	ret = std::find(V1.begin(), V1.end(), input);
+	if(ret == V1.end()){
+		return(false);
+	}
+	else{
+		return(true);
+	}
+}
+*/
+
+bool Vec_Exist(std::vector<std::string> V1, std::string input);
 
 std::ostream & operator<< (std::ostream & ostr, std::vector<bool> flo);
 
@@ -142,6 +160,6 @@ std::ostream & operator<< (std::ostream & ostr, std::vector<int> flo);
 
 std::ostream & operator<< (std::ostream & ostr, std::vector<float> flo);
 
-//std::ostream & operator<< (std::ostream & ostr, std::vector<std::string> str);
+std::ostream & operator<< (std::ostream & ostr, std::vector<std::string> str);
 
 #endif

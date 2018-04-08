@@ -19,17 +19,17 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	std::map<std::string,int> Use;
 
 	// --- Boosted Decision Trees
-	Use[para.MVA.MVA_type]             = 1; // uses Adaptive Boost
+	Use[para.MVA.MVA_Type()]             = 1; // uses Adaptive Boost
 
 	ShowMessage(2,"Start TMVAClassification");
 
 	TFile* outputFile = TFile::Open( file_name.output_MVA.c_str(), "RECREATE" );
 	ShowMessage(2,"The output file is",file_name.output_MVA);
 
-	TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,para.MVA.MVA_factory_setting.c_str());
+	TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,para.MVA.MVA_Factory_Setting().c_str());
 //			"!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
 
-	std::string dataset_name = file_name.dataset_MVA+"_"+para.MVA.MVA_type;
+	std::string dataset_name = file_name.dataset_MVA+"_"+para.MVA.MVA_Type();
 	TMVA::DataLoader *dataloader=new TMVA::DataLoader(dataset_name.c_str());
 	ShowMessage(2,"The dataset for MVA is",dataset_name);
 
@@ -85,14 +85,14 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	TCut mycutb = cutb_des.c_str();
 
 	//dataloader->PrepareTrainingAndTestTree( mycuts, mycutb, "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
-	dataloader->PrepareTrainingAndTestTree( mycuts, mycutb, para.MVA.MVA_event_setting.c_str() );
+	dataloader->PrepareTrainingAndTestTree( mycuts, mycutb, para.MVA.MVA_Event_Setting().c_str() );
 
 	ShowMessage(2);
 	ShowMessage(2, "Booking Start");
-	if (Use[para.MVA.MVA_type]) {
+	if (Use[para.MVA.MVA_Type()]) {
 ////	factory->BookMethod(dataloader,  TMVA::Types::kBDT, "BDTG",
 ////        "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=5" );
-		factory->BookMethod(dataloader,  TMVA::Types::kBDT, para.MVA.MVA_type.c_str(),para.MVA.MVA_method_setting.c_str() );
+		factory->BookMethod(dataloader,  TMVA::Types::kBDT, para.MVA.MVA_Type().c_str(),para.MVA.MVA_Method_Setting().c_str() );
 	} // Adaptive Boost
 
 	ShowMessage(2, "Training Start");

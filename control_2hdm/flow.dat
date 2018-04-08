@@ -17,7 +17,8 @@ BeginObject       : Direct_Cut_NoMVA
 
 # choose signal process and work scenario
 signal_property   : 125 
-working_scenario  : running-ilc 
+working_scenario  : running-lhc
+MVA_method        : "BDTG" 
 
 
 # choose special setting 

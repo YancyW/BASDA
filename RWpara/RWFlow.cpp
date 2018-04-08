@@ -10,6 +10,7 @@ void CFlow::   Read_Flow(CPath path){
 
 	RW_element("signal_property" ,flow_node,this->signal_property );
 	RW_element("working_scenario",flow_node,this->working_scenario);
+	RW_element("MVA_method"      ,flow_node,this->MVA_method      );
 
 	RW_element("BeginObject"     ,flow_node,this->begin_object    );
 	RW_element("record_event"    ,flow_node,this->record_event    );

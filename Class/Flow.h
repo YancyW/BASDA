@@ -25,6 +25,7 @@ class CFlow{
 		std::string             working_scenario     ;
 		std::string             begin_object         ;
 		Bool_t                  record_event         ;
+		std::string             MVA_method           ;
 		Bool_t                  MVA_training         ;
 		Int_t                   MVA_level            ;
 	    float                   MVA_weight           ;

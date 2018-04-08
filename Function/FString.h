@@ -11,4 +11,5 @@
 #include "Lib/MessageFormat.h" 
 
 bool Find_Str(std::string str1, std::string str2);
+std::vector<std::string> Find_Str_in_Filename(std::string str);
 #endif

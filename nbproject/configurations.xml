@@ -57,6 +57,7 @@
         <in>RWEvent.cpp</in>
         <in>RWFile.cpp</in>
         <in>RWFlow.cpp</in>
+        <in>RWMVA.cpp</in>
         <in>RWMass_Scan.cpp</in>
         <in>RWPath.cpp</in>
         <in>RWPlot.cpp</in>
@@ -173,6 +174,7 @@
           <incDir>
             <pElem>../../../Software/executable/root/build/include</pElem>
             <pElem>/usr/include/boost/system</pElem>
+            <pElem>Class</pElem>
             <pElem>AnalyseClass</pElem>
             <pElem>Analyse</pElem>
             <pElem>Lib</pElem>
@@ -191,7 +193,6 @@
             <pElem>/usr/include/boost/type_traits/detail</pElem>
             <pElem>/usr/include/boost/iterator</pElem>
             <pElem>/usr/include/boost/exception</pElem>
-            <pElem>Class</pElem>
             <pElem>.</pElem>
           </incDir>
         </ccTool>
@@ -439,15 +440,12 @@
             <pElem>Analyse</pElem>
             <pElem>Lib</pElem>
             <pElem>Latex</pElem>
-            <pElem>Function</pElem>
             <pElem>/usr/include/boost/config</pElem>
             <pElem>/usr/include/boost/type_traits</pElem>
             <pElem>/usr/include/boost/mpl/aux_</pElem>
             <pElem>/usr/include/boost/mpl</pElem>
             <pElem>/usr/include/boost/mpl/aux_/preprocessed/gcc</pElem>
             <pElem>/usr/include/boost/detail</pElem>
-            <pElem>/usr/include/boost/smart_ptr/detail</pElem>
-            <pElem>/usr/include/boost/smart_ptr</pElem>
             <pElem>/usr/include/boost</pElem>
             <pElem>/usr/include/boost/core</pElem>
             <pElem>/usr/include/boost/filesystem</pElem>
@@ -478,8 +476,6 @@
             <pElem>/usr/include/boost/mpl</pElem>
             <pElem>/usr/include/boost/mpl/aux_/preprocessed/gcc</pElem>
             <pElem>/usr/include/boost/detail</pElem>
-            <pElem>/usr/include/boost/smart_ptr/detail</pElem>
-            <pElem>/usr/include/boost/smart_ptr</pElem>
             <pElem>/usr/include/boost</pElem>
             <pElem>/usr/include/boost/core</pElem>
             <pElem>/usr/include/boost/filesystem</pElem>
@@ -529,15 +525,12 @@
             <pElem>/usr/include/boost/system</pElem>
             <pElem>AnalyseClass</pElem>
             <pElem>Lib</pElem>
-            <pElem>Function</pElem>
             <pElem>/usr/include/boost/config</pElem>
             <pElem>/usr/include/boost/type_traits</pElem>
             <pElem>/usr/include/boost/mpl/aux_</pElem>
             <pElem>/usr/include/boost/mpl</pElem>
             <pElem>/usr/include/boost/mpl/aux_/preprocessed/gcc</pElem>
             <pElem>/usr/include/boost/detail</pElem>
-            <pElem>/usr/include/boost/smart_ptr/detail</pElem>
-            <pElem>/usr/include/boost/smart_ptr</pElem>
             <pElem>/usr/include/boost</pElem>
             <pElem>/usr/include/boost/core</pElem>
             <pElem>/usr/include/boost/filesystem</pElem>
@@ -836,20 +829,22 @@
       <item path="RWpara/RWBKG_Sort.cpp" ex="false" tool="1" flavor2="11">
         <ccTool flags="0">
           <incDir>
+            <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp</pElem>
+            <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp/node/detail</pElem>
             <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp/node</pElem>
             <pElem>../../../Software/executable/root/build/include</pElem>
             <pElem>Class</pElem>
             <pElem>/usr/include/boost/system</pElem>
             <pElem>RWpara</pElem>
             <pElem>Lib</pElem>
-            <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp</pElem>
-            <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp/node/detail</pElem>
             <pElem>/usr/include/boost/config</pElem>
             <pElem>/usr/include/boost/type_traits</pElem>
             <pElem>/usr/include/boost/mpl/aux_</pElem>
             <pElem>/usr/include/boost/mpl</pElem>
             <pElem>/usr/include/boost/mpl/aux_/preprocessed/gcc</pElem>
             <pElem>/usr/include/boost/detail</pElem>
+            <pElem>/usr/include/boost/smart_ptr/detail</pElem>
+            <pElem>/usr/include/boost/smart_ptr</pElem>
             <pElem>/usr/include/boost</pElem>
             <pElem>/usr/include/boost/core</pElem>
             <pElem>/usr/include/boost/filesystem</pElem>
@@ -997,6 +992,33 @@
         </ccTool>
       </item>
       <item path="RWpara/RWFlow.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+          <incDir>
+            <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp/node</pElem>
+            <pElem>../../../Software/executable/root/build/include</pElem>
+            <pElem>/usr/include/boost/system</pElem>
+            <pElem>RWpara</pElem>
+            <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp</pElem>
+            <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp/node/detail</pElem>
+            <pElem>/usr/include/boost/config</pElem>
+            <pElem>/usr/include/boost/type_traits</pElem>
+            <pElem>/usr/include/boost/mpl/aux_</pElem>
+            <pElem>/usr/include/boost/mpl</pElem>
+            <pElem>/usr/include/boost/mpl/aux_/preprocessed/gcc</pElem>
+            <pElem>/usr/include/boost/detail</pElem>
+            <pElem>/usr/include/boost</pElem>
+            <pElem>/usr/include/boost/core</pElem>
+            <pElem>/usr/include/boost/filesystem</pElem>
+            <pElem>/usr/include/boost/type_traits/detail</pElem>
+            <pElem>/usr/include/boost/iterator</pElem>
+            <pElem>/usr/include/boost/exception</pElem>
+            <pElem>Class</pElem>
+            <pElem>.</pElem>
+            <pElem>../../../Software/lib/yaml-cpp/include</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="RWpara/RWMVA.cpp" ex="false" tool="1" flavor2="11">
         <ccTool flags="0">
           <incDir>
             <pElem>../../../Software/lib/yaml-cpp/include/yaml-cpp/node</pElem>

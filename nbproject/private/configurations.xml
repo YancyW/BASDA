@@ -57,6 +57,7 @@
         <in>File.h</in>
         <in>Flow.h</in>
         <in>Judge.h</in>
+        <in>MVA.h</in>
         <in>Mass_Scan.h</in>
         <in>Path.cpp</in>
         <in>Path.h</in>
@@ -75,6 +76,16 @@
         </df>
       </df>
       <df name="control_2hdm">
+        <df name="advanced">
+        </df>
+        <df name="Cut">
+        </df>
+        <df name="Var">
+        </df>
+      </df>
+      <df name="control_test">
+        <df name="advanced">
+        </df>
         <df name="Cut">
         </df>
         <df name="Var">
@@ -125,6 +136,7 @@
         <in>RWEvent.cpp</in>
         <in>RWFile.cpp</in>
         <in>RWFlow.cpp</in>
+        <in>RWMVA.cpp</in>
         <in>RWMass_Scan.cpp</in>
         <in>RWPath.cpp</in>
         <in>RWPlot.cpp</in>
@@ -195,8 +207,9 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" contral_2hdm/path_test.dat</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" control_2hdm/path_test.dat</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" control_2hdm/path_a.dat</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" control_2hdm/path_test.dat</runcommand>
+        <runcommand>"${OUTPUT_PATH}" control_2hdm/path_a.dat</runcommand>
         <rundir>.</rundir>
         <buildfirst>false</buildfirst>
         <terminal-type>0</terminal-type>

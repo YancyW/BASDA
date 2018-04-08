@@ -35,7 +35,6 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 	std::vector<TTree*>       MyLCTuple              ;
 
 
-
 	for(int j=0;j<filenum;j++){
 		if(  para.flow.begin_object == "Direct_Cut" ||
 			(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()>1) ||

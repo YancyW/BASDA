@@ -76,6 +76,8 @@ class Avariable{
 		int           with_color_or_line; 
 		int           line_width ; 
 
+		std::vector<int> label_2d;
+
 		Avariable(){
 			minimum      =-100000.1;
 			maximum      = 100000.1;
@@ -386,6 +388,9 @@ namespace YAML{
 					}
 					else if(it->first.as<std::string>()=="line_width"){
 						RW_element(it->first.as<std::string>(), it, var.line_width);
+					}
+					else if(it->first.as<std::string>()=="plot_2d"){
+						var.label_2d = it->second.as<std::vector<int> >();	
 					}
 					else{
 						ShowMessage(2,"wrong input when load class Variable",it->first.as<std::string>());

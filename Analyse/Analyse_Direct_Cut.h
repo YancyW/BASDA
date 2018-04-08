@@ -46,6 +46,7 @@
 
 
 #include "Function/Fbasic.h" 
+#include "Function/Fvector.h" 
 #include "Lib/MessageFormat.h"
 #include "Class/DrawClass.h"
 #include "AnalyseClass/AnalyseClass.h"

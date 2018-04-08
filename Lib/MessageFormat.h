@@ -16,6 +16,7 @@
 #include "TStyle.h"
 #include "TCanvas.h"
 #include "TChain.h"
+#include "Function/Fvector.h"
 
 std::ostream& Choose_Print_File(bool IsRecord, std::string file_name);
 

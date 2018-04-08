@@ -28,6 +28,7 @@
 #include "AnalyseClass/Plot.h"
 #include "Analyse/Abasic.h"
 #include "Function/Fbasic.h"
+#include "Function/FString.h"
 class Analyse_Figure{
 	public:
 		TH1F*       hvariable_origin;

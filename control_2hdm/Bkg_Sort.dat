@@ -1,0 +1,10 @@
+sort_num   : 4
+
+sub_sort_name : [sig, wtata, tt, txll] 
+sub_sort_num  : [1,   1,     2,  1   ] 
+
+sig   : [HA]
+wtata : [l]
+tt    : [l, sl]
+txll  : [l]
+

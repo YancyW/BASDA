@@ -21,10 +21,17 @@ class Cplot_setting{
 		int  with_color_or_line; 
 };
 
+class Cplot_drawing{
+	public:
+		std::vector<std::string> single_plot;
+		std::vector<std::string> class_plot;
+};
+
 class CPlot{
 	private:
 	public:
 		Cplot_setting  setting;
+		Cplot_drawing  drawing;
 		void Read_Plot(CPath &path);
 };
 
@@ -46,10 +53,30 @@ namespace YAML{
 						ShowMessage(2,"wrong input when load class Cplot_setting",it->first.as<std::string>());
 					}
 				}
-				ShowMessage(2,"finish reading plot");
+				ShowMessage(2,"finish reading plot setting");
 				return true;
 			}
 		};
 };
 
+namespace YAML{
+	template<>
+		struct convert<Cplot_drawing>{
+			static bool decode(const Node& node, Cplot_drawing& plot){ 
+				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
+					if(it->first.as<std::string>()=="single_plot"){
+						plot.single_plot= it->second.as<std::vector<std::string> >();	
+					}
+					else if(it->first.as<std::string>()=="class_plot"){
+						plot.class_plot = it->second.as<std::vector<std::string> >();	
+					}
+					else{
+						ShowMessage(2,"wrong input when load class Cplot_drawing",it->first.as<std::string>());
+					}
+				}
+				ShowMessage(2,"finish reading plot drawing");
+				return true;
+			}
+		};
+};
 #endif
