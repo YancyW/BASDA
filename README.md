@@ -8,7 +8,7 @@ All operation can be done by only change the input config file.
  - The introduction pdf/pptx is in [Introduction](./doc/BASDA_Introduction.pdf).
  - The complete manual is in [USAGE](./doc/USAGE.md).
  - The licence is in [Licence](./doc/LICENCE).
- - Three branches 
+ - Four branches 
 	- master: The public code.
     - release: The most stable develop version, prepare to merge into master, but not well tested.
     - develop: With new features.
