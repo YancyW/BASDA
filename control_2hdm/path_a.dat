@@ -18,7 +18,7 @@ FLOW_FILE        : 'flow.dat'
 INPUT_FILE       : 'file_a.dat'
 BKG_SORT_FILE    : 'Bkg_Sort.dat'
 
-CUT_FILE         : 'Cut/Cut_test.dat'
+CUT_FILE         : 'Cut/Cut_2hdm_a.dat'
 VAR_FILE         : 'Var/Var_2hdm_a.dat' 
 
 
