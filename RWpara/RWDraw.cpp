@@ -27,9 +27,9 @@ void CDraw::Read(){
 	default_sensitivity = sensitivity;
 	Jsen = true;
 
-    this->mass_scan.Read_Mass_Scan(path);
-	default_mass_scan = mass_scan;
-    Jmass_scan = true;
+    this->signal_scan.Read_Signal_Properties_Scan(path);
+	default_signal_scan = signal_scan;
+    JSP_scan = true;
 
     //this->bkg_sort.Read_BKG_Sort(path);
     this->bkg_sort.Read_BKG_Sort_Test(path);

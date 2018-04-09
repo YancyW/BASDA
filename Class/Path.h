@@ -37,7 +37,7 @@ class CPath{
 
 		std::string   var_file         ;
 		std::string   sensitivity_file ;
-		std::string   mass_scan_file   ;
+		std::string   signal_property_scan_file;
 		std::string   bkg_sort_file    ;
 		std::string   scenario_file    ;
 

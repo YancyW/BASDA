@@ -21,44 +21,49 @@ void CPath::Read_Path(std::string steering_file){
 	RW_element("SINGLE_PLOT"            ,path_node,this->single_plot           );
 	RW_element("COMBINE_PLOT"           ,path_node,this->combine_plot          );
 	RW_element("HORIZONTAL_SUMMARY_PLOT",path_node,this->horizontal_summary_plot);
+	ShowMessage(1);
 
 	if(this->output_folder != "NULL" || this->output_folder != ""){
-		this->output_file = this->output_folder+"/"+this->output_file;
-		this->event_file  = this->output_folder+"/"+this->event_file ;
-		this->single_plot = this->output_folder+"/"+this->single_plot;
-		this->combine_plot= this->output_folder+"/"+this->combine_plot;
+		this->output_file             = this->output_folder+"/"+this->output_file;
+		this->event_file              = this->output_folder+"/"+this->event_file ;
+		this->single_plot             = this->output_folder+"/"+this->single_plot;
+		this->combine_plot            = this->output_folder+"/"+this->combine_plot;
 		this->horizontal_summary_plot = this->output_folder+"/"+this->horizontal_summary_plot;
 	}
 	this->Create_Folder();
+	ShowMessage(1);
 
-	RW_element("DEBUG_FILE"             ,path_node,this->debug_file            );
-	RW_element("ANALYSIS_FILE"          ,path_node,this->analyse_file          );
-	RW_element("FLOW_FILE"              ,path_node,this->flow_file             );
-	RW_element("PLOT_FILE"              ,path_node,this->plot_file             );
-	RW_element("MVA_FILE"               ,path_node,this->MVA_file              );
-	RW_element("INPUT_FILE"             ,path_node,this->input_file            );
+	RW_element("FLOW_FILE"                 , path_node , this->flow_file                 ) ;
+	RW_element("INPUT_FILE"                , path_node , this->input_file                ) ;
+	RW_element("BKG_SORT_FILE"             , path_node , this->bkg_sort_file             ) ;
 
-	RW_element("CUT_FILE"               ,path_node,this->cut_file              );
-	RW_element("VAR_FILE"               ,path_node,this->var_file              );
-	RW_element("SENSITIVITY_FILE"       ,path_node,this->sensitivity_file      );
-	RW_element("MASS_SCAN_FILE"         ,path_node,this->mass_scan_file        );
-	RW_element("BKG_SORT_FILE"          ,path_node,this->bkg_sort_file         );
-	RW_element("SCENARIO_FILE"          ,path_node,this->scenario_file         );
+	RW_element("CUT_FILE"                  , path_node , this->cut_file                  ) ;
+	RW_element("VAR_FILE"                  , path_node , this->var_file                  ) ;
+
+
+	RW_element("PLOT_FILE"                 , path_node , this->plot_file                 ) ;
+	RW_element("MVA_FILE"                  , path_node , this->MVA_file                  ) ;
+	RW_element("DEBUG_FILE"                , path_node , this->debug_file                ) ;
+	RW_element("ANALYSIS_FILE"             , path_node , this->analyse_file              ) ;
+	RW_element("SENSITIVITY_FILE"          , path_node , this->sensitivity_file          ) ;
+	RW_element("SCENARIO_FILE"             , path_node , this->scenario_file             ) ;
+	RW_element("SIGNAL_PROPERTY_SCAN_FILE" , path_node , this->signal_property_scan_file ) ;
 
 
 	if(this->input_folder != "NULL" || this->input_folder != ""){
-		this->debug_file = this->input_folder+"/"+this->debug_file;
-		this->analyse_file     = this->input_folder+"/"+this->analyse_file     ;
-		this->flow_file        = this->input_folder+"/"+this->flow_file        ;
-		this->plot_file        = this->input_folder+"/"+this->plot_file        ;
-		this->MVA_file         = this->input_folder+"/"+this->MVA_file         ;
-		this->input_file       = this->input_folder+"/"+this->input_file       ;
-		this->cut_file         = this->input_folder+"/"+this->cut_file         ;
-		this->var_file         = this->input_folder+"/"+this->var_file         ;
-		this->sensitivity_file = this->input_folder+"/"+this->sensitivity_file ;
-		this->mass_scan_file   = this->input_folder+"/"+this->mass_scan_file   ;
-		this->bkg_sort_file    = this->input_folder+"/"+this->bkg_sort_file    ;
-		this->scenario_file    = this->input_folder+"/"+this->scenario_file    ;
+		this->debug_file                = this->input_folder+"/"+this->debug_file;
+		this->analyse_file              = this->input_folder+"/"+this->analyse_file     ;
+		this->flow_file                 = this->input_folder+"/"+this->flow_file        ;
+		this->plot_file                 = this->input_folder+"/"+this->plot_file        ;
+		this->MVA_file                  = this->input_folder+"/"+this->MVA_file         ;
+		this->input_file                = this->input_folder+"/"+this->input_file       ;
+		this->cut_file                  = this->input_folder+"/"+this->cut_file         ;
+		this->var_file                  = this->input_folder+"/"+this->var_file         ;
+		this->sensitivity_file          = this->input_folder+"/"+this->sensitivity_file ;
+		this->signal_property_scan_file = this->input_folder+"/"+this->signal_property_scan_file;
+		this->bkg_sort_file             = this->input_folder+"/"+this->bkg_sort_file    ;
+		this->scenario_file             = this->input_folder+"/"+this->scenario_file    ;
 	}
+	ShowMessage(1);
 }
 

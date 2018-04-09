@@ -55,5 +55,6 @@ All operation can be done by only change the input config file.
 - 2018/04/04: v0.05
     - support double and integer input.
 - 2018/04/08: v0.06
+    - further generallize more setting options.
     - put many setting (e.g. MVA, plot ...) into config file.
     - split more branch for development.

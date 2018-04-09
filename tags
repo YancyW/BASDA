@@ -67,7 +67,6 @@ Analyse_MVA_Attach	Analyse/Analyse_MVA_Attach.cpp	/^void Analyse_MVA_Attach(CDra
 Analyse_MVA_Attach_Pre	Analyse/Analyse_MVA_Attach.cpp	/^void Analyse_MVA_Attach_Pre(CDraw &para){$/;"	f
 Analyse_MVA_Train	Analyse/Analyse_MVA_Train.cpp	/^void Analyse_MVA_Train(CDraw &para, AFile &file_name){$/;"	f
 Analyse_MVA_Train_Pre	Analyse/Analyse_MVA_Train.cpp	/^void Analyse_MVA_Train_Pre(CDraw &para){$/;"	f
-Analyse_Mass_Scan_Pre	Analyse/Analyse_Mass_Scan.cpp	/^void Analyse_Mass_Scan_Pre(CDraw &para){$/;"	f
 Analyse_Multi_File	AnalyseClass/AnalyseClass.h	/^		Analyse_Multi_File(CDraw &para, AFile &file_name){$/;"	f	class:Analyse_Multi_File
 Analyse_Multi_File	AnalyseClass/AnalyseClass.h	/^class Analyse_Multi_File : public APlot{$/;"	c
 Analyse_Pre_Cut	Analyse/Analyse_Pre_Cut.cpp	/^void Analyse_Pre_Cut(CDraw &para){$/;"	f
@@ -75,6 +74,7 @@ Analyse_Pre_Cut_Content	Analyse/Analyse_Pre_Cut.cpp	/^void Analyse_Pre_Cut_Conte
 Analyse_Sensitivity	Analyse/Analyse_Sensitivity.cpp	/^void Analyse_Sensitivity(CDraw &para, APlot &plot, std::string output_file_name, std::string output_folder){$/;"	f
 Analyse_Sensitivity_Complete	Analyse/Analyse_Sensitivity.cpp	/^void Analyse_Sensitivity_Complete(CDraw &para){$/;"	f
 Analyse_Sensitivity_Pre	Analyse/Analyse_Sensitivity.cpp	/^void Analyse_Sensitivity_Pre(CDraw &para){$/;"	f
+Analyse_Signal_Scan_Pre	Analyse/Analyse_Mass_Scan.cpp	/^void Analyse_Signal_Scan_Pre(CDraw &para){$/;"	f
 Analyse_Single_File	AnalyseClass/AnalyseClass.cpp	/^Analyse_Single_File::Analyse_Single_File(){$/;"	f	class:Analyse_Single_File
 Analyse_Single_File	AnalyseClass/AnalyseClass.h	/^class Analyse_Single_File{$/;"	c
 Analyse_Summarize_Plot	Analyse/Analyse_Summarize_Plot.cpp	/^void Analyse_Summarize_Plot(CDraw &para, std::vector<std::string> &sig_name, AFile& file_name){$/;"	f
@@ -103,8 +103,8 @@ CFile	Class/File.h	/^class CFile{$/;"	c
 CFlow	Class/Flow.h	/^class CFlow{$/;"	c
 CLASS_DRAW	Class/DrawClass.h	3;"	d
 CMVA	Class/MVA.h	/^class CMVA{$/;"	c
+CMVA_Basic	Class/MVA.h	/^class CMVA_Basic{$/;"	c
 CMVA_H	Class/MVA.h	3;"	d
-CMass_Scan	Class/Mass_Scan.h	/^class CMass_Scan{$/;"	c
 CPPUTILS_HAS_MEMBER_H	Function/Fclass.h	37;"	d
 CPath	Class/Path.h	/^class CPath{$/;"	c
 CPlot	Class/Plot.h	/^class CPlot{$/;"	c
@@ -113,6 +113,7 @@ CScenario	Class/Scenario.h	/^class CScenario{$/;"	c
 CScenario_Basic	Class/Scenario.h	/^	CScenario_Basic(){$/;"	f	class:CScenario_Basic
 CScenario_Basic	Class/Scenario.h	/^class CScenario_Basic{$/;"	c
 CSensitivity	Class/Sensitivity.h	/^class CSensitivity{$/;"	c
+CSignal_Property_Scan	Class/Signal_Properties_Scan.h	/^class CSignal_Property_Scan{$/;"	c
 CTime	Class/Time.h	/^class CTime{$/;"	c
 CUT_file	AnalyseClass/File.h	/^		std::string                 CUT_file  ;$/;"	m	class:AFile_Name
 CUT_num	Class/Cut.h	/^		Int_t              CUT_num;$/;"	m	class:CCut
@@ -132,6 +133,7 @@ Clear	Class/Judge.h	/^		void Clear(){_Exist=false;}$/;"	f	class:AJudge
 ClearResults	TSysLimit/TSysLimit.cpp	/^void TSysLimit::ClearResults(Int_t nTotal) {$/;"	f	class:TSysLimit
 Copy	AnalyseClass/Variable.cpp	/^void Avariable::Copy(Avariable var){$/;"	f	class:Avariable
 CountNumber	Function/Fbasic.cpp	/^void CountNumber(Int_t variable, Int_t tot_num, Int_t slot,std::string  Message){$/;"	f
+Cplot_drawing	Class/Plot.h	/^class Cplot_drawing{$/;"	c
 Cplot_setting	Class/Plot.h	/^class Cplot_setting{$/;"	c
 Create_File_Folder	Function/Ffile.cpp	/^void Create_File_Folder(std::string file_name){$/;"	f
 Create_Folder	Class/Path.cpp	/^void CPath::Create_Folder(){$/;"	f	class:CPath
@@ -186,6 +188,7 @@ Finalize	TSysLimit/TSysLimitResult.cpp	/^void TSysLimitResult::Finalize(void) {$
 Finalize	TSysLimit/TSysLimitResult.cpp	/^void TToyDistribution::Finalize(void) {$/;"	f	class:TToyDistribution
 Find_Class	Class/BKG_Sort.h	/^		std::vector<std::pair<std::string, int> > Find_Class(std::string str){$/;"	f	class:CBKG_Sort
 Find_Str	Function/FString.cpp	/^bool Find_Str(std::string str1, std::string str2){$/;"	f
+Find_Str_in_Filename	Function/FString.cpp	/^std::vector<std::string> Find_Str_in_Filename(std::string str){$/;"	f
 Find_Sub_Class	Class/BKG_Sort.h	/^		std::pair<std::string, int> Find_Sub_Class(std::string str){$/;"	f	class:CBKG_Sort_basic
 Float_to_String	Function/Fbasic.cpp	/^std::string Float_to_String(float i){$/;"	f
 Fram	Fram/Fram.cpp	/^void Fram(CDraw &para)$/;"	f
@@ -195,11 +198,11 @@ GLOBAL_PARA_CUT_H	Class/Cut.h	3;"	d
 GLOBAL_PARA_DEBUG	Class/debug.h	3;"	d
 GLOBAL_PARA_FILE	Class/File.h	3;"	d
 GLOBAL_PARA_FLOW	Class/Flow.h	3;"	d
-GLOBAL_PARA_MASS_SCAN_H	Class/Mass_Scan.h	3;"	d
 GLOBAL_PARA_PATH	Class/Path.h	3;"	d
 GLOBAL_PARA_PLOT_H	Class/Plot.h	3;"	d
 GLOBAL_PARA_SCENARIO_H	Class/Scenario.h	3;"	d
 GLOBAL_PARA_SENSITIVITY_H	Class/Sensitivity.h	3;"	d
+GLOBAL_PARA_SIGNAL_PROPERTY_SCAN_H	Class/Signal_Properties_Scan.h	3;"	d
 GLOBAL_PARA_TIME_H	Class/Time.h	3;"	d
 GenerateFakeData	TSysLimit/TSysLimit.h	/^		void GenerateFakeData(void) { fGenerateFakeData=kTRUE; }$/;"	f	class:TSysLimit
 GetAvgX	TSysLimit/TSysLimitResult.cpp	/^Double_t TToyDistribution::GetAvgX(void) const {$/;"	f	class:TToyDistribution
@@ -295,17 +298,18 @@ Is_Maximum	AnalyseClass/Variable.h	/^		bool Is_Maximum(int val){$/;"	f	class:Ava
 Is_Minimum	AnalyseClass/Variable.h	/^		bool Is_Minimum(double val){$/;"	f	class:Avariable
 Is_Minimum	AnalyseClass/Variable.h	/^		bool Is_Minimum(float val){$/;"	f	class:Avariable
 Is_Minimum	AnalyseClass/Variable.h	/^		bool Is_Minimum(int val){$/;"	f	class:Avariable
-Jbkg_sort	Class/DrawClass.h	/^		Bool_t             Jbkg_sort    ;$/;"	m	class:CDraw
-Jdebug	Class/DrawClass.h	/^		Bool_t             Jdebug       ;$/;"	m	class:CDraw
-Jevent	Class/DrawClass.h	/^		Bool_t             Jevent       ;$/;"	m	class:CDraw
-Jfile	Class/DrawClass.h	/^		Bool_t             Jfile        ;$/;"	m	class:CDraw
-Jflow	Class/DrawClass.h	/^		Bool_t             Jflow        ;$/;"	m	class:CDraw
-Jmass_scan	Class/DrawClass.h	/^		Bool_t             Jmass_scan   ;$/;"	m	class:CDraw
-Jpath	Class/DrawClass.h	/^		Bool_t             Jpath        ;$/;"	m	class:CDraw
-Jplot	Class/DrawClass.h	/^		Bool_t             Jplot        ;$/;"	m	class:CDraw
-Jscenario	Class/DrawClass.h	/^		Bool_t             Jscenario    ;$/;"	m	class:CDraw
-Jsen	Class/DrawClass.h	/^		Bool_t             Jsen         ;$/;"	m	class:CDraw
-Jvar	Class/DrawClass.h	/^		Bool_t             Jvar         ;$/;"	m	class:CDraw
+JMVA	Class/DrawClass.h	/^		Bool_t                       JMVA                ;$/;"	m	class:CDraw
+JSP_scan	Class/DrawClass.h	/^		Bool_t                       JSP_scan            ;$/;"	m	class:CDraw
+Jbkg_sort	Class/DrawClass.h	/^		Bool_t                       Jbkg_sort           ;$/;"	m	class:CDraw
+Jdebug	Class/DrawClass.h	/^		Bool_t                       Jdebug              ;$/;"	m	class:CDraw
+Jevent	Class/DrawClass.h	/^		Bool_t                       Jevent              ;$/;"	m	class:CDraw
+Jfile	Class/DrawClass.h	/^		Bool_t                       Jfile               ;$/;"	m	class:CDraw
+Jflow	Class/DrawClass.h	/^		Bool_t                       Jflow               ;$/;"	m	class:CDraw
+Jpath	Class/DrawClass.h	/^		Bool_t                       Jpath               ;$/;"	m	class:CDraw
+Jplot	Class/DrawClass.h	/^		Bool_t                       Jplot               ;$/;"	m	class:CDraw
+Jscenario	Class/DrawClass.h	/^		Bool_t                       Jscenario           ;$/;"	m	class:CDraw
+Jsen	Class/DrawClass.h	/^		Bool_t                       Jsen                ;$/;"	m	class:CDraw
+Jvar	Class/DrawClass.h	/^		Bool_t                       Jvar                ;$/;"	m	class:CDraw
 LIBS	makefile	/^LIBS =  -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui ${YAMLPath}\/libyaml-cpp.a $/;"	m
 LOGFILE	TSysLimit/TSysLimitScan.cpp	7;"	d	file:
 Last_Data_Num	AnalyseClass/File_List.h	/^		int Last_Data_Num(int i=0){$/;"	f	class:AFile_List
@@ -322,21 +326,35 @@ MAKE_COMPLETE_TABLE_H	Analyse/Make_Complete_Table.h	3;"	d
 MAKE_TABLE_H	Analyse/Make_Table.h	3;"	d
 MESSAGEFORMAT_H	Lib/MessageFormat.h	3;"	d
 MVA	AnalyseClass/Variable.h	/^		std::vector<Avariable> MVA;$/;"	m	class:AVariable
+MVA	Class/DrawClass.h	/^		CMVA                         MVA                 ;$/;"	m	class:CDraw
+MVA_Event_Setting	Class/MVA.h	/^		std::string MVA_Event_Setting    (){$/;"	f	class:CMVA
+MVA_Factory_Setting	Class/MVA.h	/^		std::string MVA_Factory_Setting  (){$/;"	f	class:CMVA
+MVA_Level	Class/MVA.h	/^		Int_t       MVA_Level            (){$/;"	f	class:CMVA
+MVA_Method_Setting	Class/MVA.h	/^		std::string MVA_Method_Setting   (){$/;"	f	class:CMVA
+MVA_Type	Class/MVA.h	/^		std::string MVA_Type             (){$/;"	f	class:CMVA
+MVA_Weight	Class/MVA.h	/^	    float       MVA_Weight           (){$/;"	f	class:CMVA
+MVA_event_setting	Class/MVA.h	/^		std::string             MVA_event_setting    ;$/;"	m	class:CMVA_Basic
+MVA_factory_setting	Class/MVA.h	/^		std::string             MVA_factory_setting  ;$/;"	m	class:CMVA_Basic
 MVA_file	AnalyseClass/File.h	/^		std::string             	MVA_file  ;$/;"	m	class:AFile_Name
+MVA_file	Class/Path.h	/^		std::string   MVA_file         ;$/;"	m	class:CPath
 MVA_level	Class/Flow.h	/^		Int_t                   MVA_level            ;$/;"	m	class:CFlow
-MVA_level	Class/MVA.h	/^		Int_t                   MVA_level            ;$/;"	m	class:CMVA
+MVA_level	Class/MVA.h	/^		Int_t                   MVA_level            ;$/;"	m	class:CMVA_Basic
+MVA_method	Class/Flow.h	/^		std::string             MVA_method           ;$/;"	m	class:CFlow
+MVA_method_setting	Class/MVA.h	/^		std::string             MVA_method_setting   ;$/;"	m	class:CMVA_Basic
 MVA_switch	AnalyseClass/Variable.h	/^		bool          MVA_switch ;$/;"	m	class:Avariable
 MVA_training	Class/Flow.h	/^		Bool_t                  MVA_training         ;$/;"	m	class:CFlow
-MVA_type	Class/MVA.h	/^		std::string             MVA_type             ;$/;"	m	class:CMVA
+MVA_type	Class/MVA.h	/^		std::string             MVA_type             ;$/;"	m	class:CMVA_Basic
 MVA_weight	Class/Flow.h	/^	    float                   MVA_weight           ;$/;"	m	class:CFlow
-MVA_weight	Class/MVA.h	/^	    float                   MVA_weight           ;$/;"	m	class:CMVA
+MVA_weight	Class/MVA.h	/^	    float                   MVA_weight           ;$/;"	m	class:CMVA_Basic
 Make_Complete_Table	Analyse/Make_Complete_Table.cpp	/^float Make_Complete_Table(CDraw &para, float lumi, std::vector<std::string> yaml_file,std::string out_file_name,bool IsRecord, std::vector<float>& final_cut){$/;"	f
 Make_Complete_Table_Pre	Analyse/Make_Complete_Table.cpp	/^void Make_Complete_Table_Pre(CDraw &para){$/;"	f
 Make_Table	Analyse/Make_Table.cpp	/^float Make_Table(CDraw &para, float lumi, std::vector<std::string> yaml_file,std::string out_file_name,bool IsRecord){$/;"	f
 Make_Table_Pre	Analyse/Make_Table.cpp	/^void Make_Table_Pre(CDraw &para){$/;"	f
+Maximum	AnalyseClass/Variable.h	/^		float Maximum(){$/;"	f	class:Avariable
 Message	Class/debug.h	/^			void Message(Int_t itlevel, Int_t itpos, std::string mess, TDebug ddata){$/;"	f	class:CDebug
 Message	Class/debug.h	/^			void Message(Int_t itlevel, Int_t itpos, std::string mess, TDebug1 ddata, TDebug2 ddata2){$/;"	f	class:CDebug
 Message	Class/debug.h	/^		void Message(Int_t itlevel, Int_t itpos,std::string mess){$/;"	f	class:CDebug
+Minimum	AnalyseClass/Variable.h	/^		float Minimum(){$/;"	f	class:Avariable
 Name	Class/BKG_Sort.h	/^		std::string Name(int ith){$/;"	f	class:CBKG_Sort_basic
 NameDescrip	Function/Fbasic.cpp	/^std::string NameDescrip(std::string class_name, std::string observable_name, int i){$/;"	f
 NameHistogram	Function/Fbasic.cpp	/^std::string NameHistogram(std::string signal_name, std::string class_name, std::string observable_name, int i){$/;"	f
@@ -417,16 +435,18 @@ RandomExperiment	TSysLimit/TSysLimit.cpp	/^void TSysLimit::RandomExperiment(cons
 RandomSysShifts	TSysLimit/TSysLimit.cpp	/^void TSysLimit::RandomSysShifts(void) {$/;"	f	class:TSysLimit
 Read	RWpara/RWDraw.cpp	/^void CDraw::Read(){$/;"	f	class:CDraw
 Read_BKG_Sort	RWpara/RWBKG_Sort.cpp	/^void CBKG_Sort:: Read_BKG_Sort(CPath &path){$/;"	f	class:CBKG_Sort
+Read_BKG_Sort_Test	RWpara/RWBKG_Sort.cpp	/^void CBKG_Sort:: Read_BKG_Sort_Test(CPath &path){$/;"	f	class:CBKG_Sort
 Read_Cut	RWpara/RWCut.cpp	/^void ACut:: Read_Cut(CPath &path){$/;"	f	class:ACut
 Read_Debug	RWpara/RWDebug.cpp	/^void CDebug::  Read_Debug(CPath path){$/;"	f	class:CDebug
 Read_Event	RWpara/RWEvent.cpp	/^void CEvent::  Read_Event(CPath path){$/;"	f	class:CEvent
 Read_File	RWpara/RWFile.cpp	/^void CFile::  Read_File(CPath path){$/;"	f	class:CFile
 Read_Flow	RWpara/RWFlow.cpp	/^void CFlow::   Read_Flow(CPath path){$/;"	f	class:CFlow
-Read_Mass_Scan	RWpara/RWMass_Scan.cpp	/^void CMass_Scan:: Read_Mass_Scan(CPath &path){$/;"	f	class:CMass_Scan
+Read_MVA	RWpara/RWMVA.cpp	/^void CMVA:: Read_MVA(CPath &path, CFlow &flow){$/;"	f	class:CMVA
 Read_Path	RWpara/RWPath.cpp	/^void CPath::Read_Path(std::string steering_file){$/;"	f	class:CPath
 Read_Plot	RWpara/RWPlot.cpp	/^void CPlot::Read_Plot(CPath &path){$/;"	f	class:CPlot
 Read_Scenario	RWpara/RWScenario.cpp	/^void CScenario:: Read_Scenario(CPath &path, CFlow &flow){$/;"	f	class:CScenario
 Read_Sensitivity	RWpara/RWSensitivity.cpp	/^void CSensitivity:: Read_Sensitivity(CPath path){$/;"	f	class:CSensitivity
+Read_Signal_Properties_Scan	RWpara/RWSignal_Properties_Scan.cpp	/^void CSignal_Property_Scan::Read_Signal_Properties_Scan(CPath &path){$/;"	f	class:CSignal_Property_Scan
 Read_Var	RWpara/RWVar.cpp	/^void AVariable::Read_Var(CPath &path){$/;"	f	class:AVariable
 RecordMessage	Lib/MessageFormat.cpp	/^void RecordMessage(std::ofstream &file_name, int level){$/;"	f
 RecordMessage	Lib/MessageFormat.h	/^void RecordMessage(std::ofstream &file_name, int level, TMess1 mess){$/;"	f
@@ -529,8 +549,10 @@ UnpackHistogram	TSysLimit/TSysLimitChannel.cpp	/^TSysLimitChannel::UnpackHistogr
 Unpol_file	AnalyseClass/File.h	/^		std::string             	Unpol_file;$/;"	m	class:AFile_Name
 Use_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Single_File::Use_Cut(Avariable &var, float weight, Analyse_Figure &figure){$/;"	f	class:Analyse_Single_File
 Var_Num	AnalyseClass/AnalyseClass.cpp	/^int Analyse_Multi_File::Var_Num(){$/;"	f	class:Analyse_Multi_File
+Vec_Exist	Function/Fvector.cpp	/^bool Vec_Exist(std::vector<std::string>V1, std::string input){$/;"	f
 YAML	AnalyseClass/File_List.h	/^namespace YAML{$/;"	n
 YAML	AnalyseClass/Variable.h	/^namespace YAML{$/;"	n
+YAML	Class/MVA.h	/^namespace YAML{$/;"	n
 YAML	Class/Plot.h	/^namespace YAML{$/;"	n
 YAML	Class/Scenario.h	/^namespace YAML{$/;"	n
 YAMLPath	makefile	/^YAMLPath=\/home\/yancy\/Software\/lib\/yaml-cpp\/$/;"	m
@@ -604,7 +626,7 @@ analyse_file	Class/Path.h	/^		std::string   analyse_file     ;$/;"	m	class:CPath
 basic_file	AnalyseClass/File.h	/^		std::vector<std::string>	basic_file;$/;"	m	class:AFile_Name
 begin_object	Class/Flow.h	/^		std::string             begin_object         ;$/;"	m	class:CFlow
 bjetSwitch	AnalyseClass/Counter.h	/^		bool bjetSwitch   ;$/;"	m	class:ACounter
-bkg_sort	Class/DrawClass.h	/^		CBKG_Sort          bkg_sort     ;$/;"	m	class:CDraw
+bkg_sort	Class/DrawClass.h	/^		CBKG_Sort                    bkg_sort            ;$/;"	m	class:CDraw
 bkg_sort_file	Class/Path.h	/^		std::string   bkg_sort_file    ;$/;"	m	class:CPath
 boostSwitch	AnalyseClass/Counter.h	/^		bool boostSwitch  ;$/;"	m	class:ACounter
 c	AnalyseClass/Variable.h	/^		TCanvas*      c          ;$/;"	m	class:Avariable
@@ -614,11 +636,14 @@ c_width	AnalyseClass/Variable.h	/^		float         c_width    ;$/;"	m	class:Avari
 calTotNum	AnalyseClass/File_List.h	/^		void calTotNum(float elec_pol, float posi_pol){$/;"	f	class:PolNum
 change_name	AnalyseClass/File.cpp	/^std::string change_name(std::string arg_string){$/;"	f
 channel_num	Class/File.h	/^		Int_t                    channel_num            ;$/;"	m	class:CFile
+class_plot	Class/Plot.h	/^		std::vector<std::string> class_plot;$/;"	m	class:Cplot_drawing
 combSwitch	AnalyseClass/Counter.h	/^		bool combSwitch   ;$/;"	m	class:ACounter
 combine_plot	Class/Path.h	/^		std::string   combine_plot     ;$/;"	m	class:CPath
 convert	AnalyseClass/File_List.h	/^		struct convert<AFile_Data>{$/;"	s	namespace:YAML
 convert	AnalyseClass/Variable.h	/^		struct convert<Avariable>{$/;"	s	namespace:YAML
 convert	AnalyseClass/Variable.h	/^		struct convert<Avariable_vec>{$/;"	s	namespace:YAML
+convert	Class/MVA.h	/^		struct convert<CMVA_Basic>{$/;"	s	namespace:YAML
+convert	Class/Plot.h	/^		struct convert<Cplot_drawing>{$/;"	s	namespace:YAML
 convert	Class/Plot.h	/^		struct convert<Cplot_setting>{$/;"	s	namespace:YAML
 convert	Class/Scenario.h	/^		struct convert<CScenario_Basic>{$/;"	s	namespace:YAML
 cut	AnalyseClass/Cut.h	/^		std::vector<int> cut;$/;"	m	class:ACut
@@ -642,31 +667,36 @@ cut_num	AnalyseClass/Cut.h	/^		int cut_num;$/;"	m	class:ACut
 cut_switch	AnalyseClass/Variable.h	/^		bool          cut_switch ;$/;"	m	class:Avariable
 data	AnalyseClass/File_List.h	/^		std::vector< std::pair<std::string,float> > data;$/;"	m	class:AFile_Data
 dataset_MVA	AnalyseClass/File.h	/^		std::string              dataset_MVA   ;$/;"	m	class:AFile
-debug	Class/DrawClass.h	/^		CDebug             debug        ;$/;"	m	class:CDraw
+debug	Class/DrawClass.h	/^		CDebug                       debug               ;$/;"	m	class:CDraw
 debug	Class/debug.h	/^		std::vector<Bool_t> debug;$/;"	m	class:CDebug
 debug_file	Class/Path.h	/^		std::string   debug_file       ;$/;"	m	class:CPath
 decode	AnalyseClass/File_List.h	/^			static bool decode(const Node& node, AFile_Data& fnum){ $/;"	f	struct:YAML::convert
 decode	AnalyseClass/Variable.h	/^			static bool decode(const Node& node, Avariable& var){ $/;"	f	struct:YAML::convert
 decode	AnalyseClass/Variable.h	/^			static bool decode(const Node& node, Avariable_vec& vec){ $/;"	f	struct:YAML::convert
+decode	Class/MVA.h	/^			static bool decode(const Node& node, CMVA_Basic& mva){ $/;"	f	struct:YAML::convert
+decode	Class/Plot.h	/^			static bool decode(const Node& node, Cplot_drawing& plot){ $/;"	f	struct:YAML::convert
 decode	Class/Plot.h	/^			static bool decode(const Node& node, Cplot_setting& plot){ $/;"	f	struct:YAML::convert
 decode	Class/Scenario.h	/^			static bool decode(const Node& node, CScenario_Basic& sce){ $/;"	f	struct:YAML::convert
-default_bkg_sort	Class/DrawClass.h	/^		CBKG_Sort          default_bkg_sort;$/;"	m	class:CDraw
-default_event	Class/DrawClass.h	/^		CEvent             default_event;$/;"	m	class:CDraw
-default_file	Class/DrawClass.h	/^		CFile              default_file ;$/;"	m	class:CDraw
-default_flow	Class/DrawClass.h	/^		CFlow              default_flow ;$/;"	m	class:CDraw
-default_mass_scan	Class/DrawClass.h	/^		CMass_Scan         default_mass_scan;$/;"	m	class:CDraw
-default_path	Class/DrawClass.h	/^		CPath              default_path ;$/;"	m	class:CDraw
-default_plot	Class/DrawClass.h	/^		CPlot              default_plot ;$/;"	m	class:CDraw
-default_scenario	Class/DrawClass.h	/^		CScenario          default_scenario;$/;"	m	class:CDraw
+default_MVA	Class/DrawClass.h	/^		CMVA                         default_MVA         ;$/;"	m	class:CDraw
+default_bkg_sort	Class/DrawClass.h	/^		CBKG_Sort                    default_bkg_sort    ;$/;"	m	class:CDraw
+default_event	Class/DrawClass.h	/^		CEvent                       default_event       ;$/;"	m	class:CDraw
+default_file	Class/DrawClass.h	/^		CFile                        default_file        ;$/;"	m	class:CDraw
+default_flow	Class/DrawClass.h	/^		CFlow                        default_flow        ;$/;"	m	class:CDraw
+default_mva	Class/MVA.h	/^		CMVA_Basic              default_mva;$/;"	m	class:CMVA
+default_path	Class/DrawClass.h	/^		CPath                        default_path        ;$/;"	m	class:CDraw
+default_plot	Class/DrawClass.h	/^		CPlot                        default_plot        ;$/;"	m	class:CDraw
+default_scenario	Class/DrawClass.h	/^		CScenario                    default_scenario    ;$/;"	m	class:CDraw
 default_scenario	Class/Scenario.h	/^		CScenario_Basic         default_scenario;$/;"	m	class:CScenario
-default_sensitivity	Class/DrawClass.h	/^		CSensitivity       default_sensitivity;$/;"	m	class:CDraw
-default_var	Class/DrawClass.h	/^		AVariable          default_var  ;$/;"	m	class:CDraw
+default_sensitivity	Class/DrawClass.h	/^		CSensitivity                 default_sensitivity ;$/;"	m	class:CDraw
+default_signal_scan	Class/DrawClass.h	/^		CSignal_Property_Scan        default_signal_scan ;$/;"	m	class:CDraw
+default_var	Class/DrawClass.h	/^		AVariable                    default_var         ;$/;"	m	class:CDraw
+drawing	Class/Plot.h	/^		Cplot_drawing  drawing;$/;"	m	class:CPlot
 elecSwitch	AnalyseClass/Counter.h	/^		bool elecSwitch   ;$/;"	m	class:ACounter
 elec_pol	Class/Scenario.h	/^		float                   elec_pol;$/;"	m	class:CScenario
 energy	Class/Scenario.h	/^	float                   energy;$/;"	m	class:CScenario_Basic
 event	AnalyseClass/AnalyseClass.h	/^		long int    event           ;$/;"	m	class:Analyse_Figure
 event	AnalyseClass/File_List.h	/^		std::vector< std::pair<std::string,float> > event;$/;"	m	class:AFile_Data
-event	Class/DrawClass.h	/^		CEvent             event        ;$/;"	m	class:CDraw
+event	Class/DrawClass.h	/^		CEvent                       event               ;$/;"	m	class:CDraw
 event_file	Class/Path.h	/^		std::string   event_file       ;$/;"	m	class:CPath
 event_num	Class/Event.h	/^		long long int    event_num    ;$/;"	m	class:CEvent
 fB	TSysLimit/TSysLimit.h	/^		TVectorD fB,fSB;$/;"	m	class:TSysLimit
@@ -725,11 +755,11 @@ fXsb	TSysLimit/TSysLimitResult.h	/^		TToyDistribution *fXb,*fXsb;$/;"	m	class:TS
 fXtoP	TSysLimit/TSysLimitResult.h	/^		std::map<Double_t,Double_t> fXtoP,fPtoX;$/;"	m	class:TToyDistribution
 figure	AnalyseClass/AnalyseClass.h	/^		std::vector<Analyse_Figure>  figure ; $/;"	m	class:Analyse_Single_File
 file	AnalyseClass/AnalyseClass.h	/^		std::vector<Analyse_Single_File>       file             ;$/;"	m	class:Analyse_Multi_File
-file	Class/DrawClass.h	/^		CFile              file         ;$/;"	m	class:CDraw
+file	Class/DrawClass.h	/^		CFile                        file                ;$/;"	m	class:CDraw
 file	Class/File.h	/^		std::vector<std::string> file                   ;$/;"	m	class:CFile
 file_descrip	Class/File.h	/^		std::vector<std::string> file_descrip           ;$/;"	m	class:CFile
 file_num	Class/File.h	/^		Int_t                    file_num               ;$/;"	m	class:CFile
-flow	Class/DrawClass.h	/^		CFlow              flow         ;$/;"	m	class:CDraw
+flow	Class/DrawClass.h	/^		CFlow                        flow                ;$/;"	m	class:CDraw
 flow_file	Class/Path.h	/^		std::string   flow_file        ;$/;"	m	class:CPath
 folder	AnalyseClass/File.h	/^		std::vector<std::string> folder      ;$/;"	m	class:AFile
 getCounter	AnalyseClass/Counter.cpp	/^void ACounter::getCounter(std::string event_name){$/;"	f	class:ACounter
@@ -745,6 +775,7 @@ in_weight_d	AnalyseClass/AnalyseClass.h	/^		double                       in_weig
 in_weight_i	AnalyseClass/AnalyseClass.h	/^		int                          in_weight_i ; $/;"	m	class:Analyse_Single_File
 input	AnalyseClass/File.h	/^		std::vector<AFile_Name>  input       ;$/;"	m	class:AFile
 input_file	Class/Path.h	/^		std::string   input_file       ;$/;"	m	class:CPath
+input_folder	Class/Path.h	/^		std::string   input_folder     ;$/;"	m	class:CPath
 jepSwitch	AnalyseClass/Counter.h	/^		bool jepSwitch    ;$/;"	m	class:ACounter
 jesSwitch	AnalyseClass/Counter.h	/^		bool jesSwitch    ;$/;"	m	class:ACounter
 jetSwitch	AnalyseClass/Counter.h	/^		bool jetSwitch    ;$/;"	m	class:ACounter
@@ -760,6 +791,7 @@ kErrorBinning	TSysLimit/TSysLimitChannel.h	/^			kErrorBinning=1, \/\/ inconsiste
 kErrorContent	TSysLimit/TSysLimitChannel.h	/^			kErrorContent=2, \/\/ invalid histogram content (e.g. bgr<0)$/;"	e	enum:TSysLimitChannel::TSysLimitChannelError
 kErrorName	TSysLimit/TSysLimitChannel.h	/^			kErrorName=3     \/\/ duplicate error name$/;"	e	enum:TSysLimitChannel::TSysLimitChannelError
 kErrorNone	TSysLimit/TSysLimitChannel.h	/^			kErrorNone=0,$/;"	e	enum:TSysLimitChannel::TSysLimitChannelError
+label_2d	AnalyseClass/Variable.h	/^		std::vector<int> label_2d;$/;"	m	class:Avariable
 latex	AnalyseClass/File.h	/^		std::string                 latex     ;$/;"	m	class:AFile_Name
 latex_name	AnalyseClass/Variable.h	/^		std::string   latex_name ;$/;"	m	class:Avariable
 leg	AnalyseClass/Variable.h	/^		TLegend*      leg        ;$/;"	m	class:Avariable
@@ -778,10 +810,6 @@ log_min	AnalyseClass/Variable.h	/^		float         log_min    ;$/;"	m	class:Avari
 log_switch	AnalyseClass/Variable.h	/^		bool          log_switch ;$/;"	m	class:Avariable
 lumi	Class/Scenario.h	/^	float                   lumi;$/;"	m	class:CScenario_Basic
 main	BASDA.cpp	/^int main(int argc, char*argv[]) {$/;"	f
-mass	Class/Mass_Scan.h	/^		std::vector<float> mass;$/;"	m	class:CMass_Scan
-mass_num	Class/Mass_Scan.h	/^		Int_t              mass_num;$/;"	m	class:CMass_Scan
-mass_scan	Class/DrawClass.h	/^		CMass_Scan         mass_scan    ;$/;"	m	class:CDraw
-mass_scan_file	Class/Path.h	/^		std::string   mass_scan_file   ;$/;"	m	class:CPath
 max	Class/Cut.h	/^		std::vector<float> max;$/;"	m	class:CCut
 maximum	AnalyseClass/Variable.h	/^		float         maximum;$/;"	m	class:Avariable
 maximum_d	AnalyseClass/Variable.h	/^		double        maximum_d;$/;"	m	class:Avariable
@@ -794,6 +822,7 @@ minimum_d	AnalyseClass/Variable.h	/^		double        minimum_d;$/;"	m	class:Avari
 minimum_i	AnalyseClass/Variable.h	/^		int           minimum_i;$/;"	m	class:Avariable
 mode	Class/debug.h	/^		Bool_t   mode;$/;"	m	class:CDebug
 muonSwitch	AnalyseClass/Counter.h	/^		bool muonSwitch   ;$/;"	m	class:ACounter
+mva	Class/MVA.h	/^		std::vector<CMVA_Basic> mva;$/;"	m	class:CMVA
 name	AnalyseClass/File.h	/^		std::string                 name      ;$/;"	m	class:AFile_Name
 name	Class/Scenario.h	/^	std::string             name;$/;"	m	class:CScenario_Basic
 newTH1F	Lib/PlotSetting.cpp	/^TH1F * newTH1F(std::string name, Double_t binw, Double_t LowBin, Double_t HighBin, Bool_t MevTitle, Int_t iMode){$/;"	f
@@ -813,6 +842,7 @@ operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ost
 operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ostr, std::vector<double> flo){$/;"	f
 operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ostr, std::vector<float> flo){$/;"	f
 operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ostr, std::vector<int> flo){$/;"	f
+operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ostr, std::vector<std::string> str){$/;"	f
 output	AnalyseClass/File.h	/^		std::vector<AFile_Name>  output      ;$/;"	m	class:AFile
 output_MVA	AnalyseClass/File.h	/^		std::string              output_MVA    ;$/;"	m	class:AFile
 output_file	Class/Path.h	/^		std::string   output_file      ;$/;"	m	class:CPath
@@ -842,8 +872,8 @@ pass_nsubjettiness	AnalyseClass/Counter.h	/^		int pass_boosttag     , pass_massd
 pass_recoilmass	AnalyseClass/Counter.h	/^		int pass_remass1      ,pass_remass2   ,pass_recoilmass;$/;"	m	class:ACounter
 pass_remass1	AnalyseClass/Counter.h	/^		int pass_remass1      ,pass_remass2   ,pass_recoilmass;$/;"	m	class:ACounter
 pass_remass2	AnalyseClass/Counter.h	/^		int pass_remass1      ,pass_remass2   ,pass_recoilmass;$/;"	m	class:ACounter
-path	Class/DrawClass.h	/^		CPath              path         ;$/;"	m	class:CDraw
-plot	Class/DrawClass.h	/^		CPlot              plot         ;$/;"	m	class:CDraw
+path	Class/DrawClass.h	/^		CPath                        path                ;$/;"	m	class:CDraw
+plot	Class/DrawClass.h	/^		CPlot                        plot                ;$/;"	m	class:CDraw
 plot	Class/Flow.h	/^		Bool_t                  plot                 ;$/;"	m	class:CFlow
 plot_CUT	AnalyseClass/File.h	/^		std::string              plot_CUT      ;$/;"	m	class:AFile
 plot_file	Class/Path.h	/^		std::string   plot_file        ;$/;"	m	class:CPath
@@ -854,6 +884,8 @@ posi_pol	Class/Scenario.h	/^		float                   posi_pol;$/;"	m	class:CSce
 pre_cut	AnalyseClass/Cut.h	/^		std::vector<int> pre_cut;$/;"	m	class:ACut
 pre_cut_num	AnalyseClass/Cut.h	/^		int pre_cut_num;$/;"	m	class:ACut
 process	Class/Path.h	/^		std::string   process          ;$/;"	m	class:CPath
+properties	Class/Signal_Properties_Scan.h	/^		std::vector<std::string> properties;$/;"	m	class:CSignal_Property_Scan
+property_num	Class/Signal_Properties_Scan.h	/^		Int_t              property_num;$/;"	m	class:CSignal_Property_Scan
 recoilSwitch	AnalyseClass/Counter.h	/^		bool recoilSwitch ;$/;"	m	class:ACounter
 recombSwitch	AnalyseClass/Counter.h	/^		bool recombSwitch ;$/;"	m	class:ACounter
 record_event	Class/Flow.h	/^		Bool_t                  record_event         ;$/;"	m	class:CFlow
@@ -863,13 +895,13 @@ reweight_table	AnalyseClass/File.h	/^		std::string              reweight_table;$
 root_head_MVA_name	Class/File.h	/^		std::string              root_head_MVA_name     ;$/;"	m	class:CFile
 root_head_name	Class/File.h	/^		std::string              root_head_name         ;$/;"	m	class:CFile
 run_ratio	Class/Scenario.h	/^	std::vector<float>      run_ratio;$/;"	m	class:CScenario_Basic
-scenario	Class/DrawClass.h	/^		CScenario          scenario     ;$/;"	m	class:CDraw
+scenario	Class/DrawClass.h	/^		CScenario                    scenario            ;$/;"	m	class:CDraw
 scenario	Class/Scenario.h	/^		std::vector<CScenario_Basic> scenario;$/;"	m	class:CScenario
 scenario_file	Class/Path.h	/^		std::string   scenario_file    ;$/;"	m	class:CPath
 sendCounter	AnalyseClass/Counter.cpp	/^void ACounter::sendCounter(){$/;"	f	class:ACounter
 sendCounter	AnalyseClass/Counter.cpp	/^void ACounter::sendCounter(std::string event_name){$/;"	f	class:ACounter
 sensitivity	AnalyseClass/File.h	/^		std::string              sensitivity   ;$/;"	m	class:AFile
-sensitivity	Class/DrawClass.h	/^		CSensitivity       sensitivity  ;$/;"	m	class:CDraw
+sensitivity	Class/DrawClass.h	/^		CSensitivity                 sensitivity         ;$/;"	m	class:CDraw
 sensitivity_file	Class/Path.h	/^		std::string   sensitivity_file ;$/;"	m	class:CPath
 setCounter	AnalyseClass/Counter.cpp	/^void ACounter::setCounter(ASpecies& spe){$/;"	f	class:ACounter
 setCounterSingle	AnalyseClass/Counter.cpp	/^void ACounter::setCounterSingle(std::string event_name,float num){$/;"	f	class:ACounter
@@ -884,12 +916,15 @@ sig_scale_factor	Class/Sensitivity.h	/^		double sig_scale_factor;$/;"	m	class:CS
 sig_scale_pow	Class/Sensitivity.h	/^		double sig_scale_pow;$/;"	m	class:CSensitivity
 sig_scale_switch	Class/Sensitivity.h	/^		bool   sig_scale_switch;$/;"	m	class:CSensitivity
 signal_property	Class/Flow.h	/^		std::string             signal_property      ;$/;"	m	class:CFlow
+signal_property_scan_file	Class/Path.h	/^		std::string   signal_property_scan_file;$/;"	m	class:CPath
+signal_scan	Class/DrawClass.h	/^		CSignal_Property_Scan        signal_scan         ;$/;"	m	class:CDraw
 significance	AnalyseClass/File.h	/^		std::string              significance  ;$/;"	m	class:AFile
 single_plot	Class/Path.h	/^		std::string   single_plot      ;$/;"	m	class:CPath
+single_plot	Class/Plot.h	/^		std::vector<std::string> single_plot;$/;"	m	class:Cplot_drawing
 sort	AnalyseClass/AnalyseClass.h	/^		std::vector< std::pair<std::string,std::vector<Analyse_Single_File > > > sort;$/;"	m	class:Analyse_Multi_File
 sort	Class/BKG_Sort.h	/^		std::vector<CBKG_Sort_basic> sort;$/;"	m	class:CBKG_Sort
-steering_file	Class/DrawClass.h	/^		std::string      steering_file;$/;"	m	class:CDraw
-time	Class/DrawClass.h	/^		CTime              time         ;$/;"	m	class:CDraw
+steering_file	Class/DrawClass.h	/^		std::string                  steering_file       ;$/;"	m	class:CDraw
+time	Class/DrawClass.h	/^		CTime                        time                ;$/;"	m	class:CDraw
 title_name	AnalyseClass/Variable.h	/^		std::string   title_name ;$/;"	m	class:Avariable
 title_name	AnalyseClass/Variable.h	/^		std::string   title_name ;$/;"	m	class:Avariable_vec
 tot_Num	AnalyseClass/File_List.h	/^		Pair_File tot_Num;$/;"	m	class:PolNum
@@ -897,7 +932,7 @@ total_num	Class/Event.h	/^		long long int    total_num    ;$/;"	m	class:CEvent
 txtN	Lib/PlotSetting.cpp	/^void txtN(Double_t x0, Double_t y0, TH1 *h, std::string sName, Double_t sizeTxt){$/;"	f
 var	AnalyseClass/AnalyseClass.h	/^		AVariable                              var              ;$/;"	m	class:Analyse_Multi_File
 var	AnalyseClass/Variable.h	/^		std::vector<Avariable> var;$/;"	m	class:AVariable
-var	Class/DrawClass.h	/^		AVariable          var          ;$/;"	m	class:CDraw
+var	Class/DrawClass.h	/^		AVariable                    var                 ;$/;"	m	class:CDraw
 var_file	Class/Path.h	/^		std::string   var_file         ;$/;"	m	class:CPath
 var_ptr	AnalyseClass/Variable.h	/^		std::vector<float>        *var_ptr    ;$/;"	m	class:Avariable_vec
 variable	AnalyseClass/Variable.h	/^		float         variable     ;$/;"	m	class:Avariable

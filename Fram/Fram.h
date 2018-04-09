@@ -9,7 +9,7 @@
 #include "Analyse/Analyse_MVA_Train.h"
 #include "Analyse/Analyse_MVA_Attach.h"
 #include "Analyse/Analyse_Sensitivity.h"
-#include "Analyse/Analyse_Mass_Scan.h"
+#include "Analyse/Analyse_Signal_Scan.h"
 #include "Analyse/Analyse_Summarize_Plot.h"
 #include "Analyse/Analyse_Complete.h"
 #include "Analyse/Make_Complete_Table.h"

@@ -17,7 +17,7 @@
 #include "Class/debug.h"
 #include "Class/Event.h"
 #include "Class/Sensitivity.h"
-#include "Class/Mass_Scan.h"
+#include "Class/Signal_Properties_Scan.h"
 #include "Class/BKG_Sort.h"
 #include "Class/Scenario.h"
 #include "Class/Plot.h"
@@ -30,57 +30,57 @@
 
 class CDraw{
 	public:
-		std::string      steering_file;
+		std::string                  steering_file       ;
 
-		Bool_t             Jpath        ;
-		Bool_t             Jfile        ;
-		Bool_t             Jdebug       ;
-		Bool_t             Jflow        ;
-		Bool_t             Jevent       ;
-		Bool_t             Jsen         ;
-		Bool_t             Jvar         ;
-		Bool_t             Jmass_scan   ;
-		Bool_t             Jbkg_sort    ;
-		Bool_t             Jscenario    ;
-		Bool_t             Jplot        ;
-		Bool_t             JMVA         ;
+		Bool_t                       Jpath               ;
+		Bool_t                       Jfile               ;
+		Bool_t                       Jdebug              ;
+		Bool_t                       Jflow               ;
+		Bool_t                       Jevent              ;
+		Bool_t                       Jsen                ;
+		Bool_t                       Jvar                ;
+		Bool_t                       JSP_scan            ;
+		Bool_t                       Jbkg_sort           ;
+		Bool_t                       Jscenario           ;
+		Bool_t                       Jplot               ;
+		Bool_t                       JMVA                ;
 
-		CPath              path         ;
-		CPath              default_path ;
+		CPath                        path                ;
+		CPath                        default_path        ;
 
-		CFile              file         ;
-		CFile              default_file ;
+		CFile                        file                ;
+		CFile                        default_file        ;
 
-		CDebug             debug        ;
+		CDebug                       debug               ;
 
-		CFlow              flow         ;
-		CFlow              default_flow ;
+		CFlow                        flow                ;
+		CFlow                        default_flow        ;
 
-		CEvent             event        ;
-		CEvent             default_event;
+		CEvent                       event               ;
+		CEvent                       default_event       ;
 
-		CSensitivity       sensitivity  ;
-		CSensitivity       default_sensitivity;
+		CSensitivity                 sensitivity         ;
+		CSensitivity                 default_sensitivity ;
 
-		AVariable          var          ;
-		AVariable          default_var  ;
+		AVariable                    var                 ;
+		AVariable                    default_var         ;
 
-		CMass_Scan         mass_scan    ;
-		CMass_Scan         default_mass_scan;
+		CSignal_Property_Scan        signal_scan         ;
+		CSignal_Property_Scan        default_signal_scan ;
 
-		CBKG_Sort          bkg_sort     ;
-		CBKG_Sort          default_bkg_sort;
+		CBKG_Sort                    bkg_sort            ;
+		CBKG_Sort                    default_bkg_sort    ;
 
-		CScenario          scenario     ;
-		CScenario          default_scenario;
+		CScenario                    scenario            ;
+		CScenario                    default_scenario    ;
 
-		CPlot              plot         ;
-		CPlot              default_plot ;
+		CPlot                        plot                ;
+		CPlot                        default_plot        ;
 
-		CMVA               MVA          ;
-		CMVA               default_MVA  ;
+		CMVA                         MVA                 ;
+		CMVA                         default_MVA         ;
 
-		CTime              time         ;
+		CTime                        time                ;
 
 		CDraw(int argc, char*argv[]){
 			if(argc==2){

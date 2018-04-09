@@ -39,8 +39,8 @@ void Fram(CDraw &para)
 	else if (para.flow.begin_object == "Complete_Sensitivity" ){
 		Analyse_Sensitivity_Complete(para);
 	}
-	else if (para.flow.begin_object == "Mass_Scan" ){
-		Analyse_Mass_Scan_Pre(para);
+	else if (para.flow.begin_object == "Signal_Scan" ){
+		Analyse_Signal_Scan_Pre(para);
 	}
 	else if (para.flow.begin_object == "Summarize_Plot" ){
 		Analyse_Summarize_Plot_Pre(para);

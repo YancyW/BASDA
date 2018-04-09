@@ -5,8 +5,8 @@ void Analyse_Summarize_Plot_Pre(CDraw &para){
 	AFile file_name;
 	std::vector<std::string> sig_name;
 
-	for(int i=0;i<para.mass_scan.mass_num;i++){
-		para.flow.signal_property= para.mass_scan.mass[i];
+	for(int i=0;i<para.signal_scan.property_num;i++){
+		para.flow.signal_property= para.signal_scan.properties[i];
 		get_file_name(para,file_name);
 		if(para.flow.plot_object=="final_cut"){
 			sig_name.push_back(file_name.output_total.CUT_file);
@@ -116,7 +116,7 @@ void Analyse_Summarize_Plot(CDraw &para, std::vector<std::string> &sig_name, AFi
 				}
 
 				plot.Set_Line_Style(para,info,hvariable[i],_colornum[i],_stylenum[i]);
-				std::string legname="M_{h}= "+Float_to_String(para.mass_scan.mass[i])+" GeV";
+				std::string legname="M_{h}= "+para.signal_scan.properties[i]+" GeV";
 				leg->AddEntry(hvariable[i],legname.c_str(),"l");
 			}
 
