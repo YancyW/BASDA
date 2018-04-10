@@ -367,7 +367,7 @@ variable:
    v22:
         title_name           : "HC_mass"
         cut_min              : 0 
-        cut_max              : 200
+        cut_max              : 148
         latex_name           : "M^{H^{\\pm}}"
         leg_left             : 0.6
         leg_up               : 0.7

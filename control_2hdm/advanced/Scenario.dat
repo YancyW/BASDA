@@ -18,3 +18,11 @@ Scenario      :
        (+,-)         : 0.45
        (-,-)         : 0.05
        (+,+)         : 0.05
+    scenario3:
+       name          : running-lhc-1fb 
+       energy        : 14000 
+       luminosity    : 1 
+       (-,+)         : 0.45
+       (+,-)         : 0.45
+       (-,-)         : 0.05
+       (+,+)         : 0.05
