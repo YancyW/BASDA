@@ -600,7 +600,7 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 				_root_file->cd();
 				ss->Draw("HIST,nostack");
 				ss->Write();
-				Set_Stack_Style(para,info,ss,gPad);
+				Set_Stack_Style(para,info,ss,gPad,hist_label);
 
 				std::string leg_name = stack_title[0]+"_legend";
 				info.leg->SetName(leg_name.c_str());
@@ -674,7 +674,7 @@ void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string his
 				_root_file->cd();
 				ss->Draw("HIST,nostack");
 				ss->Write();
-				Set_Stack_Style(para,info,ss,gPad);
+				Set_Stack_Style(para,info,ss,gPad,hist_label);
 
 				std::string leg_name = stack_title[0]+"_legend";
 				info.leg->SetName(leg_name.c_str());

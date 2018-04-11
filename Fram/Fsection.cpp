@@ -26,26 +26,39 @@ void StartProcess(){
 //------------------------------------------------------------------------------
 //
 void LoadFile(CDraw &para){
-	ShowMessage(1, "load file");
+	ShowMessage(2, "load file");
+	ShowMessage(3, "input path file   ",para.steering_file);
 	ShowMessage();
 //	CLoad para;
   	para.Read();
 
-	ShowMessage(2,"The Read files");
+	ShowMessage(3, "The read files");
 
-	ShowMessage(2, "The path  is read ",para.Jpath );
+	ShowMessage(3, "The path                 is read ",para.Jpath     );
 
-	ShowMessage(2, "The file  is read ",para.Jfile );
+	ShowMessage(3, "The file                 is read ",para.Jfile     );
 
-	ShowMessage(2, "The debug is read ",para.Jdebug);
+	ShowMessage(3, "The debug                is read ",para.Jdebug    );
 
-	ShowMessage(2, "The flow  is read ",para.Jflow );
+	ShowMessage(3, "The flow                 is read ",para.Jflow     );
 
-	ShowMessage(2, "The event is read ",para.Jevent);
+	ShowMessage(3, "The event                is read ",para.Jevent    );
 
-	ShowMessage(2, "The var   is read ",para.Jvar  );
+	ShowMessage(3, "The var                  is read ",para.Jvar      );
 
-	ShowMessage();
+	ShowMessage(3, "The sensitivity          is read ",para.Jsen      );
+
+	ShowMessage(3, "The signal_property_scan is read ",para.JSP_scan  );
+
+	ShowMessage(3, "The BKG sort             is read ",para.Jbkg_sort );
+
+	ShowMessage(3, "The scenario             is read ",para.Jscenario );
+
+	ShowMessage(3, "The plot                 is read ",para.Jplot     );
+
+	ShowMessage(3, "The MVA                  is read ",para.JMVA      );
+
+	ShowMessage(                                                      );
 }
 
 //------------------------------------------------------------------------------
@@ -73,145 +86,143 @@ void LoadLibrary(CDraw &para){
 //
 void SetPlot(){
 	ShowMessage();
-	ShowMessage(1,"set plot style ---- Loading ywang Style" );
+	ShowMessage(2,"set plot style ---- Loading BASDA Style" );
 	ShowMessage();
 //	gStyle->SetOptStat(0);
 //	SetSgStyle();
 	ShowMessage();
 
-	TStyle *ywangStyle = new TStyle("ywangStyle","Style for rbkarl plots");
-	ywangStyle->SetPaperSize(12., 12.);
+	TStyle *BASDAStyle = new TStyle("BASDAStyle","Style for rbkarl plots");
+	BASDAStyle->SetPaperSize(12., 12.);
 
 	// For the canvas:
-	ywangStyle->SetCanvasBorderMode(0);
-	ywangStyle->SetCanvasBorderSize(0);
-	ywangStyle->SetCanvasColor(kWhite);
-	ywangStyle->SetCanvasDefH(1000); //Height of canvas
-	ywangStyle->SetCanvasDefW(700); //Width of canvas
-	ywangStyle->SetCanvasDefX(0);   //Position on screen
-	ywangStyle->SetCanvasDefY(0);
+	BASDAStyle->SetCanvasBorderMode(0);
+	BASDAStyle->SetCanvasBorderSize(0);
+	BASDAStyle->SetCanvasColor(kWhite);
+	BASDAStyle->SetCanvasDefH(1000); //Height of canvas
+	BASDAStyle->SetCanvasDefW(700); //Width of canvas
+	BASDAStyle->SetCanvasDefX(0);   //Position on screen
+	BASDAStyle->SetCanvasDefY(0);
 
 	// For the Pad:
-	ywangStyle->SetPadBorderMode(0);
-	ywangStyle->SetPadBorderSize(0);
-	ywangStyle->SetPadColor(kWhite);
-	ywangStyle->SetPadGridX(true);
-	ywangStyle->SetPadGridY(true);
-	ywangStyle->SetGridColor(0);
-	ywangStyle->SetGridStyle(3);
-	ywangStyle->SetGridWidth(1);
+	BASDAStyle->SetPadBorderMode(0);
+	BASDAStyle->SetPadBorderSize(0);
+	BASDAStyle->SetPadColor(kWhite);
+	BASDAStyle->SetPadGridX(true);
+	BASDAStyle->SetPadGridY(true);
+	BASDAStyle->SetGridColor(0);
+	BASDAStyle->SetGridStyle(3);
+	BASDAStyle->SetGridWidth(1);
+	// Margins:
+	BASDAStyle->SetPadTopMargin(0.07);
+	BASDAStyle->SetPadBottomMargin(0.18);
+	BASDAStyle->SetPadLeftMargin(0.17);
+	BASDAStyle->SetPadRightMargin(0.05);
+	  
 
 
 	// For the frame:
-	ywangStyle->SetFrameBorderMode(0);
-	ywangStyle->SetFrameBorderSize(0);
-	ywangStyle->SetFrameFillColor(0);
-	ywangStyle->SetFrameFillStyle(0);
-	ywangStyle->SetFrameLineColor(1);
-	ywangStyle->SetFrameLineStyle(1);
-	ywangStyle->SetFrameLineWidth(0);
+	BASDAStyle->SetFrameBorderMode(0);
+	BASDAStyle->SetFrameBorderSize(0);
+	BASDAStyle->SetFrameFillColor(0);
+	BASDAStyle->SetFrameFillStyle(0);
+	BASDAStyle->SetFrameLineColor(1);
+	BASDAStyle->SetFrameLineStyle(1);
+	BASDAStyle->SetFrameLineWidth(0);
 
 	// For the histo:
-	ywangStyle->SetHistLineColor(1);
-	ywangStyle->SetHistLineStyle(0);
-	ywangStyle->SetHistLineWidth(1);
+	BASDAStyle->SetHistLineColor(1);
+	BASDAStyle->SetHistLineStyle(0);
+	BASDAStyle->SetHistLineWidth(1);
+	BASDAStyle->SetHistTopMargin(0.);
 
 
-	ywangStyle->SetEndErrorSize(2);
-	//ywangStyle->SetErrorMarker(20);
-	ywangStyle->SetErrorX(0.5);
-	  
-	ywangStyle->SetMarkerStyle(7);
-
-	//For the fit/function:
-	ywangStyle->SetOptFit(0);
-	ywangStyle->SetFitFormat("5.4g");
-	ywangStyle->SetFuncColor(4);
-	ywangStyle->SetFuncStyle(1);
-	ywangStyle->SetFuncWidth(1);
-
-	//For the date:
-	ywangStyle->SetOptDate(0);
-	// ywangStyle->SetDateX(Float_t x = 0.01);
-	// ywangStyle->SetDateY(Float_t y = 0.01);
-
-	// For the statistics box:
-	ywangStyle->SetOptFile(0);
-	ywangStyle->SetOptStat(0); // To display name entries mean and RMS:   SetOptStat("nemr");
-	ywangStyle->SetStatColor(kWhite);
-	ywangStyle->SetStatFont(42);
-	ywangStyle->SetStatFontSize(0.025);
-	ywangStyle->SetStatTextColor(1);
-	ywangStyle->SetStatFormat("6.4g");
-	ywangStyle->SetStatBorderSize(1);
-	ywangStyle->SetStatH(0.1);
-	ywangStyle->SetStatW(0.15);
-
-	//Fot fit box
-	ywangStyle->SetFitFormat("8.4g");
 
 	// For the Legend
-	//ywangStyle->SetLegendFillColor(0);
-	ywangStyle->SetLegendBorderSize(1);
-	//ywangStyle->SetLegendFont(42);
+	//BASDAStyle->SetLegendFillColor(0);
+	BASDAStyle->SetLegendBorderSize(1);
+	//BASDAStyle->SetLegendFont(42);
 
 	  
-	  // Margins:
-	ywangStyle->SetPadTopMargin(0.07);
-	ywangStyle->SetPadBottomMargin(0.18);
-	ywangStyle->SetPadLeftMargin(0.17);
-	ywangStyle->SetPadRightMargin(0.05);
-	  
 	// For the Global title:
-	ywangStyle->SetOptTitle(1);
-	ywangStyle->SetTitleFont(42);
-	ywangStyle->SetTitleColor(1);
-	ywangStyle->SetTitleBorderSize(0);
-	ywangStyle->SetTitleAlign(13);
-	ywangStyle->SetTitleTextColor(1);
-	ywangStyle->SetTitleFillColor(0);
-	ywangStyle->SetTitleFontSize(0.06);
-	ywangStyle->SetTitleX(0.005);
-	ywangStyle->SetTitleY(0.995);
-	ywangStyle->SetTitleW(0.995);
-	ywangStyle->SetTitleH(0.06);
+	BASDAStyle->SetOptTitle(1);
+	BASDAStyle->SetTitleFont(42);
+	BASDAStyle->SetTitleColor(1);
+	BASDAStyle->SetTitleBorderSize(0);
+	BASDAStyle->SetTitleAlign(13);
+	BASDAStyle->SetTitleTextColor(1);
+	BASDAStyle->SetTitleFillColor(0);
+	BASDAStyle->SetTitleFontSize(0.06);
+	BASDAStyle->SetTitleX(0.005);
+	BASDAStyle->SetTitleY(0.995);
+	BASDAStyle->SetTitleW(0.995);
+	BASDAStyle->SetTitleH(0.06);
 
 
 	// For the axis titles:
 
-	ywangStyle->SetTitleColor(1, "XYZ");
-	ywangStyle->SetTitleFont(42, "XYZ");
-	ywangStyle->SetTitleSize(0.07, "XYZ");
-	ywangStyle->SetTitleXOffset(1.2);
-	ywangStyle->SetTitleYOffset(1.2);
+	BASDAStyle->SetTitleColor(1, "XYZ");
+	BASDAStyle->SetTitleFont(42, "XYZ");
+	BASDAStyle->SetTitleSize(0.07, "XYZ");
+	BASDAStyle->SetTitleXOffset(1.2);
+	BASDAStyle->SetTitleYOffset(1.2);
 
 
 	// For the axis labels:
 
-	ywangStyle->SetLabelColor(1, "XYZ");
-	ywangStyle->SetLabelFont(42, "XYZ");
-	ywangStyle->SetLabelOffset(0.01, "XY");
-	ywangStyle->SetLabelOffset(0.01, "Z");
-	ywangStyle->SetLabelSize(0.07, "XY");
-	ywangStyle->SetLabelSize(0.06, "Z");
+	BASDAStyle->SetLabelColor(1, "XYZ");
+	BASDAStyle->SetLabelFont(42, "XYZ");
+	BASDAStyle->SetLabelOffset(0.01, "XY");
+	BASDAStyle->SetLabelOffset(0.01, "Z");
+	BASDAStyle->SetLabelSize(0.07, "XY");
+	BASDAStyle->SetLabelSize(0.06, "Z");
 
 	// For the axis:
-	ywangStyle->SetAxisColor(1, "XYZ");
-	ywangStyle->SetStripDecimals(kTRUE);
-	ywangStyle->SetTickLength(0.03, "XYZ");
-	ywangStyle->SetNdivisions(505, "XYZ");
-	ywangStyle->SetPadTickX(1);  // To get tick marks on the opposite side of the frame
-	ywangStyle->SetPadTickY(1);
+	BASDAStyle->SetAxisColor(1, "XYZ");
+	BASDAStyle->SetStripDecimals(kTRUE);
+	BASDAStyle->SetTickLength(0.03, "XYZ");
+	BASDAStyle->SetNdivisions(505, "XYZ");
+	BASDAStyle->SetPadTickX(1);  // To get tick marks on the opposite side of the frame
+	BASDAStyle->SetPadTickY(1);
 
 	// Change for log plots:
-	ywangStyle->SetOptLogx(0);
-	ywangStyle->SetOptLogy(0);
-	ywangStyle->SetOptLogz(0);
+	BASDAStyle->SetOptLogx(0);
+	BASDAStyle->SetOptLogy(0);
+	BASDAStyle->SetOptLogz(0);
 
+	// For the statistics box:
+	BASDAStyle->SetOptFile(0);
+	BASDAStyle->SetOptStat(0); // To display name entries mean and RMS:   SetOptStat("nemr");
+	BASDAStyle->SetStatColor(kWhite);
+	BASDAStyle->SetStatFont(42);
+	BASDAStyle->SetStatFontSize(0.025);
+	BASDAStyle->SetStatTextColor(1);
+	BASDAStyle->SetStatFormat("6.4g");
+	BASDAStyle->SetStatBorderSize(1);
+	BASDAStyle->SetStatH(0.1);
+	BASDAStyle->SetStatW(0.15);
 
+	BASDAStyle->SetEndErrorSize(2);
+	//BASDAStyle->SetErrorMarker(20);
+	BASDAStyle->SetErrorX(0.5);
+	  
+	BASDAStyle->SetMarkerStyle(7);
 
-	ywangStyle->cd();
-	//  ywangStyle->SetPalette(1,0);
+	//For the fit/function:
+	BASDAStyle->SetOptFit(0);
+	BASDAStyle->SetFitFormat("5.4g");
+	BASDAStyle->SetFuncColor(4);
+	BASDAStyle->SetFuncStyle(1);
+	BASDAStyle->SetFuncWidth(1);
+
+	//For the date:
+	BASDAStyle->SetOptDate(0);
+	// BASDAStyle->SetDateX(Float_t x = 0.01);
+	// BASDAStyle->SetDateY(Float_t y = 0.01);
+
+	//  BASDAStyle->SetPalette(1,0);
+
+	BASDAStyle->cd();
 
 	///////// pretty palette ///////////
 
@@ -223,11 +234,11 @@ void SetPlot(){
 	Double_t green[NRGBs] = { 0.00, 0.81, 1.00, 0.20, 0.00 };
 	Double_t blue[NRGBs]  = { 0.51, 1.00, 0.12, 0.00, 0.00 };
 	TColor::CreateGradientColorTable(NRGBs, stops, red, green, blue, NCont);
-	ywangStyle->SetNumberContours(NCont);
+	BASDAStyle->SetNumberContours(NCont);
 	  
 	/////////////////////////////////////
 
-	gROOT->ForceStyle();
+	gROOT->SetStyle("BASDAStyle");
 }
 
 //------------------------------------------------------------------------------

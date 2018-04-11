@@ -27,11 +27,28 @@ class Cplot_drawing{
 		std::vector<std::string> class_plot;
 };
 
+
+class Cplot_canvas{
+	public:
+		Int_t border_mode;
+		Int_t border_size;
+		Int_t color;
+		Int_t height;
+		Int_t width;
+		Int_t Xpos;
+		Int_t Ypos;
+};
+
+class Cplot_rootset{
+	public:
+		Cplot_canvas canvas;
+};
 class CPlot{
 	private:
 	public:
 		Cplot_setting  setting;
 		Cplot_drawing  drawing;
+		Cplot_rootset  rootset;
 		void Read_Plot(CPath &path);
 };
 
@@ -79,4 +96,26 @@ namespace YAML{
 			}
 		};
 };
+/*
+namespace YAML{
+	template<>
+		struct convert<Cplot_rootset>{
+			static bool decode(const Node& node, Cplot_rootset& rset){ 
+				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
+					if(it->first.as<std::string>()=="Canvas"){
+						rset.single_plot= it->second.as<std::vector<std::string> >();	
+					}
+					else if(it->first.as<std::string>()=="Pad"){
+						rset.class_plot = it->second.as<std::vector<std::string> >();	
+					}
+					else{
+						ShowMessage(2,"wrong input when load class Cplot_rootset",it->first.as<std::string>());
+					}
+				}
+				ShowMessage(2,"finish reading plot rootset");
+				return true;
+			}
+		};
+};
+*/
 #endif

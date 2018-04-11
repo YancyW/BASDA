@@ -89,7 +89,6 @@ class CDraw{
 			else{
 				this->steering_file = "control/path.dat";
 			}
-			std::cout<<"input file " << this->steering_file << std::endl;
 		}
 
 		void               Read()       ;

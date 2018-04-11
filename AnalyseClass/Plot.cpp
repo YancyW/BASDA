@@ -122,7 +122,7 @@ bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color
 	}
 
 	if(info.norm_switch){
-		if(histo->Integral()!=0){
+		if(histo->GetEntries()!=0){
 			float norm=1./histo->Integral();
 			if(norm>0){histo->Scale(norm);}
 		}
@@ -143,7 +143,7 @@ std::vector<std::string> APlot::Set_Stack_Title(CDraw& para, std::string name){
 	return(stack_title);
 }
 
-void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualPad* pad){
+void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualPad* pad, std::string hist_label){
 	if(info.log_switch){
 		pad->SetLogy();
 		ss->SetMinimum(info.log_min);
@@ -151,12 +151,20 @@ void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualP
 	std::string y_name;
 	if(info.norm_switch){
 		y_name = "Normalized "+info.y_name;
+		if(hist_label=="after"||hist_label=="final"){
+			TH1F* last_hist=(TH1F*) (ss->GetHists()->Last());
+			float sig_max=last_hist->GetMaximum();
+			std::cout<<"max y"<< sig_max << std::endl;
+			ss->GetHistogram()->SetMaximum(sig_max);
+		}
 	}
 	else{
 		y_name = info.y_name;
 	}
 	ss->GetYaxis()->SetTitle(y_name.c_str());
 	ss->GetXaxis()->SetTitle(info.x_name.c_str());
+	pad->Update();
+	ss->Draw("HIST,nostack");
 }
 
 
@@ -296,7 +304,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 	ShowMessage(2,"Begin to generate seperate plot.");
 	ss->Draw("HIST,nostack");
 	info.leg->Draw();
-	Set_Stack_Style(para,info,ss,gPad);
+	Set_Stack_Style(para,info,ss,gPad,"");
 	Print_Plot(info, output_folder+"input_for_sensitivity.png");
 	delete ss;
 	delete info.c;
@@ -324,7 +332,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 
 	ss_total->Draw("HIST,nostack");
 	info.leg->Draw();
-	Set_Stack_Style(para,info,ss_total,gPad);
+	Set_Stack_Style(para,info,ss_total,gPad,"");
 	Print_Plot(info, output_folder+"input_combined_for_sensitivity.png");
 
 

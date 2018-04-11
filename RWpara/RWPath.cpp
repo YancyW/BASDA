@@ -1,8 +1,8 @@
 #include "Class/Path.h"
 void CPath::Read_Path(std::string steering_file){
 	YAML::Node path_node = YAML::LoadFile(steering_file);
-	RW_element("OUTPUT_FOLDER"  ,path_node,this->output_folder                 );
 	RW_element("INPUT_FOLDER"   ,path_node,this->input_folder                  );
+	RW_element("OUTPUT_FOLDER"  ,path_node,this->output_folder                 );
 	RW_element("RECORD_FILE"    ,path_node,this->record_file                   );
 	if(this->output_folder != "NULL"){
 		this->record_file= this->output_folder+"/"+this->record_file;
