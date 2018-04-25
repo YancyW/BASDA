@@ -1,18 +1,12 @@
-sort_num   : 3
+# do not change the key name
+sort_num   : 5
 
-sub_sort_num_0 : 1
-sub_sort_num_1 : 2
-sub_sort_num_2 : 2
+sub_sort_name : [nh, 4f, 2f, aa, h]
+sub_sort_num  : [1,   3,  2,  1, 1]
 
-sub_sort_name_0 : nh 
-sub_sort_name_1 : 4f
-sub_sort_name_2 : 2f
-
-nh_0: 115;higgs_{115} 
-
-4f_0 : l
-4f_1 : sl
-
-2f_0 : l
-2f_1 : bha 
-
+# change below based on sub_sort names
+nh : [115]
+4f : [l,sl,h]
+2f : [l,bha]
+aa : [2f]
+h  : [e2]

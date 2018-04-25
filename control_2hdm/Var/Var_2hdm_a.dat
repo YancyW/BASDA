@@ -1,5 +1,5 @@
 weight:
-    Exist                    : False 
+    Exist                    : True 
     Weight_Type              : "F"
 variable:
    v0:
@@ -44,6 +44,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v2:
         title_name           : "jet_eta1"
         cut_min              : -5.0
@@ -172,6 +173,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v10:
         title_name           : "taujet_eta1"
         cut_min              : -2.5
@@ -204,6 +206,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v12:
         title_name           : "taujet_eta2"
         cut_min              : -2.5
@@ -252,6 +255,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v15:
         title_name           : "lep_eta1"
         cut_min              : -2.5
@@ -332,6 +336,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v20:
         title_name           : "A_pt"
         cut_min              : 1
@@ -348,6 +353,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v21:
         title_name           : "A_eta"
         cut_min              : -5
@@ -364,10 +370,11 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v22:
         title_name           : "HC_mass"
         cut_min              : 0 
-        cut_max              : 170
+        cut_max              : 180
         latex_name           : "M^{H^{\\pm}}"
         leg_left             : 0.6
         leg_up               : 0.7
@@ -380,6 +387,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v23:
         title_name           : "HC_pt"
         cut_min              : 1
@@ -396,6 +404,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v24:
         title_name           : "HC_eta"
         cut_min              : -5
@@ -412,6 +421,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v25:
         title_name           : "Top_mass"
         cut_min              : -1000
@@ -476,6 +486,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v29:
         title_name           : "Topj_pt"
         cut_min              : 0
@@ -510,8 +521,8 @@ variable:
         normalization_switch : true 
    v31:
         title_name           : "Top_angle"
-        cut_min              : -1.0
-        cut_max              : -0.8
+        cut_min              : 0.8
+        cut_max              : 1.0
         latex_name           : "\\theta^{t}_{*}"
         leg_left             : 0.6
         leg_up               : 0.7
@@ -519,6 +530,22 @@ variable:
         leg_down             : 0.9           
         xaxis_name           : "#theta^{t}_{*}"                    
         xaxis_bin            : 40
+        xaxis_min            : -1
+        xaxis_max            : 1                                    
+        cut_switch           : true 
+        plot_switch          : true 
+        normalization_switch : true 
+   v32:
+        title_name           : "BDTG"
+        cut_min              : 0.8
+        cut_max              : 1.0
+        latex_name           : "BDTG"
+        leg_left             : 0.6
+        leg_up               : 0.7
+        leg_right            : 0.8
+        leg_down             : 0.9           
+        xaxis_name           : "BDTG"                    
+        xaxis_bin            : 100
         xaxis_min            : -1
         xaxis_max            : 1                                    
         cut_switch           : true 

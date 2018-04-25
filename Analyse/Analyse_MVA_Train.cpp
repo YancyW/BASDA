@@ -29,7 +29,8 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,para.MVA.MVA_Factory_Setting().c_str());
 //			"!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
 
-	std::string dataset_name = file_name.dataset_MVA+"_"+para.MVA.MVA_Type();
+	//std::string dataset_name = file_name.dataset_MVA+"_"+para.MVA.MVA_Type();
+	std::string dataset_name = para.MVA.MVA_Type();
 	TMVA::DataLoader *dataloader=new TMVA::DataLoader(dataset_name.c_str());
 	ShowMessage(2,"The dataset for MVA is",dataset_name);
 
@@ -49,8 +50,9 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	ShowMessage(2,"The input signal file is",file_name.output[0].Unpol_file);
 
 	TChain chainsigtrain(para.file.root_head_MVA_name.c_str());
-	chainsigtrain.Add(file_name.output[0].Unpol_file.c_str());
 	TChain chainsigtest(para.file.root_head_name.c_str());
+
+	chainsigtrain.Add(file_name.output[0].Unpol_file.c_str());
 	chainsigtest.Add(file_name.output[0].Unpol_file.c_str());
 
 	TChain chainbgtrain(para.file.root_head_MVA_name.c_str());

@@ -8,10 +8,9 @@
 #BeginObject      : Pre_Cut 
 #BeginObject      : MVA_Train 
 #BeginObject      : MVA_Attach
-#BeginObject      : Summarize_Plot 
+BeginObject      : Summarize_Plot 
 #BeginObject      : Direct_Cut
-BeginObject       : Direct_Cut_NoMVA
-#BeginObject      : Direct_Cut_ReWeight
+#BeginObject       : Direct_Cut_NoMVA
 #BeginObject      : Make_Table 
 
 
@@ -30,7 +29,7 @@ plot_object      : before_cut
 record_event     : true 
 MVA_training     : true 
 MVA_level        : 2 
-MVA_weight       : 1 
+MVA_weight       : 2 
 
 
 #some keywords for future

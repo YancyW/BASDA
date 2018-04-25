@@ -116,7 +116,7 @@ void SetPlot(){
 	// Margins:
 	BASDAStyle->SetPadTopMargin(0.07);
 	BASDAStyle->SetPadBottomMargin(0.18);
-	BASDAStyle->SetPadLeftMargin(0.17);
+	BASDAStyle->SetPadLeftMargin(0.18);
 	BASDAStyle->SetPadRightMargin(0.05);
 	  
 
@@ -172,7 +172,7 @@ void SetPlot(){
 
 	BASDAStyle->SetLabelColor(1, "XYZ");
 	BASDAStyle->SetLabelFont(42, "XYZ");
-	BASDAStyle->SetLabelOffset(0.01, "XY");
+	BASDAStyle->SetLabelOffset(0.0, "XY");
 	BASDAStyle->SetLabelOffset(0.01, "Z");
 	BASDAStyle->SetLabelSize(0.07, "XY");
 	BASDAStyle->SetLabelSize(0.06, "Z");

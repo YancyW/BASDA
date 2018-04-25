@@ -18,11 +18,12 @@
         <in>Analyse_MVA_Train.cpp</in>
         <in>Analyse_MVA_Train.h</in>
         <in>Analyse_Mass_Scan.cpp</in>
-        <in>Analyse_Mass_Scan.h</in>
         <in>Analyse_Pre_Cut.cpp</in>
         <in>Analyse_Pre_Cut.h</in>
         <in>Analyse_Sensitivity.cpp</in>
         <in>Analyse_Sensitivity.h</in>
+        <in>Analyse_Signal_Scan.cpp</in>
+        <in>Analyse_Signal_Scan.h</in>
         <in>Analyse_Summarize_Plot.cpp</in>
         <in>Analyse_Summarize_Plot.h</in>
         <in>Make_Complete_Table.cpp</in>
@@ -49,6 +50,11 @@
       </df>
       <df name="backup">
       </df>
+      <df name="BDTG">
+        <df name="weights">
+          <in>TMVAClassification_BDTG.class.C</in>
+        </df>
+      </df>
       <df name="Class">
         <in>BKG_Sort.h</in>
         <in>Cut.h</in>
@@ -58,12 +64,12 @@
         <in>Flow.h</in>
         <in>Judge.h</in>
         <in>MVA.h</in>
-        <in>Mass_Scan.h</in>
         <in>Path.cpp</in>
         <in>Path.h</in>
         <in>Plot.h</in>
         <in>Scenario.h</in>
         <in>Sensitivity.h</in>
+        <in>Signal_Properties_Scan.h</in>
         <in>Time.h</in>
         <in>debug.h</in>
       </df>
@@ -78,6 +84,12 @@
       <df name="control_2hdm">
         <df name="advanced">
         </df>
+        <df name="Cut">
+        </df>
+        <df name="Var">
+        </df>
+      </df>
+      <df name="control_new_var_1711">
         <df name="Cut">
         </df>
         <df name="Var">
@@ -142,6 +154,7 @@
         <in>RWPlot.cpp</in>
         <in>RWScenario.cpp</in>
         <in>RWSensitivity.cpp</in>
+        <in>RWSignal_Properties_Scan.cpp</in>
         <in>RWVar.cpp</in>
         <in>RWbasic.cpp</in>
         <in>RWbasic.h</in>

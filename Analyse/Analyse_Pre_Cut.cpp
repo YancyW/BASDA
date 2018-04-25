@@ -288,13 +288,13 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 		if(para.flow.begin_object == "Pre_Cut"){
 			RecordMessage(myfile,3,"total result"                    , ""                                    );
-			RecordMessage(myfile,4,file_name.input[cnum].latex       , 0                                     );
-			RecordMessage(myfile,4,"no cut MC event                " , nevent         [cnum][filenum_i[cnum]]);
-			RecordMessage(myfile,4,"no cut                         " , pass[cnum][filenum_i[cnum]][cut.pre_cut_num+1]);
+			RecordMessage(myfile,4,file_name.input[cnum].latex       , "[ 0" ,                        "0 ]"  );
+			RecordMessage(myfile,4,"no cut MC event                " , "[  "+Float_to_String(nevent[cnum][filenum_i[cnum]]), Float_to_String(nevent[cnum][filenum_i[cnum]])+" ]");
+			RecordMessage(myfile,4,"no cut                         " , "[  "+Float_to_String(pass[cnum][filenum_i[cnum]][cut.pre_cut_num+1]),Float_to_String(pass[cnum][filenum_i[cnum]][cut.pre_cut_num+1])+" ]");
 			for(int icut=0;icut<cut.pre_cut_num;icut++){
-				RecordMessage(myfile,4, para.var.var[cut.pre_cut[icut]].latex_name     , pass[cnum][filenum_i[cnum]][icut]);
+				RecordMessage(myfile,4, para.var.var[cut.pre_cut[icut]].latex_name     , "[  "+Float_to_String(pass[cnum][filenum_i[cnum]][icut]),Float_to_String(pass[cnum][filenum_i[cnum]][icut])+" ]");
 			}
-			RecordMessage(myfile,4,"all~cut"     , pass[cnum][filenum_i[cnum]][cut.pre_cut_num]);
+			RecordMessage(myfile,4,"all~cut"     , "[ "+Float_to_String(pass[cnum][filenum_i[cnum]][cut.pre_cut_num]), Float_to_String(pass[cnum][filenum_i[cnum]][cut.pre_cut_num])+" ]");
 
 			myfile.close();
 		}

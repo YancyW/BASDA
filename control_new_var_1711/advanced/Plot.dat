@@ -1,0 +1,9 @@
+drawing:
+    single_plot            : ["origin", "before", "after", "final"]
+    class_plot             : ["origin", "before", "after", "final"]
+    plot_type              : "pdf"
+
+setting:
+        show_title         : false 
+        with_color_or_line : 1 
+        line_width         : 1 

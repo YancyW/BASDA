@@ -1,0 +1,23 @@
+property_num : 11 
+
+properties   : [115, 105, 95, 85, 75, 65, 55, 45, 35, 25, 15]
+
+observable   : [po_muon_kcut_recoil_mass]
+
+
+# plot setting
+signal_setting: 
+    fill_switch : True
+    fill_color  : -1 
+    line_color  : -1 
+    line_width  : 3
+    line_style  : -1
+
+background_setting: 
+    include     : True 
+    fill_switch : True
+    fill_color  : -1 
+    line_color  : -1 
+    line_width  : 3
+    line_style  : -1
+

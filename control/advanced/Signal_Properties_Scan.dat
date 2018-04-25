@@ -1,0 +1,36 @@
+property_num : 11 
+
+properties   : [115, 105, 95, 85, 75, 65, 55, 45, 35, 25, 15]
+
+observable   : [po_muon_kcut_recoil_mass]
+
+
+# plot setting
+signal_setting: 
+    fill_switch : True
+    fill_color  : -1 
+    line_color  : -1 
+    line_width  : 3
+    line_style  : -1
+
+background_setting: 
+    include     : True 
+    fill_switch : True
+    fill_color  : -1 
+    line_color  : -1 
+    line_width  : 3
+    line_style  : -1
+
+stack_setting:
+    stack_draw  : "hist"
+
+legend_setting:
+    head_name       : "ILD preliminary"
+    head_text_align : 22
+    head_text_color : 1 
+    head_text_size  : 0.04
+    margin      : 0.4
+    columns     : 2
+    column_separation : -0.5
+   
+

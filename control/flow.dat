@@ -9,14 +9,16 @@
 #BeginObject      : MVA_Train 
 #BeginObject      : MVA_Attach
 #BeginObject      : Summarize_Plot 
-BeginObject       : Direct_Cut_ReWeight
+BeginObject      : Complete_Summarize_Plot 
+#BeginObject       : Direct_Cut_ReWeight
 #BeginObject      : Direct_Cut
 #BeginObject      : Make_Table 
 
 
 # choose signal process and work scenario
-signal_property   : 125 
-working_scenario  : running 
+signal_property   : 115
+working_scenario  : running-ilc 
+MVA_method        : "BDTG" 
 
 
 # choose special setting 
@@ -28,7 +30,7 @@ plot_object      : before_cut
 record_event     : true 
 MVA_training     : true 
 MVA_level        : 2 
-MVA_weight       : 1 
+MVA_weight       : 2 
 
 
 #some keywords for future

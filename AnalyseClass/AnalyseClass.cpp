@@ -610,7 +610,7 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 
 
 				//print to png
-				Print_Plot(info, file_name.folder[1]+info.title_name+"_"+hist_label+".png");
+				Print_Plot(para, info, file_name.folder[1]+info.title_name+"_"+hist_label+".png");
 				delete info.c;
 				info.leg->Clear();
 			}
@@ -685,7 +685,7 @@ void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string his
 
 
 				//print to png
-				Print_Plot(info, file_name.folder[2]+info.title_name+"_"+hist_label+".png");
+				Print_Plot(para, info, file_name.folder[2]+info.title_name+"_"+hist_label+".png");
 			}
 			delete info.c;
 			info.leg->Clear();

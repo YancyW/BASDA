@@ -58,4 +58,8 @@
 void Analyse_Summarize_Plot_Pre(CDraw &para);
 
 void Analyse_Summarize_Plot(CDraw &para, std::vector<std::string> &sig_name, AFile& file_name);
+
+void Analyse_Summarize_Plot_Complete_Pre(CDraw &para);
+
+void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::string> >&sig_name, AFile& file_name);
 #endif

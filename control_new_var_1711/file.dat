@@ -1,0 +1,24 @@
+FILE_NUM          : 1
+FILE_0            : xection_nh.dat
+
+CHANNEL_NUM       : 1
+FILE_DESCRIP_0    : all
+#FILE_DESCRIP_0    : nh 
+#FILE_DESCRIP_1    : 4f_{ww}^{l} 
+#FILE_DESCRIP_2    : 4f_{ww}^{sl} 
+#FILE_DESCRIP_3    : 4f_{zz}^{l} 
+#FILE_DESCRIP_4    : 4f_{zz}^{sl} 
+#FILE_DESCRIP_5    : 4f_{zzww}^{l} 
+#FILE_DESCRIP_6    : 4f_{szee}^{l} 
+#FILE_DESCRIP_7    : 4f_{szee}^{sl} 
+#FILE_DESCRIP_8    : 4f_{sznn}^{l} 
+#FILE_DESCRIP_9    : 4f_{sznn}^{sl} 
+#FILE_DESCRIP_10    : 4f_{szsw}^{l} 
+#FILE_DESCRIP_11    : 4f_{sw}^{l} 
+#FILE_DESCRIP_12    : 4f_{sw}^{sl} 
+#FILE_DESCRIP_13    : 2f_{z}^{l} 
+#FILE_DESCRIP_14    : 2f_{z}^{bha} 
+
+
+Root_Head_Name     : datatest
+Root_Head_BDT_Name : datatrain

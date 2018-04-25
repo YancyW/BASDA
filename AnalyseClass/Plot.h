@@ -19,14 +19,14 @@
 #include "TMath.h"
 #include "TMatrix.h"
 #include "TMatrixT.h"
+#include "TPDF.h"
+#include "TPostScript.h"
 
 #include "Lib/MessageFormat.h"
 #include "Class/DrawClass.h"
 
 class APlot{ 
 	private:
-		int                                    _max_color_num   ;
-		int                                    _max_style_num   ;
 
 		std::vector<TFile*>                    _sig_File        ;
 		int                                    _sig_num         ;
@@ -47,12 +47,6 @@ class APlot{
 		float                                  _weight          ;
 		float                                  _value           ;
 
-	protected:
-		std::vector<int>                       _colornum        ;
-		std::vector<int>                       _stylenum        ;
-
-		void                                   _Init_Color()    ;
-		void                                   _Init_Style()    ;
 	public:
 		APlot(){
 			Init();
@@ -85,9 +79,12 @@ class APlot{
 		bool Get_Histogram (CDraw &para, Avariable &info, std::string output_folder);
 
 		bool Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color_index, int linestyle_index);
+		bool Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplot_line setting);
 		std::vector<std::string> Set_Stack_Title(CDraw& para, std::string name);
 		void Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualPad* pad, std::string hist_label);
-		void Print_Plot(Avariable& info, std::string name);
+		void Print_Plot(CDraw &para, Avariable& info, std::string name);
+
+		void DrawLogo();
 };
 
 

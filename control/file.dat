@@ -1,5 +1,5 @@
 FILE_NUM          : 1
-FILE_0            :  /media/yancy/新加卷/Code/Data/Event_Light_Higgs/origin_data/xection_aa.dat
+FILE_0            : control/xection_nh.dat
 
 CHANNEL_NUM       : 1
 FILE_DESCRIP_0    : all 

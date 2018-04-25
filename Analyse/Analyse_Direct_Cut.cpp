@@ -36,15 +36,25 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 
 
 	for(int j=0;j<filenum;j++){
-		if(  para.flow.begin_object == "Direct_Cut" ||
+		if( para.flow.begin_object  == "Direct_Cut" ||
 			(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()>1) ||
-			para.flow.begin_object == "Complete_Direct_Cut"||
-			para.flow.begin_object == "Complete_Run"){
+			para.flow.begin_object  == "Complete_Direct_Cut"||
+			para.flow.begin_object  == "Complete_Run"){
 
 			in_file                .push_back(new TFile(file_name.output[j].MVA_file.c_str()));
 			in_file[j]->cd();
 			MyLCTuple              .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
 			nevent                 .push_back(MyLCTuple[j]->GetEntries()                     );
+
+		}
+		else if(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()==1){
+			std::string fname         = file_name.input[j].basic_file[0];
+			in_file                   .push_back(new TFile(fname.c_str()));
+			in_file[j]                ->cd();
+			MyLCTuple                 .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
+			nevent                    .push_back(MyLCTuple[j]->GetEntries()                     );
+		}
+		if(analyse.var.weight_exist){
 			if(analyse.var.weight_type=="F"){
 				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight);
 			}
@@ -54,36 +64,9 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			else if(analyse.var.weight_type=="I"){
 				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_i);
 			}
-
 		}
-		else if(para.flow.begin_object == "Direct_Cut_ReWeight"){
-			std::string fname         = file_name.input[j].basic_file[0];
-			in_file                   .push_back(new TFile(fname.c_str()));
-			in_file[j]                ->cd();
-			MyLCTuple                 .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
-			nevent                    .push_back(MyLCTuple[j]->GetEntries()                     );
+		else{
 			analyse.file[j].in_weight = file_name.input[j].xection[0]/nevent[j];  
-		}
-		else if(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()==1){
-			std::string fname         = file_name.input[j].basic_file[0];
-			in_file                   .push_back(new TFile(fname.c_str()));
-			in_file[j]                ->cd();
-			MyLCTuple                 .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
-			nevent                    .push_back(MyLCTuple[j]->GetEntries()                     );
-			if(analyse.var.weight_exist){
-				if(analyse.var.weight_type=="F"){
-					MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight);
-				}
-				else if(analyse.var.weight_type=="D"){
-					MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_d);
-				}
-				else if(analyse.var.weight_type=="I"){
-					MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_i);
-				}
-			}
-			else{
-				analyse.file[j].in_weight = file_name.input[j].xection[0]/nevent[j];  
-			}
 		}
 		for(int k=0;k<analyse.Var_Num();k++){
 			if(analyse.var.var[k].title_name=="weight"){

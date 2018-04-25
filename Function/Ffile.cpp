@@ -25,3 +25,17 @@ bool Is_File_Exist(const std::string& fname){
 void Is_File_Exist_And_Exit(const std::string& fname){
 	if(!Is_File_Exist(fname)){ShowMessage(2,"Error: the file is not exist:",fname);exit(EXIT_FAILURE);}
 }
+
+
+std::string Get_File_Folder(std::string input){
+	boost::filesystem::path dir(input);
+	boost::filesystem::path parent_path = dir.parent_path();
+	std::string folder_name=parent_path.string();
+	return(folder_name);
+}
+
+std::string Get_File_Ext(std::string input){
+	boost::filesystem::path dir(input);
+	std::string ext_name=dir.stem().string();
+	return(ext_name);
+}

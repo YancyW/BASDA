@@ -21,7 +21,7 @@ void Fram(CDraw &para)
 	else if (para.flow.begin_object == "Pre_Cut" ){
 		Analyse_Pre_Cut(para);
 	}
-	else if (para.flow.begin_object == "Direct_Cut" || para.flow.begin_object == "Direct_Cut_ReWeight"){
+	else if (para.flow.begin_object == "Direct_Cut"){
 		Analyse_Direct_Cut_Pre(para);
 	}
 	else if (para.flow.begin_object == "Direct_Cut_NoMVA" ){
@@ -44,6 +44,9 @@ void Fram(CDraw &para)
 	}
 	else if (para.flow.begin_object == "Summarize_Plot" ){
 		Analyse_Summarize_Plot_Pre(para);
+	}
+	else if (para.flow.begin_object == "Complete_Summarize_Plot" ){
+		Analyse_Summarize_Plot_Complete_Pre(para);
 	}
 	else if (para.flow.begin_object == "Make_Table" ){
 		Make_Table_Pre(para);

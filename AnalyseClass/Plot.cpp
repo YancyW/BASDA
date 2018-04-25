@@ -1,10 +1,6 @@
 #include "AnalyseClass/Plot.h"
 
 void APlot::Init(){
-	_max_color_num = 50;
-	_max_style_num = 50;
-	_Init_Color();
-	_Init_Style();
 	_Has_Input = false ;
 
 	_sig_num   = -1;
@@ -16,9 +12,6 @@ void APlot::Init(){
 
 
 void APlot::Clear(){
-	_colornum.clear();
-	_stylenum.clear();
-
 ////delete _sig_histo_total;
 ////delete _bkg_histo_total;
 
@@ -43,57 +36,32 @@ void APlot::Clear(){
 }
 
 
-void APlot::_Init_Color(){
-	_colornum.resize(_max_color_num);
-	_colornum[0] =1;
-	_colornum[1] =632;//red;
-	_colornum[2] =600;//blue;
-	_colornum[3] =880;//Violet;
-	_colornum[4] =800;//Magenta;
-	_colornum[5] =432;//Cyan;
-	_colornum[6] =11;;
-	_colornum[7] =30;
-	_colornum[8] =33;
-	_colornum[9] =38;
-	_colornum[10]=40;
-	_colornum[12]=41;
-	_colornum[13]=42;
-	_colornum[14]=43;
-	_colornum[15]=44;
-	_colornum[16]=45;
-	_colornum[17]=46;
-	_colornum[18]=47;
-	_colornum[19]=48;
-	for(int i=20;i<_max_color_num;i++){
-		_colornum[i]=48+i;
+bool APlot::Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplot_line setting){
+	histo->SetLineColor(setting.Color());
+	histo->SetLineStyle(setting.Style());
+	histo->SetLineWidth(setting.Width());
+	if(setting.fill_switch){
+		histo->SetFillColor(setting.fill_switch);
 	}
+
+	if(setting.norm_switch){
+		if(histo->GetEntries()!=0){
+			float norm=1./histo->Integral();
+			if(norm>0){histo->Scale(norm);}
+		}
+		else{
+			return(false);
+		}
+	}
+	return(true);
 }
 
-void APlot::_Init_Style(){
-	_stylenum.resize(_max_style_num);
-	_stylenum[0] =1 ;
-	_stylenum[1] =7 ;
-	_stylenum[2] =3 ;
-	_stylenum[3] =2 ;
-	_stylenum[4] =4 ;
-	_stylenum[5] =5 ;
-	_stylenum[6] =6 ;
-	_stylenum[7] =8 ;
-	_stylenum[8] =9 ;
-	_stylenum[9] =10;
-	for(int i=10;i<_max_color_num;i++){
-		_colornum[i]=10;
-	}
-}
-
-bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color_index, int style_index){
-	int color=_colornum[color_index];
-	int linestyle=_stylenum[style_index];
+bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color, int linestyle){
 	if(info.with_color_or_line==-1){
 		if(para.plot.setting.with_color_or_line == 1){
 			histo->SetLineColor(color);
 		}
-		else if(para.plot.setting.with_color_or_line == 1){
+		else if(para.plot.setting.with_color_or_line == -1){
 			histo->SetLineStyle(linestyle);
 		}
 		else{
@@ -105,7 +73,7 @@ bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color
 		if(info.with_color_or_line == 1){
 			histo->SetLineColor(color);
 		}
-		else if(info.with_color_or_line == 1){
+		else if(info.with_color_or_line == -1){
 			histo->SetLineStyle(linestyle);
 		}
 		else{
@@ -168,11 +136,27 @@ void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualP
 }
 
 
-void APlot::Print_Plot(Avariable& info, std::string name){
-	info.c->Update();
-	TImage *img = TImage::Create();
-	img->FromPad(info.c);
-	img->WriteImage(name.c_str());
+void APlot::Print_Plot(CDraw &para, Avariable& info, std::string name){
+	if(para.plot.drawing.plot_type == ".pdf"){
+		TPDF pdf(name.c_str(),-111);
+		info.c->Update();
+        //DrawLogo();
+		pdf.Close();
+	}
+	else if(para.plot.drawing.plot_type == ".eps"){
+		TPostScript ps(name.c_str(),113);
+	    ps.Range(16,24);
+        //DrawLogo();
+		info.c->Update();
+		ps.Close();
+	}
+	else{
+        //DrawLogo();
+		info.c->Update();
+		TImage *img = TImage::Create();
+		img->FromPad(info.c);
+		img->WriteImage(name.c_str());
+	}
 
 }
 
@@ -292,9 +276,10 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 
 		ShowMessage(3,"MC number, simulated number",nEvent,weight_bkg);
 
-		boost::filesystem::path dir(_bkg_File[i]->GetName());
-		//std::string bkg_leg_name=dir.stem().string();
-		std::string bkg_leg_name="";
+		std::string bkg_leg_name=Get_File_Ext(_bkg_File[i]->GetName());
+////	boost::filesystem::path dir(_bkg_File[i]->GetName());
+////	//std::string bkg_leg_name=dir.stem().string();
+////	std::string bkg_leg_name="";
 		info.leg->AddEntry(_bkg_histo[i],bkg_leg_name.c_str(),"l");
 		Set_Line_Style(para,info,_bkg_histo[i],i+_bkg_num,i+_bkg_num);
 		ss->Add(_bkg_histo[i]);
@@ -305,7 +290,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 	ss->Draw("HIST,nostack");
 	info.leg->Draw();
 	Set_Stack_Style(para,info,ss,gPad,"");
-	Print_Plot(info, output_folder+"input_for_sensitivity.png");
+	Print_Plot(para, info, output_folder+"input_for_sensitivity.png");
 	delete ss;
 	delete info.c;
 	info.leg->Clear();
@@ -333,11 +318,26 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 	ss_total->Draw("HIST,nostack");
 	info.leg->Draw();
 	Set_Stack_Style(para,info,ss_total,gPad,"");
-	Print_Plot(info, output_folder+"input_combined_for_sensitivity.png");
+	Print_Plot(para, info, output_folder+"input_combined_for_sensitivity.png");
 
 
 	delete ss_total;
 	delete info.c;
 
 	return true;
+}
+
+void APlot::DrawLogo(){
+
+   TImage *img = TImage::Open("ILD-logo.png");
+
+   if (!img) {
+      printf("Could not create an image... exit\n");
+      return;
+   }
+   TPad *l = new TPad("l","l",0.25,0.70,0.45,0.90);
+   //gPad->cd(0);
+   l->Draw();
+   l->cd();
+   img->Draw();
 }

@@ -1,0 +1,4 @@
+ExpCL            : 0.9545 
+sig_scale_switch : true 
+sig_scale_factor : 1000
+sig_scale_pow    : 2

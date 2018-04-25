@@ -24,11 +24,11 @@ ANALYSE_CUT_NOMVA_H	Analyse/Analyse_Cut_NoMVA.h	3;"	d
 ANALYSE_Complete_H	Analyse/Analyse_Complete.h	3;"	d
 ANALYSE_DIRECT_CUT_H	Analyse/Analyse_Direct_Cut.h	3;"	d
 ANALYSE_FIND_CUT_H	Analyse/Analyse_Find_Cut.h	3;"	d
-ANALYSE_MASS_SCAN_H	Analyse/Analyse_Mass_Scan.h	3;"	d
 ANALYSE_MVA_ATTACH_H	Analyse/Analyse_MVA_Attach.h	3;"	d
 ANALYSE_MVA_TRAIN_H	Analyse/Analyse_MVA_Train.h	3;"	d
 ANALYSE_Pre_CUT_H	Analyse/Analyse_Pre_Cut.h	3;"	d
 ANALYSE_ROOT_H	BASDA.h	3;"	d
+ANALYSE_SIGNAL_SCAN_H	Analyse/Analyse_Signal_Scan.h	3;"	d
 ANALYSE_SUMMARIZE_PLOT_H	Analyse/Analyse_Summarize_Plot.h	3;"	d
 ANALYSE_VARIABLE_H	AnalyseClass/Variable.h	3;"	d
 ANALYSIS_CLASS_COUNTER_H	AnalyseClass/Counter.h	2;"	d
@@ -74,10 +74,12 @@ Analyse_Pre_Cut_Content	Analyse/Analyse_Pre_Cut.cpp	/^void Analyse_Pre_Cut_Conte
 Analyse_Sensitivity	Analyse/Analyse_Sensitivity.cpp	/^void Analyse_Sensitivity(CDraw &para, APlot &plot, std::string output_file_name, std::string output_folder){$/;"	f
 Analyse_Sensitivity_Complete	Analyse/Analyse_Sensitivity.cpp	/^void Analyse_Sensitivity_Complete(CDraw &para){$/;"	f
 Analyse_Sensitivity_Pre	Analyse/Analyse_Sensitivity.cpp	/^void Analyse_Sensitivity_Pre(CDraw &para){$/;"	f
-Analyse_Signal_Scan_Pre	Analyse/Analyse_Mass_Scan.cpp	/^void Analyse_Signal_Scan_Pre(CDraw &para){$/;"	f
+Analyse_Signal_Scan_Pre	Analyse/Analyse_Signal_Scan.cpp	/^void Analyse_Signal_Scan_Pre(CDraw &para){$/;"	f
 Analyse_Single_File	AnalyseClass/AnalyseClass.cpp	/^Analyse_Single_File::Analyse_Single_File(){$/;"	f	class:Analyse_Single_File
 Analyse_Single_File	AnalyseClass/AnalyseClass.h	/^class Analyse_Single_File{$/;"	c
 Analyse_Summarize_Plot	Analyse/Analyse_Summarize_Plot.cpp	/^void Analyse_Summarize_Plot(CDraw &para, std::vector<std::string> &sig_name, AFile& file_name){$/;"	f
+Analyse_Summarize_Plot_Complete	Analyse/Analyse_Summarize_Plot.cpp	/^void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::string> >&sig_name, AFile& file_name){$/;"	f
+Analyse_Summarize_Plot_Complete_Pre	Analyse/Analyse_Summarize_Plot.cpp	/^void Analyse_Summarize_Plot_Complete_Pre(CDraw &para){$/;"	f
 Analyse_Summarize_Plot_Pre	Analyse/Analyse_Summarize_Plot.cpp	/^void Analyse_Summarize_Plot_Pre(CDraw &para){$/;"	f
 Apply_Cut	Analyse/Abasic.cpp	/^bool Apply_Cut(CDraw &para, float weight, int cut_level, float &pass_num){$/;"	f
 Apply_Cut	Analyse/Abasic.cpp	/^bool Apply_Cut(CDraw &para, std::vector<TH1F*> &hvariable, std::vector<TH1F*> &hvariable_tot,float weight, int level,float &pass_num){$/;"	f
@@ -85,6 +87,9 @@ Avariable	AnalyseClass/Variable.h	/^		Avariable(){$/;"	f	class:Avariable
 Avariable	AnalyseClass/Variable.h	/^class Avariable{$/;"	c
 Avariable_vec	AnalyseClass/Variable.h	/^		Avariable_vec(){$/;"	f	class:Avariable_vec
 Avariable_vec	AnalyseClass/Variable.h	/^class Avariable_vec{$/;"	c
+BDTGNode	BDTG/weights/TMVAClassification_BDTG.class.C	/^   BDTGNode ( BDTGNode* left,BDTGNode* right,$/;"	f	class:BDTGNode
+BDTGNode	BDTG/weights/TMVAClassification_BDTG.class.C	/^class BDTGNode {$/;"	c	file:
+BDTGNode__def	BDTG/weights/TMVAClassification_BDTG.class.C	98;"	d	file:
 Begin_Event	Class/Event.h	/^		Long64_t Begin_Event(){$/;"	f	class:CEvent
 Begin_Time	Class/Time.h	/^		void Begin_Time(){$/;"	f	class:CTime
 BinContribution	TSysLimit/TSysLimitResultLogL.cpp	/^Double_t TSysLimitResultLogL::BinContribution(Double_t weight,Double_t n)$/;"	f	class:TSysLimitResultLogL
@@ -129,11 +134,15 @@ Clear	AnalyseClass/Counter.cpp	/^void ACounter::Clear(){$/;"	f	class:ACounter
 Clear	AnalyseClass/File.cpp	/^void AFile::Clear(){$/;"	f	class:AFile
 Clear	AnalyseClass/File.h	/^		void Clear(){$/;"	f	class:AFile_Name
 Clear	AnalyseClass/Plot.cpp	/^void APlot::Clear(){$/;"	f	class:APlot
+Clear	BDTG/weights/TMVAClassification_BDTG.class.C	/^inline void ReadBDTG::Clear() $/;"	f	class:ReadBDTG
 Clear	Class/Judge.h	/^		void Clear(){_Exist=false;}$/;"	f	class:AJudge
 ClearResults	TSysLimit/TSysLimit.cpp	/^void TSysLimit::ClearResults(Int_t nTotal) {$/;"	f	class:TSysLimit
 Copy	AnalyseClass/Variable.cpp	/^void Avariable::Copy(Avariable var){$/;"	f	class:Avariable
 CountNumber	Function/Fbasic.cpp	/^void CountNumber(Int_t variable, Int_t tot_num, Int_t slot,std::string  Message){$/;"	f
+Cplot_canvas	Class/Plot.h	/^class Cplot_canvas{$/;"	c
+Cplot_drawing	Class/Plot.h	/^		Cplot_drawing(){$/;"	f	class:Cplot_drawing
 Cplot_drawing	Class/Plot.h	/^class Cplot_drawing{$/;"	c
+Cplot_rootset	Class/Plot.h	/^class Cplot_rootset{$/;"	c
 Cplot_setting	Class/Plot.h	/^class Cplot_setting{$/;"	c
 Create_File_Folder	Function/Ffile.cpp	/^void Create_File_Folder(std::string file_name){$/;"	f
 Create_Folder	Class/Path.cpp	/^void CPath::Create_Folder(){$/;"	f	class:CPath
@@ -231,13 +240,21 @@ GetIndexLogSB	TSysLimit/TSysLimit.h	/^		inline Int_t GetIndexLogSB(void) const {
 GetIndexLogSBsys	TSysLimit/TSysLimit.h	/^		inline Int_t GetIndexLogSBsys(void) const { return fMethodLogSBsys; }$/;"	f	class:TSysLimit
 GetIndexPBock	TSysLimit/TSysLimit.h	/^		inline Int_t GetIndexPBock(void) const { return fMethodPBock; }$/;"	f	class:TSysLimit
 GetIndexSoverS2B	TSysLimit/TSysLimit.h	/^		inline Int_t GetIndexSoverS2B(void) const { return fMethodSoverSB; }$/;"	f	class:TSysLimit
+GetLeft	BDTG/weights/TMVAClassification_BDTG.class.C	/^   BDTGNode* GetLeft( void ) { return fLeft; };   $/;"	f	class:BDTGNode
 GetLimit	TSysLimit/TSysLimitScan.h	/^   inline TSysLimitResult const *GetLimit(Int_t index) const {$/;"	f	class:TSysLimitScan
+GetMvaValue	BDTG/weights/TMVAClassification_BDTG.class.C	/^   inline double ReadBDTG::GetMvaValue( const std::vector<double>& inputValues ) const$/;"	f	class:ReadBDTG
+GetMvaValue__	BDTG/weights/TMVAClassification_BDTG.class.C	/^double ReadBDTG::GetMvaValue__( const std::vector<double>& inputValues ) const$/;"	f	class:ReadBDTG
 GetNBin	TSysLimit/TSysLimitChannel.h	/^		inline Int_t GetNBin(void) const { $/;"	f	class:TSysLimitChannel
 GetNMethod	TSysLimit/TSysLimit.h	/^		inline Int_t GetNMethod(void) const { return fResults.GetEntries(); }$/;"	f	class:TSysLimit
+GetNodeType	BDTG/weights/TMVAClassification_BDTG.class.C	/^   int    GetNodeType( void ) const { return fNodeType; }$/;"	f	class:BDTGNode
+GetNvar	BDTG/weights/TMVAClassification_BDTG.class.C	/^   size_t GetNvar()           const { return fNvars; }$/;"	f	class:ReadBDTG	file:
 GetPValue	TSysLimit/TSysLimitResult.cpp	/^Double_t TToyDistribution::GetPValue(Double_t x) const {$/;"	f	class:TToyDistribution
 GetPValueWithcut	TSysLimit/TSysLimitResult.cpp	/^Double_t TToyDistribution::GetPValueWithcut$/;"	f	class:TToyDistribution
+GetPurity	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double GetPurity( void ) const { return fPurity; } $/;"	f	class:BDTGNode
 GetRandom	TSysLimit/TSysLimit.cpp	/^TRandom *TSysLimit::GetRandom(void) {$/;"	f	class:TSysLimit
+GetResponse	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double GetResponse(void) const {return fResponse;}$/;"	f	class:BDTGNode
 GetResult	TSysLimit/TSysLimit.cpp	/^TSysLimitResult const *TSysLimit::GetResult(Int_t method) {$/;"	f	class:TSysLimit
+GetRight	BDTG/weights/TMVAClassification_BDTG.class.C	/^   BDTGNode* GetRight( void )  {return fRight; };$/;"	f	class:BDTGNode
 GetRmsX	TSysLimit/TSysLimitResult.cpp	/^Double_t TToyDistribution::GetRmsX(void) const {$/;"	f	class:TToyDistribution
 GetScanSize	TSysLimit/TSysLimitScan.h	/^   inline Int_t GetScanSize(void) const { return fResults.GetEntries(); }$/;"	f	class:TSysLimitScan
 GetSignal	TSysLimit/TSysLimitChannel.h	/^		inline Double_t GetSignal(int ibin) const { $/;"	f	class:TSysLimitChannel
@@ -247,6 +264,7 @@ GetSignalSys	TSysLimit/TSysLimitChannel.cpp	/^TVectorD const *TSysLimitChannel::
 GetSignalUncErr	TSysLimit/TSysLimitChannel.h	/^		inline Double_t GetSignalUncErr(int ibin) const {$/;"	f	class:TSysLimitChannel
 GetTestStatHistograms	TSysLimit/TSysLimit.cpp	/^void TSysLimit::GetTestStatHistograms(Int_t iMethod,$/;"	f	class:TSysLimit
 GetTestStatHistograms	TSysLimit/TSysLimitResult.cpp	/^void TSysLimitResult::GetTestStatHistograms(TH1 *bLtData,TH1* bGtData,$/;"	f	class:TSysLimitResult
+GetType	BDTG/weights/TMVAClassification_BDTG.class.C	/^   char   GetType( int ivar ) const { return fType[ivar]; }$/;"	f	class:ReadBDTG	file:
 GetUnit	Function/Fbasic.cpp	/^std::string GetUnit(std::string observe_name){$/;"	f
 GetWeight	TSysLimit/TSysLimitResult.h	/^		inline double GetWeight(int bin) const {$/;"	f	class:TSysLimitResult
 GetWeightHistogram	TSysLimit/TSysLimit.cpp	/^TH1* TSysLimit::GetWeightHistogram(char const *name,$/;"	f	class:TSysLimit
@@ -259,15 +277,22 @@ Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Multi_File::Get_Cut(int fil
 Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Single_File::Get_Cut(AVariable &var,ACut &cut){$/;"	f	class:Analyse_Single_File
 Get_Event	Class/DrawClass.h	/^		void Get_Event(long long int num){$/;"	f	class:CDraw
 Get_Event	Class/Event.h	/^		void Get_Event(long long int num){$/;"	f	class:CEvent
+Get_File_Ext	Function/Ffile.cpp	/^std::string Get_File_Ext(std::string input){$/;"	f
+Get_File_Folder	Function/Ffile.cpp	/^std::string Get_File_Folder(std::string input){$/;"	f
 Get_Histogram	AnalyseClass/Plot.cpp	/^bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_folder){$/;"	f	class:APlot
 Get_Input_File	AnalyseClass/Plot.cpp	/^bool APlot::Get_Input_File(CDraw &para, Avariable &info, std::vector<std::string> input_sig, std::vector<std::string> input_bkg){$/;"	f	class:APlot
 Get_Significance	Function/FCalc.cpp	/^float Get_Significance(float sig, float bkg){$/;"	f
 Get_VarName	Function/Fbasic.h	41;"	d
+GoesLeft	BDTG/weights/TMVAClassification_BDTG.class.C	/^bool BDTGNode::GoesLeft( const std::vector<double>& inputValues ) const$/;"	f	class:BDTGNode
+GoesRight	BDTG/weights/TMVAClassification_BDTG.class.C	/^bool BDTGNode::GoesRight( const std::vector<double>& inputValues ) const$/;"	f	class:BDTGNode
 Hist	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist(std::string label){$/;"	f	class:Analyse_Figure
 Hist_After	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist_After(){$/;"	f	class:Analyse_Figure
 Hist_Before	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist_Before(){$/;"	f	class:Analyse_Figure
 Hist_Final	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist_Final(){$/;"	f	class:Analyse_Figure
 Hist_Origin	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist_Origin(){$/;"	f	class:Analyse_Figure
+IClassifierReader	BDTG/weights/TMVAClassification_BDTG.class.C	/^   IClassifierReader() : fStatusIsClean( true ) {}$/;"	f	class:IClassifierReader
+IClassifierReader	BDTG/weights/TMVAClassification_BDTG.class.C	/^class IClassifierReader {$/;"	c	file:
+IClassifierReader__def	BDTG/weights/TMVAClassification_BDTG.class.C	175;"	d	file:
 INCLUDE	makefile	/^INCLUDE = -I. -I..  -I$(RootPath)\/include  \\$/;"	m
 Init	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Figure::Init(){$/;"	f	class:Analyse_Figure
 Init	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Figure::Init(Avariable &info, std::string name){$/;"	f	class:Analyse_Figure
@@ -277,6 +302,7 @@ Init	AnalyseClass/Counter.cpp	/^void ACounter::Init(CDraw &para, int input_entri
 Init	AnalyseClass/Plot.cpp	/^void APlot::Init(){$/;"	f	class:APlot
 Init	AnalyseClass/Variable.h	/^		void Init(){$/;"	f	class:Avariable
 Init	Class/Event.h	/^		void Init(long long int _tot_num){$/;"	f	class:CEvent
+Initialize	BDTG/weights/TMVAClassification_BDTG.class.C	/^void ReadBDTG::Initialize()$/;"	f	class:ReadBDTG
 Initialize	TSysLimit/TSysLimitResult.cpp	/^void TSysLimitResult::Initialize(Double_t scale,$/;"	f	class:TSysLimitResult
 Initialize	TSysLimit/TSysLimitResult.cpp	/^void TSysLimitResult::Initialize(TVectorD const &b,TVectorD const &sb,$/;"	f	class:TSysLimitResult
 Initialize	TSysLimit/TSysLimitResultLogL.cpp	/^void TSysLimitResultLogL::Initialize(TVectorD const &b,TVectorD const &sb,$/;"	f	class:TSysLimitResultLogL
@@ -290,6 +316,8 @@ Input_Sort	AnalyseClass/Sort_List.cpp	/^void ASort_List::Input_Sort(std::string 
 Input_Sub_Sort	AnalyseClass/Sort_List.cpp	/^void ASort_List::Input_Sub_Sort(std::string sort_name, std::string sub_sort_name){$/;"	f	class:ASort_List
 Int_to_String	Function/Fbasic.cpp	/^std::string Int_to_String(int i){$/;"	f
 Int_to_String_descrip	Function/Fbasic.cpp	/^std::string Int_to_String_descrip(int i){$/;"	f
+IsNormalised	BDTG/weights/TMVAClassification_BDTG.class.C	/^   bool IsNormalised() const { return fIsNormalised; }$/;"	f	class:ReadBDTG	file:
+IsStatusClean	BDTG/weights/TMVAClassification_BDTG.class.C	/^   bool IsStatusClean() const { return fStatusIsClean; }$/;"	f	class:IClassifierReader
 Is_File_Exist	Function/Ffile.cpp	/^bool Is_File_Exist(const std::string& fname){$/;"	f
 Is_File_Exist_And_Exit	Function/Ffile.cpp	/^void Is_File_Exist_And_Exit(const std::string& fname){$/;"	f
 Is_Maximum	AnalyseClass/Variable.h	/^		bool Is_Maximum(double val){$/;"	f	class:Avariable
@@ -355,9 +383,11 @@ Message	Class/debug.h	/^			void Message(Int_t itlevel, Int_t itpos, std::string 
 Message	Class/debug.h	/^			void Message(Int_t itlevel, Int_t itpos, std::string mess, TDebug1 ddata, TDebug2 ddata2){$/;"	f	class:CDebug
 Message	Class/debug.h	/^		void Message(Int_t itlevel, Int_t itpos,std::string mess){$/;"	f	class:CDebug
 Minimum	AnalyseClass/Variable.h	/^		float Minimum(){$/;"	f	class:Avariable
+NN	BDTG/weights/TMVAClassification_BDTG.class.C	95;"	d	file:
 Name	Class/BKG_Sort.h	/^		std::string Name(int ith){$/;"	f	class:CBKG_Sort_basic
 NameDescrip	Function/Fbasic.cpp	/^std::string NameDescrip(std::string class_name, std::string observable_name, int i){$/;"	f
 NameHistogram	Function/Fbasic.cpp	/^std::string NameHistogram(std::string signal_name, std::string class_name, std::string observable_name, int i){$/;"	f
+NormVariable	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double NormVariable( double x, double xmin, double xmax ) const {$/;"	f	class:ReadBDTG	file:
 Num	AnalyseClass/File.h	/^		int Num(){$/;"	f	class:AFile_Name
 Num	Class/BKG_Sort.h	/^		int Num(){$/;"	f	class:CBKG_Sort
 Num_To_String	Function/Fbasic.h	/^std::string Num_To_String(TType i){$/;"	f
@@ -389,7 +419,7 @@ Print_Item	Latex/LItem.h	/^void Print_Item (std::ostream& out, TPrint1 content, 
 Print_Item_Begin	Latex/LItem.cpp	/^void Print_Item_Begin(std::ostream& out){$/;"	f
 Print_Item_End	Latex/LItem.cpp	/^void Print_Item_End(std::ostream& out){$/;"	f
 Print_Line	Latex/LTable.cpp	/^void Print_Line(std::ostream& out){$/;"	f
-Print_Plot	AnalyseClass/Plot.cpp	/^void APlot::Print_Plot(Avariable& info, std::string name){$/;"	f	class:APlot
+Print_Plot	AnalyseClass/Plot.cpp	/^void APlot::Print_Plot(CDraw &para, Avariable& info, std::string name){$/;"	f	class:APlot
 Print_Table_Begin	Latex/LTable.cpp	/^void Print_Table_Begin(std::ostream& out, std::string size, int item_num){$/;"	f
 Print_Table_End	Latex/LTable.cpp	/^void Print_Table_End(std::ostream& out, std::string size){$/;"	f
 Print_Table_First_Column	Latex/LTable.h	/^void Print_Table_First_Column(std::ostream& out, TPrint1 content, bool Is_Fomular = false){$/;"	f
@@ -434,6 +464,8 @@ RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string partic
 RandomExperiment	TSysLimit/TSysLimit.cpp	/^void TSysLimit::RandomExperiment(const TVectorD &src,TVectorD &dest) {$/;"	f	class:TSysLimit
 RandomSysShifts	TSysLimit/TSysLimit.cpp	/^void TSysLimit::RandomSysShifts(void) {$/;"	f	class:TSysLimit
 Read	RWpara/RWDraw.cpp	/^void CDraw::Read(){$/;"	f	class:CDraw
+ReadBDTG	BDTG/weights/TMVAClassification_BDTG.class.C	/^   ReadBDTG( std::vector<std::string>& theInputVars ) $/;"	f	class:ReadBDTG
+ReadBDTG	BDTG/weights/TMVAClassification_BDTG.class.C	/^class ReadBDTG : public IClassifierReader {$/;"	c	file:
 Read_BKG_Sort	RWpara/RWBKG_Sort.cpp	/^void CBKG_Sort:: Read_BKG_Sort(CPath &path){$/;"	f	class:CBKG_Sort
 Read_BKG_Sort_Test	RWpara/RWBKG_Sort.cpp	/^void CBKG_Sort:: Read_BKG_Sort_Test(CPath &path){$/;"	f	class:CBKG_Sort
 Read_Cut	RWpara/RWCut.cpp	/^void ACut:: Read_Cut(CPath &path){$/;"	f	class:ACut
@@ -499,7 +531,7 @@ Set_Legend	Class/BKG_Sort.h	/^		void Set_Legend(std::string leg){$/;"	f	class:CB
 Set_Line_Style	AnalyseClass/Plot.cpp	/^bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color_index, int style_index){$/;"	f	class:APlot
 Set_Num	Class/BKG_Sort.h	/^		void Set_Num(){$/;"	f	class:CBKG_Sort_basic
 Set_Pass	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Figure::Set_Pass(float weight){$/;"	f	class:Analyse_Figure
-Set_Stack_Style	AnalyseClass/Plot.cpp	/^void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualPad* pad){$/;"	f	class:APlot
+Set_Stack_Style	AnalyseClass/Plot.cpp	/^void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualPad* pad, std::string hist_label){$/;"	f	class:APlot
 Set_Stack_Title	AnalyseClass/Plot.cpp	/^std::vector<std::string> APlot::Set_Stack_Title(CDraw& para, std::string name){$/;"	f	class:APlot
 Set_Sub_Class	Class/BKG_Sort.h	/^		void Set_Sub_Class(std::string name){$/;"	f	class:CBKG_Sort_basic
 Set_Sub_Class	Class/BKG_Sort.h	/^		void Set_Sub_Class(std::vector<std::string> &name){$/;"	f	class:CBKG_Sort_basic
@@ -550,6 +582,7 @@ Unpol_file	AnalyseClass/File.h	/^		std::string             	Unpol_file;$/;"	m	cl
 Use_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Single_File::Use_Cut(Avariable &var, float weight, Analyse_Figure &figure){$/;"	f	class:Analyse_Single_File
 Var_Num	AnalyseClass/AnalyseClass.cpp	/^int Analyse_Multi_File::Var_Num(){$/;"	f	class:Analyse_Multi_File
 Vec_Exist	Function/Fvector.cpp	/^bool Vec_Exist(std::vector<std::string>V1, std::string input){$/;"	f
+Xpos	Class/Plot.h	/^		Int_t Xpos;$/;"	m	class:Cplot_canvas
 YAML	AnalyseClass/File_List.h	/^namespace YAML{$/;"	n
 YAML	AnalyseClass/Variable.h	/^namespace YAML{$/;"	n
 YAML	Class/MVA.h	/^namespace YAML{$/;"	n
@@ -558,6 +591,7 @@ YAML	Class/Scenario.h	/^namespace YAML{$/;"	n
 YAMLPath	makefile	/^YAMLPath=\/home\/yancy\/Software\/lib\/yaml-cpp\/$/;"	m
 YAML_ASSISTANT_H	Lib/YAML_Assistant.h	3;"	d
 YAML_Type	Lib/YAML_Assistant.cpp	/^void YAML_Type(YAML::Node nodes){$/;"	f
+Ypos	Class/Plot.h	/^		Int_t Ypos;$/;"	m	class:Cplot_canvas
 _Exist	Class/Judge.h	/^		bool _Exist;$/;"	m	class:AJudge
 _Find_Which_Sort	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::_Find_Which_Sort (CDraw& para, AFile & file_name, int filenum ) {$/;"	f	class:Analyse_Multi_File
 _Has_Drawn	AnalyseClass/AnalyseClass.h	/^		bool                                   _Has_Drawn       ;$/;"	m	class:Analyse_Multi_File
@@ -629,14 +663,18 @@ bjetSwitch	AnalyseClass/Counter.h	/^		bool bjetSwitch   ;$/;"	m	class:ACounter
 bkg_sort	Class/DrawClass.h	/^		CBKG_Sort                    bkg_sort            ;$/;"	m	class:CDraw
 bkg_sort_file	Class/Path.h	/^		std::string   bkg_sort_file    ;$/;"	m	class:CPath
 boostSwitch	AnalyseClass/Counter.h	/^		bool boostSwitch  ;$/;"	m	class:ACounter
+border_mode	Class/Plot.h	/^		Int_t border_mode;$/;"	m	class:Cplot_canvas
+border_size	Class/Plot.h	/^		Int_t border_size;$/;"	m	class:Cplot_canvas
 c	AnalyseClass/Variable.h	/^		TCanvas*      c          ;$/;"	m	class:Avariable
 c_height	AnalyseClass/Variable.h	/^		float         c_height   ;$/;"	m	class:Avariable
 c_name	AnalyseClass/Variable.h	/^		std::string   c_name     ;$/;"	m	class:Avariable
 c_width	AnalyseClass/Variable.h	/^		float         c_width    ;$/;"	m	class:Avariable
 calTotNum	AnalyseClass/File_List.h	/^		void calTotNum(float elec_pol, float posi_pol){$/;"	f	class:PolNum
+canvas	Class/Plot.h	/^		Cplot_canvas canvas;$/;"	m	class:Cplot_rootset
 change_name	AnalyseClass/File.cpp	/^std::string change_name(std::string arg_string){$/;"	f
 channel_num	Class/File.h	/^		Int_t                    channel_num            ;$/;"	m	class:CFile
 class_plot	Class/Plot.h	/^		std::vector<std::string> class_plot;$/;"	m	class:Cplot_drawing
+color	Class/Plot.h	/^		Int_t color;$/;"	m	class:Cplot_canvas
 combSwitch	AnalyseClass/Counter.h	/^		bool combSwitch   ;$/;"	m	class:ACounter
 combine_plot	Class/Path.h	/^		std::string   combine_plot     ;$/;"	m	class:CPath
 convert	AnalyseClass/File_List.h	/^		struct convert<AFile_Data>{$/;"	s	namespace:YAML
@@ -704,7 +742,11 @@ fBSys	TSysLimit/TSysLimit.h	/^		TVectorD fBSys,fSBSys;$/;"	m	class:TSysLimit
 fBgr	TSysLimit/TSysLimitChannel.h	/^		TVectorD fBgr,fBgrError;$/;"	m	class:TSysLimitChannel
 fBgrError	TSysLimit/TSysLimitChannel.h	/^		TVectorD fBgr,fBgrError;$/;"	m	class:TSysLimitChannel
 fBgrSys	TSysLimit/TSysLimitChannel.h	/^		TMap fSignalSys,fBgrSys;$/;"	m	class:TSysLimitChannel
+fBoostWeights	BDTG/weights/TMVAClassification_BDTG.class.C	/^   std::vector<double>                fBoostWeights; \/\/ the weights applied in the individual boosts$/;"	m	class:ReadBDTG	file:
 fChannels	TSysLimit/TSysLimit.h	/^		TObjArray fChannels;$/;"	m	class:TSysLimit
+fClassName	BDTG/weights/TMVAClassification_BDTG.class.C	/^   const char* fClassName;$/;"	m	class:ReadBDTG	file:
+fCutType	BDTG/weights/TMVAClassification_BDTG.class.C	/^   bool                    fCutType;  \/\/ true: if event variable > cutValue ==> signal , false otherwise$/;"	m	class:BDTGNode	file:
+fCutValue	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double                  fCutValue; \/\/ cut value appplied on this node to discriminate bkg against sig$/;"	m	class:BDTGNode	file:
 fData	TSysLimit/TSysLimit.h	/^		TVectorD fData,fDataErrorAbs,fDataErrorRel,fDataErrorSqrt;$/;"	m	class:TSysLimit
 fData	TSysLimit/TSysLimitChannel.h	/^		TVectorD fData;$/;"	m	class:TSysLimitChannel
 fData	TSysLimit/TSysLimitScan.h	/^   Int_t fData,fExpected,fScanMax;$/;"	m	class:TSysLimitScan
@@ -716,37 +758,50 @@ fDataErrorType	TSysLimit/TSysLimitChannel.h	/^		TSysLimitChannelDataErrorType fD
 fErrB	TSysLimit/TSysLimit.h	/^		TMatrixD fErrB,fErrSB;$/;"	m	class:TSysLimit
 fErrSB	TSysLimit/TSysLimit.h	/^		TMatrixD fErrB,fErrSB;$/;"	m	class:TSysLimit
 fExpected	TSysLimit/TSysLimitScan.h	/^   Int_t fData,fExpected,fScanMax;$/;"	m	class:TSysLimitScan
+fForest	BDTG/weights/TMVAClassification_BDTG.class.C	/^   std::vector<BDTGNode*> fForest;       \/\/ i.e. root nodes of decision trees$/;"	m	class:ReadBDTG	file:
 fGenerateFakeData	TSysLimit/TSysLimit.h	/^		Bool_t fGenerateFakeData;$/;"	m	class:TSysLimit
 fIncludeOverflowBins	TSysLimit/TSysLimitChannel.h	/^		Bool_t fIncludeOverflowBins;$/;"	m	class:TSysLimitChannel
+fIsNormalised	BDTG/weights/TMVAClassification_BDTG.class.C	/^   const bool fIsNormalised;$/;"	m	class:ReadBDTG	file:
 fK1	TSysLimit/TSysLimitResultPBock.h	/^   Double_t fK1,fK2;$/;"	m	class:TSysLimitResultPBock
 fK2	TSysLimit/TSysLimitResultPBock.h	/^   Double_t fK1,fK2;$/;"	m	class:TSysLimitResultPBock
+fLeft	BDTG/weights/TMVAClassification_BDTG.class.C	/^   BDTGNode*   fLeft;     \/\/ pointer to the left daughter node$/;"	m	class:BDTGNode	file:
 fMethodLogL	TSysLimit/TSysLimit.h	/^		Int_t fMethodSoverSB,fMethodLogSB,fMethodLogSBsys,fMethodPBock,fMethodLogL;$/;"	m	class:TSysLimit
 fMethodLogSB	TSysLimit/TSysLimit.h	/^		Int_t fMethodSoverSB,fMethodLogSB,fMethodLogSBsys,fMethodPBock,fMethodLogL;$/;"	m	class:TSysLimit
 fMethodLogSBsys	TSysLimit/TSysLimit.h	/^		Int_t fMethodSoverSB,fMethodLogSB,fMethodLogSBsys,fMethodPBock,fMethodLogL;$/;"	m	class:TSysLimit
 fMethodPBock	TSysLimit/TSysLimit.h	/^		Int_t fMethodSoverSB,fMethodLogSB,fMethodLogSBsys,fMethodPBock,fMethodLogL;$/;"	m	class:TSysLimit
 fMethodSoverSB	TSysLimit/TSysLimit.h	/^		Int_t fMethodSoverSB,fMethodLogSB,fMethodLogSBsys,fMethodPBock,fMethodLogL;$/;"	m	class:TSysLimit
+fNodeType	BDTG/weights/TMVAClassification_BDTG.class.C	/^   int                     fNodeType; \/\/ Type of node: -1 == Bkg-leaf, 1 == Signal-leaf, 0 = internal $/;"	m	class:BDTGNode	file:
+fNvars	BDTG/weights/TMVAClassification_BDTG.class.C	/^   const size_t fNvars;$/;"	m	class:ReadBDTG	file:
 fOwnedRnd	TSysLimit/TSysLimit.h	/^		TRandom *fRnd,*fOwnedRnd;;$/;"	m	class:TSysLimit
 fPtoX	TSysLimit/TSysLimitResult.h	/^		std::map<Double_t,Double_t> fXtoP,fPtoX;$/;"	m	class:TToyDistribution
+fPurity	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double                  fPurity;   \/\/ Purity of node from training$/;"	m	class:BDTGNode	file:
+fResponse	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double                  fResponse; \/\/ Regression response value of node$/;"	m	class:BDTGNode	file:
 fResults	TSysLimit/TSysLimit.h	/^		TObjArray fResults;$/;"	m	class:TSysLimit
 fResults	TSysLimit/TSysLimitScan.h	/^   TObjArray fResults;$/;"	m	class:TSysLimitScan
+fRight	BDTG/weights/TMVAClassification_BDTG.class.C	/^   BDTGNode*   fRight;    \/\/ pointer to the right daughter node$/;"	m	class:BDTGNode	file:
 fRnd	TSysLimit/TSysLimit.h	/^		TRandom *fRnd,*fOwnedRnd;;$/;"	m	class:TSysLimit
 fSB	TSysLimit/TSysLimit.h	/^		TVectorD fB,fSB;$/;"	m	class:TSysLimit
 fSBSys	TSysLimit/TSysLimit.h	/^		TVectorD fBSys,fSBSys;$/;"	m	class:TSysLimit
 fScanMax	TSysLimit/TSysLimitScan.h	/^   Int_t fData,fExpected,fScanMax;$/;"	m	class:TSysLimitScan
+fSelector	BDTG/weights/TMVAClassification_BDTG.class.C	/^   int                     fSelector; \/\/ index of variable used in node selection (decision tree)   $/;"	m	class:BDTGNode	file:
 fSignal	TSysLimit/TSysLimitChannel.h	/^		TVectorD fSignal,fSignalError;$/;"	m	class:TSysLimitChannel
 fSignalError	TSysLimit/TSysLimitChannel.h	/^		TVectorD fSignal,fSignalError;$/;"	m	class:TSysLimitChannel
 fSignalScale	TSysLimit/TSysLimit.h	/^		Double_t fSignalScale;$/;"	m	class:TSysLimit
 fSignalScale	TSysLimit/TSysLimitResult.h	/^		Double_t fSignalScale;$/;"	m	class:TSysLimitResult
 fSignalSys	TSysLimit/TSysLimitChannel.h	/^		TMap fSignalSys,fBgrSys;$/;"	m	class:TSysLimitChannel
+fStatusIsClean	BDTG/weights/TMVAClassification_BDTG.class.C	/^   bool fStatusIsClean;$/;"	m	class:IClassifierReader	file:
 fSysErrors	TSysLimit/TSysLimit.h	/^		THashTable fSysErrors;$/;"	m	class:TSysLimit
 fSysLimit	TSysLimit/TSysLimitScan.h	/^   TSysLimit &fSysLimit;$/;"	m	class:TSysLimitScan
 fTemplate	TSysLimit/TSysLimitChannel.h	/^		TH1 const *fTemplate;$/;"	m	class:TSysLimitChannel
 fToyB	TSysLimit/TSysLimit.h	/^		TVectorD fToyB,fToySB;$/;"	m	class:TSysLimit
 fToySB	TSysLimit/TSysLimit.h	/^		TVectorD fToyB,fToySB;$/;"	m	class:TSysLimit
+fType	BDTG/weights/TMVAClassification_BDTG.class.C	/^   char   fType[11];$/;"	m	class:ReadBDTG	file:
 fUseBin	TSysLimit/TSysLimit.h	/^		TArrayI fUseBin;$/;"	m	class:TSysLimit
 fUseFakeData	TSysLimit/TSysLimit.h	/^		Bool_t fUseFakeData;$/;"	m	class:TSysLimit
 fUseSys	TSysLimit/TSysLimitResultPBock.h	/^   Bool_t fUseSys;$/;"	m	class:TSysLimitResultPBock
 fVerbose	TSysLimit/TSysLimit.h	/^		Int_t fVerbose;$/;"	m	class:TSysLimit
+fVmax	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double fVmax[11];$/;"	m	class:ReadBDTG	file:
+fVmin	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double fVmin[11];$/;"	m	class:ReadBDTG	file:
 fWeight	TSysLimit/TSysLimitResult.h	/^		TVectorD fWeight;$/;"	m	class:TSysLimitResult
 fXb	TSysLimit/TSysLimitResult.h	/^		TToyDistribution *fXb,*fXsb;$/;"	m	class:TSysLimitResult
 fXdata	TSysLimit/TSysLimitResult.h	/^		Double_t fXdata;$/;"	m	class:TSysLimitResult
@@ -765,6 +820,7 @@ folder	AnalyseClass/File.h	/^		std::vector<std::string> folder      ;$/;"	m	clas
 getCounter	AnalyseClass/Counter.cpp	/^void ACounter::getCounter(std::string event_name){$/;"	f	class:ACounter
 getTotNum	AnalyseClass/File_List.h	/^		Pair_File getTotNum(){$/;"	f	class:PolNum
 get_file_name	AnalyseClass/File.cpp	/^void get_file_name(CDraw &para, AFile &file_name){$/;"	f
+height	Class/Plot.h	/^		Int_t height;$/;"	m	class:Cplot_canvas
 horizontal_summary_plot	Class/Path.h	/^		std::string   horizontal_summary_plot;$/;"	m	class:CPath
 hvariable_after	AnalyseClass/AnalyseClass.h	/^		TH1F*       hvariable_after ;$/;"	m	class:Analyse_Figure
 hvariable_before	AnalyseClass/AnalyseClass.h	/^		TH1F*       hvariable_before;$/;"	m	class:Analyse_Figure
@@ -879,6 +935,7 @@ plot_CUT	AnalyseClass/File.h	/^		std::string              plot_CUT      ;$/;"	m	
 plot_file	Class/Path.h	/^		std::string   plot_file        ;$/;"	m	class:CPath
 plot_object	Class/Flow.h	/^		std::string             plot_object          ;$/;"	m	class:CFlow
 plot_switch	AnalyseClass/Variable.h	/^		bool          plot_switch;$/;"	m	class:Avariable
+plot_type	Class/Plot.h	/^		std::string plot_type;$/;"	m	class:Cplot_drawing
 pol	Class/Scenario.h	/^		std::vector<float>      pol     ;$/;"	m	class:CScenario
 posi_pol	Class/Scenario.h	/^		float                   posi_pol;$/;"	m	class:CScenario
 pre_cut	AnalyseClass/Cut.h	/^		std::vector<int> pre_cut;$/;"	m	class:ACut
@@ -894,6 +951,7 @@ record_output	Class/Flow.h	/^		Bool_t                  record_output        ;$/;
 reweight_table	AnalyseClass/File.h	/^		std::string              reweight_table;$/;"	m	class:AFile
 root_head_MVA_name	Class/File.h	/^		std::string              root_head_MVA_name     ;$/;"	m	class:CFile
 root_head_name	Class/File.h	/^		std::string              root_head_name         ;$/;"	m	class:CFile
+rootset	Class/Plot.h	/^		Cplot_rootset  rootset;$/;"	m	class:CPlot
 run_ratio	Class/Scenario.h	/^	std::vector<float>      run_ratio;$/;"	m	class:CScenario_Basic
 scenario	Class/DrawClass.h	/^		CScenario                    scenario            ;$/;"	m	class:CDraw
 scenario	Class/Scenario.h	/^		std::vector<CScenario_Basic> scenario;$/;"	m	class:CScenario
@@ -944,6 +1002,7 @@ vec	AnalyseClass/Variable.h	/^		std::vector<Avariable_vec> vec;$/;"	m	class:AVar
 weight	AnalyseClass/File_List.h	/^		float weight;$/;"	m	class:AFile_Data
 weight_exist	AnalyseClass/Variable.h	/^		bool        weight_exist;$/;"	m	class:AVariable
 weight_type	AnalyseClass/Variable.h	/^		std::string weight_type;$/;"	m	class:AVariable
+width	Class/Plot.h	/^		Int_t width;$/;"	m	class:Cplot_canvas
 with_color_or_line	AnalyseClass/Variable.h	/^		int           with_color_or_line; $/;"	m	class:Avariable
 with_color_or_line	Class/Plot.h	/^		int  with_color_or_line; $/;"	m	class:Cplot_setting
 working_scenario	Class/Flow.h	/^		std::string             working_scenario     ;$/;"	m	class:CFlow
@@ -961,8 +1020,11 @@ y_name	AnalyseClass/Variable.h	/^		std::string   y_name     ;$/;"	m	class:Avaria
 ~Analyse_Figure	AnalyseClass/AnalyseClass.h	/^		~Analyse_Figure(){$/;"	f	class:Analyse_Figure
 ~Analyse_Multi_File	AnalyseClass/AnalyseClass.h	/^		~Analyse_Multi_File(){$/;"	f	class:Analyse_Multi_File
 ~Analyse_Single_File	AnalyseClass/AnalyseClass.cpp	/^Analyse_Single_File::~Analyse_Single_File(){$/;"	f	class:Analyse_Single_File
+~BDTGNode	BDTG/weights/TMVAClassification_BDTG.class.C	/^   BDTGNode::~BDTGNode()$/;"	f	class:BDTGNode
 ~CScenario	Class/Scenario.h	/^		~CScenario(){$/;"	f	class:CScenario
+~IClassifierReader	BDTG/weights/TMVAClassification_BDTG.class.C	/^   virtual ~IClassifierReader() {}$/;"	f	class:IClassifierReader
 ~PolNum	AnalyseClass/File_List.h	/^		~PolNum(){$/;"	f	class:PolNum
+~ReadBDTG	BDTG/weights/TMVAClassification_BDTG.class.C	/^   virtual ~ReadBDTG() {$/;"	f	class:ReadBDTG
 ~TSysLimit	TSysLimit/TSysLimit.cpp	/^TSysLimit::~TSysLimit(void) {$/;"	f	class:TSysLimit
 ~TSysLimitChannel	TSysLimit/TSysLimitChannel.cpp	/^TSysLimitChannel::~TSysLimitChannel(void) {$/;"	f	class:TSysLimitChannel
 ~TSysLimitResult	TSysLimit/TSysLimitResult.cpp	/^TSysLimitResult::~TSysLimitResult(void) {$/;"	f	class:TSysLimitResult

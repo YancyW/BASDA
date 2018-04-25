@@ -23,7 +23,8 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 	}
 
 	// --- Book the MVA methods
-	std::string weight_file=file_name.dataset_MVA+" "+para.MVA.MVA_Type()+"/weights/TMVAClassification_MVA.weights.xml";
+	//std::string weight_file=file_name.dataset_MVA+"_"+para.MVA.MVA_Type()+"/weights/TMVAClassification_"+para.MVA.MVA_Type()+".weights.xml";
+	std::string weight_file=para.MVA.MVA_Type()+"/weights/TMVAClassification_"+para.MVA.MVA_Type()+".weights.xml";
 	reader->BookMVA("mymethod",weight_file.c_str());
 
 	for(int i=0;i<file_name.Output_Num();i++){
@@ -42,7 +43,7 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 		TTree* tree3 = (TTree*)input->Get(para.file.root_head_name.c_str());
 
 		float MVAGoutput;
-		TBranch *br = tree3->Branch("MVA",&MVAGoutput);
+		TBranch *br = tree3->Branch(para.MVA.MVA_Type().c_str(),&MVAGoutput);
 
 		ShowMessage(3, "Processing: " ,tree3->GetEntries() ," events" );
 		TStopwatch sw;
