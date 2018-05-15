@@ -11,6 +11,7 @@
 #include "Analyse/Analyse_Sensitivity.h"
 #include "Analyse/Analyse_Signal_Scan.h"
 #include "Analyse/Analyse_Summarize_Plot.h"
+#include "Analyse/Analyse_Plot_Direct.h"
 #include "Analyse/Analyse_Complete.h"
 #include "Analyse/Make_Complete_Table.h"
 #include "Lib/Record.h"

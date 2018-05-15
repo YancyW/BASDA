@@ -22,6 +22,7 @@ Latex/LTable.cpp Latex/LItem.cpp\
 Lib/MessageFormat.cpp Lib/PlotSetting.cpp Lib/Record.cpp Lib/YAML_Assistant.cpp\
 RWpara/RWFile.cpp RWpara/RWFlow.cpp RWpara/RWPath.cpp RWpara/RWDebug.cpp RWpara/RWDraw.cpp RWpara/RWbasic.cpp RWpara/RWEvent.cpp RWpara/RWVar.cpp\
 RWpara/RWSensitivity.cpp RWpara/RWCut.cpp RWpara/RWPlot.cpp RWpara/RWSignal_Properties_Scan.cpp RWpara/RWBKG_Sort.cpp RWpara/RWScenario.cpp RWpara/RWMVA.cpp\
+RWpara/RWPlot_Direct.cpp\
 Analyse/Analyse_Find_Cut.cpp  Analyse/Make_Table.cpp \
 Analyse/Make_Complete_Table.cpp \
 Analyse/Analyse_Pre_Cut.cpp \
@@ -32,6 +33,7 @@ Analyse/Abasic.cpp Analyse/Analyse_MVA_Train.cpp Analyse/Analyse_MVA_Attach.cpp 
 Analyse/Analyse_Sensitivity.cpp\
 Analyse/Analyse_Signal_Scan.cpp\
 Analyse/Analyse_Summarize_Plot.cpp\
+Analyse/Analyse_Plot_Direct.cpp\
 AnalyseClass/File.cpp AnalyseClass/File_List.cpp AnalyseClass/Sort_List.cpp \
 AnalyseClass/AnalyseClass.cpp\
 AnalyseClass/Variable.cpp\

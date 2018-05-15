@@ -5,14 +5,15 @@
 #BeginObject      : Complete_Direct_Cut
 #BeginObject      : Make_Complete_Table 
 #BeginObject      : Sensitivity 
-#BeginObject      : Pre_Cut 
+BeginObject      : Pre_Cut 
 #BeginObject      : MVA_Train 
 #BeginObject      : MVA_Attach
 #BeginObject      : Summarize_Plot 
-BeginObject      : Complete_Summarize_Plot 
+#BeginObject      : Complete_Summarize_Plot 
 #BeginObject       : Direct_Cut_ReWeight
 #BeginObject      : Direct_Cut
 #BeginObject      : Make_Table 
+#BeginObject      : Plot_Direct 
 
 
 # choose signal process and work scenario

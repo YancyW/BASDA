@@ -4,7 +4,7 @@ root_file_125:
     wtata_{l}^{l}:
         /home/yancy/Code/Data/Event_Draw_2hdm//events_a/wtata.root  :  410 
     tt_{l}^{l}:
-        /home/yancy/Code/Data/Event_Draw_2hdm//events_a/tt.root  : 62000 
+        /home/yancy/Code/Data/Event_Draw_2hdm//events_a/tt_pt20.root  : 50110
     tt_{sl}^{l}:
         /home/yancy/Code/Data/Event_Draw_2hdm//events_a/tt_semi.root  : 133980 
     ttll_{l}^{l}:

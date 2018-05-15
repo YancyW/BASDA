@@ -48,6 +48,7 @@ void CPath::Read_Path(std::string steering_file){
 	RW_element("SENSITIVITY_FILE"          , path_node , this->sensitivity_file          ) ;
 	RW_element("SCENARIO_FILE"             , path_node , this->scenario_file             ) ;
 	RW_element("SIGNAL_PROPERTY_SCAN_FILE" , path_node , this->signal_property_scan_file ) ;
+	RW_element("PLOT_DIRECT_FILE"          , path_node , this->plot_direct_file          ) ;
 
 
 	if(this->input_folder != "NULL" || this->input_folder != ""){
@@ -63,6 +64,7 @@ void CPath::Read_Path(std::string steering_file){
 		this->signal_property_scan_file = this->input_folder+"/"+this->signal_property_scan_file;
 		this->bkg_sort_file             = this->input_folder+"/"+this->bkg_sort_file    ;
 		this->scenario_file             = this->input_folder+"/"+this->scenario_file    ;
+		this->plot_direct_file          = this->input_folder+"/"+this->plot_direct_file ;
 	}
 	ShowMessage(1);
 }

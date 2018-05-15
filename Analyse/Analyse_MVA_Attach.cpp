@@ -13,7 +13,7 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 	ShowMessage(2,"Start TMVA Attaching");
 	// --- Create the Reader object
 	for(int i=0;i<file_name.Output_Num();i++){
-		ShowMessage(3,"The attached file are",file_name.output[i].MVA_file);
+		ShowMessage(3,"The files who needed to be attached MVA variables are",file_name.output[i].MVA_file);
 	}
 
 
@@ -25,6 +25,7 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 	// --- Book the MVA methods
 	//std::string weight_file=file_name.dataset_MVA+"_"+para.MVA.MVA_Type()+"/weights/TMVAClassification_"+para.MVA.MVA_Type()+".weights.xml";
 	std::string weight_file=para.MVA.MVA_Type()+"/weights/TMVAClassification_"+para.MVA.MVA_Type()+".weights.xml";
+	ShowMessage(2,"The weight file is", weight_file);
 	reader->BookMVA("mymethod",weight_file.c_str());
 
 	for(int i=0;i<file_name.Output_Num();i++){
@@ -40,30 +41,30 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 		// --- Event loop
 
 		ShowMessage(3, "TMVAClassificationApp    : Using branch: " ,para.file.root_head_name );
-		TTree* tree3 = (TTree*)input->Get(para.file.root_head_name.c_str());
+		TTree* tree = (TTree*)input->Get(para.file.root_head_name.c_str());
 
 		float MVAGoutput;
-		TBranch *br = tree3->Branch(para.MVA.MVA_Type().c_str(),&MVAGoutput);
+		TBranch *br = tree->Branch(para.MVA.MVA_Type().c_str(),&MVAGoutput);
 
-		ShowMessage(3, "Processing: " ,tree3->GetEntries() ," events" );
+		ShowMessage(3, "Processing: " ,tree->GetEntries() ," events" );
 		TStopwatch sw;
 		sw.Start();
 
-		Int_t nEvent = tree3->GetEntries();
+		Int_t nEvent = tree->GetEntries();
 		for (Long64_t ievt=0; ievt<nEvent; ievt++) {
 			CountNumber(ievt,nEvent,1000,"has dealed with number are");
-			tree3->GetEntry(ievt);
+			tree->GetEntry(ievt);
 
 			std::vector<float> f;
 			f.resize(para.var.numMVA);
 			for(int nvar=0;nvar<para.var.numMVA;nvar++){
-				TTreeFormula f1("n",para.var.MVA[nvar].title_name.c_str(),tree3);
+				TTreeFormula f1("n",para.var.MVA[nvar].title_name.c_str(),tree);
 				f[nvar] = f1.EvalInstance(ievt);
 			}
 			MVAGoutput = reader->EvaluateMVA(f,"mymethod");
 			br->Fill();
 		}
-		tree3->Write();
+		tree->Write();
 		input->Close();
 	}
 

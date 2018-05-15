@@ -147,6 +147,7 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			analyse.Plot_Final       ( cnum ) ;
 
 			analyse.Root_Fill        ( cnum ) ;
+
 		}                
 
 		analyse.Record_Information(cnum,myfile,file_name.output[cnum].latex);

@@ -59,25 +59,25 @@ bool APlot::Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplo
 bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color, int linestyle){
 	if(info.with_color_or_line==-1){
 		if(para.plot.setting.with_color_or_line == 1){
-			histo->SetLineColor(color);
+			histo->SetLineColor(color+1);
 		}
 		else if(para.plot.setting.with_color_or_line == -1){
 			histo->SetLineStyle(linestyle);
 		}
 		else{
-			histo->SetLineColor(color);
+			histo->SetLineColor(color+1);
 			histo->SetLineStyle(linestyle);
 		}
 	}
 	else{
 		if(info.with_color_or_line == 1){
-			histo->SetLineColor(color);
+			histo->SetLineColor(color+1);
 		}
 		else if(info.with_color_or_line == -1){
 			histo->SetLineStyle(linestyle);
 		}
 		else{
-			histo->SetLineColor(color);
+			histo->SetLineColor(color+1);
 			histo->SetLineStyle(linestyle);
 		}
 

@@ -21,6 +21,7 @@
 #include "Class/BKG_Sort.h"
 #include "Class/Scenario.h"
 #include "Class/Plot.h"
+#include "Class/Plot_Direct.h"
 #include "Class/MVA.h"
 #include "Class/Time.h"
 #include "AnalyseClass/Variable.h"
@@ -43,6 +44,7 @@ class CDraw{
 		Bool_t                       Jbkg_sort           ;
 		Bool_t                       Jscenario           ;
 		Bool_t                       Jplot               ;
+		Bool_t                       Jplot_direct        ;
 		Bool_t                       JMVA                ;
 
 		CPath                        path                ;
@@ -76,6 +78,9 @@ class CDraw{
 
 		CPlot                        plot                ;
 		CPlot                        default_plot        ;
+
+		CPlot_Direct                 plot_direct         ;
+		CPlot_Direct                 default_plot_direct ;
 
 		CMVA                         MVA                 ;
 		CMVA                         default_MVA         ;

@@ -4,22 +4,23 @@
 std::ostream & operator<<(std::ostream & ostr, AFile &file_name){
 
 	ShowMessage(2);
-	ShowMessage(2,"The data_folder:"             ,file_name.folder[0]);
-	ShowMessage(2,"The plot_folder_name:"        ,file_name.folder[1]);
-	ShowMessage(2,"The plot_combine_folder_name:",file_name.folder[2]);
-	ShowMessage(2,"The event_Unpol_folder:"      ,file_name.folder[3]);
-	ShowMessage(2,"The event_MVA_folder:"        ,file_name.folder[4]);
-	ShowMessage(2,"The event_CUT_folder:"        ,file_name.folder[5]);
-	ShowMessage(2,"The plot summary horizontaly" ,file_name.folder[6]);
-	ShowMessage(2,"The plot summary horizontaly" ,file_name.folder[7]);
+	ShowMessage(2,"The data_folder:"             ,file_name.Data_Folder());
+	ShowMessage(2,"The plot_folder_name:"        ,file_name.Plot_Single_Folder());
+	ShowMessage(2,"The plot_sort_folder_name:"   ,file_name.Plot_Sort_Folder());
+	ShowMessage(2,"The event_Unpol_folder:"      ,file_name.Event_Unpol_Folder());
+	ShowMessage(2,"The event_MVA_folder:"        ,file_name.Event_MVA_Folder());
+	ShowMessage(2,"The event_CUT_folder:"        ,file_name.Event_CUT_Folder());
+	ShowMessage(2,"The plot summary horizontaly" ,file_name.Plot_Summary_Folder());
+	ShowMessage(2,"The event limitation"         ,file_name.Event_Limit_Folder());
+	ShowMessage(2,"The single origin plot"       ,file_name.Plot_Direct_Folder());
 	ShowMessage(2);
 
-	ShowMessage(2,"The significance file:"       ,file_name.significance  );
-	ShowMessage(2,"The output_table file:"       ,file_name.output_table  );
-	ShowMessage(2,"The reweight_table file:"     ,file_name.reweight_table);
-	ShowMessage(2,"The sensitivity file :"       ,file_name.sensitivity   );
-	ShowMessage(2,"The output_MVA file  :"       ,file_name.output_MVA    );
-	ShowMessage(2,"The dataset_MVA file :"       ,file_name.dataset_MVA   );
+	ShowMessage(2,"The significance file:"       ,file_name.Significance  ());
+	ShowMessage(2,"The output_table file:"       ,file_name.Output_Table  ());
+	ShowMessage(2,"The reweight_table file:"     ,file_name.Reweight_Table());
+	ShowMessage(2,"The sensitivity file :"       ,file_name.Sensitivity   ());
+	ShowMessage(2,"The output_MVA file  :"       ,file_name.Output_MVA    ());
+	ShowMessage(2,"The dataset_MVA file :"       ,file_name.Dataset_MVA   ());
 	ShowMessage(2);
 
 	for(int i=0;i<file_name.Input_Num();i++){
@@ -170,6 +171,9 @@ void get_file_name(CDraw &para, AFile &file_name){
 	std::string event_LIMIT_folder_name = para.path.event_file+"/"+para.flow.signal_property+"_LIMIT/";
 	Create_Folder(event_LIMIT_folder_name);
 
+	std::string single_plot_folder_name = para.path.single_plot+"/"+para.flow.signal_property+"/single_plot/";
+	Create_Folder(single_plot_folder_name);
+
 	file_name.folder.push_back(data_folder_name);
 	file_name.folder.push_back(plot_folder_name);
 	file_name.folder.push_back(plot_combine_folder_name);
@@ -178,6 +182,7 @@ void get_file_name(CDraw &para, AFile &file_name){
 	file_name.folder.push_back(event_CUT_folder_name);
 	file_name.folder.push_back(plot_horizontal_summary_folder_name);
 	file_name.folder.push_back(event_LIMIT_folder_name);
+	file_name.folder.push_back(single_plot_folder_name);
 
 	ShowMessage(2);
 

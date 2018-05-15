@@ -44,6 +44,10 @@ void CDraw::Read(){
 	default_plot = plot;
     Jplot= true;
 
+    this->plot_direct.Read_Plot_Direct(path);
+	default_plot_direct = plot_direct;
+    Jplot_direct= true;
+
     this->MVA.Read_MVA(path,flow);
 	default_MVA = MVA;
     JMVA= true;

@@ -5,18 +5,9 @@ void Fram(CDraw &para)
 	ShowMessage(1,"begin to choose analysis mode"); 
 	para.time.Begin_Time();
 
+	// key treatments
 	if (para.flow.begin_object == "Find_Cut" ){
 		Analyse_Find_Cut(para);
-	}
-	else if (para.flow.begin_object == "Complete_Run" ){
-		Analyse_Complete(para);
-	}
-	else if (para.flow.begin_object == "Complete_Pol" ){
-		std::string MVA_dataset="../../Event_Analyse_nh/results-1-1/115_MVA/nh_115_115_dataset";
-		Analyse_Complete_Pol(para,true,MVA_dataset);
-	}
-	else if (para.flow.begin_object == "Complete_Direct_Cut" ){
-		Analyse_Complete_Direct_Cut(para);
 	}
 	else if (para.flow.begin_object == "Pre_Cut" ){
 		Analyse_Pre_Cut(para);
@@ -36,23 +27,38 @@ void Fram(CDraw &para)
 	else if (para.flow.begin_object == "Sensitivity" ){
 		Analyse_Sensitivity_Pre(para);
 	}
+	// one-click treatments
+	else if (para.flow.begin_object == "Complete_Run" ){
+		Analyse_Complete(para);
+	}
+	else if (para.flow.begin_object == "Complete_Pol" ){
+		std::string MVA_dataset="../../Event_Analyse_nh/results-1-1/115_MVA/nh_115_115_dataset";
+		Analyse_Complete_Pol(para,true,MVA_dataset);
+	}
+	else if (para.flow.begin_object == "Complete_Direct_Cut" ){
+		Analyse_Complete_Direct_Cut(para);
+	}
 	else if (para.flow.begin_object == "Complete_Sensitivity" ){
 		Analyse_Sensitivity_Complete(para);
 	}
+	else if (para.flow.begin_object == "Complete_Summarize_Plot" ){
+		Analyse_Summarize_Plot_Complete_Pre(para);
+	}
+	// after treatments
 	else if (para.flow.begin_object == "Signal_Scan" ){
 		Analyse_Signal_Scan_Pre(para);
 	}
 	else if (para.flow.begin_object == "Summarize_Plot" ){
 		Analyse_Summarize_Plot_Pre(para);
 	}
-	else if (para.flow.begin_object == "Complete_Summarize_Plot" ){
-		Analyse_Summarize_Plot_Complete_Pre(para);
-	}
 	else if (para.flow.begin_object == "Make_Table" ){
 		Make_Table_Pre(para);
 	}
 	else if (para.flow.begin_object == "Make_Complete_Table" ){
 		Make_Complete_Table_Pre(para);
+	}
+	else if (para.flow.begin_object == "Plot_Direct" ){
+		Analyse_Plot_Direct_Pre(para);
 	}
 	else{
 		ShowMessage(1,"wrong begin_object in control/flow.dat");

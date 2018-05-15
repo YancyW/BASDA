@@ -17,8 +17,5 @@ void CSignal_Property_Scan::Read_Signal_Properties_Scan(CPath &path){
 	if(property_node["background_setting"]){
 		plot_bkg= property_node["background_setting"].as<Cplot_line>();
 	}
-	if(properties.size()!=0){
-		ShowMessage(3,"scanned signal properties are",properties);
-	}
 }
 

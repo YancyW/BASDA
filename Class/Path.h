@@ -34,6 +34,7 @@ class CPath{
 		std::string   cut_file         ;
 		std::string   plot_file        ;
 		std::string   MVA_file         ;
+		std::string   plot_direct_file ;
 
 		std::string   var_file         ;
 		std::string   sensitivity_file ;

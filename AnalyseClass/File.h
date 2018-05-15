@@ -43,15 +43,6 @@ class AFile{
 		std::vector<AFile_Name>  output      ;
 		AFile_Name               output_total;
 		std::vector<std::string> folder      ;
-		//folder order
-        //The data_folder:"             
-        //The plot_folder_name:"        
-        //The plot_combine_folder_name:"
-        //The event_Unpol_folder:"      
-        //The event_MVA_folder:"        
-        //The event_CUT_folder:"        
-        //The plot_summary horizontaly:"        
-        //The plot_in_sensitivity:"        
 		std::string              significance  ;
 		std::string              output_table  ;
 		std::string              reweight_table;
@@ -64,8 +55,90 @@ class AFile{
 			return(input.size());
 		}
 
+		std::vector<AFile_Name> Input(){
+			return(input);
+		}
+
+		std::vector<AFile_Name> Output(){
+			return(output);
+		}
+
+		AFile_Name Output_Total(){
+			return(output_total);
+		}
+
 		int Output_Num(){
 			return(output.size());
+		}
+
+		//folder order
+		std::string Data_Folder(){
+        //The data_folder:"             
+			return(folder[0]);
+		}
+
+		std::string Plot_Single_Folder(){
+        //The plot_folder_name:"        
+			return(folder[1]);
+		}
+
+		std::string Plot_Sort_Folder(){
+        //The plot_combine_folder_name:"
+			return(folder[2]);
+		}
+
+		std::string Event_Unpol_Folder(){
+        //The event_Unpol_folder:"      
+			return(folder[3]);
+		}
+
+		std::string Event_MVA_Folder(){
+        //The event_MVA_folder:"        
+			return(folder[4]);
+		}
+
+		std::string Event_CUT_Folder(){
+        //The event_CUT_folder:"        
+			return(folder[5]);
+		}
+
+		std::string Plot_Summary_Folder(){
+        //The plot_summary horizontaly:"        
+			return(folder[6]);
+		}
+
+		std::string Event_Limit_Folder(){
+        //The plot_in_sensitivity:"        
+			return(folder[7]);
+		}
+
+		std::string Plot_Direct_Folder(){
+        //The simple direct plot
+			return(folder[8]);
+		}
+
+		std::string Significance(){
+			return(significance);
+		}
+
+		std::string Output_Table(){
+			return(output_table);
+		}
+
+		std::string Reweight_Table(){
+			return(reweight_table);
+		}
+
+		std::string Sensitivity(){
+			return(sensitivity);
+		}
+
+		std::string Output_MVA(){
+			return(output_MVA);
+		}
+
+		std::string Dataset_MVA(){
+			return(dataset_MVA);
 		}
 
 		void Clear();

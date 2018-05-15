@@ -18,6 +18,8 @@
         <in>Analyse_MVA_Train.cpp</in>
         <in>Analyse_MVA_Train.h</in>
         <in>Analyse_Mass_Scan.cpp</in>
+        <in>Analyse_Plot_Direct.cpp</in>
+        <in>Analyse_Plot_Direct.h</in>
         <in>Analyse_Pre_Cut.cpp</in>
         <in>Analyse_Pre_Cut.h</in>
         <in>Analyse_Sensitivity.cpp</in>
@@ -51,6 +53,8 @@
       <df name="backup">
       </df>
       <df name="BDTG">
+        <df name="plots">
+        </df>
         <df name="weights">
           <in>TMVAClassification_BDTG.class.C</in>
         </df>
@@ -67,6 +71,7 @@
         <in>Path.cpp</in>
         <in>Path.h</in>
         <in>Plot.h</in>
+        <in>Plot_Direct.h</in>
         <in>Scenario.h</in>
         <in>Sensitivity.h</in>
         <in>Signal_Properties_Scan.h</in>
@@ -90,9 +95,19 @@
         </df>
       </df>
       <df name="control_new_var_1711">
+        <df name="advanced">
+        </df>
+        <df name="BKG">
+        </df>
         <df name="Cut">
         </df>
-        <df name="Var">
+        <df name="Flow">
+        </df>
+        <df name="Path">
+        </df>
+        <df name="Var_mc">
+        </df>
+        <df name="Var_po">
         </df>
       </df>
       <df name="control_test">
@@ -152,6 +167,7 @@
         <in>RWMass_Scan.cpp</in>
         <in>RWPath.cpp</in>
         <in>RWPlot.cpp</in>
+        <in>RWPlot_Direct.cpp</in>
         <in>RWScenario.cpp</in>
         <in>RWSensitivity.cpp</in>
         <in>RWSignal_Properties_Scan.cpp</in>
@@ -177,6 +193,7 @@
       </df>
       <in>BASDA.cpp</in>
       <in>BASDA.h</in>
+      <in>merge.C</in>
     </df>
   </logicalFolder>
   <projectmakefile>makefile</projectmakefile>
@@ -204,8 +221,6 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
-        <gdb_signals>
-        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>

@@ -211,11 +211,19 @@ class Avariable_vec{
 };
 
 
-
-class AVariable{
+class AWeight{
 	public:
 		std::string weight_type;
 		bool        weight_exist;
+	
+		AWeight(){
+			weight_exist= true;
+			weight_type = "F";
+		}
+};
+
+class AVariable: public AWeight{
+	public:
 		int num;
 		int num_vec;
 		int numMVA;
@@ -226,7 +234,6 @@ class AVariable{
 		void Read_Var(CPath &path);
 
 		AVariable(){
-			weight_type = "F";
 			num=0;
 			num_vec=0;
 			numMVA=0;

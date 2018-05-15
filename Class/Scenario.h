@@ -121,6 +121,7 @@ namespace YAML{
 		struct convert<CScenario_Basic>{
 			static bool decode(const Node& node, CScenario_Basic& sce){ 
 				sce.run_ratio.resize(4);
+				ShowMessage(3,"begin reading CScenario_Basic ");
 				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
 					if(it->first.as<std::string>()=="energy"){
 						RW_element(it->first.as<std::string>(), it, sce.energy);
@@ -150,7 +151,6 @@ namespace YAML{
 				if(sce.run_ratio[2]<0.0&&sce.run_ratio[3]<0.0){
 					sce.run_ratio.erase(sce.run_ratio.begin()+2,sce.run_ratio.end());
 				}
-				ShowMessage(2,"finish reading CScenario_Basic ");
 				return true;
 			}
 		};
