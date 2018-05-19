@@ -15,7 +15,7 @@ ROOTLIBS = -L/home/yancy/Software/executable/root/build/lib -lCore -lRIO -lNet -
 
 SRCS = \
 $(TARGET).cpp \
-Class/Path.cpp\
+Class/Path.cpp Class/Plot.cpp\
 Fram/Fram.cpp Fram/Fsection.cpp \
 Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp \
 Latex/LTable.cpp Latex/LItem.cpp\

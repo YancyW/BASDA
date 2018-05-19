@@ -143,16 +143,11 @@ void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::s
 					if(j==num_temp-1){
 						if(i<para.signal_scan.property_num){
 							plot.Set_Line_Style_Test(para,info,hvariable[i],para.signal_scan.plot_sig);
-//							plot.Set_Line_Style(para,info,hvariable[i],i,i);
-//							hvariable[i]->SetFillColor(_colornum[i]);
 							std::string legname=para.signal_scan.properties[i]+" GeV";
 							TLegendEntry* leg_entry= leg->AddEntry(hvariable[i],legname.c_str(),"f");
 						}
 						else{
-							//int bkg_color=i-para.signal_scan.property_num+20;
-//							int bkg_color=28;
 							plot.Set_Line_Style_Test(para,info,hvariable[i],para.signal_scan.plot_bkg);
-//						    hvariable[i]->SetLineColor(_colornum[bkg_color]);
 						}
 					}
 				}
@@ -173,10 +168,7 @@ void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::s
 				ss_large->SetMinimum(info.log_min);
 			}
     		for(int j=para.signal_scan.property_num;j<sig_name[0].size();j++){
-////			//int bkg_color=j-para.signal_scan.property_num+20;
-////			int bkg_color=28;
     			if(hvariable[j]->GetEntries()!=0){
-////				hvariable[j]->SetFillColor(bkg_color);
     				ss_large->Add(hvariable[j]);
         		}
     		}
@@ -187,7 +179,6 @@ void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::s
 			ss_large->GetYaxis()->SetTitle(y_name.c_str());
 			ss_large->GetXaxis()->SetTitle(x_name.c_str());
 
-			//for(int i=para.signal_scan.property_num-1;i>0;i--){
 			for(int i=0;i<para.signal_scan.property_num;i++){
 				if(i==3){
 					continue;
@@ -198,10 +189,7 @@ void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::s
 					ss->SetMinimum(info.log_min);
 				}
     			for(int j=para.signal_scan.property_num;j<sig_name[0].size();j++){
-////				//int bkg_color=j-para.signal_scan.property_num+20;
-////				int bkg_color=28;
     				if(hvariable[j]->GetEntries()!=0){
-////					hvariable[j]->SetFillColor(bkg_color);
     					ss->Add(hvariable[j]);
     				}
     			}

@@ -551,4 +551,20 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+   v33:
+        title_name           : "lep_isolation1"
+        cut_min              : 0 
+        cut_max              : 1
+        latex_name           : "lep_isolation1"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "lep_isolation1"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1                                    
+        cut_switch           : true 
+        plot_switch          : true 
+
 variable_vec:

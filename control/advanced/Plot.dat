@@ -1,9 +1,15 @@
 drawing:
     single_plot            : ["origin", "before", "after", "final"]
     class_plot             : ["origin", "before", "after", "final"]
-    plot_type              : "pdf"
+    plot_type              : "png"
 
 setting:
-        show_title         : false 
-        with_color_or_line : 1 
-        line_width         : 1 
+        show_title             : false 
+        line_setting  :
+              user_basic_color_style : false
+              user_width             : false
+              width                  : 1
+              user_color             : false
+              color                  : 1
+              user_style             : false
+              style                  : 1

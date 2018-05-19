@@ -37,11 +37,29 @@ void APlot::Clear(){
 
 
 bool APlot::Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplot_line setting){
-	histo->SetLineColor(setting.Color());
-	histo->SetLineStyle(setting.Style());
-	histo->SetLineWidth(setting.Width());
-	if(setting.fill_switch){
-		histo->SetFillColor(setting.fill_switch);
+	if(info.Use_Default_Line_Setting()){
+////////if(setting.line_setting.Color()!=-1){
+////////	histo->SetLineColor(setting.line_setting.Color());
+////////}
+////////if(setting.line_setting.Style()!=-1){
+////////	histo->SetLineStyle(setting.line_setting.Style());
+////////}
+////////if(setting.line_setting.Width()!=-1){
+////////	histo->SetLineWidth(setting.line_setting.Width());
+////////}
+////////if(setting.fill_switch){
+////////	histo->SetFillColor(setting.fill_color.Color());
+////////}
+		histo->SetLineColor(setting.line_setting.Color());
+		histo->SetLineStyle(setting.line_setting.Style());
+		histo->SetLineWidth(setting.line_setting.Width());
+		histo->SetFillColor(setting.fill_color.Last_Color());
+	}
+	else{
+		ShowMessage(2,"not default");
+		histo->SetLineColor(info.line_setting.Color());
+		histo->SetLineStyle(info.line_setting.Style());
+		histo->SetLineWidth(info.line_setting.Width());
 	}
 
 	if(setting.norm_switch){
@@ -57,36 +75,15 @@ bool APlot::Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplo
 }
 
 bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color, int linestyle){
-	if(info.with_color_or_line==-1){
-		if(para.plot.setting.with_color_or_line == 1){
-			histo->SetLineColor(color);
-		}
-		else if(para.plot.setting.with_color_or_line == -1){
-			histo->SetLineStyle(linestyle);
-		}
-		else{
-			histo->SetLineColor(color);
-			histo->SetLineStyle(linestyle);
-		}
+	if(info.Use_Default_Line_Setting()){
+		histo->SetLineColor(para.plot.setting.line_setting.Color());
+		histo->SetLineStyle(para.plot.setting.line_setting.Style());
+		histo->SetLineWidth(para.plot.setting.line_setting.Width());
 	}
 	else{
-		if(info.with_color_or_line == 1){
-			histo->SetLineColor(color);
-		}
-		else if(info.with_color_or_line == -1){
-			histo->SetLineStyle(linestyle);
-		}
-		else{
-			histo->SetLineColor(color);
-			histo->SetLineStyle(linestyle);
-		}
-
-	}
-	if(info.line_width==-1){
-		histo->SetLineWidth(para.plot.setting.line_width);
-	}
-	else{
-		histo->SetLineWidth(info.line_width);
+		histo->SetLineColor(info.line_setting.Color());
+		histo->SetLineStyle(info.line_setting.Style());
+		histo->SetLineWidth(info.line_setting.Width());
 	}
 
 	if(info.norm_switch){

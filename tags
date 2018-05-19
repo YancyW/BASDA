@@ -83,6 +83,7 @@ Analyse_Summarize_Plot_Complete_Pre	Analyse/Analyse_Summarize_Plot.cpp	/^void An
 Analyse_Summarize_Plot_Pre	Analyse/Analyse_Summarize_Plot.cpp	/^void Analyse_Summarize_Plot_Pre(CDraw &para){$/;"	f
 Apply_Cut	Analyse/Abasic.cpp	/^bool Apply_Cut(CDraw &para, float weight, int cut_level, float &pass_num){$/;"	f
 Apply_Cut	Analyse/Abasic.cpp	/^bool Apply_Cut(CDraw &para, std::vector<TH1F*> &hvariable, std::vector<TH1F*> &hvariable_tot,float weight, int level,float &pass_num){$/;"	f
+Auto_Color_Num	Class/Plot.h	/^		static int Auto_Color_Num(){$/;"	f	class:CColor
 Avariable	AnalyseClass/Variable.h	/^		Avariable(){$/;"	f	class:Avariable
 Avariable	AnalyseClass/Variable.h	/^class Avariable{$/;"	c
 Avariable_vec	AnalyseClass/Variable.h	/^		Avariable_vec(){$/;"	f	class:Avariable_vec
@@ -98,6 +99,8 @@ Bkg_Histo_Total	AnalyseClass/Plot.h	/^		TH1F* Bkg_Histo_Total(){$/;"	f	class:APl
 CBKG_Sort	Class/BKG_Sort.h	/^class CBKG_Sort{$/;"	c
 CBKG_Sort_String	Class/BKG_Sort.h	/^typedef std::vector< std::pair<std::string,std::vector<std::string> > > CBKG_Sort_String;$/;"	t
 CBKG_Sort_basic	Class/BKG_Sort.h	/^class CBKG_Sort_basic{$/;"	c
+CColor	Class/Plot.cpp	/^CColor::CColor(){$/;"	f	class:CColor
+CColor	Class/Plot.h	/^class CColor{$/;"	c
 CCut	Class/Cut.h	/^class CCut{$/;"	c
 CDebug	Class/debug.h	/^class CDebug{$/;"	c
 CDraw	Class/DrawClass.h	/^		CDraw(int argc, char*argv[]){$/;"	f	class:CDraw
@@ -119,9 +122,13 @@ CScenario_Basic	Class/Scenario.h	/^	CScenario_Basic(){$/;"	f	class:CScenario_Bas
 CScenario_Basic	Class/Scenario.h	/^class CScenario_Basic{$/;"	c
 CSensitivity	Class/Sensitivity.h	/^class CSensitivity{$/;"	c
 CSignal_Property_Scan	Class/Signal_Properties_Scan.h	/^class CSignal_Property_Scan{$/;"	c
+CStyle	Class/Plot.cpp	/^CStyle::CStyle(){$/;"	f	class:CStyle
+CStyle	Class/Plot.h	/^class CStyle{$/;"	c
 CTime	Class/Time.h	/^class CTime{$/;"	c
 CUT_file	AnalyseClass/File.h	/^		std::string                 CUT_file  ;$/;"	m	class:AFile_Name
 CUT_num	Class/Cut.h	/^		Int_t              CUT_num;$/;"	m	class:CCut
+CWidth	Class/Plot.cpp	/^CWidth::CWidth(){$/;"	f	class:CWidth
+CWidth	Class/Plot.h	/^class CWidth{$/;"	c
 CXX	makefile	/^CXX=g++$/;"	m
 Cal_Pol	RWpara/RWScenario.cpp	/^void CScenario::Cal_Pol(){$/;"	f	class:CScenario
 CalculateCL	TSysLimit/TSysLimit.cpp	/^void TSysLimit::CalculateCL(Double_t signalScale,$/;"	f	class:TSysLimit
@@ -137,13 +144,21 @@ Clear	AnalyseClass/Plot.cpp	/^void APlot::Clear(){$/;"	f	class:APlot
 Clear	BDTG/weights/TMVAClassification_BDTG.class.C	/^inline void ReadBDTG::Clear() $/;"	f	class:ReadBDTG
 Clear	Class/Judge.h	/^		void Clear(){_Exist=false;}$/;"	f	class:AJudge
 ClearResults	TSysLimit/TSysLimit.cpp	/^void TSysLimit::ClearResults(Int_t nTotal) {$/;"	f	class:TSysLimit
+Color	Class/Plot.cpp	/^int CColor::Color(){$/;"	f	class:CColor
 Copy	AnalyseClass/Variable.cpp	/^void Avariable::Copy(Avariable var){$/;"	f	class:Avariable
 CountNumber	Function/Fbasic.cpp	/^void CountNumber(Int_t variable, Int_t tot_num, Int_t slot,std::string  Message){$/;"	f
+Cplot_basic_color_style	Class/Plot.h	/^		Cplot_basic_color_style(){$/;"	f	class:Cplot_basic_color_style
+Cplot_basic_color_style	Class/Plot.h	/^class Cplot_basic_color_style: public CColor, public CStyle, public CWidth{$/;"	c
 Cplot_canvas	Class/Plot.h	/^class Cplot_canvas{$/;"	c
 Cplot_drawing	Class/Plot.h	/^		Cplot_drawing(){$/;"	f	class:Cplot_drawing
 Cplot_drawing	Class/Plot.h	/^class Cplot_drawing{$/;"	c
+Cplot_line	Class/Plot.h	/^		Cplot_line(){$/;"	f	class:Cplot_line
+Cplot_line	Class/Plot.h	/^class Cplot_line{$/;"	c
 Cplot_rootset	Class/Plot.h	/^class Cplot_rootset{$/;"	c
+Cplot_setting	Class/Plot.h	/^		Cplot_setting(){$/;"	f	class:Cplot_setting
 Cplot_setting	Class/Plot.h	/^class Cplot_setting{$/;"	c
+Cplot_stack	Class/Plot.h	/^		Cplot_stack(){$/;"	f	class:Cplot_stack
+Cplot_stack	Class/Plot.h	/^class Cplot_stack{$/;"	c
 Create_File_Folder	Function/Ffile.cpp	/^void Create_File_Folder(std::string file_name){$/;"	f
 Create_Folder	Class/Path.cpp	/^void CPath::Create_Folder(){$/;"	f	class:CPath
 Create_Folder	Function/Ffile.cpp	/^void Create_Folder(std::string folder_name){$/;"	f
@@ -164,6 +179,7 @@ Default_Legend	Class/BKG_Sort.h	/^		std::string Default_Legend(int ith){$/;"	f	c
 Default_Scenario	Class/Scenario.h	/^		CScenario_Basic         Default_Scenario(){$/;"	f	class:CScenario
 Default_Sub_Legend	Class/BKG_Sort.h	/^		std::string Default_Sub_Legend(int ith){$/;"	f	class:CBKG_Sort_basic
 DoScan	TSysLimit/TSysLimitScan.cpp	/^void TSysLimitScan::DoScan(Double_t cl,Double_t startScale,$/;"	f	class:TSysLimitScan
+DrawLogo	AnalyseClass/Plot.cpp	/^void APlot::DrawLogo(){$/;"	f	class:APlot
 Draw_Figure	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Draw_Figure(CDraw& para,AFile& file_name){$/;"	f	class:Analyse_Multi_File
 Draw_Single	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string hist_label){$/;"	f	class:Analyse_Multi_File
 Draw_Sort	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string hist_label){$/;"	f	class:Analyse_Multi_File
@@ -273,6 +289,7 @@ GetX	TSysLimit/TSysLimitResult.cpp	/^Double_t TSysLimitResult::GetX(TVectorD con
 GetXForPvalue	TSysLimit/TSysLimitResult.cpp	/^Double_t TToyDistribution::GetXForPvalue(Double_t pValue) const {$/;"	f	class:TToyDistribution
 GetXPowerConstraint	TSysLimit/TSysLimitResult.cpp	/^Double_t TSysLimitResult::GetXPowerConstraint$/;"	f	class:TSysLimitResult
 Get_ClassName	Function/Fbasic.h	/^std::string Get_ClassName(TTname x){$/;"	f
+Get_Color	Class/Plot.cpp	/^void CColor::Get_Color(int input){$/;"	f	class:CColor
 Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Multi_File::Get_Cut(int filenum){$/;"	f	class:Analyse_Multi_File
 Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Single_File::Get_Cut(AVariable &var,ACut &cut){$/;"	f	class:Analyse_Single_File
 Get_Event	Class/DrawClass.h	/^		void Get_Event(long long int num){$/;"	f	class:CDraw
@@ -282,7 +299,9 @@ Get_File_Folder	Function/Ffile.cpp	/^std::string Get_File_Folder(std::string inp
 Get_Histogram	AnalyseClass/Plot.cpp	/^bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_folder){$/;"	f	class:APlot
 Get_Input_File	AnalyseClass/Plot.cpp	/^bool APlot::Get_Input_File(CDraw &para, Avariable &info, std::vector<std::string> input_sig, std::vector<std::string> input_bkg){$/;"	f	class:APlot
 Get_Significance	Function/FCalc.cpp	/^float Get_Significance(float sig, float bkg){$/;"	f
+Get_Style	Class/Plot.cpp	/^void CStyle::Get_Style(int input){$/;"	f	class:CStyle
 Get_VarName	Function/Fbasic.h	41;"	d
+Get_Width	Class/Plot.cpp	/^void CWidth::Get_Width(int width){$/;"	f	class:CWidth
 GoesLeft	BDTG/weights/TMVAClassification_BDTG.class.C	/^bool BDTGNode::GoesLeft( const std::vector<double>& inputValues ) const$/;"	f	class:BDTGNode
 GoesRight	BDTG/weights/TMVAClassification_BDTG.class.C	/^bool BDTGNode::GoesRight( const std::vector<double>& inputValues ) const$/;"	f	class:BDTGNode
 Hist	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist(std::string label){$/;"	f	class:Analyse_Figure
@@ -392,6 +411,7 @@ Num	AnalyseClass/File.h	/^		int Num(){$/;"	f	class:AFile_Name
 Num	Class/BKG_Sort.h	/^		int Num(){$/;"	f	class:CBKG_Sort
 Num_To_String	Function/Fbasic.h	/^std::string Num_To_String(TType i){$/;"	f
 OBJS	makefile	/^OBJS=$(patsubst %.cpp, %.o, $(SRCS))$/;"	m
+Origin_Color	Class/Plot.cpp	/^int CColor::Origin_Color(){$/;"	f	class:CColor
 Output_Num	AnalyseClass/File.h	/^		int Output_Num(){$/;"	f	class:AFile
 PLOTSETTING_H	Lib/PlotSetting.h	3;"	d
 Pair_File	AnalyseClass/File_List.h	/^typedef std::pair<std::string,AFile_Data> Pair_File;$/;"	t
@@ -528,7 +548,8 @@ Set_Class	Class/BKG_Sort.h	/^		void Set_Class(std::string name){$/;"	f	class:CBK
 Set_Default_Legend	Class/BKG_Sort.h	/^		void Set_Default_Legend(std::string leg){$/;"	f	class:CBKG_Sort_basic
 Set_Default_Sub_Legend	Class/BKG_Sort.h	/^		void Set_Default_Sub_Legend(std::string leg){$/;"	f	class:CBKG_Sort_basic
 Set_Legend	Class/BKG_Sort.h	/^		void Set_Legend(std::string leg){$/;"	f	class:CBKG_Sort_basic
-Set_Line_Style	AnalyseClass/Plot.cpp	/^bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color_index, int style_index){$/;"	f	class:APlot
+Set_Line_Style	AnalyseClass/Plot.cpp	/^bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color, int linestyle){$/;"	f	class:APlot
+Set_Line_Style_Test	AnalyseClass/Plot.cpp	/^bool APlot::Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplot_line setting){$/;"	f	class:APlot
 Set_Num	Class/BKG_Sort.h	/^		void Set_Num(){$/;"	f	class:CBKG_Sort_basic
 Set_Pass	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Figure::Set_Pass(float weight){$/;"	f	class:Analyse_Figure
 Set_Stack_Style	AnalyseClass/Plot.cpp	/^void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualPad* pad, std::string hist_label){$/;"	f	class:APlot
@@ -549,6 +570,7 @@ Sort_Name	AnalyseClass/Sort_List.h	/^		std::string Sort_Name(int i){$/;"	f	class
 Sort_Num	AnalyseClass/Sort_List.h	/^		int  Sort_Num(){$/;"	f	class:ASort_List
 StartProcess	Fram/Fsection.cpp	/^void StartProcess(){$/;"	f
 String_To_Num	Function/Fbasic.h	/^TType String_To_Num(const std::string& str){$/;"	f
+Style	Class/Plot.cpp	/^int CStyle::Style(){$/;"	f	class:CStyle
 Sub_Class	Class/BKG_Sort.h	/^		std::string Sub_Class(int ith){$/;"	f	class:CBKG_Sort_basic
 Sub_Class	Class/BKG_Sort.h	/^		std::vector<std::string> Sub_Class(){$/;"	f	class:CBKG_Sort_basic
 Sub_Num	Class/BKG_Sort.h	/^		int Sub_Num(){$/;"	f	class:CBKG_Sort_basic
@@ -580,13 +602,15 @@ Total_Unzero_Sort_Num	AnalyseClass/Sort_List.cpp	/^int ASort_List::Total_Unzero_
 UnpackHistogram	TSysLimit/TSysLimitChannel.cpp	/^TSysLimitChannel::UnpackHistogram(const TH1 *h,TVectorD *c,TVectorD *e) {$/;"	f	class:TSysLimitChannel
 Unpol_file	AnalyseClass/File.h	/^		std::string             	Unpol_file;$/;"	m	class:AFile_Name
 Use_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Single_File::Use_Cut(Avariable &var, float weight, Analyse_Figure &figure){$/;"	f	class:Analyse_Single_File
+Use_Default_Line_Setting	AnalyseClass/Variable.h	/^		bool Use_Default_Line_Setting(){$/;"	f	class:Avariable
 Var_Num	AnalyseClass/AnalyseClass.cpp	/^int Analyse_Multi_File::Var_Num(){$/;"	f	class:Analyse_Multi_File
 Vec_Exist	Function/Fvector.cpp	/^bool Vec_Exist(std::vector<std::string>V1, std::string input){$/;"	f
+Width	Class/Plot.cpp	/^int CWidth::Width(){$/;"	f	class:CWidth
 Xpos	Class/Plot.h	/^		Int_t Xpos;$/;"	m	class:Cplot_canvas
 YAML	AnalyseClass/File_List.h	/^namespace YAML{$/;"	n
 YAML	AnalyseClass/Variable.h	/^namespace YAML{$/;"	n
 YAML	Class/MVA.h	/^namespace YAML{$/;"	n
-YAML	Class/Plot.h	/^namespace YAML{$/;"	n
+YAML	Class/Plot.hpp	/^namespace YAML{$/;"	n
 YAML	Class/Scenario.h	/^namespace YAML{$/;"	n
 YAMLPath	makefile	/^YAMLPath=\/home\/yancy\/Software\/lib\/yaml-cpp\/$/;"	m
 YAML_ASSISTANT_H	Lib/YAML_Assistant.h	3;"	d
@@ -596,9 +620,11 @@ _Exist	Class/Judge.h	/^		bool _Exist;$/;"	m	class:AJudge
 _Find_Which_Sort	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::_Find_Which_Sort (CDraw& para, AFile & file_name, int filenum ) {$/;"	f	class:Analyse_Multi_File
 _Has_Drawn	AnalyseClass/AnalyseClass.h	/^		bool                                   _Has_Drawn       ;$/;"	m	class:Analyse_Multi_File
 _Has_Input	AnalyseClass/Plot.h	/^		bool                                   _Has_Input       ;$/;"	m	class:APlot
-_Init_Color	AnalyseClass/Plot.cpp	/^void APlot::_Init_Color(){$/;"	f	class:APlot
-_Init_Style	AnalyseClass/Plot.cpp	/^void APlot::_Init_Style(){$/;"	f	class:APlot
+_Init_Color	Class/Plot.cpp	/^void CColor::_Init_Color(){$/;"	f	class:CColor
+_Init_Style	Class/Plot.cpp	/^void CStyle::_Init_Style(){$/;"	f	class:CStyle
 _Used	Class/BKG_Sort.h	/^		AJudge _Used;$/;"	m	class:CBKG_Sort_basic
+_auto_color_num	BASDA.cpp	/^int CColor::_auto_color_num = 0;$/;"	m	class:CColor	file:
+_auto_color_num	Class/Plot.h	/^		static int _auto_color_num ;$/;"	m	class:CColor
 _begin_time	Class/Time.h	/^		time_t _begin_time;$/;"	m	class:CTime
 _bkg_File	AnalyseClass/Plot.h	/^		std::vector<TFile*>                    _bkg_File        ;$/;"	m	class:APlot
 _bkg_Tree	AnalyseClass/Plot.h	/^		std::vector<TTree*>                    _bkg_Tree        ;$/;"	m	class:APlot
@@ -606,7 +632,8 @@ _bkg_histo	AnalyseClass/Plot.h	/^		std::vector<TH1F*>                     _bkg_h
 _bkg_histo_total	AnalyseClass/Plot.h	/^		TH1F*                                  _bkg_histo_total ;$/;"	m	class:APlot
 _bkg_num	AnalyseClass/Plot.h	/^		int                                    _bkg_num         ;$/;"	m	class:APlot
 _class_name	Class/BKG_Sort.h	/^		std::string              _class_name;$/;"	m	class:CBKG_Sort_basic
-_colornum	AnalyseClass/Plot.h	/^		std::vector<int>                       _colornum        ;$/;"	m	class:APlot
+_color	Class/Plot.h	/^		int  _color; $/;"	m	class:CColor
+_colornum	Class/Plot.h	/^		std::vector<int>      _colornum;$/;"	m	class:CColor
 _counter	AnalyseClass/Counter.h	/^		ACounterType         _counter;$/;"	m	class:ACounter
 _current_time	Class/Time.h	/^		time_t _current_time;$/;"	m	class:CTime
 _cut	AnalyseClass/AnalyseClass.h	/^		ACut                                   _cut             ;$/;"	m	class:Analyse_Multi_File
@@ -622,8 +649,8 @@ _list	AnalyseClass/Sort_List.h	/^		std::vector< std::pair<std::string,std::vecto
 _loop_begin	Class/Event.h	/^		Long64_t _loop_begin, _loop_end, _tot_num;$/;"	m	class:CEvent
 _loop_end	Class/Event.h	/^		Long64_t _loop_begin, _loop_end, _tot_num;$/;"	m	class:CEvent
 _lumi	AnalyseClass/AnalyseClass.h	/^		float               	     _lumi      ;$/;"	m	class:Analyse_Single_File
-_max_color_num	AnalyseClass/Plot.h	/^		int                                    _max_color_num   ;$/;"	m	class:APlot
-_max_style_num	AnalyseClass/Plot.h	/^		int                                    _max_style_num   ;$/;"	m	class:APlot
+_max_color_num	Class/Plot.h	/^		int  _max_color_num   ;$/;"	m	class:CColor
+_max_style_num	Class/Plot.h	/^		int  _max_style_num   ;$/;"	m	class:CStyle
 _name	AnalyseClass/AnalyseClass.h	/^		std::string                  _name      ;$/;"	m	class:Analyse_Single_File
 _num_first_events	Class/Event.h	/^		Long64_t _num_first_events, _num_special_events;$/;"	m	class:CEvent
 _num_special_events	Class/Event.h	/^		Long64_t _num_first_events, _num_special_events;$/;"	m	class:CEvent
@@ -641,7 +668,8 @@ _sig_histo	AnalyseClass/Plot.h	/^		std::vector<TH1F*>                     _sig_h
 _sig_histo_total	AnalyseClass/Plot.h	/^		TH1F*                                  _sig_histo_total ;$/;"	m	class:APlot
 _sig_num	AnalyseClass/Plot.h	/^		int                                    _sig_num         ;$/;"	m	class:APlot
 _sort_num	Class/BKG_Sort.h	/^		int              _sort_num;$/;"	m	class:CBKG_Sort
-_stylenum	AnalyseClass/Plot.h	/^		std::vector<int>                       _stylenum        ;$/;"	m	class:APlot
+_style	Class/Plot.h	/^		int  _style; $/;"	m	class:CStyle
+_stylenum	Class/Plot.h	/^		std::vector<int>      _stylenum;$/;"	m	class:CStyle
 _sub_class_legend	Class/BKG_Sort.h	/^		std::vector<std::string> _sub_class_legend;$/;"	m	class:CBKG_Sort_basic
 _sub_class_name	Class/BKG_Sort.h	/^		std::vector<std::string> _sub_class_name;$/;"	m	class:CBKG_Sort_basic
 _sub_class_num	Class/BKG_Sort.h	/^		int _sub_class_num;$/;"	m	class:CBKG_Sort_basic
@@ -654,6 +682,7 @@ _var_num	AnalyseClass/AnalyseClass.h	/^		int							 _var_num   ; $/;"	m	class:An
 _weight	AnalyseClass/Counter.h	/^		float                _weight;$/;"	m	class:ACounter
 _weight	AnalyseClass/Plot.h	/^		float                                  _weight          ;$/;"	m	class:APlot
 _which_sort	AnalyseClass/AnalyseClass.h	/^		Analyse_Single_File*                   _which_sort      ;$/;"	m	class:Analyse_Multi_File
+_width	Class/Plot.h	/^		int  _width; $/;"	m	class:CWidth
 ana_Unpol	AnalyseClass/File.h	/^		std::string                 ana_Unpol ;$/;"	m	class:AFile_Name
 ana_data	AnalyseClass/File.h	/^		std::string                 ana_data  ;$/;"	m	class:AFile_Name
 analyse_file	Class/Path.h	/^		std::string   analyse_file     ;$/;"	m	class:CPath
@@ -681,8 +710,10 @@ convert	AnalyseClass/File_List.h	/^		struct convert<AFile_Data>{$/;"	s	namespace
 convert	AnalyseClass/Variable.h	/^		struct convert<Avariable>{$/;"	s	namespace:YAML
 convert	AnalyseClass/Variable.h	/^		struct convert<Avariable_vec>{$/;"	s	namespace:YAML
 convert	Class/MVA.h	/^		struct convert<CMVA_Basic>{$/;"	s	namespace:YAML
-convert	Class/Plot.h	/^		struct convert<Cplot_drawing>{$/;"	s	namespace:YAML
-convert	Class/Plot.h	/^		struct convert<Cplot_setting>{$/;"	s	namespace:YAML
+convert	Class/Plot.hpp	/^		struct convert<Cplot_basic_color_style>{$/;"	s	namespace:YAML
+convert	Class/Plot.hpp	/^		struct convert<Cplot_drawing>{$/;"	s	namespace:YAML
+convert	Class/Plot.hpp	/^		struct convert<Cplot_line>{$/;"	s	namespace:YAML
+convert	Class/Plot.hpp	/^		struct convert<Cplot_setting>{$/;"	s	namespace:YAML
 convert	Class/Scenario.h	/^		struct convert<CScenario_Basic>{$/;"	s	namespace:YAML
 cut	AnalyseClass/Cut.h	/^		std::vector<int> cut;$/;"	m	class:ACut
 cut	Class/Flow.h	/^		Bool_t                  cut                  ;$/;"	m	class:CFlow
@@ -712,8 +743,10 @@ decode	AnalyseClass/File_List.h	/^			static bool decode(const Node& node, AFile_
 decode	AnalyseClass/Variable.h	/^			static bool decode(const Node& node, Avariable& var){ $/;"	f	struct:YAML::convert
 decode	AnalyseClass/Variable.h	/^			static bool decode(const Node& node, Avariable_vec& vec){ $/;"	f	struct:YAML::convert
 decode	Class/MVA.h	/^			static bool decode(const Node& node, CMVA_Basic& mva){ $/;"	f	struct:YAML::convert
-decode	Class/Plot.h	/^			static bool decode(const Node& node, Cplot_drawing& plot){ $/;"	f	struct:YAML::convert
-decode	Class/Plot.h	/^			static bool decode(const Node& node, Cplot_setting& plot){ $/;"	f	struct:YAML::convert
+decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_basic_color_style& plot){ $/;"	f	struct:YAML::convert
+decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_drawing& plot){ $/;"	f	struct:YAML::convert
+decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_line& plot){ $/;"	f	struct:YAML::convert
+decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_setting& plot){ $/;"	f	struct:YAML::convert
 decode	Class/Scenario.h	/^			static bool decode(const Node& node, CScenario_Basic& sce){ $/;"	f	struct:YAML::convert
 default_MVA	Class/DrawClass.h	/^		CMVA                         default_MVA         ;$/;"	m	class:CDraw
 default_bkg_sort	Class/DrawClass.h	/^		CBKG_Sort                    default_bkg_sort    ;$/;"	m	class:CDraw
@@ -728,6 +761,7 @@ default_scenario	Class/Scenario.h	/^		CScenario_Basic         default_scenario;$
 default_sensitivity	Class/DrawClass.h	/^		CSensitivity                 default_sensitivity ;$/;"	m	class:CDraw
 default_signal_scan	Class/DrawClass.h	/^		CSignal_Property_Scan        default_signal_scan ;$/;"	m	class:CDraw
 default_var	Class/DrawClass.h	/^		AVariable                    default_var         ;$/;"	m	class:CDraw
+draw_option	Class/Plot.h	/^		std::string draw_option; $/;"	m	class:Cplot_stack
 drawing	Class/Plot.h	/^		Cplot_drawing  drawing;$/;"	m	class:CPlot
 elecSwitch	AnalyseClass/Counter.h	/^		bool elecSwitch   ;$/;"	m	class:ACounter
 elec_pol	Class/Scenario.h	/^		float                   elec_pol;$/;"	m	class:CScenario
@@ -814,6 +848,8 @@ file	Class/DrawClass.h	/^		CFile                        file                ;$/;
 file	Class/File.h	/^		std::vector<std::string> file                   ;$/;"	m	class:CFile
 file_descrip	Class/File.h	/^		std::vector<std::string> file_descrip           ;$/;"	m	class:CFile
 file_num	Class/File.h	/^		Int_t                    file_num               ;$/;"	m	class:CFile
+fill_color	Class/Plot.h	/^		CColor                  fill_color  ;$/;"	m	class:Cplot_line
+fill_switch	Class/Plot.h	/^		bool fill_switch;$/;"	m	class:Cplot_line
 flow	Class/DrawClass.h	/^		CFlow                        flow                ;$/;"	m	class:CDraw
 flow_file	Class/Path.h	/^		std::string   flow_file        ;$/;"	m	class:CPath
 folder	AnalyseClass/File.h	/^		std::vector<std::string> folder      ;$/;"	m	class:AFile
@@ -829,6 +865,7 @@ hvariable_origin	AnalyseClass/AnalyseClass.h	/^		TH1F*       hvariable_origin;$/
 in_weight	AnalyseClass/AnalyseClass.h	/^		float                        in_weight   ; $/;"	m	class:Analyse_Single_File
 in_weight_d	AnalyseClass/AnalyseClass.h	/^		double                       in_weight_d ; $/;"	m	class:Analyse_Single_File
 in_weight_i	AnalyseClass/AnalyseClass.h	/^		int                          in_weight_i ; $/;"	m	class:Analyse_Single_File
+include	Class/Plot.h	/^		bool include;$/;"	m	class:Cplot_line
 input	AnalyseClass/File.h	/^		std::vector<AFile_Name>  input       ;$/;"	m	class:AFile
 input_file	Class/Path.h	/^		std::string   input_file       ;$/;"	m	class:CPath
 input_folder	Class/Path.h	/^		std::string   input_folder     ;$/;"	m	class:CPath
@@ -859,8 +896,9 @@ leg_up	AnalyseClass/Variable.h	/^		float         leg_up     ;$/;"	m	class:Avaria
 lepSwitch	AnalyseClass/Counter.h	/^		bool lepSwitch    ;$/;"	m	class:ACounter
 level	Class/Flow.h	/^		Int_t                   level                ;$/;"	m	class:CFlow
 level	Class/debug.h	/^		Int_t    level;$/;"	m	class:CDebug
-line_width	AnalyseClass/Variable.h	/^		int           line_width ; $/;"	m	class:Avariable
-line_width	Class/Plot.h	/^		int  line_width; $/;"	m	class:Cplot_setting
+line_setting	AnalyseClass/Variable.h	/^		Cplot_basic_color_style line_setting;$/;"	m	class:Avariable
+line_setting	Class/Plot.h	/^		Cplot_basic_color_style line_setting;$/;"	m	class:Cplot_setting
+line_setting	Class/Plot.h	/^        Cplot_basic_color_style line_setting;$/;"	m	class:Cplot_line
 logFile	TSysLimit/TSysLimitScan.h	/^   FILE *logFile;$/;"	m	class:TSysLimitScan
 log_min	AnalyseClass/Variable.h	/^		float         log_min    ;$/;"	m	class:Avariable
 log_switch	AnalyseClass/Variable.h	/^		bool          log_switch ;$/;"	m	class:Avariable
@@ -871,6 +909,7 @@ maximum	AnalyseClass/Variable.h	/^		float         maximum;$/;"	m	class:Avariable
 maximum_d	AnalyseClass/Variable.h	/^		double        maximum_d;$/;"	m	class:Avariable
 maximum_i	AnalyseClass/Variable.h	/^		int           maximum_i;$/;"	m	class:Avariable
 mdSwitch	AnalyseClass/Counter.h	/^		bool mdSwitch     ;$/;"	m	class:ACounter
+merge	merge.C	/^void merge() {$/;"	f
 metSwitch	AnalyseClass/Counter.h	/^		bool metSwitch    ;$/;"	m	class:ACounter
 min	Class/Cut.h	/^		std::vector<float> min;$/;"	m	class:CCut
 minimum	AnalyseClass/Variable.h	/^		float         minimum;$/;"	m	class:Avariable
@@ -883,17 +922,21 @@ name	AnalyseClass/File.h	/^		std::string                 name      ;$/;"	m	class
 name	Class/Scenario.h	/^	std::string             name;$/;"	m	class:CScenario_Basic
 newTH1F	Lib/PlotSetting.cpp	/^TH1F * newTH1F(std::string name, Double_t binw, Double_t LowBin, Double_t HighBin, Bool_t MevTitle, Int_t iMode){$/;"	f
 norm_switch	AnalyseClass/Variable.h	/^		bool          norm_switch;$/;"	m	class:Avariable
+norm_switch	Class/Plot.h	/^		bool norm_switch;$/;"	m	class:Cplot_line
 nsubSwitch	AnalyseClass/Counter.h	/^		bool nsubSwitch   ;$/;"	m	class:ACounter
 num	AnalyseClass/Variable.h	/^		int num;$/;"	m	class:AVariable
 numMVA	AnalyseClass/Variable.h	/^		int numMVA;$/;"	m	class:AVariable
 num_debug_mode	Class/debug.h	/^		Int_t    num_debug_mode;$/;"	m	class:CDebug
 num_vec	AnalyseClass/Variable.h	/^		int num_vec;$/;"	m	class:AVariable
+observables	Class/Signal_Properties_Scan.h	/^		std::vector<std::string> observables;$/;"	m	class:CSignal_Property_Scan
 operator +	AnalyseClass/File_List.h	/^		const  AFile_Data operator + (AFile_Data P1){$/;"	f	class:AFile_Data
 operator +	Function/Fvector.h	/^std::vector<TVector_add> operator + (std::vector<TVector_add> V1, std::vector<TVector_add> V2){$/;"	f
 operator +=	Function/Fvector.h	/^std::vector<TVector_add> operator +=(std::vector<TVector_add> V1, std::vector<TVector_add> V2){$/;"	f
 operator -	Function/Fvector.h	/^std::vector<TVector_minus> operator - (std::vector<TVector_minus> V1, std::vector<TVector_minus> V2){$/;"	f
 operator -=	Function/Fvector.h	/^std::vector<TVector_minus> operator -=(std::vector<TVector_minus> V1, std::vector<TVector_minus> V2){$/;"	f
 operator <<	AnalyseClass/File.cpp	/^std::ostream & operator<<(std::ostream & ostr, AFile &file_name){$/;"	f
+operator <<	Class/Plot.cpp	/^std::ostream & operator<< (std::ostream & ostr, Cplot_basic_color_style str){$/;"	f
+operator <<	Class/Plot.cpp	/^std::ostream & operator<< (std::ostream & ostr, Cplot_line str){$/;"	f
 operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ostr, std::vector<bool> flo){$/;"	f
 operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ostr, std::vector<double> flo){$/;"	f
 operator <<	Function/Fvector.cpp	/^std::ostream & operator<< (std::ostream & ostr, std::vector<float> flo){$/;"	f
@@ -932,8 +975,10 @@ path	Class/DrawClass.h	/^		CPath                        path                ;$/;
 plot	Class/DrawClass.h	/^		CPlot                        plot                ;$/;"	m	class:CDraw
 plot	Class/Flow.h	/^		Bool_t                  plot                 ;$/;"	m	class:CFlow
 plot_CUT	AnalyseClass/File.h	/^		std::string              plot_CUT      ;$/;"	m	class:AFile
+plot_bkg	Class/Signal_Properties_Scan.h	/^		Cplot_line         plot_bkg;$/;"	m	class:CSignal_Property_Scan
 plot_file	Class/Path.h	/^		std::string   plot_file        ;$/;"	m	class:CPath
 plot_object	Class/Flow.h	/^		std::string             plot_object          ;$/;"	m	class:CFlow
+plot_sig	Class/Signal_Properties_Scan.h	/^		Cplot_line         plot_sig;$/;"	m	class:CSignal_Property_Scan
 plot_switch	AnalyseClass/Variable.h	/^		bool          plot_switch;$/;"	m	class:Avariable
 plot_type	Class/Plot.h	/^		std::string plot_type;$/;"	m	class:Cplot_drawing
 pol	Class/Scenario.h	/^		std::vector<float>      pol     ;$/;"	m	class:CScenario
@@ -988,6 +1033,11 @@ title_name	AnalyseClass/Variable.h	/^		std::string   title_name ;$/;"	m	class:Av
 tot_Num	AnalyseClass/File_List.h	/^		Pair_File tot_Num;$/;"	m	class:PolNum
 total_num	Class/Event.h	/^		long long int    total_num    ;$/;"	m	class:CEvent
 txtN	Lib/PlotSetting.cpp	/^void txtN(Double_t x0, Double_t y0, TH1 *h, std::string sName, Double_t sizeTxt){$/;"	f
+use_default_line_setting	AnalyseClass/Variable.h	/^		bool          use_default_line_setting;$/;"	m	class:Avariable
+user_basic_color_style	Class/Plot.h	/^		bool user_basic_color_style;$/;"	m	class:Cplot_basic_color_style
+user_color	Class/Plot.h	/^		bool user_color;$/;"	m	class:CColor
+user_style	Class/Plot.h	/^		bool user_style;$/;"	m	class:CStyle
+user_width	Class/Plot.h	/^		bool user_width;$/;"	m	class:CWidth
 var	AnalyseClass/AnalyseClass.h	/^		AVariable                              var              ;$/;"	m	class:Analyse_Multi_File
 var	AnalyseClass/Variable.h	/^		std::vector<Avariable> var;$/;"	m	class:AVariable
 var	Class/DrawClass.h	/^		AVariable                    var                 ;$/;"	m	class:CDraw
@@ -1003,8 +1053,6 @@ weight	AnalyseClass/File_List.h	/^		float weight;$/;"	m	class:AFile_Data
 weight_exist	AnalyseClass/Variable.h	/^		bool        weight_exist;$/;"	m	class:AVariable
 weight_type	AnalyseClass/Variable.h	/^		std::string weight_type;$/;"	m	class:AVariable
 width	Class/Plot.h	/^		Int_t width;$/;"	m	class:Cplot_canvas
-with_color_or_line	AnalyseClass/Variable.h	/^		int           with_color_or_line; $/;"	m	class:Avariable
-with_color_or_line	Class/Plot.h	/^		int  with_color_or_line; $/;"	m	class:Cplot_setting
 working_scenario	Class/Flow.h	/^		std::string             working_scenario     ;$/;"	m	class:CFlow
 x_bin	AnalyseClass/Variable.h	/^		int           x_bin      ;$/;"	m	class:Avariable
 x_max	AnalyseClass/Variable.h	/^		float         x_max      ;$/;"	m	class:Avariable

@@ -12,6 +12,7 @@
 #include "TCanvas.h"
 #include "TLegend.h"
 #include "TSystem.h"
+#include "Class/Plot.h"
 
 
 
@@ -73,8 +74,8 @@ class Avariable{
 		bool          norm_switch;
 		bool          MVA_switch ;
 		bool          show_title ;
-		int           with_color_or_line; 
-		int           line_width ; 
+		bool          use_default_line_setting;
+		Cplot_basic_color_style line_setting;
 
 		std::vector<int> label_2d;
 
@@ -132,8 +133,7 @@ class Avariable{
 		    norm_switch  = false ;
 		    MVA_switch   = false ;
 			show_title   = false ;
-			with_color_or_line = -1;
-			line_width  = -1;
+			use_default_line_setting = true;
 		}
 
 		void Copy(Avariable);
@@ -192,6 +192,10 @@ class Avariable{
 
 		float Maximum(){
 			return(maximum);
+		}
+
+		bool Use_Default_Line_Setting(){
+			return(use_default_line_setting);
 		}
 };
 
@@ -383,11 +387,13 @@ namespace YAML{
 					else if(it->first.as<std::string>()=="show_title"){
 						RW_element(it->first.as<std::string>(), it, var.show_title);
 					}
-					else if(it->first.as<std::string>()=="with_color_or_line"){
-						RW_element(it->first.as<std::string>(), it, var.with_color_or_line);
-					}
-					else if(it->first.as<std::string>()=="line_width"){
-						RW_element(it->first.as<std::string>(), it, var.line_width);
+					else if(it->first.as<std::string>()=="use_default_line_setting"){
+						RW_element(it->first.as<std::string>(), it, var.use_default_line_setting);
+						if(var.use_default_line_setting){
+							if(it->first.as<std::string>()=="line_setting"){
+								var.line_setting = it->second.as<Cplot_basic_color_style>();
+							}
+						}
 					}
 					else if(it->first.as<std::string>()=="plot_2d"){
 						var.label_2d = it->second.as<std::vector<int> >();	

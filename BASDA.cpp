@@ -48,10 +48,8 @@
 #include "BASDA.h"
 
 
-//using namespace boost::filesystem;
-//using namespace std;
-//using namespace YAML;
 
+int CColor::_auto_color_num = 0;
 
 int main(int argc, char*argv[]) {
 

@@ -7,19 +7,21 @@ observable   : [po_muon_kcut_recoil_mass]
 
 # plot setting
 signal_setting: 
-    fill_switch : True
+    fill_switch : true
     fill_color  : -1 
-    line_color  : -1 
-    line_width  : 3
-    line_style  : -1
+    line_setting :
+            color  : -1 
+            width  : 3
+            style  : -1
 
 background_setting: 
-    include     : True 
-    fill_switch : True
-    fill_color  : -1 
-    line_color  : -1 
-    line_width  : 3
-    line_style  : -1
+    include     : true 
+    fill_switch : true
+    fill_color  : 23 
+    line_setting :
+            color  : 23 
+            width  : 3
+            style  : -1
 
 stack_setting:
     stack_draw  : "hist"

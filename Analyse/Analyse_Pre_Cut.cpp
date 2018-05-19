@@ -127,7 +127,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 		if(para.flow.record_event){
 			otfile = TFile::Open( file_name.output[cnum].Unpol_file.c_str() , "RECREATE" );
 			if (!otfile) {
-				std::cout << "ERROR: could not open data file" << std::endl;
+				ShowMessage(2,"ERROR: could not open data file");
 				exit(1);
 			}
 			otfile->cd();
@@ -164,7 +164,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			otfile_MVA = TFile::Open( file_name.output[cnum].MVA_file.c_str() , "RECREATE" );
 			if (!otfile_MVA) {
-				std::cout << "ERROR: could not open data file" << std::endl;
+				ShowMessage(2,"ERROR: could not open data file");
 				exit(1);
 			}
 			otfile_MVA->cd();

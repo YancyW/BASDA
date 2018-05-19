@@ -89,11 +89,9 @@ void Avariable::Copy(Avariable var){
 	if(this->show_title==false){
 		this->show_title= var.show_title;
 	}
-	if(this->with_color_or_line==-1){
-		this->with_color_or_line= var.with_color_or_line;
-	}
-	if(this->line_width==-1){
-		this->line_width= var.line_width;
+	if(this->use_default_line_setting==-1){
+		this->use_default_line_setting= var.use_default_line_setting;
+		this->line_setting= var.line_setting;
 	}
 }
 
