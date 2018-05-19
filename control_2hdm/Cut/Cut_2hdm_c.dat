@@ -1,13 +1,9 @@
-cut_num : 7 
+pre_cut_num : 11
 
-cut_0   :  16
-cut_1   :  19
-cut_2   :  22
-cut_3   :  25
-cut_4   :  28
-cut_5   :  29
-cut_6   :  31
+pre_cut_order : [0, 1, 2, 5, 9, 10, 11, 12, 13, 14, 15]
+
+cut_num : 13
+
+cut_order : [0, 1, 2, 5, 9, 10, 11, 12, 13, 14, 15, 16, 32]
 
 
-
-pre_cut_num : 0 
