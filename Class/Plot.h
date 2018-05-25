@@ -83,7 +83,7 @@ class CPosition{
 		    right    = 0.9   ;
 		    down     = 0.9   ;
 		}
-}
+};
 
 class Cplot_basic_color_style: public CColor, public CStyle, public CWidth{
 	public:

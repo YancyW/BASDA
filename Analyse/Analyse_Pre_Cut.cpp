@@ -127,7 +127,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 		if(para.flow.record_event){
 			otfile = TFile::Open( file_name.output[cnum].Unpol_file.c_str() , "RECREATE" );
 			if (!otfile) {
-				ShowMessage(2,"ERROR: could not open data file");
+				std::cout << "ERROR: could not open data file" << std::endl;
 				exit(1);
 			}
 			otfile->cd();
@@ -138,7 +138,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			datatrain->Branch( "weight"              , &out_weight );        
 			for(int i=0;i<para.var.num;i++){
-				if(para.var.var[i].title_name=="MVA"){
+					if(para.var.var[i].title_name==para.flow.MVA_method){
 					continue;
 				}
 				datatrain->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -151,7 +151,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				datatest= new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num;i++){
-					if(para.var.var[i].title_name=="MVA"){
+					if(para.var.var[i].title_name==para.flow.MVA_method){
 						continue;
 					}
 					datatest->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -164,7 +164,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			otfile_MVA = TFile::Open( file_name.output[cnum].MVA_file.c_str() , "RECREATE" );
 			if (!otfile_MVA) {
-				ShowMessage(2,"ERROR: could not open data file");
+				std::cout << "ERROR: could not open data file" << std::endl;
 				exit(1);
 			}
 			otfile_MVA->cd();
@@ -173,7 +173,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				datatest_MVA = new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest_MVA->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num;i++){
-					if(para.var.var[i].title_name=="MVA"){
+					if(para.var.var[i].title_name==para.flow.MVA_method){
 						continue;
 					}
 					datatest_MVA->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -203,7 +203,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			//loop for init variables which are prepared for plot 
 			for(int j=0;j<para.var.num;j++){
-				if(para.var.var[j].title_name=="MVA"){
+				if(para.var.var[j].title_name==para.flow.MVA_method){
 					continue;
 				}
 				Avariable info=para.var.var[j];
@@ -227,7 +227,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 				if(para.flow.record_event){
 					for(int j=0;j<para.var.num;j++){
-						if(para.var.var[j].title_name=="MVA"){
+						if(para.var.var[j].title_name==para.flow.MVA_method){
 							continue;
 						}
 						rootvar[j]=para.var.var[j].variable;

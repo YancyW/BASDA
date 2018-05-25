@@ -78,6 +78,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v4:
         title_name           : "jet_eta2"
         cut_min              : -5
@@ -94,6 +95,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v5:
         title_name           : "bjet_num"
         cut_min              : 0
@@ -308,6 +310,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v18:
         title_name           : "W_eta"
         cut_min              : -5
@@ -324,10 +327,11 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v19:
         title_name           : "A_mass"
         cut_min              : 0 
-        cut_max              : 85
+        cut_max              : 48
         latex_name           : "M^{A}"
         leg_left             : 0.6
         leg_up               : 0.7
@@ -378,7 +382,7 @@ variable:
    v22:
         title_name           : "HC_mass"
         cut_min              : 0 
-        cut_max              : 170
+        cut_max              : 148
         latex_name           : "M^{H^{\\pm}}"
         leg_left             : 0.6
         leg_up               : 0.7
@@ -507,6 +511,7 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v30:
         title_name           : "Topj_eta"
         cut_min              : -5
@@ -540,9 +545,10 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         normalization_switch : true 
+        MVA                  : true 
    v32:
         title_name           : "BDTG"
-        cut_min              : 0.8
+        cut_min              : -1.0
         cut_max              : 1.0
         latex_name           : "BDTG"
         leg_left             : 0.6
@@ -558,33 +564,37 @@ variable:
         normalization_switch : true 
    v33:
         title_name           : "lep_isolation1"
-        cut_min              : 0.05 
-        cut_max              : 1
+        cut_min              : 0.5 
+        cut_max              : 10
         latex_name           : "lep_isolation1"
-        leg_left             : 0.2
+        leg_left             : 0.6
         leg_up               : 0.7
-        leg_right            : 0.4
+        leg_right            : 0.8
         leg_down             : 0.9           
         xaxis_name           : "lep_isolation1"                    
         xaxis_bin            : 100                                    
-        xaxis_min            : 0.0001
-        xaxis_max            : 0.1                                 
+        xaxis_min            : -1 
+        xaxis_max            : 10.0                                 
         cut_switch           : true 
         plot_switch          : true 
+        normalization_switch : true 
+        MVA                  : true 
    v34:
         title_name           : "lep_isolation2"
-        cut_min              : 0.05 
-        cut_max              : 1
+        cut_min              : 0.5 
+        cut_max              : 10
         latex_name           : "lep_isolation2"
-        leg_left             : 0.2
+        leg_left             : 0.6
         leg_up               : 0.7
-        leg_right            : 0.4
+        leg_right            : 0.8
         leg_down             : 0.9           
         xaxis_name           : "lep_isolation2"                    
         xaxis_bin            : 100                                    
-        xaxis_min            : 0.0001
-        xaxis_max            : 0.1
+        xaxis_min            : -1
+        xaxis_max            : 10.0
         cut_switch           : true 
         plot_switch          : true 
+        normalization_switch : true 
+        MVA                  : true 
 
 variable_vec:

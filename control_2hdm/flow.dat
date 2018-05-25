@@ -13,6 +13,7 @@ BeginObject      : Direct_Cut
 #BeginObject      : Make_Table 
 #BeginObject       : Direct_Cut_ReWeight
 #BeginObject      : Plot_Direct 
+#BeginObject      : Direct_Cut_NoMVA 
 
 
 # choose signal process and work scenario

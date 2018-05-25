@@ -76,6 +76,9 @@ bool APlot::Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplo
 
 bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color, int linestyle){
 	if(info.Use_Default_Line_Setting()){
+		para.plot.setting.line_setting.Get_Color(color*3+1);
+		para.plot.setting.line_setting.Get_Style(linestyle);
+		std::cout << color << " " <<  para.plot.setting.line_setting.Color() << std::endl;
 		histo->SetLineColor(para.plot.setting.line_setting.Color());
 		histo->SetLineStyle(para.plot.setting.line_setting.Style());
 		histo->SetLineWidth(para.plot.setting.line_setting.Width());

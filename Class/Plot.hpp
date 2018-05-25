@@ -120,7 +120,7 @@ namespace YAML{
 			static bool decode(const Node& node, Cplot_stack& plot){ 
 				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
 					if(it->first.as<std::string>()=="stack_draw"){
-						plot.draw_option= it->second.as<std::vector<std::string> >();	
+						plot.draw_option= it->second.as<std::string>();	
 					}
 					else{
 						ShowMessage(2,"wrong input when load class Cplot_drawing",it->first.as<std::string>());
@@ -133,6 +133,23 @@ namespace YAML{
 };
 
 
+namespace YAML{
+	template<>
+		struct convert<Cplot_legend>{
+			static bool decode(const Node& node, Cplot_legend& plot){ 
+				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
+					if(it->first.as<std::string>()=="head_name"){
+						plot.header= it->second.as<std::string>();	
+					}
+					else{
+						ShowMessage(2,"wrong input when load class Cplot_drawing",it->first.as<std::string>());
+					}
+				}
+				ShowMessage(2,"finish reading plot drawing");
+				return true;
+			}
+		};
+};
 /*
 namespace YAML{
 	template<>

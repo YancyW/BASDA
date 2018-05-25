@@ -26,3 +26,8 @@ Scenario      :
        (+,-)         : 0.45
        (-,-)         : 0.05
        (+,+)         : 0.05
+    scenario4:
+       name          : running-ilc-lr 
+       energy        : 250 
+       luminosity    : 2000 
+       (-,+)         : 1.00

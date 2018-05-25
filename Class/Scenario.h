@@ -120,7 +120,9 @@ namespace YAML{
 	template<>
 		struct convert<CScenario_Basic>{
 			static bool decode(const Node& node, CScenario_Basic& sce){ 
-				sce.run_ratio.resize(4);
+				for(int i=0;i<4;i++){
+					sce.run_ratio.push_back(-1.0);
+				}
 				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
 					if(it->first.as<std::string>()=="energy"){
 						RW_element(it->first.as<std::string>(), it, sce.energy);
