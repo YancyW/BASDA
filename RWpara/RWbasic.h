@@ -11,6 +11,7 @@
 void RW_element(std::string name, YAML::const_iterator it, double &variable_name);
 void RW_element(std::string name, YAML::const_iterator it, float &variable_name);
 void RW_element(std::string name, YAML::const_iterator it, Int_t    &variable_name);
+void RW_element(std::string name, YAML::const_iterator it, long int &variable_name);
 void RW_element(std::string name, YAML::const_iterator it, Long64_t &variable_name);
 void RW_element(std::string name, YAML::const_iterator it, Bool_t   &variable_name);
 void RW_element(std::string name, YAML::const_iterator it, std::string  &variable_name);
@@ -18,6 +19,7 @@ void RW_element(std::string name, YAML::const_iterator it, std::string  &variabl
 void RW_element(std::string name, YAML::Node node_name, double &variable_name);
 void RW_element(std::string name, YAML::Node node_name, float &variable_name);
 void RW_element(std::string name, YAML::Node node_name, Int_t    &variable_name);
+void RW_element(std::string name, YAML::Node node_name, long int &variable_name);
 void RW_element(std::string name, YAML::Node node_name, Long64_t &variable_name);
 void RW_element(std::string name, YAML::Node node_name, Bool_t   &variable_name);
 void RW_element(std::string name, YAML::Node node_name, std::string  &variable_name);
@@ -25,6 +27,7 @@ void RW_element(std::string name, YAML::Node node_name, std::string  &variable_n
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, double &variable_name);
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, float &variable_name);
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Int_t    &variable_name);
+void RW_element(std::string particle_name, std::string name, YAML::Node node_name, long int &variable_name);
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Long64_t &variable_name);
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Bool_t   &variable_name);
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, std::string  &variable_name);
@@ -32,6 +35,7 @@ void RW_element(std::string particle_name, std::string name, YAML::Node node_nam
 void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<double > &variable_name);
 void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<float> &variable_name);
 void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<Int_t>    &variable_name);
+void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<long int>    &variable_name);
 void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<Long64_t >&variable_name);
 void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<Bool_t>   &variable_name);
 void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<std::string>  &variable_name);
@@ -39,6 +43,7 @@ void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vec
 void RW_vector_element(std::string particle_name, std::string name, int num,YAML::Node node_name, std::vector<double > &variable_name);
 void RW_vector_element(std::string particle_name, std::string name, int num,YAML::Node node_name, std::vector<float> &variable_name);
 void RW_vector_element(std::string particle_name, std::string name, int num,YAML::Node node_name, std::vector<Int_t>    &variable_name);
+void RW_vector_element(std::string particle_name, std::string name, int num,YAML::Node node_name, std::vector<long int>    &variable_name);
 void RW_vector_element(std::string particle_name, std::string name, int num,YAML::Node node_name, std::vector<Long64_t >&variable_name);
 void RW_vector_element(std::string particle_name, std::string name, int num,YAML::Node node_name, std::vector<Bool_t>   &variable_name);
 void RW_vector_element(std::string particle_name, std::string name, int num,YAML::Node node_name, std::vector<std::string>  &variable_name);

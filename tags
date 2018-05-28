@@ -34,8 +34,11 @@ ANALYSE_VARIABLE_H	AnalyseClass/Variable.h	3;"	d
 ANALYSIS_CLASS_COUNTER_H	AnalyseClass/Counter.h	2;"	d
 ANALYSIS_CLASS_FILE_LIST_H	AnalyseClass/File_List.h	3;"	d
 ANALYSIS_CLASS_PLOT_H	AnalyseClass/Plot.h	2;"	d
+ANALYSIS_CLASS_ROOT_FILE_H	AnalyseClass/Root_File.h	2;"	d
 APlot	AnalyseClass/Plot.h	/^		APlot(){$/;"	f	class:APlot
 APlot	AnalyseClass/Plot.h	/^class APlot{ $/;"	c
+ARoot_File	AnalyseClass/Root_File.cpp	/^ARoot_File::ARoot_File(std::string input_file, std::string head_name){$/;"	f	class:ARoot_File
+ARoot_File	AnalyseClass/Root_File.h	/^class ARoot_File{$/;"	c
 ASort_List	AnalyseClass/Sort_List.h	/^class ASort_List{$/;"	c
 AVariable	AnalyseClass/Variable.h	/^		AVariable(){$/;"	f	class:AVariable
 AVariable	AnalyseClass/Variable.h	/^class AVariable{$/;"	c
@@ -90,7 +93,7 @@ Avariable_vec	AnalyseClass/Variable.h	/^		Avariable_vec(){$/;"	f	class:Avariable
 Avariable_vec	AnalyseClass/Variable.h	/^class Avariable_vec{$/;"	c
 BDTGNode	BDTG/weights/TMVAClassification_BDTG.class.C	/^   BDTGNode ( BDTGNode* left,BDTGNode* right,$/;"	f	class:BDTGNode
 BDTGNode	BDTG/weights/TMVAClassification_BDTG.class.C	/^class BDTGNode {$/;"	c	file:
-BDTGNode__def	BDTG/weights/TMVAClassification_BDTG.class.C	98;"	d	file:
+BDTGNode__def	BDTG/weights/TMVAClassification_BDTG.class.C	106;"	d	file:
 Begin_Event	Class/Event.h	/^		Long64_t Begin_Event(){$/;"	f	class:CEvent
 Begin_Time	Class/Time.h	/^		void Begin_Time(){$/;"	f	class:CTime
 BinContribution	TSysLimit/TSysLimitResultLogL.cpp	/^Double_t TSysLimitResultLogL::BinContribution(Double_t weight,Double_t n)$/;"	f	class:TSysLimitResultLogL
@@ -116,6 +119,8 @@ CMVA_H	Class/MVA.h	3;"	d
 CPPUTILS_HAS_MEMBER_H	Function/Fclass.h	37;"	d
 CPath	Class/Path.h	/^class CPath{$/;"	c
 CPlot	Class/Plot.h	/^class CPlot{$/;"	c
+CPosition	Class/Plot.h	/^		CPosition(){$/;"	f	class:CPosition
+CPosition	Class/Plot.h	/^class CPosition{$/;"	c
 CScenario	Class/Scenario.h	/^		CScenario(){$/;"	f	class:CScenario
 CScenario	Class/Scenario.h	/^class CScenario{$/;"	c
 CScenario_Basic	Class/Scenario.h	/^	CScenario_Basic(){$/;"	f	class:CScenario_Basic
@@ -152,6 +157,8 @@ Cplot_basic_color_style	Class/Plot.h	/^class Cplot_basic_color_style: public CCo
 Cplot_canvas	Class/Plot.h	/^class Cplot_canvas{$/;"	c
 Cplot_drawing	Class/Plot.h	/^		Cplot_drawing(){$/;"	f	class:Cplot_drawing
 Cplot_drawing	Class/Plot.h	/^class Cplot_drawing{$/;"	c
+Cplot_legend	Class/Plot.h	/^		Cplot_legend(){$/;"	f	class:Cplot_legend
+Cplot_legend	Class/Plot.h	/^class Cplot_legend{$/;"	c
 Cplot_line	Class/Plot.h	/^		Cplot_line(){$/;"	f	class:Cplot_line
 Cplot_line	Class/Plot.h	/^class Cplot_line{$/;"	c
 Cplot_rootset	Class/Plot.h	/^class Cplot_rootset{$/;"	c
@@ -178,6 +185,7 @@ Data_Sig	AnalyseClass/Sort_List.cpp	/^float ASort_List::Data_Sig(int k){$/;"	f	c
 Default_Legend	Class/BKG_Sort.h	/^		std::string Default_Legend(int ith){$/;"	f	class:CBKG_Sort_basic
 Default_Scenario	Class/Scenario.h	/^		CScenario_Basic         Default_Scenario(){$/;"	f	class:CScenario
 Default_Sub_Legend	Class/BKG_Sort.h	/^		std::string Default_Sub_Legend(int ith){$/;"	f	class:CBKG_Sort_basic
+Delete	AnalyseClass/Root_File.cpp	/^void ARoot_File::Delete(){$/;"	f	class:ARoot_File
 DoScan	TSysLimit/TSysLimitScan.cpp	/^void TSysLimitScan::DoScan(Double_t cl,Double_t startScale,$/;"	f	class:TSysLimitScan
 DrawLogo	AnalyseClass/Plot.cpp	/^void APlot::DrawLogo(){$/;"	f	class:APlot
 Draw_Figure	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Draw_Figure(CDraw& para,AFile& file_name){$/;"	f	class:Analyse_Multi_File
@@ -201,7 +209,11 @@ FUNCTION_ITEM_H	Latex/LItem.h	3;"	d
 FUNCTION_STRING_H	Function/FString.h	3;"	d
 FUNCTION_TABLE_H	Latex/LTable.h	3;"	d
 FVECTOR_H	Function/Fvector.h	3;"	d
+File_Close	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::File_Close(int filenum){$/;"	f	class:Analyse_Multi_File
+File_Close	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Single_File::File_Close(){$/;"	f	class:Analyse_Single_File
 File_Content	AnalyseClass/File_List.h	/^		AFile_Data File_Content(int i){$/;"	f	class:AFile_List
+File_Init	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::File_Init( std::ofstream &file_name, int filenum){$/;"	f	class:Analyse_Multi_File
+File_Init	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Single_File::File_Init(std::ofstream &file_name){$/;"	f	class:Analyse_Single_File
 File_Name	AnalyseClass/File_List.h	/^		std::string File_Name(int i){$/;"	f	class:AFile_List
 File_Num	AnalyseClass/File_List.h	/^		int  File_Num(){$/;"	f	class:AFile_List
 FillHistograms	TSysLimit/TSysLimitResult.cpp	/^void TToyDistribution::FillHistograms(Double_t x,TH1 *lower,TH1 *higher)$/;"	f	class:TToyDistribution
@@ -247,6 +259,7 @@ GetDataErrorType	TSysLimit/TSysLimitChannel.h	/^		inline TSysLimitChannelDataErr
 GetDataLimit	TSysLimit/TSysLimitScan.cpp	/^TSysLimitResult const *TSysLimitScan::GetDataLimit(void) const {$/;"	f	class:TSysLimitScan
 GetDefaultResult	TSysLimit/TSysLimit.h	/^		inline TSysLimitResult const *GetDefaultResult(void) {$/;"	f	class:TSysLimit
 GetDensity	TSysLimit/TSysLimitResult.cpp	/^Double_t TToyDistribution::GetDensity(Double_t x) const {$/;"	f	class:TToyDistribution
+GetEntry	AnalyseClass/Root_File.cpp	/^void ARoot_File::GetEntry(int event){$/;"	f	class:ARoot_File
 GetExpectedCLb	TSysLimit/TSysLimitResult.cpp	/^Double_t TSysLimitResult::GetExpectedCLb(void) const {$/;"	f	class:TSysLimitResult
 GetExpectedCLs	TSysLimit/TSysLimitResult.cpp	/^Double_t TSysLimitResult::GetExpectedCLs(void) const {$/;"	f	class:TSysLimitResult
 GetExpectedCLsb	TSysLimit/TSysLimitResult.cpp	/^Double_t TSysLimitResult::GetExpectedCLsb(void) const {$/;"	f	class:TSysLimitResult
@@ -290,6 +303,7 @@ GetXForPvalue	TSysLimit/TSysLimitResult.cpp	/^Double_t TToyDistribution::GetXFor
 GetXPowerConstraint	TSysLimit/TSysLimitResult.cpp	/^Double_t TSysLimitResult::GetXPowerConstraint$/;"	f	class:TSysLimitResult
 Get_ClassName	Function/Fbasic.h	/^std::string Get_ClassName(TTname x){$/;"	f
 Get_Color	Class/Plot.cpp	/^void CColor::Get_Color(int input){$/;"	f	class:CColor
+Get_Color	Class/Plot.h	/^		void Get_Color(int i){$/;"	f	class:Cplot_line
 Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Multi_File::Get_Cut(int filenum){$/;"	f	class:Analyse_Multi_File
 Get_Cut	AnalyseClass/AnalyseClass.cpp	/^bool Analyse_Single_File::Get_Cut(AVariable &var,ACut &cut){$/;"	f	class:Analyse_Single_File
 Get_Event	Class/DrawClass.h	/^		void Get_Event(long long int num){$/;"	f	class:CDraw
@@ -311,7 +325,7 @@ Hist_Final	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist_Final(){$/
 Hist_Origin	AnalyseClass/AnalyseClass.cpp	/^TH1F* Analyse_Figure::Hist_Origin(){$/;"	f	class:Analyse_Figure
 IClassifierReader	BDTG/weights/TMVAClassification_BDTG.class.C	/^   IClassifierReader() : fStatusIsClean( true ) {}$/;"	f	class:IClassifierReader
 IClassifierReader	BDTG/weights/TMVAClassification_BDTG.class.C	/^class IClassifierReader {$/;"	c	file:
-IClassifierReader__def	BDTG/weights/TMVAClassification_BDTG.class.C	175;"	d	file:
+IClassifierReader__def	BDTG/weights/TMVAClassification_BDTG.class.C	183;"	d	file:
 INCLUDE	makefile	/^INCLUDE = -I. -I..  -I$(RootPath)\/include  \\$/;"	m
 Init	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Figure::Init(){$/;"	f	class:Analyse_Figure
 Init	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Figure::Init(Avariable &info, std::string name){$/;"	f	class:Analyse_Figure
@@ -321,6 +335,8 @@ Init	AnalyseClass/Counter.cpp	/^void ACounter::Init(CDraw &para, int input_entri
 Init	AnalyseClass/Plot.cpp	/^void APlot::Init(){$/;"	f	class:APlot
 Init	AnalyseClass/Variable.h	/^		void Init(){$/;"	f	class:Avariable
 Init	Class/Event.h	/^		void Init(long long int _tot_num){$/;"	f	class:CEvent
+Init_Var	AnalyseClass/Root_File.cpp	/^void ARoot_File::Init_Var(AVariable &input_var){$/;"	f	class:ARoot_File
+Init_Weight	AnalyseClass/Root_File.cpp	/^void ARoot_File::Init_Weight(Analyse_Single_File& input_weight){$/;"	f	class:ARoot_File
 Initialize	BDTG/weights/TMVAClassification_BDTG.class.C	/^void ReadBDTG::Initialize()$/;"	f	class:ReadBDTG
 Initialize	TSysLimit/TSysLimitResult.cpp	/^void TSysLimitResult::Initialize(Double_t scale,$/;"	f	class:TSysLimitResult
 Initialize	TSysLimit/TSysLimitResult.cpp	/^void TSysLimitResult::Initialize(TVectorD const &b,TVectorD const &sb,$/;"	f	class:TSysLimitResult
@@ -341,10 +357,10 @@ Is_File_Exist	Function/Ffile.cpp	/^bool Is_File_Exist(const std::string& fname){
 Is_File_Exist_And_Exit	Function/Ffile.cpp	/^void Is_File_Exist_And_Exit(const std::string& fname){$/;"	f
 Is_Maximum	AnalyseClass/Variable.h	/^		bool Is_Maximum(double val){$/;"	f	class:Avariable
 Is_Maximum	AnalyseClass/Variable.h	/^		bool Is_Maximum(float val){$/;"	f	class:Avariable
-Is_Maximum	AnalyseClass/Variable.h	/^		bool Is_Maximum(int val){$/;"	f	class:Avariable
+Is_Maximum	AnalyseClass/Variable.h	/^		bool Is_Maximum(long int val){$/;"	f	class:Avariable
 Is_Minimum	AnalyseClass/Variable.h	/^		bool Is_Minimum(double val){$/;"	f	class:Avariable
 Is_Minimum	AnalyseClass/Variable.h	/^		bool Is_Minimum(float val){$/;"	f	class:Avariable
-Is_Minimum	AnalyseClass/Variable.h	/^		bool Is_Minimum(int val){$/;"	f	class:Avariable
+Is_Minimum	AnalyseClass/Variable.h	/^		bool Is_Minimum(long int val){$/;"	f	class:Avariable
 JMVA	Class/DrawClass.h	/^		Bool_t                       JMVA                ;$/;"	m	class:CDraw
 JSP_scan	Class/DrawClass.h	/^		Bool_t                       JSP_scan            ;$/;"	m	class:CDraw
 Jbkg_sort	Class/DrawClass.h	/^		Bool_t                       Jbkg_sort           ;$/;"	m	class:CDraw
@@ -359,6 +375,7 @@ Jsen	Class/DrawClass.h	/^		Bool_t                       Jsen                ;$/;
 Jvar	Class/DrawClass.h	/^		Bool_t                       Jvar                ;$/;"	m	class:CDraw
 LIBS	makefile	/^LIBS =  -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui ${YAMLPath}\/libyaml-cpp.a $/;"	m
 LOGFILE	TSysLimit/TSysLimitScan.cpp	7;"	d	file:
+Last_Color	Class/Plot.cpp	/^int CColor::Last_Color(){$/;"	f	class:CColor
 Last_Data_Num	AnalyseClass/File_List.h	/^		int Last_Data_Num(int i=0){$/;"	f	class:AFile_List
 Last_Data_Num	AnalyseClass/Sort_List.h	/^		int Last_Data_Num(int i=0, int j=0){$/;"	f	class:ASort_List
 Last_File_Num	AnalyseClass/File_List.h	/^		int  Last_File_Num(){$/;"	f	class:AFile_List
@@ -402,7 +419,7 @@ Message	Class/debug.h	/^			void Message(Int_t itlevel, Int_t itpos, std::string 
 Message	Class/debug.h	/^			void Message(Int_t itlevel, Int_t itpos, std::string mess, TDebug1 ddata, TDebug2 ddata2){$/;"	f	class:CDebug
 Message	Class/debug.h	/^		void Message(Int_t itlevel, Int_t itpos,std::string mess){$/;"	f	class:CDebug
 Minimum	AnalyseClass/Variable.h	/^		float Minimum(){$/;"	f	class:Avariable
-NN	BDTG/weights/TMVAClassification_BDTG.class.C	95;"	d	file:
+NN	BDTG/weights/TMVAClassification_BDTG.class.C	103;"	d	file:
 Name	Class/BKG_Sort.h	/^		std::string Name(int ith){$/;"	f	class:CBKG_Sort_basic
 NameDescrip	Function/Fbasic.cpp	/^std::string NameDescrip(std::string class_name, std::string observable_name, int i){$/;"	f
 NameHistogram	Function/Fbasic.cpp	/^std::string NameHistogram(std::string signal_name, std::string class_name, std::string observable_name, int i){$/;"	f
@@ -456,24 +473,28 @@ RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node nod
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, Long64_t &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, double &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, float &variable_name){$/;"	f
+RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, long int &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::Node node_name, std::string  &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::const_iterator it, Bool_t   &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::const_iterator it, Int_t    &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::const_iterator it, Long64_t &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::const_iterator it, double &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::const_iterator it, float &variable_name){$/;"	f
+RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::const_iterator it, long int &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string name, YAML::const_iterator it, std::string  &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Bool_t   &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Int_t    &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Long64_t &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string particle_name, std::string name, YAML::Node node_name, double &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string particle_name, std::string name, YAML::Node node_name, float &variable_name){$/;"	f
+RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string particle_name, std::string name, YAML::Node node_name, long int &variable_name){$/;"	f
 RW_element	RWpara/RWbasic.cpp	/^void RW_element(std::string particle_name, std::string name, YAML::Node node_name, std::string  &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<Bool_t>   &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<Int_t>    &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<Long64_t>    &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<double> &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<float> &variable_name){$/;"	f
+RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<long int>    &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<std::string>  &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string particle_name, std::string name, int num, YAML::Node node_name, std::vector<Bool_t>   &variable_name){$/;"	f
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string particle_name, std::string name, int num, YAML::Node node_name, std::vector<Int_t>    &variable_name){$/;"	f
@@ -483,6 +504,7 @@ RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string partic
 RW_vector_element	RWpara/RWbasic.cpp	/^void RW_vector_element(std::string particle_name, std::string name, int num, YAML::Node node_name, std::vector<std::string>  &variable_name){$/;"	f
 RandomExperiment	TSysLimit/TSysLimit.cpp	/^void TSysLimit::RandomExperiment(const TVectorD &src,TVectorD &dest) {$/;"	f	class:TSysLimit
 RandomSysShifts	TSysLimit/TSysLimit.cpp	/^void TSysLimit::RandomSysShifts(void) {$/;"	f	class:TSysLimit
+Read	AnalyseClass/Root_File.cpp	/^void ARoot_File::Read(std::string input_file, std::string head_name){$/;"	f	class:ARoot_File
 Read	RWpara/RWDraw.cpp	/^void CDraw::Read(){$/;"	f	class:CDraw
 ReadBDTG	BDTG/weights/TMVAClassification_BDTG.class.C	/^   ReadBDTG( std::vector<std::string>& theInputVars ) $/;"	f	class:ReadBDTG
 ReadBDTG	BDTG/weights/TMVAClassification_BDTG.class.C	/^class ReadBDTG : public IClassifierReader {$/;"	c	file:
@@ -509,10 +531,11 @@ RecordMessage	Lib/MessageFormat.h	/^void RecordMessage(std::ofstream &file_name,
 Record_Attach	Lib/Record.cpp	/^void Record_Attach(CDraw &para){$/;"	f
 Record_Close	Lib/Record.cpp	/^void Record_Close(CDraw &para){$/;"	f
 Record_H	Lib/Record.h	3;"	d
-Record_Information	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Record_Information(int filenum,std::ofstream &myfile, std::string sample_name){$/;"	f	class:Analyse_Multi_File
-Record_Information	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Single_File::Record_Information(std::ofstream &myfile, AVariable& var, ACut &cut, std::string sample_name){$/;"	f	class:Analyse_Single_File
+Record_Information	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Record_Information(int filenum, std::string sample_name){$/;"	f	class:Analyse_Multi_File
+Record_Information	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Single_File::Record_Information(AVariable& var, ACut &cut, std::string sample_name){$/;"	f	class:Analyse_Single_File
 Record_Open	Lib/Record.cpp	/^void Record_Open(CDraw &para){$/;"	f
-Record_Tot_Information	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Record_Tot_Information(std::ofstream &myfile, std::string sample_name){$/;"	f	class:Analyse_Multi_File
+Record_Tot_Information	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Record_Tot_Information(std::string sample_name){$/;"	f	class:Analyse_Multi_File
+Register_Var	AnalyseClass/Root_File.cpp	/^void ARoot_File::Register_Var(){$/;"	f	class:ARoot_File
 RootPath	makefile	/^RootPath=\/home\/yancy\/Software\/executable\/root\/build$/;"	m
 Root_Close	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Multi_File::Root_Close(int filenum){$/;"	f	class:Analyse_Multi_File
 Root_Close_File	AnalyseClass/AnalyseClass.cpp	/^void Analyse_Single_File::Root_Close_File(){$/;"	f	class:Analyse_Single_File
@@ -536,6 +559,9 @@ SRCS	makefile	/^SRCS = \\$/;"	m
 Scenario_Name	Class/Scenario.h	/^		std::string Scenario_Name(){$/;"	f	class:CScenario
 Set	Class/BKG_Sort.h	/^		void Set(){$/;"	f	class:CBKG_Sort_basic
 Set	Class/Judge.h	/^		void Set(){_Exist=true;}$/;"	f	class:AJudge
+SetBranchAddress	AnalyseClass/Root_File.cpp	/^void ARoot_File::SetBranchAddress(std::string var_name, double* var){$/;"	f	class:ARoot_File
+SetBranchAddress	AnalyseClass/Root_File.cpp	/^void ARoot_File::SetBranchAddress(std::string var_name, float* var){$/;"	f	class:ARoot_File
+SetBranchAddress	AnalyseClass/Root_File.cpp	/^void ARoot_File::SetBranchAddress(std::string var_name, long int* var){$/;"	f	class:ARoot_File
 SetChannelOwner	TSysLimit/TSysLimit.cpp	/^void TSysLimit::SetChannelOwner(bool isOwner) {$/;"	f	class:TSysLimit
 SetData	TSysLimit/TSysLimitChannel.cpp	/^TSysLimitChannel::TSysLimitChannelError TSysLimitChannel::SetData(TH1 const *data,TSysLimitChannelDataErrorType dataErrorType) {$/;"	f	class:TSysLimitChannel
 SetDataExperiment	TSysLimit/TSysLimitResult.cpp	/^void TSysLimitResult::SetDataExperiment(TVectorD const &bins) {$/;"	f	class:TSysLimitResult
@@ -637,12 +663,17 @@ _colornum	Class/Plot.h	/^		std::vector<int>      _colornum;$/;"	m	class:CColor
 _counter	AnalyseClass/Counter.h	/^		ACounterType         _counter;$/;"	m	class:ACounter
 _current_time	Class/Time.h	/^		time_t _current_time;$/;"	m	class:CTime
 _cut	AnalyseClass/AnalyseClass.h	/^		ACut                                   _cut             ;$/;"	m	class:Analyse_Multi_File
+_data_file	AnalyseClass/AnalyseClass.h	/^		std::ofstream*                         _data_file;$/;"	m	class:Analyse_Multi_File
+_data_file	AnalyseClass/AnalyseClass.h	/^		std::ofstream*               _data_file;$/;"	m	class:Analyse_Single_File
 _default_class_legend	Class/BKG_Sort.h	/^		std::vector<std::string> _default_class_legend;$/;"	m	class:CBKG_Sort_basic
 _default_sub_class_legend	Class/BKG_Sort.h	/^		std::vector<std::string> _default_sub_class_legend;$/;"	m	class:CBKG_Sort_basic
 _extra_weight	AnalyseClass/AnalyseClass.h	/^		float                                  _extra_weight    ; $/;"	m	class:Analyse_Multi_File
 _extra_weight	AnalyseClass/AnalyseClass.h	/^		float                        _extra_weight ; $/;"	m	class:Analyse_Single_File
 _figure_num	AnalyseClass/AnalyseClass.h	/^		int							 _figure_num; $/;"	m	class:Analyse_Single_File
 _file_num	AnalyseClass/AnalyseClass.h	/^		int									   _file_num        ;$/;"	m	class:Analyse_Multi_File
+_in_weight	AnalyseClass/Root_File.h	/^		float*     _in_weight;$/;"	m	class:ARoot_File
+_in_weight_d	AnalyseClass/Root_File.h	/^		double*    _in_weight_d;$/;"	m	class:ARoot_File
+_in_weight_i	AnalyseClass/Root_File.h	/^		long int*  _in_weight_i;$/;"	m	class:ARoot_File
 _list	AnalyseClass/AnalyseClass.h	/^		TList*                                 _list;$/;"	m	class:Analyse_Multi_File
 _list	AnalyseClass/File_List.h	/^		std::vector<std::pair<std::string,AFile_Data> >  _list;$/;"	m	class:AFile_List
 _list	AnalyseClass/Sort_List.h	/^		std::vector< std::pair<std::string,std::vector< std::pair< std::string, AFile_Data> > > > _list;$/;"	m	class:ASort_List
@@ -677,6 +708,7 @@ _tot_num	Class/Event.h	/^		Long64_t _loop_begin, _loop_end, _tot_num;$/;"	m	clas
 _tree	AnalyseClass/AnalyseClass.h	/^		std::vector<TTree*>          _tree      ; $/;"	m	class:Analyse_Single_File
 _tree_num	AnalyseClass/AnalyseClass.h	/^		int							 _tree_num  ; $/;"	m	class:Analyse_Single_File
 _value	AnalyseClass/Plot.h	/^		float                                  _value           ;$/;"	m	class:APlot
+_var	AnalyseClass/Root_File.h	/^		AVariable* _var; $/;"	m	class:ARoot_File
 _var_num	AnalyseClass/AnalyseClass.h	/^		int									   _var_num         ;$/;"	m	class:Analyse_Multi_File
 _var_num	AnalyseClass/AnalyseClass.h	/^		int							 _var_num   ; $/;"	m	class:Analyse_Single_File
 _weight	AnalyseClass/Counter.h	/^		float                _weight;$/;"	m	class:ACounter
@@ -712,8 +744,10 @@ convert	AnalyseClass/Variable.h	/^		struct convert<Avariable_vec>{$/;"	s	namespa
 convert	Class/MVA.h	/^		struct convert<CMVA_Basic>{$/;"	s	namespace:YAML
 convert	Class/Plot.hpp	/^		struct convert<Cplot_basic_color_style>{$/;"	s	namespace:YAML
 convert	Class/Plot.hpp	/^		struct convert<Cplot_drawing>{$/;"	s	namespace:YAML
+convert	Class/Plot.hpp	/^		struct convert<Cplot_legend>{$/;"	s	namespace:YAML
 convert	Class/Plot.hpp	/^		struct convert<Cplot_line>{$/;"	s	namespace:YAML
 convert	Class/Plot.hpp	/^		struct convert<Cplot_setting>{$/;"	s	namespace:YAML
+convert	Class/Plot.hpp	/^		struct convert<Cplot_stack>{$/;"	s	namespace:YAML
 convert	Class/Scenario.h	/^		struct convert<CScenario_Basic>{$/;"	s	namespace:YAML
 cut	AnalyseClass/Cut.h	/^		std::vector<int> cut;$/;"	m	class:ACut
 cut	Class/Flow.h	/^		Bool_t                  cut                  ;$/;"	m	class:CFlow
@@ -722,16 +756,16 @@ cut_level	AnalyseClass/Variable.h	/^		int cut_level;$/;"	m	class:AVariable
 cut_level	Class/Cut.h	/^		Int_t              cut_level;$/;"	m	class:CCut
 cut_max	AnalyseClass/Variable.h	/^		float         cut_max      ;$/;"	m	class:Avariable
 cut_max_d	AnalyseClass/Variable.h	/^		double        cut_max_d    ;$/;"	m	class:Avariable
-cut_max_i	AnalyseClass/Variable.h	/^		int           cut_max_i    ;$/;"	m	class:Avariable
+cut_max_i	AnalyseClass/Variable.h	/^	    long int           cut_max_i    ;$/;"	m	class:Avariable
 cut_max_pre	AnalyseClass/Variable.h	/^		float         cut_max_pre  ;$/;"	m	class:Avariable
 cut_max_pre_d	AnalyseClass/Variable.h	/^		double        cut_max_pre_d;$/;"	m	class:Avariable
-cut_max_pre_i	AnalyseClass/Variable.h	/^		int           cut_max_pre_i;$/;"	m	class:Avariable
+cut_max_pre_i	AnalyseClass/Variable.h	/^	    long int           cut_max_pre_i;$/;"	m	class:Avariable
 cut_min	AnalyseClass/Variable.h	/^		float         cut_min      ;$/;"	m	class:Avariable
 cut_min_d	AnalyseClass/Variable.h	/^		double        cut_min_d    ;$/;"	m	class:Avariable
-cut_min_i	AnalyseClass/Variable.h	/^		int           cut_min_i    ;$/;"	m	class:Avariable
+cut_min_i	AnalyseClass/Variable.h	/^	    long int           cut_min_i    ;$/;"	m	class:Avariable
 cut_min_pre	AnalyseClass/Variable.h	/^		float         cut_min_pre  ;$/;"	m	class:Avariable
 cut_min_pre_d	AnalyseClass/Variable.h	/^		double        cut_min_pre_d;$/;"	m	class:Avariable
-cut_min_pre_i	AnalyseClass/Variable.h	/^		int           cut_min_pre_i;$/;"	m	class:Avariable
+cut_min_pre_i	AnalyseClass/Variable.h	/^	    long int           cut_min_pre_i;$/;"	m	class:Avariable
 cut_num	AnalyseClass/Cut.h	/^		int cut_num;$/;"	m	class:ACut
 cut_switch	AnalyseClass/Variable.h	/^		bool          cut_switch ;$/;"	m	class:Avariable
 data	AnalyseClass/File_List.h	/^		std::vector< std::pair<std::string,float> > data;$/;"	m	class:AFile_Data
@@ -745,8 +779,10 @@ decode	AnalyseClass/Variable.h	/^			static bool decode(const Node& node, Avariab
 decode	Class/MVA.h	/^			static bool decode(const Node& node, CMVA_Basic& mva){ $/;"	f	struct:YAML::convert
 decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_basic_color_style& plot){ $/;"	f	struct:YAML::convert
 decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_drawing& plot){ $/;"	f	struct:YAML::convert
+decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_legend& plot){ $/;"	f	struct:YAML::convert
 decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_line& plot){ $/;"	f	struct:YAML::convert
 decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_setting& plot){ $/;"	f	struct:YAML::convert
+decode	Class/Plot.hpp	/^			static bool decode(const Node& node, Cplot_stack& plot){ $/;"	f	struct:YAML::convert
 decode	Class/Scenario.h	/^			static bool decode(const Node& node, CScenario_Basic& sce){ $/;"	f	struct:YAML::convert
 default_MVA	Class/DrawClass.h	/^		CMVA                         default_MVA         ;$/;"	m	class:CDraw
 default_bkg_sort	Class/DrawClass.h	/^		CBKG_Sort                    default_bkg_sort    ;$/;"	m	class:CDraw
@@ -761,6 +797,7 @@ default_scenario	Class/Scenario.h	/^		CScenario_Basic         default_scenario;$
 default_sensitivity	Class/DrawClass.h	/^		CSensitivity                 default_sensitivity ;$/;"	m	class:CDraw
 default_signal_scan	Class/DrawClass.h	/^		CSignal_Property_Scan        default_signal_scan ;$/;"	m	class:CDraw
 default_var	Class/DrawClass.h	/^		AVariable                    default_var         ;$/;"	m	class:CDraw
+down	Class/Plot.h	/^		float         down   ;$/;"	m	class:CPosition
 draw_option	Class/Plot.h	/^		std::string draw_option; $/;"	m	class:Cplot_stack
 drawing	Class/Plot.h	/^		Cplot_drawing  drawing;$/;"	m	class:CPlot
 elecSwitch	AnalyseClass/Counter.h	/^		bool elecSwitch   ;$/;"	m	class:ACounter
@@ -829,13 +866,13 @@ fSysLimit	TSysLimit/TSysLimitScan.h	/^   TSysLimit &fSysLimit;$/;"	m	class:TSysL
 fTemplate	TSysLimit/TSysLimitChannel.h	/^		TH1 const *fTemplate;$/;"	m	class:TSysLimitChannel
 fToyB	TSysLimit/TSysLimit.h	/^		TVectorD fToyB,fToySB;$/;"	m	class:TSysLimit
 fToySB	TSysLimit/TSysLimit.h	/^		TVectorD fToyB,fToySB;$/;"	m	class:TSysLimit
-fType	BDTG/weights/TMVAClassification_BDTG.class.C	/^   char   fType[11];$/;"	m	class:ReadBDTG	file:
+fType	BDTG/weights/TMVAClassification_BDTG.class.C	/^   char   fType[19];$/;"	m	class:ReadBDTG	file:
 fUseBin	TSysLimit/TSysLimit.h	/^		TArrayI fUseBin;$/;"	m	class:TSysLimit
 fUseFakeData	TSysLimit/TSysLimit.h	/^		Bool_t fUseFakeData;$/;"	m	class:TSysLimit
 fUseSys	TSysLimit/TSysLimitResultPBock.h	/^   Bool_t fUseSys;$/;"	m	class:TSysLimitResultPBock
 fVerbose	TSysLimit/TSysLimit.h	/^		Int_t fVerbose;$/;"	m	class:TSysLimit
-fVmax	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double fVmax[11];$/;"	m	class:ReadBDTG	file:
-fVmin	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double fVmin[11];$/;"	m	class:ReadBDTG	file:
+fVmax	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double fVmax[19];$/;"	m	class:ReadBDTG	file:
+fVmin	BDTG/weights/TMVAClassification_BDTG.class.C	/^   double fVmin[19];$/;"	m	class:ReadBDTG	file:
 fWeight	TSysLimit/TSysLimitResult.h	/^		TVectorD fWeight;$/;"	m	class:TSysLimitResult
 fXb	TSysLimit/TSysLimitResult.h	/^		TToyDistribution *fXb,*fXsb;$/;"	m	class:TSysLimitResult
 fXdata	TSysLimit/TSysLimitResult.h	/^		Double_t fXdata;$/;"	m	class:TSysLimitResult
@@ -844,6 +881,7 @@ fXsb	TSysLimit/TSysLimitResult.h	/^		TToyDistribution *fXb,*fXsb;$/;"	m	class:TS
 fXtoP	TSysLimit/TSysLimitResult.h	/^		std::map<Double_t,Double_t> fXtoP,fPtoX;$/;"	m	class:TToyDistribution
 figure	AnalyseClass/AnalyseClass.h	/^		std::vector<Analyse_Figure>  figure ; $/;"	m	class:Analyse_Single_File
 file	AnalyseClass/AnalyseClass.h	/^		std::vector<Analyse_Single_File>       file             ;$/;"	m	class:Analyse_Multi_File
+file	AnalyseClass/Root_File.h	/^		TFile* file;$/;"	m	class:ARoot_File
 file	Class/DrawClass.h	/^		CFile                        file                ;$/;"	m	class:CDraw
 file	Class/File.h	/^		std::vector<std::string> file                   ;$/;"	m	class:CFile
 file_descrip	Class/File.h	/^		std::vector<std::string> file_descrip           ;$/;"	m	class:CFile
@@ -856,6 +894,7 @@ folder	AnalyseClass/File.h	/^		std::vector<std::string> folder      ;$/;"	m	clas
 getCounter	AnalyseClass/Counter.cpp	/^void ACounter::getCounter(std::string event_name){$/;"	f	class:ACounter
 getTotNum	AnalyseClass/File_List.h	/^		Pair_File getTotNum(){$/;"	f	class:PolNum
 get_file_name	AnalyseClass/File.cpp	/^void get_file_name(CDraw &para, AFile &file_name){$/;"	f
+header	Class/Plot.h	/^		std::string header; $/;"	m	class:Cplot_legend
 height	Class/Plot.h	/^		Int_t height;$/;"	m	class:Cplot_canvas
 horizontal_summary_plot	Class/Path.h	/^		std::string   horizontal_summary_plot;$/;"	m	class:CPath
 hvariable_after	AnalyseClass/AnalyseClass.h	/^		TH1F*       hvariable_after ;$/;"	m	class:Analyse_Figure
@@ -864,7 +903,7 @@ hvariable_final	AnalyseClass/AnalyseClass.h	/^		TH1F*       hvariable_final ;$/;
 hvariable_origin	AnalyseClass/AnalyseClass.h	/^		TH1F*       hvariable_origin;$/;"	m	class:Analyse_Figure
 in_weight	AnalyseClass/AnalyseClass.h	/^		float                        in_weight   ; $/;"	m	class:Analyse_Single_File
 in_weight_d	AnalyseClass/AnalyseClass.h	/^		double                       in_weight_d ; $/;"	m	class:Analyse_Single_File
-in_weight_i	AnalyseClass/AnalyseClass.h	/^		int                          in_weight_i ; $/;"	m	class:Analyse_Single_File
+in_weight_i	AnalyseClass/AnalyseClass.h	/^		long int                     in_weight_i ; $/;"	m	class:Analyse_Single_File
 include	Class/Plot.h	/^		bool include;$/;"	m	class:Cplot_line
 input	AnalyseClass/File.h	/^		std::vector<AFile_Name>  input       ;$/;"	m	class:AFile
 input_file	Class/Path.h	/^		std::string   input_file       ;$/;"	m	class:CPath
@@ -887,6 +926,7 @@ kErrorNone	TSysLimit/TSysLimitChannel.h	/^			kErrorNone=0,$/;"	e	enum:TSysLimitC
 label_2d	AnalyseClass/Variable.h	/^		std::vector<int> label_2d;$/;"	m	class:Avariable
 latex	AnalyseClass/File.h	/^		std::string                 latex     ;$/;"	m	class:AFile_Name
 latex_name	AnalyseClass/Variable.h	/^		std::string   latex_name ;$/;"	m	class:Avariable
+left	Class/Plot.h	/^		float         left   ;$/;"	m	class:CPosition
 leg	AnalyseClass/Variable.h	/^		TLegend*      leg        ;$/;"	m	class:Avariable
 leg_down	AnalyseClass/Variable.h	/^		float         leg_down   ;$/;"	m	class:Avariable
 leg_header	AnalyseClass/Variable.h	/^		std::string   leg_header ;$/;"	m	class:Avariable
@@ -907,19 +947,20 @@ main	BASDA.cpp	/^int main(int argc, char*argv[]) {$/;"	f
 max	Class/Cut.h	/^		std::vector<float> max;$/;"	m	class:CCut
 maximum	AnalyseClass/Variable.h	/^		float         maximum;$/;"	m	class:Avariable
 maximum_d	AnalyseClass/Variable.h	/^		double        maximum_d;$/;"	m	class:Avariable
-maximum_i	AnalyseClass/Variable.h	/^		int           maximum_i;$/;"	m	class:Avariable
+maximum_i	AnalyseClass/Variable.h	/^		long int      maximum_i;$/;"	m	class:Avariable
 mdSwitch	AnalyseClass/Counter.h	/^		bool mdSwitch     ;$/;"	m	class:ACounter
 merge	merge.C	/^void merge() {$/;"	f
 metSwitch	AnalyseClass/Counter.h	/^		bool metSwitch    ;$/;"	m	class:ACounter
 min	Class/Cut.h	/^		std::vector<float> min;$/;"	m	class:CCut
 minimum	AnalyseClass/Variable.h	/^		float         minimum;$/;"	m	class:Avariable
 minimum_d	AnalyseClass/Variable.h	/^		double        minimum_d;$/;"	m	class:Avariable
-minimum_i	AnalyseClass/Variable.h	/^		int           minimum_i;$/;"	m	class:Avariable
+minimum_i	AnalyseClass/Variable.h	/^		long int      minimum_i;$/;"	m	class:Avariable
 mode	Class/debug.h	/^		Bool_t   mode;$/;"	m	class:CDebug
 muonSwitch	AnalyseClass/Counter.h	/^		bool muonSwitch   ;$/;"	m	class:ACounter
 mva	Class/MVA.h	/^		std::vector<CMVA_Basic> mva;$/;"	m	class:CMVA
 name	AnalyseClass/File.h	/^		std::string                 name      ;$/;"	m	class:AFile_Name
 name	Class/Scenario.h	/^	std::string             name;$/;"	m	class:CScenario_Basic
+nevent	AnalyseClass/Root_File.h	/^		long int nevent;$/;"	m	class:ARoot_File
 newTH1F	Lib/PlotSetting.cpp	/^TH1F * newTH1F(std::string name, Double_t binw, Double_t LowBin, Double_t HighBin, Bool_t MevTitle, Int_t iMode){$/;"	f
 norm_switch	AnalyseClass/Variable.h	/^		bool          norm_switch;$/;"	m	class:Avariable
 norm_switch	Class/Plot.h	/^		bool norm_switch;$/;"	m	class:Cplot_line
@@ -977,11 +1018,14 @@ plot	Class/Flow.h	/^		Bool_t                  plot                 ;$/;"	m	class
 plot_CUT	AnalyseClass/File.h	/^		std::string              plot_CUT      ;$/;"	m	class:AFile
 plot_bkg	Class/Signal_Properties_Scan.h	/^		Cplot_line         plot_bkg;$/;"	m	class:CSignal_Property_Scan
 plot_file	Class/Path.h	/^		std::string   plot_file        ;$/;"	m	class:CPath
+plot_legend	Class/Signal_Properties_Scan.h	/^		Cplot_legend       plot_legend;$/;"	m	class:CSignal_Property_Scan
 plot_object	Class/Flow.h	/^		std::string             plot_object          ;$/;"	m	class:CFlow
 plot_sig	Class/Signal_Properties_Scan.h	/^		Cplot_line         plot_sig;$/;"	m	class:CSignal_Property_Scan
+plot_stack	Class/Signal_Properties_Scan.h	/^		Cplot_stack        plot_stack;$/;"	m	class:CSignal_Property_Scan
 plot_switch	AnalyseClass/Variable.h	/^		bool          plot_switch;$/;"	m	class:Avariable
 plot_type	Class/Plot.h	/^		std::string plot_type;$/;"	m	class:Cplot_drawing
 pol	Class/Scenario.h	/^		std::vector<float>      pol     ;$/;"	m	class:CScenario
+pos	Class/Plot.h	/^		CPosition   pos;$/;"	m	class:Cplot_legend
 posi_pol	Class/Scenario.h	/^		float                   posi_pol;$/;"	m	class:CScenario
 pre_cut	AnalyseClass/Cut.h	/^		std::vector<int> pre_cut;$/;"	m	class:ACut
 pre_cut_num	AnalyseClass/Cut.h	/^		int pre_cut_num;$/;"	m	class:ACut
@@ -994,6 +1038,7 @@ record_event	Class/Flow.h	/^		Bool_t                  record_event         ;$/;"
 record_file	Class/Path.h	/^		std::string   record_file      ;$/;"	m	class:CPath
 record_output	Class/Flow.h	/^		Bool_t                  record_output        ;$/;"	m	class:CFlow
 reweight_table	AnalyseClass/File.h	/^		std::string              reweight_table;$/;"	m	class:AFile
+right	Class/Plot.h	/^		float         right  ;$/;"	m	class:CPosition
 root_head_MVA_name	Class/File.h	/^		std::string              root_head_MVA_name     ;$/;"	m	class:CFile
 root_head_name	Class/File.h	/^		std::string              root_head_name         ;$/;"	m	class:CFile
 rootset	Class/Plot.h	/^		Cplot_rootset  rootset;$/;"	m	class:CPlot
@@ -1032,7 +1077,9 @@ title_name	AnalyseClass/Variable.h	/^		std::string   title_name ;$/;"	m	class:Av
 title_name	AnalyseClass/Variable.h	/^		std::string   title_name ;$/;"	m	class:Avariable_vec
 tot_Num	AnalyseClass/File_List.h	/^		Pair_File tot_Num;$/;"	m	class:PolNum
 total_num	Class/Event.h	/^		long long int    total_num    ;$/;"	m	class:CEvent
+tree	AnalyseClass/Root_File.h	/^		TTree* tree;$/;"	m	class:ARoot_File
 txtN	Lib/PlotSetting.cpp	/^void txtN(Double_t x0, Double_t y0, TH1 *h, std::string sName, Double_t sizeTxt){$/;"	f
+up	Class/Plot.h	/^		float         up     ;$/;"	m	class:CPosition
 use_default_line_setting	AnalyseClass/Variable.h	/^		bool          use_default_line_setting;$/;"	m	class:Avariable
 user_basic_color_style	Class/Plot.h	/^		bool user_basic_color_style;$/;"	m	class:Cplot_basic_color_style
 user_color	Class/Plot.h	/^		bool user_color;$/;"	m	class:CColor
@@ -1046,7 +1093,7 @@ var_ptr	AnalyseClass/Variable.h	/^		std::vector<float>        *var_ptr    ;$/;"	
 variable	AnalyseClass/Variable.h	/^		float         variable     ;$/;"	m	class:Avariable
 variable	AnalyseClass/Variable.h	/^		std::vector<float>         variable   ;$/;"	m	class:Avariable_vec
 variable_d	AnalyseClass/Variable.h	/^		double        variable_d   ;$/;"	m	class:Avariable
-variable_i	AnalyseClass/Variable.h	/^		int           variable_i   ;$/;"	m	class:Avariable
+variable_i	AnalyseClass/Variable.h	/^	    long int           variable_i   ;$/;"	m	class:Avariable
 variable_type	AnalyseClass/Variable.h	/^		std::string   variable_type;$/;"	m	class:Avariable
 vec	AnalyseClass/Variable.h	/^		std::vector<Avariable_vec> vec;$/;"	m	class:AVariable
 weight	AnalyseClass/File_List.h	/^		float weight;$/;"	m	class:AFile_Data
@@ -1065,6 +1112,7 @@ y_min	AnalyseClass/Variable.h	/^		float         y_min      ;$/;"	m	class:Avariab
 y_name	AnalyseClass/Variable.h	/^		std::string   y_name     ;$/;"	m	class:Avariable
 ~ACounter	AnalyseClass/Counter.h	/^		~ACounter(){$/;"	f	class:ACounter
 ~APlot	AnalyseClass/Plot.h	/^		~APlot(){$/;"	f	class:APlot
+~ARoot_File	AnalyseClass/Root_File.cpp	/^ARoot_File::~ARoot_File(){$/;"	f	class:ARoot_File
 ~Analyse_Figure	AnalyseClass/AnalyseClass.h	/^		~Analyse_Figure(){$/;"	f	class:Analyse_Figure
 ~Analyse_Multi_File	AnalyseClass/AnalyseClass.h	/^		~Analyse_Multi_File(){$/;"	f	class:Analyse_Multi_File
 ~Analyse_Single_File	AnalyseClass/AnalyseClass.cpp	/^Analyse_Single_File::~Analyse_Single_File(){$/;"	f	class:Analyse_Single_File

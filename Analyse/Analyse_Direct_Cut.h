@@ -53,6 +53,8 @@
 #include "Abasic.h"
 #include "Make_Table.h"
 #include "AnalyseClass/File.h"
+#include "AnalyseClass/Root_File.h"
+
 
 
 void Analyse_Direct_Cut_Pre(CDraw &para);

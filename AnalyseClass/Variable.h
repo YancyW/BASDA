@@ -22,8 +22,8 @@ class Avariable{
 		float         maximum;
 		double        minimum_d;
 		double        maximum_d;
-		int           minimum_i;
-		int           maximum_i;
+		long int      minimum_i;
+		long int      maximum_i;
 	public:
 
 		std::string   variable_type;
@@ -41,11 +41,11 @@ class Avariable{
 		double        cut_min_pre_d;
 		double        cut_max_pre_d;
 
-		int           variable_i   ;
-		int           cut_min_i    ;
-		int           cut_max_i    ;
-		int           cut_min_pre_i;
-		int           cut_max_pre_i;
+	    long int           variable_i   ;
+	    long int           cut_min_i    ;
+	    long int           cut_max_i    ;
+	    long int           cut_min_pre_i;
+	    long int           cut_max_pre_i;
 
 		TCanvas*      c          ;
 		std::string   c_name     ;
@@ -158,7 +158,7 @@ class Avariable{
 			return(false);
 		}
 
-		bool Is_Minimum(int val){
+		bool Is_Minimum(long int val){
 			if(val==minimum_i){
 				return(true);
 			}
@@ -179,7 +179,7 @@ class Avariable{
 			return(false);
 		}
 
-		bool Is_Maximum(int val){
+		bool Is_Maximum(long int val){
 			if(val==maximum_i){
 				return(true);
 			}

@@ -33,9 +33,11 @@ Analyse/Analyse_Sensitivity.cpp\
 Analyse/Analyse_Signal_Scan.cpp\
 Analyse/Analyse_Summarize_Plot.cpp\
 AnalyseClass/File.cpp AnalyseClass/File_List.cpp AnalyseClass/Sort_List.cpp \
+AnalyseClass/AnalyseClass_Single.cpp\
 AnalyseClass/AnalyseClass.cpp\
 AnalyseClass/Variable.cpp\
 AnalyseClass/Plot.cpp\
+AnalyseClass/Root_File.cpp\
 TSysLimit/TSysLimit.cpp TSysLimit/TSysLimitChannel.cpp TSysLimit/TSysLimitResult.cpp TSysLimit/TSysLimitResultLogL.cpp TSysLimit/TSysLimitResultPBock.cpp TSysLimit/TSysLimitScan.cpp
 
 
