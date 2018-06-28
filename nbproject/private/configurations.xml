@@ -34,6 +34,8 @@
       <df name="AnalyseClass">
         <in>AnalyseClass.cpp</in>
         <in>AnalyseClass.h</in>
+        <in>AnalyseClass_Single.cpp</in>
+        <in>AnalyseClass_Single.h</in>
         <in>Counter.cpp</in>
         <in>Counter.h</in>
         <in>Cut.h</in>
@@ -43,6 +45,9 @@
         <in>File_List.h</in>
         <in>Plot.cpp</in>
         <in>Plot.h</in>
+        <in>Root_File.cpp</in>
+        <in>Root_File.h</in>
+        <in>Root_File_Single.cpp</in>
         <in>Sort_List.cpp</in>
         <in>Sort_List.h</in>
         <in>Variable.cpp</in>
@@ -51,6 +56,8 @@
       <df name="backup">
       </df>
       <df name="BDTG">
+        <df name="plots">
+        </df>
         <df name="weights">
           <in>TMVAClassification_BDTG.class.C</in>
         </df>
@@ -66,7 +73,9 @@
         <in>MVA.h</in>
         <in>Path.cpp</in>
         <in>Path.h</in>
+        <in>Plot.cpp</in>
         <in>Plot.h</in>
+        <in>Plot.hpp</in>
         <in>Scenario.h</in>
         <in>Sensitivity.h</in>
         <in>Signal_Properties_Scan.h</in>
@@ -90,9 +99,19 @@
         </df>
       </df>
       <df name="control_new_var_1711">
+        <df name="advanced">
+        </df>
+        <df name="BKG">
+        </df>
         <df name="Cut">
         </df>
-        <df name="Var">
+        <df name="Flow">
+        </df>
+        <df name="Path">
+        </df>
+        <df name="Var_mc">
+        </df>
+        <df name="Var_po">
         </df>
       </df>
       <df name="control_test">
@@ -177,6 +196,7 @@
       </df>
       <in>BASDA.cpp</in>
       <in>BASDA.h</in>
+      <in>merge.C</in>
     </df>
   </logicalFolder>
   <projectmakefile>makefile</projectmakefile>
@@ -204,8 +224,6 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
-        <gdb_signals>
-        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>

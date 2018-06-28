@@ -37,6 +37,7 @@ AnalyseClass/AnalyseClass_Single.cpp\
 AnalyseClass/AnalyseClass.cpp\
 AnalyseClass/Variable.cpp\
 AnalyseClass/Plot.cpp\
+AnalyseClass/Root_File_Single.cpp\
 AnalyseClass/Root_File.cpp\
 TSysLimit/TSysLimit.cpp TSysLimit/TSysLimitChannel.cpp TSysLimit/TSysLimitResult.cpp TSysLimit/TSysLimitResultLogL.cpp TSysLimit/TSysLimitResultPBock.cpp TSysLimit/TSysLimitScan.cpp
 

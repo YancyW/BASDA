@@ -37,27 +37,25 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 	std::vector<ARoot_File>   in_file                ;
 
 
-	for(int j=0;j<filenum;j++){
-//		Assistant_Direct_Cut(para.flow.begin_object,in_file,file_name);
-		if( para.flow.begin_object  == "Direct_Cut" ||
+	//		Assistant_Direct_Cut(para.flow.begin_object,in_file,file_name);
+	if( para.flow.begin_object  == "Direct_Cut" ||
 			(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()>1) ||
 			para.flow.begin_object  == "Complete_Direct_Cut"||
 			para.flow.begin_object  == "Complete_Run"){
 
-			in_file                .push_back(ARoot_File(file_name.output[j].MVA_file,para.file.root_head_name));
-
+		//			analyse.in_file.push_back(ARoot_File(file_name.output[j].MVA_file,para.file.root_head_name));
+		for(int j=0;j<filenum;j++){
+			analyse.Input_File_Init(file_name.output[j].MVA_file     ,para.file.root_head_name);
 		}
-		else if(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()==1){
-			in_file                .push_back(ARoot_File(file_name.input[j].basic_file[0],para.file.root_head_name));
-		}
-
-		in_file[j].Init_Var(analyse.var);
-
-		in_file[j].Init_Weight(analyse.file[j]);
-
-		in_file[j].Register_Var();
 
 	}
+	else if(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()==1){
+		//			analyse.in_file.push_back(ARoot_File(file_name.input[j].basic_file[0],para.file.root_head_name));
+		for(int j=0;j<filenum;j++){
+			analyse.Input_File_Init(file_name.input[j].basic_file[0],para.file.root_head_name);
+		}
+	}
+
 
 
 	std::ofstream myfile_tot;
@@ -75,25 +73,26 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 		ShowMessage(2,"dealing with", file_name.output[cnum].name);
 
 		//loop for reading variables and setting cuts 
-		long int total_event=in_file[cnum].nevent;
+		long int total_event=analyse.Input_File_Nevent(cnum,0);
 		para.event.Init(total_event);
 
 		analyse.Root_Init(para,file_name,cnum);
 		analyse.File_Init(myfile,cnum);
 
-		for(long int event = para.event.Begin_Event(); event < para.event.End_Event(); ++event){
+		for(long int event = analyse.in_file[cnum].Begin_Event(); event < analyse.in_file[cnum].End_Event(); ++event){
 
-			CountNumber(event,para.Total_Event(),1000,"has dealed with number are");
+			CountNumber(event,analyse.in_file[cnum].Total_Event(),1000,"has dealed with number are");
 
-			para.Get_Event(event);
+		    analyse.Pol_Init(event) ;
+			analyse.in_file[cnum].Get_Event(event);
 
-			in_file[cnum].GetEntry(event);
+			analyse.Root_Get_Entry(cnum, event);
 
 			if(analyse.var.weight_type=="D"){
-				analyse.file[cnum].in_weight = static_cast<float> (analyse.file[cnum].in_weight_d);
+				analyse.ana_file[cnum].in_weight = static_cast<float> (analyse.ana_file[cnum].in_weight_d);
 			}
 			else if(analyse.var.weight_type=="I"){
-				analyse.file[cnum].in_weight = static_cast<float> (analyse.file[cnum].in_weight_i);
+				analyse.ana_file[cnum].in_weight = static_cast<float> (analyse.ana_file[cnum].in_weight_i);
 			}
 
 			for(int k=0;k<analyse.Var_Num();k++){
@@ -130,7 +129,8 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 		analyse.File_Close(cnum);
 
 		analyse.Root_Close(cnum);
-		ShowMessage(2);
+
+		analyse.Input_File_Delete(cnum);
 	}
 
 
@@ -142,12 +142,6 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 	analyse.Draw_Figure(para,file_name);
 
 	analyse.Root_Close_Last(para);
-
-	ShowMessage(2,"delete file pointers!");
-
-	for(int i=0;i<filenum;i++){
-		in_file[i].Delete();
-	}
 
 	ShowMessage(2,"Finish Direct Cut");
 	return;

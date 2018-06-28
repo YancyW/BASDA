@@ -1,81 +1,134 @@
 #include "Root_File.h"
-
 ARoot_File::ARoot_File(std::string input_file, std::string head_name){
-	Read(input_file, head_name);
+	root_file_vec.push_back(ARoot_File_Single(input_file,head_name));
+	_file_num=1;
+	_current_file_num=0;
 }
 
-void ARoot_File::Read(std::string input_file, std::string head_name){
-	file  = new TFile(input_file.c_str());
-	file  ->cd();
-	tree  =(TTree*)file->Get(head_name.c_str());
-	nevent= tree->GetEntries();
+ARoot_File::ARoot_File(std::vector<std::string> input_file, std::vector<std::string> head_name){
+	_file_num = input_file.size();
+	if(_file_num>4){
+		//this property is prepared for two beam polarization combination, so the size is limited <=4
+		ShowMessage(2,"Error: ARoot_File::ARoot_File, input file size larger than 4");
+	}
+	for(int i=0;i<_file_num;i++){
+		root_file_vec.push_back(ARoot_File_Single(input_file[i],head_name[i]));
+	}
+}
+
+ARoot_File::ARoot_File(std::vector<std::string> input_file, std::string head_name){
+	_file_num = input_file.size();
+	if(_file_num>4){
+		//this property is prepared for two beam polarization combination, so the size is limited <=4
+		ShowMessage(2,"Error: ARoot_File::ARoot_File, input file size larger than 4");
+	}
+	for(int i=0;i<_file_num;i++){
+		root_file_vec.push_back(ARoot_File_Single(input_file[i],head_name));
+	}
 }
 
 void ARoot_File::Delete(){
-	ShowMessage(2,"file is deleting",file->GetName());
-	file   ->cd();
-	nevent =0;
-	delete tree;
-	delete file;
+	for(int i=0;i<_file_num;i++){
+		root_file_vec[i].Delete();
+	}
 }
 
-ARoot_File::~ARoot_File(){
-}
 
-void ARoot_File::SetBranchAddress(std::string var_name, float* var){
-	tree->SetBranchAddress(var_name.c_str(), var);
-}
 
-void ARoot_File::SetBranchAddress(std::string var_name, double* var){
-	tree->SetBranchAddress(var_name.c_str(), var);
-}
+/*****************************************************************************************
+* Init 
+*****************************************************************************************/
 
-void ARoot_File::SetBranchAddress(std::string var_name, long int* var){
-	tree->SetBranchAddress(var_name.c_str(), var);
-}
 
-void ARoot_File::GetEntry(int event){
-	tree->GetEntry(event);
+void ARoot_File::Init_Weight(){
+	if(_file_num>0){
+		for(int i=0;i<_file_num;i++){
+			_in_weight.push_back(root_file_vec[i].Get_Xsection()/root_file_vec[i].Nevent()*_scenario.pol[i]);
+		}
+	}
 }
 
 void ARoot_File::Init_Var(AVariable &input_var){
-	_var = &input_var;
+	for(int i=0;i<_file_num;i++){
+		root_file_vec[i].Init_Var(input_var);
+	}
 }
 
-void ARoot_File::Init_Weight(Analyse_Single_File& input_weight){
-	_in_weight   = &(input_weight.in_weight);
-	_in_weight_d = &(input_weight.in_weight_d);
-	_in_weight_i = &(input_weight.in_weight_i);
+void ARoot_File::Init_Weight(Analyse_Single_File &input_weight){
+	for(int i=0;i<_file_num;i++){
+		root_file_vec[i].Init_Weight(input_weight);
+	}
+}
+
+/*****************************************************************************************
+* Return ARoot_File_Single's value
+*****************************************************************************************/
+
+float ARoot_File::Get_Weight(){
+		return(_in_weight[_current_file_num]);
+}
+
+void ARoot_File::Get_Para(CDraw& para){
+	_event = para.event;
+	_scenario = para.scenario;
+}
+
+int ARoot_File::File_Num(){
+	return(_file_num);
 }
 
 void ARoot_File::Register_Var(){
-		if(_var->weight_exist){
-			if(_var->weight_type=="F"){
-				SetBranchAddress("weight", _in_weight);
-			}
-			else if(_var->weight_type=="D"){
-				SetBranchAddress("weight", _in_weight_d);
-			}
-			else if(_var->weight_type=="I"){
-				SetBranchAddress("weight", _in_weight_i);
-			}
-		}
-		else{
-//			*in_weight = file_name.input[j].xection[0]/in_file[j].nevent;  
-		}
-
-		for(int k=0;k<_var->num;k++){
-			if(_var->var[k].title_name=="weight"){
-				continue;
-			}
-			if(_var->var[k].variable_type=="F"){
-				SetBranchAddress(_var->var[k].title_name.c_str(), &(_var->var[k].variable));
-			}
-			else if(_var->var[k].variable_type=="I"){
-				SetBranchAddress(_var->var[k].title_name.c_str(), &(_var->var[k].variable_i));
-			}
-			else if(_var->var[k].variable_type=="D"){
-				SetBranchAddress(_var->var[k].title_name.c_str(), &(_var->var[k].variable_d));
-			}
-		}
+	for(int i=0;i<_file_num;i++){
+		root_file_vec[i].Register_Var();
+	}
 }
+
+void ARoot_File::CD_File(int filenum){
+	if(filenum>_file_num){
+		ShowMessage(2,"Error, in ARoot_File::CD_File, input argument > total file number",_file_num, filenum);
+	}
+	root_file_vec[filenum].file->cd();
+}
+
+void ARoot_File::Get_Entry(long int event){
+	if(event > root_file_vec[_current_file_num].Nevent()){
+		ShowMessage(2,"Error, in ARoot_File::Get_Entry, input argument > total file number",root_file_vec[_current_file_num].Nevent(), event);
+	}
+	root_file_vec[_current_file_num].Get_Entry(event);
+}
+
+long int ARoot_File::Nevent(int polnum){
+	return(root_file_vec[polnum].Nevent());
+}
+
+bool ARoot_File::Get_Event(long int &num){
+	if(num>=_event.Total_Event()){
+		_current_file_num++;
+		if(_current_file_num>=_file_num){
+			return(false);
+		}
+		CD_File(_current_file_num);
+		_event.Init(root_file_vec[_current_file_num].Nevent());
+	}
+	else{
+		_event.Get_Event(num);
+	}
+	return(true);
+};
+
+long long int ARoot_File::Event(){
+	return(_event.Event());
+};
+
+long long int ARoot_File::Total_Event(){
+	return(_event.Total_Event());
+}
+
+Long64_t ARoot_File::Begin_Event(){
+	return(_event.Begin_Event());
+}
+
+Long64_t ARoot_File::End_Event(){
+	return(_event.End_Event());
+}
+

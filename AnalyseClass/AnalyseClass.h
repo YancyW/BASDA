@@ -25,6 +25,7 @@
 
 #include "AnalyseClass/Variable.h"
 #include "AnalyseClass/AnalyseClass_Single.h"
+#include "AnalyseClass/Root_File.h"
 #include "AnalyseClass/Cut.h"
 #include "AnalyseClass/File.h"
 #include "AnalyseClass/Plot.h"
@@ -35,9 +36,11 @@
 
 class Analyse_Multi_File : public APlot{
 	private:
+		int									   j;
 		int									   _var_num         ;
 
 		int									   _file_num        ;
+		int									   _polnum          ;
 
 		TFile*								   _root_file       ; 
 		TList*                                 _list;
@@ -54,9 +57,11 @@ class Analyse_Multi_File : public APlot{
 
 		bool                                   _Has_Drawn       ;
 		std::ofstream*                         _data_file;
+		CDraw*                                 _para            ;
 	public:
 		AVariable                              var              ;
-		std::vector<Analyse_Single_File>       file             ;
+		std::vector<Analyse_Single_File>       ana_file             ;
+		std::vector<ARoot_File>                in_file          ;
 		std::vector< std::pair<std::string,std::vector<Analyse_Single_File > > > sort;
 
 
@@ -75,15 +80,25 @@ class Analyse_Multi_File : public APlot{
 		void Init_Color             (                                                            ) ;
 		void Init                   ( CDraw &para, AFile &file_name                              ) ;
 		void Clear                  (                                                            ) ;
+		void Input_File_Init        ( std::string input_file_name, std::string root_head_name    ) ;
+		void Input_File_Init        (std::vector<std::string> input_file_name, std::vector<std::string> root_head_name ) ;
+		void Input_File_Init        (std::vector<std::string> input_file_name, std::string root_head_name              ) ;
 		void Root_Init              ( CDraw &para, AFile &file_name, int filenum                 ) ;
 		void Root_Init_Var          ( int filenum                                                ) ;
 		void File_Init              ( std::ofstream& file_name, int filenum                      ) ;
+		long int Input_File_Nevent( int filenum, int file_polnum                                 ) ;
+		void Weight_Extra           ( int polnum                                                 ) ;
+		bool Pol_Init               ( long int num                                               ) ;
+
+
+		void Root_Get_Entry         ( int filenum, long int event                                ) ;
 		void Root_Endow_Var         ( int filenum                                                ) ;
 		void Root_Endow_Weight      ( int filenum                                                ) ;
 		void Root_Fill              ( int filenum                                                ) ;
 		void Root_Close             ( int filenum                                                ) ;
 		void Root_Close_Last        ( CDraw &para                                                ) ;
 		void File_Close             ( int filenum                                                ) ;
+        void Input_File_Delete      ( int filenum                                                ) ;
 
 		void Plot_Origin            ( int filenum                                                ) ;
 		void Plot_Final             ( int filenum                                                ) ;
