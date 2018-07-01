@@ -136,6 +136,8 @@ class Avariable{
 
 		void Copy(Avariable);
 
+		void Default();
+
 		void Init(){
 			//c=new TCanvas(c_name.c_str()," ",c_width,c_height);
 			leg=new TLegend(leg_left,leg_up,leg_right,leg_down);

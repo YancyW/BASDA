@@ -1,0 +1,31 @@
+PROCESS          : zhww_bb
+
+# output folder
+OUTPUT_FOLDER    : '../../Data/Event_Analyse_IHEP'
+
+RECORD_FILE      : 'tmp/tmp_zhwwbb.dat' 
+OUTPUT_FILE      : 'data'
+EVENT_FILE       : 'results'
+SINGLE_PLOT      : 'plot'
+COMBINE_PLOT     : 'plot_compare'
+HORIZONTAL_SUMMARY_PLOT : 'plot_summary'
+
+
+# input folder
+FLOW_FILE        : './control_ihep/flow.dat'
+INPUT_FILE       : './control_ihep/file_test.dat'
+BKG_SORT_FILE    : './control_ihep/Bkg_Sort_test.dat'
+
+CUT_FILE         : './control_ihep/Cut/Cut_2hdm_test.dat'
+VAR_FILE         : './control_ihep/Var/Var_2hdm_test.dat' 
+
+
+#Advanced input setting
+PLOT_FILE        : './control_ihep/advanced/Plot.dat'
+MVA_FILE         : './control_ihep/advanced/MVA.dat'
+DEBUG_FILE       : './control_ihep/advanced/debug.dat'
+ANALYSIS_FILE    : './control_ihep/advanced/Event.dat'
+SENSITIVITY_FILE : './control_ihep/advanced/Sensitivity.dat'
+SCENARIO_FILE    : './control_ihep/advanced/Scenario.dat'
+MASS_SCAN_FILE   : './control_ihep/advanced/Mass_Scan.dat'
+

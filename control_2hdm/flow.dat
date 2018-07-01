@@ -10,9 +10,9 @@
 #BeginObject      : MVA_Attach
 #BeginObject      : Summarize_Plot 
 #BeginObject      : Direct_Cut
-BeginObject       : Direct_Cut_NoMVA
+#BeginObject       : Direct_Cut_NoMVA
 #BeginObject       : Direct_Cut_ReWeight
-#BeginObject      : Make_Table 
+BeginObject      : Make_Table 
 
 
 # choose signal process and work scenario

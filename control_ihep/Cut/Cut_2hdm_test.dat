@@ -1,0 +1,53 @@
+cut_num : 41 
+
+cut_0   : 2 
+cut_1   : 4 
+cut_2   : 8 
+cut_3   : 9 
+cut_4   : 10 
+cut_5   : 11
+cut_6   : 14 
+cut_7   : 15 
+cut_8   : 16 
+cut_9   : 19 
+cut_10   : 20 
+cut_11   : 22 
+cut_12   : 23 
+cut_13   : 25 
+cut_14   : 27 
+cut_15   : 29 
+cut_16   : 30 
+cut_17   : 32 
+cut_18   : 34 
+cut_19   : 35 
+cut_20   : 37 
+cut_21   : 39 
+cut_22   : 40 
+cut_23   : 42 
+cut_24   : 45 
+cut_25   : 47 
+cut_26   : 49 
+cut_27   : 50 
+cut_28   : 52 
+cut_29   : 54 
+cut_30   : 55 
+cut_31   : 56 
+cut_32   : 57 
+cut_33   : 58 
+cut_34   : 59 
+cut_35   : 60 
+cut_36   : 61 
+cut_37   : 62 
+cut_38   : 63 
+cut_39   : 64 
+cut_40   : 65
+
+
+
+pre_cut_num : 6
+pre_cut_0   : 0
+pre_cut_1   : 1
+pre_cut_2   : 3
+pre_cut_3   : 5
+pre_cut_4   : 6
+pre_cut_5   : 7

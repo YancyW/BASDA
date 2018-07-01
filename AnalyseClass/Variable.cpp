@@ -97,3 +97,21 @@ void Avariable::Copy(Avariable var){
 	}
 }
 
+void Avariable::Default(){
+	if(this->c_name==""){
+		this->c_name= this->title_name+"_canvas";
+	}
+	if(this->leg_header==""){
+		this->leg_header= this->leg_header+"_leg";
+	}
+	if(this->title_name==""){
+		this->title_name= "title_name_"+ Int_to_String(rand()%10000);
+	}
+	if(this->latex_name==""){
+		this->latex_name= this->title_name;
+	}
+	if(this->x_name==""){
+		this->x_name= this->title_name;
+	}
+}
+

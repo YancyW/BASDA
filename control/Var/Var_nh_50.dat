@@ -1,3 +1,6 @@
+weight:
+    Exist                    : False 
+    Weight_Type              : "F"
 variable:
    v0:
         title_name           : "po_muon_kcut_zmass"
@@ -309,7 +312,7 @@ variable:
         normalization_switch : false
         MVA                  : false 
    v12:
-        title_name           : "MVAG"
+        title_name           : "MVA"
         cut_min              : 0.0
         cut_max              : 1.0
         latex_name           : "MVAG"

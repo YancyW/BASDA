@@ -116,8 +116,8 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 		TFile* otfile;
 		TFile* otfile_MVA ;
-		TTree* datatrain= new TTree();
-		TTree* datatest = new TTree();
+		TTree* datatrain    = new TTree();
+		TTree* datatest     = new TTree();
 		TTree* datatest_MVA = new TTree();
 		float  out_weight;
 		std::vector<float>         rootvar;
@@ -207,7 +207,17 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 					continue;
 				}
 				Avariable info=para.var.var[j];
-				MyLCTuple[cnum][i]->SetBranchAddress(info.title_name.c_str(), &para.var.var[j].variable);
+				if(para.var.var[j].variable_type=="F"){
+					MyLCTuple[cnum][i]->SetBranchAddress(para.var.var[j].title_name.c_str(), &para.var.var[j].variable);
+				}
+				else if(para.var.var[j].variable_type=="I"){
+					MyLCTuple[cnum][i]->SetBranchAddress(para.var.var[j].title_name.c_str(), &para.var.var[j].variable_i);
+					para.var.var[j].variable = static_cast<float> (para.var.var[j].variable_i);
+				}
+				else if(para.var.var[j].variable_type=="D"){
+					MyLCTuple[cnum][i]->SetBranchAddress(para.var.var[j].title_name.c_str(), &para.var.var[j].variable_d);
+					para.var.var[j].variable = static_cast<float> (para.var.var[j].variable_d);
+				}
 			}
 
 
@@ -224,6 +234,14 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				CountNumber(event,para.Total_Event(),1000,"has dealed with number are");
 
 				MyLCTuple[cnum][i]->GetEntry(event);
+				for(int k=0;k<para.var.num;k++){
+					if(para.var.var[k].variable_type=="I"){
+						para.var.var[k].variable = static_cast<float> (para.var.var[k].variable_i);
+					}
+					if(para.var.var[k].variable_type=="D"){
+						para.var.var[k].variable = static_cast<float> (para.var.var[k].variable_d);
+					}
+				}
 
 				if(para.flow.record_event){
 					for(int j=0;j<para.var.num;j++){

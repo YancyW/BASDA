@@ -19,6 +19,9 @@ void AVariable::Read_Var(CPath &path){
 			if(this->var[k].setting_type=="previous"){
 				this->var[k].Copy(this->var[k-1]);
 			}
+			else if(this->var[k].setting_type=="default"){
+				this->var[k].Default();
+			}
 			else{
 				for(int newk=0;newk<k;newk++){
 					if(this->var[k].setting_type==this->var[newk].title_name){

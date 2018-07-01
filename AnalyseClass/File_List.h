@@ -168,15 +168,17 @@ namespace YAML{
     							std::vector<float> input_val = it->second.as<std::vector<float> >();
     						//fnum.data.push_back(std::make_pair(it->first.as<std::string>(),it->second.as<float>()));break;
     							if(input_val.size()==2){
-    								fnum.data.push_back(std::make_pair(it->first.as<std::string>(),input_val[0]));
+    								fnum.data .push_back(std::make_pair(it->first.as<std::string>(),input_val[0]));
     								fnum.event.push_back(std::make_pair(it->first.as<std::string>(),input_val[1]));
     							}
     							else if(input_val.size()==1){
-    								fnum.data.push_back(std::make_pair(it->first.as<std::string>(),input_val[0]));
+    								fnum.data .push_back(std::make_pair(it->first.as<std::string>(),input_val[0]));
+    								fnum.event.push_back(std::make_pair(it->first.as<std::string>(),input_val[0]));
     							}
     						}
 							else if(it->second.IsScalar()){
-    							fnum.data.push_back(std::make_pair(it->first.as<std::string>(),it->second.as<float>()));
+    							fnum.data .push_back(std::make_pair(it->first.as<std::string>(),it->second.as<float>()));
+    							fnum.event.push_back(std::make_pair(it->first.as<std::string>(),it->second.as<float>()));
     						}
 							break;
 					}

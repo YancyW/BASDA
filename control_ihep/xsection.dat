@@ -1,0 +1,5 @@
+root_file_125:
+    s_{bb}^{bb}:
+        /home/yancy/Code/Data/Event_Ihep//events/FS_uuh_bb.root  : 57
+    b_{ww}^{ww}:
+        /home/yancy/Code/Data/Event_Ihep//events/FS_uuh_ww.root  : 21

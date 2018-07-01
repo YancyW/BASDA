@@ -3,7 +3,7 @@ PROCESS          : zh
 # output folder
 OUTPUT_FOLDER    : '../../Data/Event_Analyse'
 
-RECORD_FILE      : 'tmp/nh_115.dat' 
+RECORD_FILE      : 'tmp/nh_50.dat' 
 OUTPUT_FILE      : 'data'
 EVENT_FILE       : 'results'
 SINGLE_PLOT      : 'plot'
@@ -17,7 +17,7 @@ INPUT_FILE       : './control/file.dat'
 BKG_SORT_FILE    : './control/Bkg_Sort.dat'
 
 CUT_FILE         : './control/Cut/Cut_nh.dat'
-VAR_FILE         : './control/Var/Var_nh_115.dat' 
+VAR_FILE         : './control/Var/Var_nh_50.dat' 
 
 
 #Advanced input setting

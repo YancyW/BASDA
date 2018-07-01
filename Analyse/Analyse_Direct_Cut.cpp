@@ -46,14 +46,17 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			in_file[j]->cd();
 			MyLCTuple              .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
 			nevent                 .push_back(MyLCTuple[j]->GetEntries()                     );
-			if(analyse.var.weight_type=="F"){
-				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight);
-			}
-			else if(analyse.var.weight_type=="D"){
-				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_d);
-			}
-			else if(analyse.var.weight_type=="I"){
-				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_i);
+////		if(analyse.var.weight_type=="F"){
+			MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight);
+////		}
+////		else if(analyse.var.weight_type=="D"){
+////			MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_d);
+////		}
+////		else if(analyse.var.weight_type=="I"){
+////			MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_i);
+////		}
+			for(int k=0;k<analyse.Var_Num();k++){
+				analyse.var.var[k].variable_type = "F";
 			}
 
 		}
