@@ -580,4 +580,49 @@ variable:
         xaxis_max            : 1                                    
         cut_switch           : true 
         plot_switch          : true 
+   v36:
+        title_name           : "lep_pdg1"
+        cut_min              : -100
+        cut_max              : 100
+        latex_name           : "lep_pdg1"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "lep_pdg1"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1                                    
+        cut_switch           : true 
+        plot_switch          : true 
+   v37:
+        title_name           : "lep_pdg2"
+        cut_min              : -100
+        cut_max              : 100
+        latex_name           : "lep_pdg2"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "lep_pdg2"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1                                    
+        cut_switch           : true 
+        plot_switch          : true 
+   v38:
+        title_name           : "lep_pdg3"
+        cut_min              : -100
+        cut_max              : 100
+        latex_name           : "lep_pdg3"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "lep_pdg3"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1                                    
+        cut_switch           : true 
+        plot_switch          : true 
 variable_vec:
