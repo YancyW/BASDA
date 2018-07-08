@@ -8,12 +8,12 @@
 #BeginObject      : Pre_Cut 
 #BeginObject      : MVA_Train 
 #BeginObject      : MVA_Attach
-#BeginObject      : Direct_Cut
+BeginObject      : Direct_Cut
 #BeginObject      : Summarize_Plot 
 #BeginObject      : Make_Table 
 #BeginObject       : Direct_Cut_ReWeight
 #BeginObject      : Plot_Direct 
-BeginObject      : Direct_Cut_NoMVA 
+#BeginObject      : Direct_Cut_NoMVA 
 
 
 # choose signal process and work scenario
