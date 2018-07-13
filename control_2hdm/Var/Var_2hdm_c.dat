@@ -538,7 +538,7 @@ variable:
    v33:
         title_name           : "lep_isolation1"
         cut_min              : 0 
-        cut_max              : 1
+        cut_max              : 100
         latex_name           : "lep_isolation1"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -553,7 +553,7 @@ variable:
    v34:
         title_name           : "lep_isolation2"
         cut_min              : 0 
-        cut_max              : 1
+        cut_max              : 100
         latex_name           : "lep_isolation2"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -568,7 +568,7 @@ variable:
    v35:
         title_name           : "lep_isolation3"
         cut_min              : 0 
-        cut_max              : 1
+        cut_max              : 100
         latex_name           : "lep_isolation3"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -625,4 +625,18 @@ variable:
         xaxis_max            : 1                                    
         cut_switch           : true 
         plot_switch          : true 
+   v39:
+        title_name           : "event"
+        latex_name           : "event"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "lep_pdg3"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1                                    
+        cut_switch           : false 
+        plot_switch          : true 
+variable_vec:
 variable_vec:

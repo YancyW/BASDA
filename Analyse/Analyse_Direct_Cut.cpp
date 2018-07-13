@@ -148,6 +148,13 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 
 			analyse.Root_Fill        ( cnum ) ;
 
+			ShowMessage(2,"isolation1", analyse.var.var[33].title_name, analyse.var.var[33].variable);
+			ShowMessage(2,"isolation2", analyse.var.var[34].title_name, analyse.var.var[34].variable);
+			ShowMessage(2,"isolation3", analyse.var.var[35].title_name, analyse.var.var[35].variable);
+			ShowMessage(2,"pdg1", analyse.var.var[36].title_name, analyse.var.var[36].variable);
+			ShowMessage(2,"pdg2", analyse.var.var[37].title_name, analyse.var.var[37].variable);
+			ShowMessage(2,"pdg3", analyse.var.var[38].title_name, analyse.var.var[38].variable);
+			ShowMessage(2,"event", analyse.var.var[39].title_name, analyse.var.var[39].variable);
 		}                
 
 		analyse.Record_Information(cnum,myfile,file_name.output[cnum].latex);

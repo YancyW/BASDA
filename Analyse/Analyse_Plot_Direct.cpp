@@ -56,7 +56,7 @@ void Analyse_Plot_Direct(CDraw &para, std::string &sig_name, AFile& file_name){
 		hvariable->Draw();
 
 		plot.DrawLogo();
-		plot.Print_Plot(para, info, file_name.Plot_Origin_Folder()+info.title_name+"_"+sig_name+para.plot.drawing.plot_type);
+		plot.Print_Plot(para, info, file_name.Plot_Single_Folder()+info.title_name+"_"+sig_name+para.plot.drawing.plot_type);
 
 		delete info.c;
 	}
