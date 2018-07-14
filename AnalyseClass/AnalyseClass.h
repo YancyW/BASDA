@@ -36,31 +36,33 @@
 
 class Analyse_Multi_File : public APlot{
 	private:
-		int									   j;
 		int									   _var_num         ;
 
 		int									   _file_num        ;
-		int									   _polnum          ;
+
+		int									   _pol_num          ;
+		int									   _pol_index       ;
 
 		TFile*								   _root_file       ; 
 		TList*                                 _list;
-
-		bool                                   _record_switch   ;
-		bool                                   _plot_switch     ;
-
-		ACut                                   _cut             ;
 
 		float                                  _extra_weight    ; 
 
 		Analyse_Single_File*                   _which_sort      ;
 		void                                   _Find_Which_Sort (CDraw &para, AFile &file_name, int filenum ) ;
 
-		bool                                   _Has_Drawn       ;
 		std::ofstream*                         _data_file;
-		CDraw*                                 _para            ;
+
+		CDraw                                  _para            ;
+		bool                                   _record_switch   ;
+		bool                                   _plot_switch     ;
+		ACut                                   _cut             ;
+		bool                                   _Has_Drawn       ;
+
+
 	public:
 		AVariable                              var              ;
-		std::vector<Analyse_Single_File>       ana_file             ;
+		std::vector<Analyse_Single_File>       ana_file         ;
 		std::vector<ARoot_File>                in_file          ;
 		std::vector< std::pair<std::string,std::vector<Analyse_Single_File > > > sort;
 
@@ -81,12 +83,12 @@ class Analyse_Multi_File : public APlot{
 		void Init                   ( CDraw &para, AFile &file_name                              ) ;
 		void Clear                  (                                                            ) ;
 		void Input_File_Init        ( std::string input_file_name, std::string root_head_name    ) ;
-		void Input_File_Init        (std::vector<std::string> input_file_name, std::vector<std::string> root_head_name ) ;
-		void Input_File_Init        (std::vector<std::string> input_file_name, std::string root_head_name              ) ;
+		void Input_File_Init        ( std::vector<std::string> input_file_name, std::vector<std::string> root_head_name ) ;
+		void Input_File_Init        ( std::vector<std::string> input_file_name, std::string root_head_name              ) ;
 		void Root_Init              ( CDraw &para, AFile &file_name, int filenum                 ) ;
 		void Root_Init_Var          ( int filenum                                                ) ;
 		void File_Init              ( std::ofstream& file_name, int filenum                      ) ;
-		long int Input_File_Nevent( int filenum, int file_polnum                                 ) ;
+		long int Input_File_Nevent( int filenum, int file_pol_num                                ) ;
 		void Weight_Extra           ( int polnum                                                 ) ;
 		bool Pol_Init               ( long int num                                               ) ;
 

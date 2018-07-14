@@ -58,3 +58,7 @@ All operation can be done by only change the input config file.
     - further generallize more setting options.
     - put many setting (e.g. MVA, plot ...) into config file.
     - split more branch for development.
+- 2018/07/13 v0.07
+    - Use same class (AnalysisClass) to rewrite Pre_Cut part
+    - Optimize config file 
+    - Checking consistence for all parts

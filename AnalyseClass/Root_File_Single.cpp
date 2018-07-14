@@ -66,7 +66,7 @@ void ARoot_File_Single::Register_Var(){
 			}
 		}
 		else{
-            *in_weight = _xsection/_nevent;  
+            *_in_weight = _xsection/_nevent;  
 		}
 
 		for(int k=0;k<_var->num;k++){

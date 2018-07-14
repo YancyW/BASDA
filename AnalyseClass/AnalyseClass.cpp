@@ -28,12 +28,12 @@ int Analyse_Multi_File::Var_Num(){
 }
 
 void Analyse_Multi_File::Weight_Extra(int polnum){
-	if(_para->flow.begin_object=="Pre_Cut"){
-		in_file[j].Init_Weight();
-		_extra_weight = in_file[j].Get_Weight();
+	if(_para.flow.begin_object=="Pre_Cut"){
+		in_file[_pol_index].Init_Weight();
+		_extra_weight = in_file[_pol_index].Get_Weight();
 	}
 	else{
-		_extra_weight  = _para->flow.MVA_weight * _para->scenario.Lumi();
+		_extra_weight  = _para.flow.MVA_weight * _para.scenario.Lumi();
 	}
 }
 
@@ -45,62 +45,62 @@ void Analyse_Multi_File::Weight_Extra(int polnum){
  *****************************************************************************************/
 void Analyse_Multi_File::Init(CDraw &para, AFile &file_name){
 
-	*_para      = para;
-	_root_file = TFile::Open( file_name.plot_CUT.c_str() , "RECREATE" );
-	_list      = new TList();
-	_Has_Drawn = false;
+	_para      = para;
+////_root_file = TFile::Open( file_name.plot_CUT.c_str() , "RECREATE" );
+////_list      = new TList();
+////_Has_Drawn = false;
 
-	_record_switch = _para->flow.record_event;
-	_plot_switch   = _para->flow.plot;
+////_record_switch = _para.flow.record_event;
+////_plot_switch   = _para.flow.plot;
 
-	if(!_para->flow.record_output){
-		freopen(_para->path.record_file.c_str() ,"a",stdout);
-	}
-	var=_para->var;
-	_var_num = var.num;
-
-
-	_cut.Read_Cut(_para->path);
-
-	ShowMessage(2,"finish input para, begin to analyse part");
-	if(!_para->flow.record_output){
-		fclose(stdout);
-		freopen("/dev/tty","w",stdout);
-	}
-	_file_num=file_name.Output_Num();
-	ana_file.resize(_file_num+1);
+////if(!_para.flow.record_output){
+////	freopen(_para.path.record_file.c_str() ,"a",stdout);
+////}
+////var=_para.var;
+////_var_num = var.num;
 
 
+////_cut.Read_Cut(_para.path);
 
-	std::vector<std::string> normal_tree_name;
-	normal_tree_name.push_back(_para->file.root_head_name) ;
-
-	std::vector<std::string> final_tree_name ;
-	final_tree_name.push_back("sig") ;
-	final_tree_name.push_back("bkg") ;
-
-	// for each channel
-	for(int j=0;j<_file_num;j++){
-		ana_file[j].Init    (var,_root_file,_extra_weight, _record_switch, _plot_switch,Int_to_String(j)        , file_name.output[j].CUT_file   ,normal_tree_name );
-	}
-	ana_file[_file_num].Init(var,_root_file,_extra_weight, _record_switch, _plot_switch,Int_to_String(_file_num), file_name.output_total.CUT_file,final_tree_name  );
+////ShowMessage(2,"finish input para, begin to analyse part");
+////if(!_para.flow.record_output){
+////	fclose(stdout);
+////	freopen("/dev/tty","w",stdout);
+////}
+////_file_num=file_name.Output_Num();
+////ana_file.resize(_file_num+1);
 
 
 
-	// combine some channel into different sorts, plot for each sort 
-	sort.resize(_para->bkg_sort.Num());
-	for(int k=0;k<_para->bkg_sort.Num();k++){
-		sort[k].second.resize(_para->bkg_sort.sort[k].Sub_Num());
-	}
-	for(int k=0;k<_para->bkg_sort.Num();k++){
-		for(int l=0;l<_para->bkg_sort.sort[k].Sub_Num();l++){
-			std::string sort_name = file_name.folder[5]+"sort_"+_para->bkg_sort.sort[k].Name(l)+".root"; 
-			sort[k].second[l].Init(var,_root_file,_extra_weight, _record_switch, _plot_switch,Int_to_String(100+k*100+l), sort_name, normal_tree_name );
-		}
-	}
-	_which_sort = NULL;
+////std::vector<std::string> normal_tree_name;
+////normal_tree_name.push_back(_para.file.root_head_name) ;
 
-	j=0;
+////std::vector<std::string> final_tree_name ;
+////final_tree_name.push_back("sig") ;
+////final_tree_name.push_back("bkg") ;
+
+////// for each channel
+////for(int j=0;j<_file_num;j++){
+////	ana_file[j].Init    (var,_root_file,_extra_weight, _record_switch, _plot_switch,Int_to_String(j)        , file_name.output[j].CUT_file   ,normal_tree_name );
+////}
+////ana_file[_file_num].Init(var,_root_file,_extra_weight, _record_switch, _plot_switch,Int_to_String(_file_num), file_name.output_total.CUT_file,final_tree_name  );
+
+
+
+////// combine some channel into different sorts, plot for each sort 
+////sort.resize(_para.bkg_sort.Num());
+////for(int k=0;k<_para.bkg_sort.Num();k++){
+////	sort[k].second.resize(_para.bkg_sort.sort[k].Sub_Num());
+////}
+////for(int k=0;k<_para.bkg_sort.Num();k++){
+////	for(int l=0;l<_para.bkg_sort.sort[k].Sub_Num();l++){
+////		std::string sort_name = file_name.folder[5]+"sort_"+_para.bkg_sort.sort[k].Name(l)+".root"; 
+////		sort[k].second[l].Init(var,_root_file,_extra_weight, _record_switch, _plot_switch,Int_to_String(100+k*100+l), sort_name, normal_tree_name );
+////	}
+////}
+////_which_sort = NULL;
+
+////_pol_index=0;
 
 }
 
@@ -112,27 +112,29 @@ void Analyse_Multi_File::Clear(){
 void Analyse_Multi_File::Input_File_Init(std::string input_file_name, std::string root_head_name ){
 	in_file.push_back(ARoot_File(input_file_name,root_head_name));
 	in_file.back().Init_Var(var);
-	in_file.back().Init_Weight(ana_file[j]);
+	in_file.back().Init_Weight(ana_file[_pol_index]);
 	in_file.back().Register_Var();
-	in_file.back().Get_Para(*_para);
-	j++;
+	in_file.back().Get_Para(_para);
+	_pol_index++;
 }
 
 
 void Analyse_Multi_File::Input_File_Init(std::vector<std::string> input_file_name, std::vector<std::string> root_head_name ){
 	in_file.push_back(ARoot_File(input_file_name,root_head_name));
 	in_file.back().Init_Var(var);
-	in_file.back().Init_Weight(ana_file[j]);
+	in_file.back().Init_Weight(ana_file[_pol_index]);
 	in_file.back().Register_Var();
-	j++;
+	in_file.back().Get_Para(_para);
+	_pol_index++;
 }
 
 void Analyse_Multi_File::Input_File_Init(std::vector<std::string> input_file_name, std::string root_head_name ){
 	in_file.push_back(ARoot_File(input_file_name,root_head_name));
 	in_file.back().Init_Var(var);
-	in_file.back().Init_Weight(ana_file[j]);
+	in_file.back().Init_Weight(ana_file[_pol_index]);
 	in_file.back().Register_Var();
-	j++;
+	in_file.back().Get_Para(_para);
+	_pol_index++;
 }
 
 void Analyse_Multi_File::Input_File_Delete(int filenum){
@@ -176,8 +178,8 @@ void Analyse_Multi_File::File_Init( std::ofstream &file_name, int filenum){
 
 
 bool Analyse_Multi_File::Pol_Init(long int num){
-	Weight_Extra(_polnum);
-	bool exist_file=in_file[_polnum].Get_Event(num);
+	Weight_Extra(_pol_num);
+	bool exist_file=in_file[_pol_num].Get_Event(num);
 	if(exist_file){
 		return(true);
 	}
@@ -193,8 +195,8 @@ void Analyse_Multi_File::Root_Get_Entry( int filenum, long int event){
 	in_file[filenum].Get_Entry(event);
 }
 
-long int Analyse_Multi_File::Input_File_Nevent( int filenum, int file_polnum){
-	return(in_file[filenum].Nevent(file_polnum));
+long int Analyse_Multi_File::Input_File_Nevent( int filenum, int file_pol_num){
+	return(in_file[filenum].Nevent(file_pol_num));
 }
 
 

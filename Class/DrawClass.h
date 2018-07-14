@@ -32,55 +32,59 @@ class CDraw{
 	public:
 		std::string                  steering_file       ;
 
-		Bool_t                       Jpath               ;
-		Bool_t                       Jfile               ;
-		Bool_t                       Jdebug              ;
-		Bool_t                       Jflow               ;
-		Bool_t                       Jevent              ;
-		Bool_t                       Jsen                ;
-		Bool_t                       Jvar                ;
-		Bool_t                       JSP_scan            ;
-		Bool_t                       Jbkg_sort           ;
-		Bool_t                       Jscenario           ;
-		Bool_t                       Jplot               ;
-		Bool_t                       JMVA                ;
-
 		CPath                        path                ;
 		CPath                        default_path        ;
+		Bool_t                       Jpath               ;
 
 		CFile                        file                ;
 		CFile                        default_file        ;
+		Bool_t                       Jfile               ;
 
 		CDebug                       debug               ;
+		Bool_t                       Jdebug              ;
 
 		CFlow                        flow                ;
 		CFlow                        default_flow        ;
+		Bool_t                       Jflow               ;
 
 		CEvent                       event               ;
 		CEvent                       default_event       ;
+		Bool_t                       Jevent              ;
 
 		CSensitivity                 sensitivity         ;
 		CSensitivity                 default_sensitivity ;
+		Bool_t                       Jsen                ;
 
 		AVariable                    var                 ;
 		AVariable                    default_var         ;
+		Bool_t                       Jvar                ;
 
 		CSignal_Property_Scan        signal_scan         ;
 		CSignal_Property_Scan        default_signal_scan ;
+		Bool_t                       JSP_scan            ;
 
 		CBKG_Sort                    bkg_sort            ;
 		CBKG_Sort                    default_bkg_sort    ;
+		Bool_t                       Jbkg_sort           ;
 
 		CScenario                    scenario            ;
 		CScenario                    default_scenario    ;
+		Bool_t                       Jscenario           ;
 
 		CPlot                        plot                ;
 		CPlot                        default_plot        ;
+		Bool_t                       Jplot               ;
 
 		CMVA                         MVA                 ;
 		CMVA                         default_MVA         ;
+		Bool_t                       JMVA                ;
+
 
 		CTime                        time                ;
+
+		CDraw(){
+
+		}
 
 		CDraw(int argc, char*argv[]){
 			if(argc==2){
@@ -104,5 +108,7 @@ class CDraw{
 		long long int Total_Event(){
 			return(event.Total_Event());
 		}
+
+		void Print();
 };
 #endif
