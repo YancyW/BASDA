@@ -14,7 +14,7 @@
 #include "Class/File.h"
 #include "Class/Flow.h"
 #include "Class/Path.h"
-#include "Class/debug.h"
+#include "Class/Debug.h"
 #include "Class/Event.h"
 #include "Class/Sensitivity.h"
 #include "Class/Signal_Properties_Scan.h"
@@ -111,4 +111,7 @@ class CDraw{
 
 		void Print();
 };
+
+
+std::ostream & operator<< (std::ostream & ostr, CDraw str);
 #endif

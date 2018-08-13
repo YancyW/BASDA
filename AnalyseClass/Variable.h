@@ -218,25 +218,32 @@ class Avariable_vec{
 
 class AVariable{
 	public:
-		std::string weight_type;
-		bool        weight_exist;
-		int num;
+		int num_var;
 		int num_vec;
-		int numMVA;
+		int num_MVA;
 		int cut_level;
+
+		bool        weight_exist;
+		Avariable              weight;
+
 		std::vector<Avariable> var;
 		std::vector<Avariable_vec> vec;
 		std::vector<Avariable> MVA;
+
 		void Read_Var(CPath &path);
 
 		AVariable(){
-			weight_type = "F";
-			num=0;
+			weight_exist = false;
+			num_var=0;
 			num_vec=0;
-			numMVA=0;
+			num_MVA=0;
 			var.clear();
 			MVA.clear();
 		}
+
+		int Var_Num();
+		int Vec_Num();
+		int MVA_Num();
 };
 
 

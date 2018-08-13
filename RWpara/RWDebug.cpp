@@ -1,4 +1,4 @@
-#include "Class/debug.h"
+#include "Class/Debug.h"
 void CDebug::  Read_Debug(CPath path){
 	ShowMessage(3, "read debug");
 	YAML::Node debug_node = YAML::LoadFile(path.debug_file );

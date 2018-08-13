@@ -1,7 +1,7 @@
 #include "Analyse_Cut_NoMVA.h"
 void Analyse_Cut_NoMVA_Pre(CDraw &para){
 	AFile file_name;
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 
 	std::ofstream sig_file;
 	sig_file.open(file_name.significance);

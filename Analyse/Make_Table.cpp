@@ -141,7 +141,7 @@ float Make_Table(CDraw &para, float lumi, std::vector<std::string> yaml_file,std
 
 void Make_Table_Pre(CDraw &para){
 	AFile file_name;
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 
 	std::ofstream sig_file;
 	sig_file.open(file_name.significance);

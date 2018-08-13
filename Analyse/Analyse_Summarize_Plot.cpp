@@ -32,7 +32,7 @@ void Analyse_Summarize_Plot_Complete_Pre(CDraw &para){
 			AFile file_name;
 			for(int i=0;i<para.signal_scan.property_num;i++){
 				para.flow.signal_property = para.signal_scan.properties[i];
-				get_file_name(para,file_name);
+				file_name.get_file_name(para);
 				if(para.flow.plot_object=="final_cut"){
 					sig_name_temp.push_back(file_name.output_total.CUT_file);
 				}
@@ -43,7 +43,7 @@ void Analyse_Summarize_Plot_Complete_Pre(CDraw &para){
 				}
 			}
 			para.flow.signal_property = "10";
-			get_file_name(para,file_name);
+			file_name.get_file_name(para);
 			if(para.flow.plot_object=="before_cut"){
 				for(int i=1;i<file_name.output.size();i++){
 					ShowMessage(2,"bkg",file_name.output[i].CUT_file);
@@ -60,7 +60,7 @@ void Analyse_Summarize_Plot_Complete_Pre(CDraw &para){
 	para.path.output_file             = output_file;
 	para.path.combine_plot            = combine_plot ;
 	para.path.horizontal_summary_plot = horizontal_summary_plot;
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 
 
 	Analyse_Summarize_Plot_Complete(para,sig_name,file_name);
@@ -227,7 +227,7 @@ void Analyse_Summarize_Plot_Pre(CDraw &para){
 
 	for(int i=0;i<para.signal_scan.property_num;i++){
 		para.flow.signal_property = para.signal_scan.properties[i];
-		get_file_name(para,file_name);
+		file_name.get_file_name(para);
 		if(para.flow.plot_object=="final_cut"){
 			sig_name.push_back(file_name.output_total.CUT_file);
 		}
@@ -238,7 +238,7 @@ void Analyse_Summarize_Plot_Pre(CDraw &para){
 		}
 	}
 	para.flow.signal_property = "10";
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 	if(para.flow.plot_object=="before_cut"){
 		for(int i=1;i<file_name.output.size();i++){
 			ShowMessage(2,"bkg",file_name.output[i].CUT_file);

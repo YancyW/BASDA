@@ -6,6 +6,7 @@
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
 #include "Class/Flow.h"
+#include "Lib/MessageFormat.h"
 
 class CMVA_Basic{
 	private:
@@ -17,6 +18,7 @@ class CMVA_Basic{
 		std::string             MVA_method_setting   ;
 		std::string             MVA_factory_setting  ;
 
+		void                    Print()              ;
 };
 
 
@@ -46,6 +48,7 @@ class CMVA{
 		}
 
 		void        Read_MVA(CPath &path, CFlow &flow);
+		void        Print();
 };
 
 
@@ -78,4 +81,8 @@ namespace YAML{
 			}
 		};
 };
+
+
+std::ostream & operator<< (std::ostream & ostr, CMVA_Basic str);
+std::ostream & operator<< (std::ostream & ostr, CMVA str);
 #endif

@@ -9,6 +9,7 @@
 #include "Function/Fbasic.h"
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
+#include "Lib/MessageFormat.h"
 #include "Class/Flow.h"
 
 class CScenario_Basic{
@@ -23,6 +24,8 @@ class CScenario_Basic{
 		energy = 0;
 		lumi = 0;
 	}
+
+	void Print();
 };
 
 
@@ -63,6 +66,9 @@ class CScenario{
 		float Lumi(){
 			return(default_scenario.lumi);
 		}
+
+
+		void Print();
 
 		std::string Lumi_Tex(){
 	        std::string lumi_tex= " \\int L dt ="+Float_to_String(default_scenario.lumi)+" fb^{-1} ";
@@ -157,4 +163,9 @@ namespace YAML{
 			}
 		};
 };
+
+
+std::ostream & operator<< (std::ostream & ostr, CScenario_Basic str);
+std::ostream & operator<< (std::ostream & ostr, CScenario str);
+
 #endif

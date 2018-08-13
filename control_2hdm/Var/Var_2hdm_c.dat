@@ -4,7 +4,7 @@ weight:
 variable:
    v0:
         title_name           : "jet_num"
-        cut_min              : 0
+        cut_min              : 0.9
         cut_max              : 100
         latex_name           : "N^{j}"
         Canvas_name          : "c0"                                   
@@ -26,11 +26,11 @@ variable:
         cut_switch           : true 
         plot_switch          : true 
         log_yaxis            : false 
-        normalization_switch : false
-        BDT                  : false 
+        normalization_switch : true 
+        MVA                  : false 
    v1:
         title_name           : "jet_pt1"
-        cut_min              : 0
+        cut_min              : 20
         cut_max              : 500
         latex_name           : "P_{T}^{j1}"
         leg_left             : 0.2
@@ -43,6 +43,7 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v2:
         title_name           : "jet_eta1"
         cut_min              : -5
@@ -58,6 +59,7 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v3:
         title_name           : "jet_pt2"
         cut_min              : 0
@@ -91,7 +93,7 @@ variable:
    v5:
         title_name           : "bjet_num"
         cut_min              : 0
-        cut_max              : 100
+        cut_max              : 1.1
         latex_name           : "N^{b}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -150,7 +152,7 @@ variable:
         plot_switch          : true 
    v9:
         title_name           : "lep_num"
-        cut_min              : 0
+        cut_min              : 2.9
         cut_max              : 100
         latex_name           : "N^{l}"
         leg_left             : 0.2
@@ -165,7 +167,7 @@ variable:
         plot_switch          : true 
    v10:
         title_name           : "lep_pt1"
-        cut_min              : 0
+        cut_min              : 20
         cut_max              : 100
         latex_name           : "P_{T}^{l1}"
         leg_left             : 0.2
@@ -178,10 +180,11 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v11:
         title_name           : "lep_eta1"
-        cut_min              : -5
-        cut_max              : 5
+        cut_min              : -2.5
+        cut_max              : 2.5
         latex_name           : "#eta^{l1}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -193,9 +196,10 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v12:
         title_name           : "lep_pt2"
-        cut_min              : 0
+        cut_min              : 10
         cut_max              : 100
         latex_name           : "P_{T}^{l2}"
         leg_left             : 0.2
@@ -208,10 +212,11 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v13:
         title_name           : "lep_eta2"
-        cut_min              : -5
-        cut_max              : 5
+        cut_min              : -2.5
+        cut_max              : 2.5
         latex_name           : "#eta^{l2}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -223,9 +228,10 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v14:
         title_name           : "lep_pt3"
-        cut_min              : 0
+        cut_min              : 10
         cut_max              : 100
         latex_name           : "P_{T}^{l3}"
         leg_left             : 0.2
@@ -238,10 +244,11 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v15:
         title_name           : "lep_eta3"
-        cut_min              : -5
-        cut_max              : 5
+        cut_min              : -2.5
+        cut_max              : 2.5
         latex_name           : "#eta^{l3}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -253,24 +260,26 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v16:
         title_name           : "W_mass"
-        cut_min              : 0
-        cut_max              : 100
+        cut_min              : 70
+        cut_max              : 110
         latex_name           : "M^{W}"
         leg_left             : 0.2
         leg_up               : 0.7
         leg_right            : 0.4
         leg_down             : 0.9           
         xaxis_name           : "M^{W}"                    
-        xaxis_bin            : 100                                    
+        xaxis_bin            : 150                                    
         xaxis_min            : 0
-        xaxis_max            : 100                                    
+        xaxis_max            : 150                                    
         cut_switch           : true 
         plot_switch          : true 
+        normalization_switch : true 
    v17:
         title_name           : "W_pt"
-        cut_min              : 0
+        cut_min              : 1
         cut_max              : 100
         latex_name           : "P_{T}^{W}"
         leg_left             : 0.2
@@ -283,6 +292,7 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : false 
    v18:
         title_name           : "W_eta"
         cut_min              : -5
@@ -298,10 +308,11 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : false 
    v19:
         title_name           : "A_mass"
         cut_min              : 0
-        cut_max              : 100
+        cut_max              : 95
         latex_name           : "M^{A}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -313,9 +324,12 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
+        normalization_switch : true 
+        MVA                  : false 
    v20:
         title_name           : "A_pt"
-        cut_min              : 0
+        cut_min              : 1
         cut_max              : 100
         latex_name           : "P_{T}^{A}"
         leg_left             : 0.2
@@ -328,6 +342,7 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v21:
         title_name           : "A_eta"
         cut_min              : -5
@@ -343,10 +358,11 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v22:
         title_name           : "HC_mass"
         cut_min              : 0
-        cut_max              : 100
+        cut_max              : 180
         latex_name           : "M^{H^{pm}}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -358,10 +374,12 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
+        normalization_switch : true 
    v23:
         title_name           : "HC_pt"
-        cut_min              : 0
-        cut_max              : 100
+        cut_min              : 1
+        cut_max              : 1000
         latex_name           : "P_{T}^{H^{#pm}}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -373,6 +391,7 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v24:
         title_name           : "HC_eta"
         cut_min              : -5
@@ -388,6 +407,7 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v25:
         title_name           : "Top_mass"
         cut_min              : 0
@@ -436,7 +456,7 @@ variable:
    v28:
         title_name           : "Topj_mass"
         cut_min              : 0
-        cut_max              : 100
+        cut_max              : 1000
         latex_name           : "M^{t}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -448,10 +468,11 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : true 
    v29:
         title_name           : "Topj_pt"
-        cut_min              : 0
-        cut_max              : 100
+        cut_min              : 5
+        cut_max              : 45
         latex_name           : "P_{T}^{t}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -463,6 +484,8 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        normalization_switch : true 
+        MVA                  : false 
    v30:
         title_name           : "Topj_eta"
         cut_min              : -5
@@ -478,10 +501,11 @@ variable:
         xaxis_max            : 100                                    
         cut_switch           : true 
         plot_switch          : true 
+        MVA                  : false 
    v31:
         title_name           : "Top_angle"
-        cut_min              : -5
-        cut_max              : 5
+        cut_min              : -1
+        cut_max              : -0.65
         latex_name           : "#theta^{t}_{*}"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -489,14 +513,32 @@ variable:
         leg_down             : 0.9           
         xaxis_name           : "#theta^{t}_{*}"                    
         xaxis_bin            : 100                                    
-        xaxis_min            : 0
-        xaxis_max            : 100                                    
+        xaxis_min            : -1
+        xaxis_max            : 1 
         cut_switch           : true 
         plot_switch          : true 
+        normalization_switch : true 
+        MVA                  : false 
+   v32:
+        title_name           : "BDTG"
+        cut_min              : 0.6 
+        cut_max              : 1.0
+        latex_name           : "BDTG"
+        leg_left             : 0.6
+        leg_up               : 0.7
+        leg_right            : 0.8
+        leg_down             : 0.9           
+        xaxis_name           : "BDTG"
+        xaxis_bin            : 100
+        xaxis_min            : -1
+        xaxis_max            : 1                                    
+        cut_switch           : true 
+        plot_switch          : true 
+        normalization_switch : true 
    v33:
         title_name           : "lep_isolation1"
         cut_min              : 0 
-        cut_max              : 1
+        cut_max              : 100
         latex_name           : "lep_isolation1"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -511,7 +553,7 @@ variable:
    v34:
         title_name           : "lep_isolation2"
         cut_min              : 0 
-        cut_max              : 1
+        cut_max              : 100
         latex_name           : "lep_isolation2"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -526,7 +568,7 @@ variable:
    v35:
         title_name           : "lep_isolation3"
         cut_min              : 0 
-        cut_max              : 1
+        cut_max              : 100
         latex_name           : "lep_isolation3"
         leg_left             : 0.2
         leg_up               : 0.7
@@ -583,4 +625,48 @@ variable:
         xaxis_max            : 1                                    
         cut_switch           : true 
         plot_switch          : true 
+   v39:
+        title_name           : "event"
+        latex_name           : "event"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "lep_pdg3"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1                                    
+        cut_switch           : false 
+        plot_switch          : true 
+   v40:
+        title_name           : "blep_pt"
+        cut_min              : 0
+        cut_max              : 1000
+        latex_name           : "blep_pt"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "blep_pt"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1000                                    
+        cut_switch           : true 
+        plot_switch          : true 
+   v41:
+        title_name           : "blep_eta"
+        cut_min              : 0
+        cut_max              : 1000
+        latex_name           : "blep_eta"
+        leg_left             : 0.2
+        leg_up               : 0.7
+        leg_right            : 0.4
+        leg_down             : 0.9           
+        xaxis_name           : "blep_eta"                    
+        xaxis_bin            : 100                                    
+        xaxis_min            : 0
+        xaxis_max            : 1000                                    
+        cut_switch           : true 
+        plot_switch          : true 
+variable_vec:
 variable_vec:

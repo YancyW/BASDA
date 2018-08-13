@@ -60,7 +60,7 @@ void Analyse_Complete_Pol(CDraw &para, bool MVA_train_switch,std::string &MVA_da
 
 			AFile file_name;
 
-			get_file_name(para,file_name);
+			file_name.get_file_name(para);
 
 			ShowMessage(2,"open record significance file");
 			std::ofstream sig_file;
@@ -123,7 +123,7 @@ void Analyse_Complete_Direct_Cut(CDraw &para){
 
 			AFile file_name;
 
-			get_file_name(para,file_name);
+			file_name.get_file_name(para);
 
 			ShowMessage(2,"open record significance file");
 			std::ofstream sig_file;

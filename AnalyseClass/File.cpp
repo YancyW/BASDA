@@ -1,65 +1,109 @@
 
 #include "AnalyseClass/File.h"
 
-std::ostream & operator<<(std::ostream & ostr, AFile &file_name){
+void AFile_Name::Init(){
+	_output_lable = "";
 
+}
+
+void AFile_Name::Print(){
+	ShowMessage(2, "The File_Name is ");
+	ShowMessage(3,"The input            name :",name             );
+	ShowMessage(3,"The input      latex name :",latex            );
+
+	for(int j=0;j<Num();j++){
+		ShowMessage(4,"The input  ana_basic_file:",basic_file[j] );
+		ShowMessage(4,"The input  ana_xsection  :",xection   [j] );
+	}
+
+	ShowMessage(2,"The output Unpol_file name:",Unpol_file       );
+	ShowMessage(2,"The output MVA_file   name:",MVA_file         );
+	ShowMessage(2,"The output CUT_file   name:",CUT_file         );
+	ShowMessage(2,"The output ana_Unpol  name:",ana_Unpol        );
+	ShowMessage(2,"The output ana_data   name:",ana_data         );
 	ShowMessage(2);
-	ShowMessage(2,"The data_folder:"             ,file_name.folder[0]);
-	ShowMessage(2,"The plot_folder_name:"        ,file_name.folder[1]);
-	ShowMessage(2,"The plot_combine_folder_name:",file_name.folder[2]);
-	ShowMessage(2,"The event_Unpol_folder:"      ,file_name.folder[3]);
-	ShowMessage(2,"The event_MVA_folder:"        ,file_name.folder[4]);
-	ShowMessage(2,"The event_CUT_folder:"        ,file_name.folder[5]);
-	ShowMessage(2,"The plot summary horizontaly" ,file_name.folder[6]);
-	ShowMessage(2,"The plot summary horizontaly" ,file_name.folder[7]);
+}
+
+void AFile_Name::Set_OutputLable(std::string file_type){
+	_output_lable = file_type;
+}
+
+std::string AFile_Name::Output_RootFile(){
+	if(_output_lable==""){
+		ShowMessage(2,"in AFile_Name::Output_RootFile, the output_lable didn't set");
+		exit(0);
+	}
+
+	if(_output_lable=="unpol"){
+		return(Unpol_file);
+	}
+	else if(_output_lable=="mva"){
+		return(MVA_file);
+	}
+	else if(_output_lable=="cut"){
+		return(CUT_file);
+	}
+	else{ 
+		return("");
+	}
+}
+
+std::string AFile_Name::Output_DataFile(){
+	if(_output_lable==""){ShowMessage(2,"in AFile_Name::Output_DataFile, the output_lable didn't set");exit(0);}
+
+	if(_output_lable=="unpol"){
+		return(ana_Unpol);
+	}
+	else if(_output_lable=="cut"){
+		return(ana_data);
+	}
+	else{ 
+		return("");
+	}
+
+}
+void AFile::Print(){
+	ShowMessage(2, "The File is ");
+	ShowMessage(3,"The data_folder:"             ,folder[0]);
+	ShowMessage(3,"The plot_folder_name:"        ,folder[1]);
+	ShowMessage(3,"The plot_combine_folder_name:",folder[2]);
+	ShowMessage(3,"The event_Unpol_folder:"      ,folder[3]);
+	ShowMessage(3,"The event_MVA_folder:"        ,folder[4]);
+	ShowMessage(3,"The event_CUT_folder:"        ,folder[5]);
+	ShowMessage(3,"The plot summary horizontaly" ,folder[6]);
+	ShowMessage(3,"The plot summary horizontaly" ,folder[7]);
 	ShowMessage(2);
 
-	ShowMessage(2,"The significance file:"       ,file_name.significance  );
-	ShowMessage(2,"The output_table file:"       ,file_name.output_table  );
-	ShowMessage(2,"The reweight_table file:"     ,file_name.reweight_table);
-	ShowMessage(2,"The sensitivity file :"       ,file_name.sensitivity   );
-	ShowMessage(2,"The output_MVA file  :"       ,file_name.output_MVA    );
-	ShowMessage(2,"The dataset_MVA file :"       ,file_name.dataset_MVA   );
+	ShowMessage(3,"The significance file:"       ,significance  );
+	ShowMessage(3,"The output_table file:"       ,output_table  );
+	ShowMessage(3,"The reweight_table file:"     ,reweight_table);
+	ShowMessage(3,"The sensitivity file :"       ,sensitivity   );
+	ShowMessage(3,"The output_MVA file  :"       ,output_MVA    );
+	ShowMessage(3,"The dataset_MVA file :"       ,dataset_MVA   );
 	ShowMessage(2);
 
-	for(int i=0;i<file_name.Input_Num();i++){
-		ShowMessage(2,"The input            name :",file_name.input [i].name             );
-		ShowMessage(2,"The input      latex name :",file_name.input [i].latex            );
-
-		for(int j=0;j<file_name.input[i].Num();j++){
-			ShowMessage(2,"The input  ana_basic_file:",file_name.input[i].basic_file[j] );
-			ShowMessage(2,"The input  ana_xsection  :",file_name.input[i].xection   [j] );
-		}
-		ShowMessage(2);
-
+	for(int i=0;i<Input_Num();i++){
+		input[i].Print();
 	}
 
 	ShowMessage(2);
 
-	for(int i=0;i<file_name.Output_Num();i++){
-		ShowMessage(2,"The output           name :",file_name.output[i].name             );
-		ShowMessage(2,"The output     latex name :",file_name.output[i].latex            );
-		ShowMessage(2,"The output Unpol_file name:",file_name.output[i].Unpol_file       );
-		ShowMessage(2,"The output MVA_file   name:",file_name.output[i].MVA_file         );
-		ShowMessage(2,"The output CUT_file   name:",file_name.output[i].CUT_file         );
-		ShowMessage(2,"The output ana_Unpol  name:",file_name.output[i].ana_Unpol        );
-		ShowMessage(2,"The output ana_data   name:",file_name.output[i].ana_data         );
-		ShowMessage(2);
+	for(int i=0;i<Output_Num();i++){
+		output[i].Print();
 	}
 
-	ShowMessage(2,"The output_total           name :",file_name.output_total.name        );
-	ShowMessage(2,"The output_total     latex name :",file_name.output_total.latex       );
-	ShowMessage(2,"The output_total Unpol_file name:",file_name.output_total.Unpol_file  );
-	ShowMessage(2,"The output_total MVA_file   name:",file_name.output_total.MVA_file    );
-	ShowMessage(2,"The output_total CUT_file   name:",file_name.output_total.CUT_file    );
-	ShowMessage(2,"The output_total ana_Unpol  name:",file_name.output_total.ana_Unpol   );
-	ShowMessage(2,"The output_total ana_data   name:",file_name.output_total.ana_data    );
+	ShowMessage(2,"The output_total            name:",output_total.name        );
+	ShowMessage(2,"The output_total latex      name:",output_total.latex       );
+	ShowMessage(2,"The output_total Unpol_file name:",output_total.Unpol_file  );
+	ShowMessage(2,"The output_total MVA_file   name:",output_total.MVA_file    );
+	ShowMessage(2,"The output_total CUT_file   name:",output_total.CUT_file    );
+	ShowMessage(2,"The output_total ana_Unpol  name:",output_total.ana_Unpol   );
+	ShowMessage(2,"The output_total ana_data   name:",output_total.ana_data    );
 	ShowMessage(2);
-	return ostr;
 }
 
 
-std::string change_name(std::string arg_string){
+std::string AFile::change_name(std::string arg_string){
 	std::string out_name=arg_string;
 	int fs1=out_name.find("{");
 	out_name.replace(fs1,1,"");
@@ -75,8 +119,8 @@ std::string change_name(std::string arg_string){
 }
 
 
-void get_file_name(CDraw &para, AFile &file_name){
-	file_name.Clear();
+void AFile::get_file_name(CDraw &para){
+	Clear();
 	freopen(para.path.record_file.c_str() ,"a",stdout);
 	ShowMessage(2,"get file name");
 
@@ -139,7 +183,7 @@ void get_file_name(CDraw &para, AFile &file_name){
 		in_tmp.CUT_file  ="";
 		in_tmp.ana_data  ="";
 
-		file_name.input.push_back(in_tmp);
+		input.push_back(in_tmp);
 		in_tmp.Clear();
 	}
 
@@ -170,32 +214,32 @@ void get_file_name(CDraw &para, AFile &file_name){
 	std::string event_LIMIT_folder_name = para.path.event_file+"/"+para.flow.signal_property+"_LIMIT/";
 	Create_Folder(event_LIMIT_folder_name);
 
-	file_name.folder.push_back(data_folder_name);
-	file_name.folder.push_back(plot_folder_name);
-	file_name.folder.push_back(plot_combine_folder_name);
-	file_name.folder.push_back(event_Unpol_folder_name);
-	file_name.folder.push_back(event_MVA_folder_name);
-	file_name.folder.push_back(event_CUT_folder_name);
-	file_name.folder.push_back(plot_horizontal_summary_folder_name);
-	file_name.folder.push_back(event_LIMIT_folder_name);
+	folder.push_back(data_folder_name);
+	folder.push_back(plot_folder_name);
+	folder.push_back(plot_combine_folder_name);
+	folder.push_back(event_Unpol_folder_name);
+	folder.push_back(event_MVA_folder_name);
+	folder.push_back(event_CUT_folder_name);
+	folder.push_back(plot_horizontal_summary_folder_name);
+	folder.push_back(event_LIMIT_folder_name);
 
 	ShowMessage(2);
 
-	file_name.significance  =data_folder_name     +"significance_" +para.flow.signal_property+".dat";
-	file_name.output_table  =data_folder_name     +"output_table_" +para.flow.signal_property+".dat";
-	file_name.reweight_table=data_folder_name     +"reweight_table"+para.flow.signal_property+".dat";
-	file_name.sensitivity   =event_LIMIT_folder_name+"sensitivity_"  +para.flow.signal_property+".root";
-	file_name.output_MVA    =event_MVA_folder_name+file_name.input[0].name+"_MVA.root";
-	file_name.dataset_MVA   =event_MVA_folder_name+file_name.input[0].name+"_dataset";
-	file_name.plot_CUT      =event_CUT_folder_name+"all_plots.root";
-	//file_name.dataset_MVA =file_name.input[0].name+"_dataset";
+	significance  =data_folder_name     +"significance_" +para.flow.signal_property+".dat";
+	output_table  =data_folder_name     +"output_table_" +para.flow.signal_property+".dat";
+	reweight_table=data_folder_name     +"reweight_table"+para.flow.signal_property+".dat";
+	sensitivity   =event_LIMIT_folder_name+"sensitivity_"  +para.flow.signal_property+".root";
+	output_MVA    =event_MVA_folder_name+input[0].name+"_MVA.root";
+	dataset_MVA   =event_MVA_folder_name+input[0].name+"_dataset";
+	plot_CUT      =event_CUT_folder_name+"all_plots.root";
+	//dataset_MVA =input[0].name+"_dataset";
 
 	ShowMessage(2);
 
 	AFile_Name out_tmp;
-	for(int i=0;i<file_name.Input_Num();i++){
-		out_tmp.name      = file_name.input[i].name ;
-		out_tmp.latex     = file_name.input[i].latex;
+	for(int i=0;i<Input_Num();i++){
+		out_tmp.name      = input[i].name ;
+		out_tmp.latex     = input[i].latex;
 
 		out_tmp.Unpol_file= event_Unpol_folder_name+out_tmp.name+"_"+para.flow.signal_property+".root";
 		out_tmp.MVA_file  = event_MVA_folder_name  +out_tmp.name+"_"+para.flow.signal_property+".root";
@@ -203,21 +247,21 @@ void get_file_name(CDraw &para, AFile &file_name){
 		out_tmp.ana_Unpol = data_folder_name       +out_tmp.name+"_"+para.flow.signal_property+"_Unpol.dat";
 		out_tmp.ana_data  = data_folder_name       +out_tmp.name+"_"+para.flow.signal_property+".dat";
 
-		file_name.output.push_back( out_tmp );
+		output.push_back( out_tmp );
 		out_tmp.Clear();
 	}
 
-	file_name.output_total.name      = "total_bkg";
-	file_name.output_total.latex     = "total_bkg                      ";
+	output_total.name      = "total_bkg";
+	output_total.latex     = "total_bkg                      ";
 
-	file_name.output_total.Unpol_file= event_Unpol_folder_name+file_name.output_total.name+"_"+para.flow.signal_property+".root";
-	file_name.output_total.MVA_file  = event_MVA_folder_name  +file_name.output_total.name+"_"+para.flow.signal_property+".root";
-	file_name.output_total.CUT_file  = event_CUT_folder_name  +file_name.output_total.name+"_"+para.flow.signal_property+".root";
-	file_name.output_total.ana_Unpol = data_folder_name       +file_name.output_total.name+"_"+para.flow.signal_property+"_Unpol.dat";
-	file_name.output_total.ana_data  = data_folder_name       +file_name.output_total.name+"_"+para.flow.signal_property+".dat";
+	output_total.Unpol_file= event_Unpol_folder_name+output_total.name+"_"+para.flow.signal_property+".root";
+	output_total.MVA_file  = event_MVA_folder_name  +output_total.name+"_"+para.flow.signal_property+".root";
+	output_total.CUT_file  = event_CUT_folder_name  +output_total.name+"_"+para.flow.signal_property+".root";
+	output_total.ana_Unpol = data_folder_name       +output_total.name+"_"+para.flow.signal_property+"_Unpol.dat";
+	output_total.ana_data  = data_folder_name       +output_total.name+"_"+para.flow.signal_property+".dat";
 
-	ShowMessage(1,"The file_name is:",file_name);
 
+	Print();
 
 	if(!para.flow.record_output){
 		fclose(stdout);
@@ -238,4 +282,15 @@ void AFile::Clear(){
 	output_MVA    ="";
 	dataset_MVA   ="";
 
+}
+
+
+std::ostream & operator<<(std::ostream & ostr, AFile_Name &file_name){
+	file_name.Print();
+	return ostr;
+}
+
+std::ostream & operator<<(std::ostream & ostr, AFile &file_name){
+	file_name.Print();
+	return ostr;
 }

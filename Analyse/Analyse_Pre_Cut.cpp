@@ -1,7 +1,7 @@
 #include "Analyse_Pre_Cut.h"
 void Analyse_Pre_Cut(CDraw &para){
 	AFile file_name;
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 
 	std::ofstream sig_file;
 	sig_file.open(file_name.significance);
@@ -133,30 +133,30 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			otfile->cd();
 
 			datatrain= new TTree(para.file.root_head_MVA_name.c_str() , "events" );
-			rootvar     .resize(para.var.num);
-			rootvar_vec .resize(para.var.num_vec);
+			rootvar     .resize(para.var.Var_Num());
+			rootvar_vec .resize(para.var.Vec_Num());
 
 			datatrain->Branch( "weight"              , &out_weight );        
-			for(int i=0;i<para.var.num;i++){
+			for(int i=0;i<para.var.Var_Num();i++){
 					if(para.var.var[i].title_name==para.flow.MVA_method){
 					continue;
 				}
 				datatrain->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
 			}
-			for(int i=0;i<para.var.num_vec;i++){
+			for(int i=0;i<para.var.Vec_Num();i++){
 				datatrain->Branch( para.var.vec[i].title_name.c_str() , &rootvar_vec[i] );        
 			}
 
 			if(para.flow.MVA_training){
 				datatest= new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest->Branch( "weight"              , &out_weight );        
-				for(int i=0;i<para.var.num;i++){
+				for(int i=0;i<para.var.Var_Num();i++){
 					if(para.var.var[i].title_name==para.flow.MVA_method){
 						continue;
 					}
 					datatest->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
 				}
-				for(int i=0;i<para.var.num_vec;i++){
+				for(int i=0;i<para.var.Vec_Num();i++){
 					datatest->Branch( para.var.vec[i].title_name.c_str() , &rootvar_vec[i] );        
 				}
 			}
@@ -172,13 +172,13 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			if(para.flow.MVA_training){
 				datatest_MVA = new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest_MVA->Branch( "weight"              , &out_weight );        
-				for(int i=0;i<para.var.num;i++){
+				for(int i=0;i<para.var.Var_Num();i++){
 					if(para.var.var[i].title_name==para.flow.MVA_method){
 						continue;
 					}
 					datatest_MVA->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
 				}
-				for(int i=0;i<para.var.num_vec;i++){
+				for(int i=0;i<para.var.Vec_Num();i++){
 					datatest_MVA->Branch( para.var.vec[i].title_name.c_str() , &rootvar_vec[i] );        
 				}
 			}
@@ -202,7 +202,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 
 			//loop for init variables which are prepared for plot 
-			for(int j=0;j<para.var.num;j++){
+			for(int j=0;j<para.var.Var_Num();j++){
 				if(para.var.var[j].title_name==para.flow.MVA_method){
 					continue;
 				}
@@ -211,7 +211,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			}
 
 
-			for(int j=0;j<para.var.num_vec;j++){
+			for(int j=0;j<para.var.Vec_Num();j++){
 				Avariable_vec info=para.var.vec[j];
 				MyLCTuple[cnum][i]->SetBranchAddress(para.var.vec[j].title_name.c_str(), &para.var.vec[j].var_ptr);
 			}
@@ -226,7 +226,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				MyLCTuple[cnum][i]->GetEntry(event);
 
 				if(para.flow.record_event){
-					for(int j=0;j<para.var.num;j++){
+					for(int j=0;j<para.var.Var_Num();j++){
 						if(para.var.var[j].title_name==para.flow.MVA_method){
 							continue;
 						}

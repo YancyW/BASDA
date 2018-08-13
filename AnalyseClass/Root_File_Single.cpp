@@ -31,14 +31,8 @@ void ARoot_File_Single::Init_Xsection(float xsection){
 	_xsection = xsection;
 }
 
-void ARoot_File_Single::Init_Var(AVariable &input_var){
-	_var = &input_var;
-}
-
-void ARoot_File_Single::Init_Weight(Analyse_Single_File& input_weight){
-	_in_weight   = &(input_weight.in_weight);
-	_in_weight_d = &(input_weight.in_weight_d);
-	_in_weight_i = &(input_weight.in_weight_i);
+void ARoot_File_Single::Init_Var(AVariable* input_var){
+	_var = input_var;
 }
 
 void ARoot_File_Single::SetBranchAddress(std::string var_name, float* var){
@@ -54,24 +48,21 @@ void ARoot_File_Single::SetBranchAddress(std::string var_name, long int* var){
 }
 
 void ARoot_File_Single::Register_Var(){
-		if(_var->weight_exist){
-			if(_var->weight_type=="F"){
-				SetBranchAddress("weight", _in_weight);
-			}
-			else if(_var->weight_type=="D"){
-				SetBranchAddress("weight", _in_weight_d);
-			}
-			else if(_var->weight_type=="I"){
-				SetBranchAddress("weight", _in_weight_i);
-			}
-		}
-		else{
-            *_in_weight = _xsection/_nevent;  
-		}
 
-		for(int k=0;k<_var->num;k++){
-			if(_var->var[k].title_name=="weight"){
-				continue;
+		for(int k=0;k<_var->Var_Num();k++){
+			if(_var->weight_exist){
+				if(_var->weight.variable_type=="F"){
+					SetBranchAddress(_var->weight.title_name.c_str(), &(_var->weight.variable));
+				}
+				else if(_var->weight.variable_type=="I"){
+					SetBranchAddress(_var->weight.title_name.c_str(), &(_var->weight.variable_i));
+				}
+				else if(_var->weight.variable_type=="D"){
+					SetBranchAddress(_var->weight.title_name.c_str(), &(_var->weight.variable_d));
+				}
+			}
+			else{
+				_var->weight.variable = _xsection/_nevent;  
 			}
 			if(_var->var[k].variable_type=="F"){
 				SetBranchAddress(_var->var[k].title_name.c_str(), &(_var->var[k].variable));
@@ -90,11 +81,23 @@ void ARoot_File_Single::Get_Entry(int event){
 	tree->GetEntry(event);
 }
 
-float ARoot_File_Single::Get_Xsection(){
+
+AVariable* ARoot_File_Single::Var_Ptr(){
+	return(_var);
+}
+
+float ARoot_File_Single::Xsection(){
 	return(_xsection);
 }
 
-
 long int ARoot_File_Single::Nevent(){
 	return(_nevent);
+}
+
+std::string ARoot_File_Single::File_Name(){
+	return(_file_name);
+}
+
+std::string ARoot_File_Single::Tree_Name(){
+	return(_tree_name);
 }

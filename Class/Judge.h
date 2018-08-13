@@ -2,6 +2,7 @@
 #pragma once
 #ifndef AJUDGE_H
 #define AJUDGE_H  
+#include "Lib/MessageFormat.h"
 class AJudge{
 	private:
 		bool _Exist;

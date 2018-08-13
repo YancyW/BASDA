@@ -95,3 +95,15 @@ void Avariable::Copy(Avariable var){
 	}
 }
 
+int AVariable::Var_Num(){
+	return(num_var);
+}
+
+int AVariable::Vec_Num(){
+	return(num_vec);
+}
+
+int AVariable::MVA_Num(){
+	return(num_MVA);
+}
+

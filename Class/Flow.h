@@ -16,21 +16,25 @@
 class CFlow{
 	private:
 	public:
-		Bool_t                  cut                  ;
-		Bool_t                  plot                 ;
-		std::string             plot_object          ;
-		Bool_t                  record_output        ;
-		Int_t                   level                ;
+		std::string             begin_object         ;
 		std::string             signal_property      ;
 		std::string             working_scenario     ;
-		std::string             begin_object         ;
-		Bool_t                  record_event         ;
 		std::string             MVA_method           ;
+
+		Bool_t                  cut                  ;
+		Bool_t                  record_output        ;
+		Bool_t                  plot                 ;
+		std::string             plot_object          ;
+		Bool_t                  record_event         ;
 		Bool_t                  MVA_training         ;
 		Int_t                   MVA_level            ;
 	    float                   MVA_weight           ;
 
+		Int_t                   level                ;
+
 		void                    Read_Flow(CPath path);
+		void                    Print()              ;
 };
 
+std::ostream & operator<< (std::ostream & ostr, CFlow str);
 #endif

@@ -36,42 +36,43 @@
 
 class Analyse_Multi_File : public APlot{
 	private:
+		CDraw                                  _para            ;
+		bool                                   _Has_Drawn       ;
+
+		bool                                   _record_switch   ;
+		bool                                   _plot_switch     ;
+
 		int									   _var_num         ;
+
+		ACut                                   _cut             ;
+
 
 		int									   _file_num        ;
 
-		int									   _pol_num          ;
-		int									   _pol_index       ;
-
 		TFile*								   _root_file       ; 
+		std::string							   _root_head_name  ; 
 		TList*                                 _list;
 
 		float                                  _extra_weight    ; 
 
 		Analyse_Single_File*                   _which_sort      ;
-		void                                   _Find_Which_Sort (CDraw &para, AFile &file_name, int filenum ) ;
+		void                                   _Find_Which_Sort (CDraw &para, int filenum ) ;
 
-		std::ofstream*                         _data_file;
-
-		CDraw                                  _para            ;
-		bool                                   _record_switch   ;
-		bool                                   _plot_switch     ;
-		ACut                                   _cut             ;
-		bool                                   _Has_Drawn       ;
+		std::ofstream*                         _data_file       ;
+		AFile                                  _file_name       ;
 
 
 	public:
 		AVariable                              var              ;
 		std::vector<Analyse_Single_File>       ana_file         ;
+		Analyse_Single_File                    plot_file        ;
 		std::vector<ARoot_File>                in_file          ;
 		std::vector< std::pair<std::string,std::vector<Analyse_Single_File > > > sort;
 
 
-		int Var_Num();
 
-
-		Analyse_Multi_File(CDraw &para, AFile &file_name){
-			Init(para,file_name);
+		Analyse_Multi_File(CDraw &para, AFile &file_name, std::string output_folder_type){
+			Init(para,file_name,output_folder_type);
 		}
 
 		~Analyse_Multi_File(){
@@ -80,17 +81,20 @@ class Analyse_Multi_File : public APlot{
 
 
 		void Init_Color             (                                                            ) ;
-		void Init                   ( CDraw &para, AFile &file_name                              ) ;
+		void Init                   ( CDraw &para, AFile &file_name, std::string output_folder_type) ;
 		void Clear                  (                                                            ) ;
-		void Input_File_Init        ( std::string input_file_name, std::string root_head_name    ) ;
-		void Input_File_Init        ( std::vector<std::string> input_file_name, std::vector<std::string> root_head_name ) ;
-		void Input_File_Init        ( std::vector<std::string> input_file_name, std::string root_head_name              ) ;
-		void Root_Init              ( CDraw &para, AFile &file_name, int filenum                 ) ;
-		void Root_Init_Var          ( int filenum                                                ) ;
-		void File_Init              ( std::ofstream& file_name, int filenum                      ) ;
-		long int Input_File_Nevent( int filenum, int file_pol_num                                ) ;
-		void Weight_Extra           ( int polnum                                                 ) ;
-		bool Pol_Init               ( long int num                                               ) ;
+		void Init_Input_File        ( std::string input_file_name, std::string root_head_name    ) ;
+		void Init_Input_File        ( std::vector<std::string> input_file_name, std::vector<std::string> root_head_name ) ;
+		void Init_Input_File        ( std::vector<std::string> input_file_name, std::string root_head_name              ) ;
+		void Init_All_Input_File    (                                                            ) ;
+		void Init_Output_File       (                                                            ) ;
+		void Init_Root              ( CDraw &para, int filenum                                   ) ;
+		void Init_Root_Var          ( int filenum                                                ) ;
+		void Init_Data_File         ( std::ofstream& file_name, int filenum                      ) ;
+		void Init_Total_Data_File   ( std::ofstream& file_name                                   ) ;
+		void Weight_Extra           ( int filenum                                                ) ;
+		bool Init_Pol               ( int filenum                                                ) ;
+		bool Get_Event              ( int filenum, long int num                                  ) ;
 
 
 		void Root_Get_Entry         ( int filenum, long int event                                ) ;
@@ -99,8 +103,10 @@ class Analyse_Multi_File : public APlot{
 		void Root_Fill              ( int filenum                                                ) ;
 		void Root_Close             ( int filenum                                                ) ;
 		void Root_Close_Last        ( CDraw &para                                                ) ;
-		void File_Close             ( int filenum                                                ) ;
-        void Input_File_Delete      ( int filenum                                                ) ;
+		void Data_File_Close        ( int filenum                                                ) ;
+		void Total_Data_File_Close  ( ) ;
+        void Input_File_Single_Delete( int filenum                                                ) ;
+        void Input_File_Delete      (                                                            ) ;
 
 		void Plot_Origin            ( int filenum                                                ) ;
 		void Plot_Final             ( int filenum                                                ) ;
@@ -116,11 +122,19 @@ class Analyse_Multi_File : public APlot{
 		//void Record_Tot_Information ( std::ofstream &myfile, std::string sample_name             ) ;
 		void Record_Tot_Information ( std::string sample_name             ) ;
 
-		void Draw_Single            ( CDraw& para,AFile& file_name ,std::string hist_label       ) ;
-		void Draw_Sort              ( CDraw& para,AFile& file_name ,std::string hist_label       ) ;
+		void Draw_Single            ( CDraw& para ,std::string hist_label                        ) ;
+		void Draw_Sort              ( CDraw& para ,std::string hist_label                        ) ;
 
 		void Fill_Figure            (                                                            ) ;
 
-		void Draw_Figure            ( CDraw& para,AFile& file_name                               ) ;
+		void Draw_Figure            ( CDraw& para                                                ) ;
+
+
+		/*****************************************************************************************
+		 * output variable  
+		 *****************************************************************************************/
+
+		int Var_Num();
+
 };
 #endif

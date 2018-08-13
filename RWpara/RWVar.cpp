@@ -8,13 +8,19 @@ void AVariable::Read_Var(CPath &path){
 
 	YAML::Node weight_nodes = var_node["weight"];
 	RW_element("Exist"       , weight_nodes,this->weight_exist);
-	RW_element("Weight_Type" , weight_nodes,this->weight_type);
 
 	YAML::Node nodes = var_node["variable"];
 	int k=0;
 	for(YAML::const_iterator it=nodes.begin(); it != nodes.end(); ++it){
-		ShowMessage(3, "Var name",it->first.as<std::string>());
-		this->var.push_back(it->second.as<Avariable>());
+		std::string input_var_name = it->first.as<std::string>();
+		ShowMessage(3, "Var name",input_var_name);
+		if(input_var_name=="weight"||input_var_name=="Weight"){
+			weight_exist = true;
+			this->weight=it->second.as<Avariable>();
+		}
+		else{
+			this->var.push_back(it->second.as<Avariable>());
+		}
 		if(k>0){
 			if(this->var[k].setting_type=="previous"){
 				this->var[k].Copy(this->var[k-1]);
@@ -30,10 +36,10 @@ void AVariable::Read_Var(CPath &path){
 		}
 		k++;
 	}
-	num = var.size();
-	for(int i=0;i<num;i++){
+	num_var = var.size();
+	for(int i=0;i<num_var;i++){
 		if(var[i].MVA_switch){
-			numMVA++;
+			num_MVA++;
 			MVA.push_back(var[i]);
 		}
 	}

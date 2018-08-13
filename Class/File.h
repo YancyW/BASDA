@@ -24,7 +24,9 @@ class CFile{
 		std::string              root_head_MVA_name     ;
 
 		void                     Read_File(CPath path)  ;
+		void                     Print()                ;
 };
 
+std::ostream & operator<< (std::ostream & ostr, CFile str);
 
 #endif

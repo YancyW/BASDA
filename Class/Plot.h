@@ -9,6 +9,7 @@
 #include "Function/Fbasic.h"
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
+#include "Lib/MessageFormat.h"
 
 class CColor{
 	private:
@@ -94,6 +95,8 @@ class Cplot_basic_color_style: public CColor, public CStyle, public CWidth{
 			user_basic_color_style = false;
 		}
 
+		void Print();
+
 };
 
 std::ostream & operator<< (std::ostream & ostr, Cplot_basic_color_style str);
@@ -121,6 +124,8 @@ class Cplot_line{
 			line_setting.Get_Color(i);
 		}
 
+		void Print();
+
 };
 
 
@@ -135,6 +140,8 @@ class Cplot_stack{
 		Cplot_stack(){
 		    draw_option = "Hist, nostack"; 
 		}
+
+		void Print();
 };
 
 
@@ -149,6 +156,8 @@ class Cplot_legend{
 		Cplot_legend(){
 			header = "";
 		}
+
+		void Print();
 };
 
 

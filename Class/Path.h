@@ -46,4 +46,5 @@ class CPath{
 		void          Print()  ;
 };
 
+std::ostream & operator<< (std::ostream & ostr, CPath str);
 #endif

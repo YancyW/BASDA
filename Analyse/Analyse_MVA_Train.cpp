@@ -2,7 +2,7 @@
 
 void Analyse_MVA_Train_Pre(CDraw &para){
 	AFile file_name;
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 
 	std::ofstream sig_file;
 	sig_file.open(file_name.significance);
@@ -36,13 +36,13 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 
 	std::string cuts_des = "";
 	std::string cutb_des = "";
-	for(int i=0;i<para.var.numMVA;i++){
+	for(int i=0;i<para.var.MVA_Num();i++){
 		dataloader->AddVariable(para.var.MVA[i].title_name.c_str(), 'F' );
 		//cuts_des+=  para.var.MVA[i].title_name+">"+Float_to_String(para.var.MVA[i].Minimum());
 		//cutb_des+=  para.var.MVA[i].title_name+">"+Float_to_String(para.var.MVA[i].Minimum());
 		cuts_des+=  para.var.MVA[i].title_name+">"+Float_to_String(-100.0);
 		cutb_des+=  para.var.MVA[i].title_name+">"+Float_to_String(-100.0);
-		if(i!=para.var.numMVA-1){
+		if(i!=para.var.MVA_Num()-1){
 			cuts_des+= "&&";
 			cutb_des+= "&&";
 		}

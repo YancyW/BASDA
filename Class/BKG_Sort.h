@@ -9,6 +9,7 @@
 #include "Function/Fbasic.h"
 #include "Class/Judge.h"
 #include "RWpara/RWbasic.h"
+#include "Lib/MessageFormat.h"
 #include "Class/Path.h"
 
 
@@ -166,6 +167,8 @@ class CBKG_Sort_basic{
 			return(pos);
 		}
 
+		void Print();
+
 };
 
 
@@ -215,6 +218,10 @@ class CBKG_Sort{
 		void Read_BKG_Sort(CPath &path);
 
 		void Read_BKG_Sort_Test(CPath &path);
+
+		void Print();
 };
 
+std::ostream & operator<< (std::ostream & ostr, CBKG_Sort_basic str);
+std::ostream & operator<< (std::ostream & ostr, CBKG_Sort str);
 #endif

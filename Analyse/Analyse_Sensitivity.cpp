@@ -3,7 +3,7 @@
 
 void Analyse_Sensitivity_Pre(CDraw &para){
 	AFile file_name;
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 	std::vector<std::string> input_sigfile_name;
 	std::vector<std::string> input_bkgfile_name;
 
@@ -26,7 +26,7 @@ void Analyse_Sensitivity_Pre(CDraw &para){
 void Analyse_Sensitivity_Complete(CDraw &para){
 
 	AFile file_name;
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 	std::vector<std::string> input_sigfile_name;
 	std::vector<std::string> input_bkgfile_name;
 
@@ -41,7 +41,7 @@ void Analyse_Sensitivity_Complete(CDraw &para){
 			para.path.output_file  = output_path+ Int_to_String(i) + Int_to_String(j);
 			para.path.event_file   = event_path+ Int_to_String(i) + Int_to_String(j);
 			para.path.Create_Folder();
-			get_file_name(para,file_name);
+			file_name.get_file_name(para);
 
 			input_sigfile_name.push_back(file_name.output[0].CUT_file);
 			for(unsigned int i=1;i<file_name.output.size();i++){

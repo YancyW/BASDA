@@ -152,30 +152,51 @@ void CWidth::Get_Width(int width){
 
 
 
-std::ostream & operator<< (std::ostream & ostr, Cplot_basic_color_style str){
+void Cplot_basic_color_style::Print(){ 
 	ShowMessage(1); 
 	ShowMessage(3,"The Cplot_basic_color_style is:"); 
-	ShowMessage(4,"user_basic_color_style: ", str.user_basic_color_style);
-	ShowMessage(4,"user_color: "      , str.user_color);
-	ShowMessage(4,"user_style: "      , str.user_style);
-	ShowMessage(4,"user_width: "      , str.user_width);
-	ShowMessage(4,"_origin_color: "   , str.Origin_Color());
-	ShowMessage(4,"_output_color: "   , str.Color());
-	ShowMessage(4,"_auto_color_num: " , CColor::Auto_Color_Num());
-	ShowMessage(4,"_style: "          , str.Style());
-	ShowMessage(4,"_width: "          , str.Width());
+	ShowMessage(4,"user_basic_color_style: ", user_basic_color_style);
+	ShowMessage(4,"user_color: "      , user_color);
+	ShowMessage(4,"user_style: "      , user_style);
+	ShowMessage(4,"user_width: "      , user_width);
+	ShowMessage(4,"_origin_color: "   , Origin_Color());
+	ShowMessage(4,"_output_color: "   , Color());
+	ShowMessage(4,"_auto_color_num: " , Auto_Color_Num());
+	ShowMessage(4,"_style: "          , Style());
+	ShowMessage(4,"_width: "          , Width());
+}
+
+void Cplot_line::Print(){ 
+	ShowMessage(1); 
+	ShowMessage(2,"The Cplot_line is:"); 
+	ShowMessage(3,"include                 : ", include);
+	ShowMessage(3,"fill_switch             : ", fill_switch);
+	ShowMessage(3,"norm_switch             : ", norm_switch);
+	ShowMessage(3,"fill_origin_color       : ", fill_color.Origin_Color());
+	ShowMessage(3,"fill_output_color       : ", fill_color.Color());
+	ShowMessage(3,"current _auto color_num : ", fill_color.Auto_Color_Num());
+	ShowMessage(3,"line_setting            : ", line_setting);
+}
+
+void Cplot_stack::Print(){ 
+	ShowMessage(1); 
+	ShowMessage(2,"The Cplot_stack is:"); 
+	ShowMessage(3,"draw_option : ", draw_option);
+}
+
+
+void Cplot_legend::Print(){ 
+	ShowMessage(1); 
+	ShowMessage(2,"The Cplot_legend is:"); 
+	ShowMessage(3,"header: ", header);
+}
+
+std::ostream & operator<< (std::ostream & ostr, Cplot_basic_color_style str){
+	str.Print();
 	return ostr;
 }
 
 std::ostream & operator<< (std::ostream & ostr, Cplot_line str){
-	ShowMessage(1); 
-	ShowMessage(2,"The Cplot_line is:"); 
-	ShowMessage(3,"include                 : ", str.include);
-	ShowMessage(3,"fill_switch             : ", str.fill_switch);
-	ShowMessage(3,"norm_switch             : ", str.norm_switch);
-	ShowMessage(3,"fill_origin_color       : ", str.fill_color.Origin_Color());
-	ShowMessage(3,"fill_output_color       : ", str.fill_color.Color());
-	ShowMessage(3,"current _auto color_num : ", str.fill_color.Auto_Color_Num());
-	ShowMessage(3,"line_setting            : ", str.line_setting);
+	str.Print();
 	return ostr;
 }

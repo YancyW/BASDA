@@ -38,3 +38,9 @@ void CPath::Print(){
 	ShowMessage(3,"bkg_sort_file             is ", bkg_sort_file               );
 	ShowMessage(3,"scenario_file             is ", scenario_file               );
 }
+
+std::ostream & operator<< (std::ostream & ostr, CPath str){
+	str.Print();
+	return ostr;
+}
+

@@ -11,7 +11,7 @@ void Analyse_Signal_Scan_Pre(CDraw &para){
 
 	for(int i=0;i<para.signal_scan.property_num;i++){
 		para.flow.signal_property= para.signal_scan.properties[i];
-        get_file_name(para,file_name);
+        file_name.get_file_name(para);
         scan_root.push_back(file_name.output_total.CUT_file);
 	}
 

@@ -27,6 +27,7 @@
 #include "AnalyseClass/Cut.h"
 #include "AnalyseClass/File.h"
 #include "AnalyseClass/Plot.h"
+#include "AnalyseClass/Root_File.h"
 #include "Analyse/Abasic.h"
 #include "Function/Fbasic.h"
 #include "Function/FString.h"
@@ -71,6 +72,7 @@ class Analyse_Single_File{
 	private:
 		float               	     _lumi      ;
 		int							 _var_num   ; 
+		AVariable*                   _var_ptr   ;
 		std::vector<float>           _rootvar   ; 
 
 
@@ -101,33 +103,37 @@ class Analyse_Single_File{
 		~Analyse_Single_File()              ; 
 
 		void Init                  ( AVariable &var, TFile *plot_file, float extra_weight, bool record_switch, bool plot_switch,std::string figure_name, std::string file_name, std::vector<std::string> tree_name ) ;
+		void Init                  ( TFile* plot_file, float extra_weight, bool record_switch, bool plot_switch,std::string figure_name, ARoot_File input_file ) ;
 
 		void Clear                 ( ) ;
 
-		void Root_Init             ( ) ;
-		void Root_Init_Var         ( ) ;
-		void File_Init             ( std::ofstream& file_name                                                                                                                                                   ) ;
-		void Root_Endow_Weight     ( ) ;
-		void Root_Endow_Var        ( AVariable &var                                                                                                                                                          ) ;
-		void Root_Endow_Unused_Var ( AVariable &var, ACut &cut                                                                                                                                               ) ;
-		void Root_Fill             ( int rootnum                                                                                                                                                             ) ;
-		void Root_Close_Tree       ( int rootnum                                                                                                                                                             ) ;
-		void Root_Close_File       ( ) ;
-		void File_Close            ( ) ;
+		void Delete                ( ) ;
 
-		void Plot_Origin           ( AVariable &var                                                                                                                                                          ) ;
-		void Plot_Final            ( AVariable &var                                                                                                                                                          ) ;
+		void Init_Root             ( ) ;
+		void Init_Root_Var         ( ) ;
+		void Init_Data_File        ( std::ofstream& file_name                                                                                                                                ) ;
+		void Root_Endow_Weight     ( ) ;
+		void Root_Endow_Var        ( ) ;
+		void Root_Endow_Unused_Var ( ACut &cut                                                                                                                                               ) ;
+		void Root_Fill             ( int rootnum                                                                                                                                             ) ;
+		void Root_Close_Tree       ( int rootnum                                                                                                                                             ) ;
+		void Root_Close_File       ( ) ;
+		void Data_File_Close       ( ) ;
+
+		void Plot_Origin           ( ) ;
+		void Plot_Final            ( ) ;
 
 		void Add_Pass_NoCut        ( ) ;
 		void Add_Pass_AllCut       ( ) ;
 
-		bool Get_Cut               ( AVariable &var, ACut &cut                                                                                                                                               ) ;
-		bool Use_Cut               ( Avariable &var, float weight, Analyse_Figure &figure                                                                                                                    ) ;
-		bool Loop_Cut              ( AVariable &var, std::vector<Analyse_Figure> & figure, float weight, ACut &cut                                                                                           ) ;
+		bool Get_Cut               ( ACut &cut                                                                                                                                               ) ;
+		bool Use_Cut               ( Avariable &var, float weight, Analyse_Figure &figure                                                                                                    ) ;
+		bool Loop_Cut              ( std::vector<Analyse_Figure> & figure, float weight, ACut &cut                                                                                           ) ;
 
-		//void Record_Information  ( std::ofstream &myfile, AVariable& var, ACut &cut, std::string sample_name                                                                                             ) ;
-	    void Record_Information    ( AVariable& var, ACut &cut, std::string sample_name                                                                                                                      ) ;
+		//void Record_Information  ( std::ofstream &myfile, AVariable& var, ACut &cut, std::string sample_name                                                                               ) ;
+	    void Record_Information    ( ACut &cut, std::string sample_name                                                                                                                      ) ;
 
+		AVariable* Var_Ptr         (  ) ;
 };
 
 

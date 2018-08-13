@@ -63,24 +63,35 @@
         </df>
       </df>
       <df name="Class">
+        <in>BKG_Sort.cpp</in>
         <in>BKG_Sort.h</in>
+        <in>Cut.cpp</in>
         <in>Cut.h</in>
+        <in>Debug.cpp</in>
+        <in>Debug.h</in>
+        <in>DrawClass.cpp</in>
         <in>DrawClass.h</in>
+        <in>Event.cpp</in>
         <in>Event.h</in>
+        <in>File.cpp</in>
         <in>File.h</in>
+        <in>Flow.cpp</in>
         <in>Flow.h</in>
         <in>Judge.h</in>
+        <in>MVA.cpp</in>
         <in>MVA.h</in>
         <in>Path.cpp</in>
         <in>Path.h</in>
         <in>Plot.cpp</in>
         <in>Plot.h</in>
         <in>Plot.hpp</in>
+        <in>Scenario.cpp</in>
         <in>Scenario.h</in>
+        <in>Sensitivity.cpp</in>
         <in>Sensitivity.h</in>
+        <in>Signal_Properties_Scan.cpp</in>
         <in>Signal_Properties_Scan.h</in>
         <in>Time.h</in>
-        <in>debug.h</in>
       </df>
       <df name="control">
         <df name="advanced">
@@ -236,11 +247,13 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" contral_2hdm/path_test.dat</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" control_2hdm/path_test.dat</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" control_2hdm/path_a.dat</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" contral_2hdm/path_test.dat</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" contral_2hdm/path_c.dat</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" control_2hdm/path_c.dat</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" control_2hdm/path_a.dat</runcommand>
+        <runcommand>"${OUTPUT_PATH}" control_2hdm/path_c.dat</runcommand>
         <rundir>.</rundir>
         <buildfirst>false</buildfirst>
         <terminal-type>0</terminal-type>

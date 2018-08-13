@@ -1,4 +1,8 @@
 #include "Root_File.h"
+/*****************************************************************************************
+* Contruction 
+*****************************************************************************************/
+
 ARoot_File::ARoot_File(std::string input_file, std::string head_name){
 	root_file_vec.push_back(ARoot_File_Single(input_file,head_name));
 	_file_num=1;
@@ -40,82 +44,38 @@ void ARoot_File::Delete(){
 *****************************************************************************************/
 
 
-void ARoot_File::Init_Weight(){
-	if(_file_num>0){
-		for(int i=0;i<_file_num;i++){
-			_in_weight.push_back(root_file_vec[i].Get_Xsection()/root_file_vec[i].Nevent()*_scenario.pol[i]);
-		}
-	}
-}
-
 void ARoot_File::Init_Var(AVariable &input_var){
+	_var =&input_var;
 	for(int i=0;i<_file_num;i++){
-		root_file_vec[i].Init_Var(input_var);
+		root_file_vec[i].Init_Var(_var);
 	}
 }
 
-void ARoot_File::Init_Weight(Analyse_Single_File &input_weight){
-	for(int i=0;i<_file_num;i++){
-		root_file_vec[i].Init_Weight(input_weight);
-	}
+void ARoot_File::Init_Para(CDraw& para){
+	_event = para.event;
+	_scenario = para.scenario;
+}
+
+void ARoot_File::Init_Event(){
+	CD_File(0);
+	_event.Init(root_file_vec[0].Nevent());
 }
 
 /*****************************************************************************************
-* Return ARoot_File_Single's value
-*****************************************************************************************/
+* Return private member value --- _event
+ *****************************************************************************************/
 
-float ARoot_File::Get_Weight(){
-		return(_in_weight[_current_file_num]);
-}
-
-void ARoot_File::Get_Para(CDraw& para){
-	_event = para.event;
-	_scenario = para.scenario;
+AVariable* ARoot_File::Var_Ptr(){
+	return(_var);
 }
 
 int ARoot_File::File_Num(){
 	return(_file_num);
 }
 
-void ARoot_File::Register_Var(){
-	for(int i=0;i<_file_num;i++){
-		root_file_vec[i].Register_Var();
-	}
+int ARoot_File::Current_File_Num(){
+	return(_current_file_num);
 }
-
-void ARoot_File::CD_File(int filenum){
-	if(filenum>_file_num){
-		ShowMessage(2,"Error, in ARoot_File::CD_File, input argument > total file number",_file_num, filenum);
-	}
-	root_file_vec[filenum].file->cd();
-}
-
-void ARoot_File::Get_Entry(long int event){
-	if(event > root_file_vec[_current_file_num].Nevent()){
-		ShowMessage(2,"Error, in ARoot_File::Get_Entry, input argument > total file number",root_file_vec[_current_file_num].Nevent(), event);
-	}
-	root_file_vec[_current_file_num].Get_Entry(event);
-}
-
-long int ARoot_File::Nevent(int polnum){
-	return(root_file_vec[polnum].Nevent());
-}
-
-bool ARoot_File::Get_Event(long int &num){
-	if(num>=_event.Total_Event()){
-		_current_file_num++;
-		if(_current_file_num>=_file_num){
-			return(false);
-		}
-		CD_File(_current_file_num);
-		_event.Init(root_file_vec[_current_file_num].Nevent());
-	}
-	else{
-		_event.Get_Event(num);
-	}
-	return(true);
-};
-
 long long int ARoot_File::Event(){
 	return(_event.Event());
 };
@@ -131,4 +91,62 @@ Long64_t ARoot_File::Begin_Event(){
 Long64_t ARoot_File::End_Event(){
 	return(_event.End_Event());
 }
+
+long int ARoot_File::Nevent(int polnum){
+	return(root_file_vec[polnum].Nevent());
+}
+
+CScenario ARoot_File::Scenario(){
+	return(_scenario);
+}
+
+/*****************************************************************************************
+ * Register Variable
+ *****************************************************************************************/
+
+
+void ARoot_File::CD_File(int filenum){
+	if(filenum>_file_num){
+		ShowMessage(2,"Error, in ARoot_File::CD_File, input argument > total file number",_file_num, filenum);
+	}
+	root_file_vec[filenum].file->cd();
+}
+
+void ARoot_File::Register_Var(){
+	for(int i=0;i<_file_num;i++){
+		root_file_vec[i].Register_Var();
+	}
+}
+
+
+
+/*****************************************************************************************
+* Get key value 
+*****************************************************************************************/
+
+
+void ARoot_File::Get_Entry(long int event){
+	if(event > root_file_vec[_current_file_num].Nevent()){
+		ShowMessage(2,"Error, in ARoot_File::Get_Entry, input argument > total file number",root_file_vec[_current_file_num].Nevent(), event);
+	}
+	root_file_vec[_current_file_num].Get_Entry(event);
+}
+
+
+
+
+bool ARoot_File::Get_Event(long int &num){
+	if(num>=_event.Total_Event()){
+		_current_file_num++;
+		if(_current_file_num>=_file_num){
+			return(false);
+		}
+		CD_File(_current_file_num);
+		_event.Init(root_file_vec[_current_file_num].Nevent());
+	}
+	else{
+		_event.Get_Event(num);
+	}
+	return(true);
+};
 

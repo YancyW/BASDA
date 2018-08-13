@@ -120,7 +120,7 @@ void Make_Complete_Table_Pre(CDraw &para){
 			para.path.Create_Folder();
 
 			AFile file_name;
-			get_file_name(para,file_name);
+			file_name.get_file_name(para);
 
 			para.scenario.default_scenario.lumi = lumi * para.scenario.Run_Ratio(i,j);
 			Print_Item(sig_file,"$"+para.scenario.Run_Ratio_Marker(i,j)+"$ significance is:  ",1);

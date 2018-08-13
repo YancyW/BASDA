@@ -24,23 +24,21 @@
 
 #include "Lib/MessageFormat.h"
 #include "Class/DrawClass.h"
-#include "AnalyseClass/AnalyseClass_Single.h"
 
 
 class ARoot_File_Single{
 	private:
 		AVariable* _var; 
-		float*     _in_weight;
-		double*    _in_weight_d;
-		long int*  _in_weight_i;
 		float      _xsection;
 		long int   _nevent;
+		std::string _file_name;
+		std::string _tree_name;
 	public:
 		TFile* file;
 		TTree* tree;
 
-		ARoot_File_Single(std::string input_file, std::string head_name);
-		ARoot_File_Single(std::string input_file, std::string head_name,float input_xsec);
+		ARoot_File_Single(std::string input_file, std::string tree_name);
+		ARoot_File_Single(std::string input_file, std::string tree_name,float input_xsec);
 		~ARoot_File_Single();
 
 		void Delete();
@@ -49,13 +47,11 @@ class ARoot_File_Single{
 		 * Init 
 		 *****************************************************************************************/
 
-		void Read(std::string input_file, std::string head_name);
+		void Read(std::string input_file, std::string tree_name);
 
 		void Init_Xsection(float xsection);
 
-		void Init_Var(AVariable &input_var); 
-
-		void Init_Weight(Analyse_Single_File &input_weight); 
+		void Init_Var(AVariable* input_var); 
 
 		/*****************************************************************************************
 		 * Register variabble 
@@ -72,31 +68,37 @@ class ARoot_File_Single{
 
 		void Get_Entry(int event);
 
-		float Get_Xsection();
-
 		/*****************************************************************************************
 		 * Return private value
 		 *****************************************************************************************/
 
-		long int Nevent();
+		AVariable*  Var_Ptr();
+		float       Xsection();
+		long int    Nevent();
+		std::string File_Name();
+		std::string Tree_Name();
 
 };
 
 
 class ARoot_File{
 	private:
+		AVariable*                          _var; 
 		int                                 _file_num;
 		int                                 _current_file_num;
-		std::vector<float>                  _in_weight; 
 		CEvent                              _event;
 		CScenario                           _scenario;
 	public:
 		std::vector<ARoot_File_Single>      root_file_vec;
 
-		ARoot_File(std::string input_file, std::string head_name);
+		/*****************************************************************************************
+		 * Contruction 
+		 *****************************************************************************************/
+
+		ARoot_File(std::string input_file, std::string tree_name);
 		//input file number is better for smaller than 4
-		ARoot_File(std::vector<std::string> input_file, std::vector<std::string> head_name);
-		ARoot_File(std::vector<std::string> input_file, std::string head_name);
+		ARoot_File(std::vector<std::string> input_file, std::vector<std::string> tree_name);
+		ARoot_File(std::vector<std::string> input_file, std::string tree_name);
 
 		void Delete();
 
@@ -104,49 +106,21 @@ class ARoot_File{
 		 * Init 
 		 *****************************************************************************************/
 
-		void Init_Weight();
-
 		void Init_Var(AVariable &input_var); 
 
-		void Init_Weight(Analyse_Single_File &input_weight); 
+		void Init_Para(CDraw& para); 
 
-		/*****************************************************************************************
-		 * Return ARoot_File_Single's value
-		 *****************************************************************************************/
-
-		long int Nevent(int polnum);
-
-		/*****************************************************************************************
-		 * Register Variable
-		 *****************************************************************************************/
-
-		void Register_Var(); 
-
-		/*****************************************************************************************
-		 * Get key value 
-		 *****************************************************************************************/
-
-		void Get_Para(CDraw& para); 
-
-		bool Get_Event(long int &num);
-		
-		void Get_Entry(long int event);
-		
-		float Get_Weight();
-
-		
-		
-		/*****************************************************************************************
-		 * Return private member value --- _file_num
-		 *****************************************************************************************/
-
-		void CD_File(int filenum);
-
-		int File_Num();
+		void Init_Event();
 		
 		/*****************************************************************************************
 		 * Return private member value --- _event
 		 *****************************************************************************************/
+		AVariable* Var_Ptr();
+
+		int File_Num();
+
+		int Current_File_Num();
+
 		long long int Event();
 
 		long long int Total_Event();
@@ -154,5 +128,32 @@ class ARoot_File{
 		Long64_t Begin_Event();
 
 		Long64_t End_Event();
+
+		long int Nevent(int polnum);
+
+		CScenario Scenario();
+
+		/*****************************************************************************************
+		 * Register Variable
+		 *****************************************************************************************/
+
+		void CD_File(int filenum);
+
+		void Register_Var(); 
+
+		/*****************************************************************************************
+		 * Get key value 
+		 *****************************************************************************************/
+
+		void Get_Entry(long int event);
+		
+		bool Get_Event(long int &num);
+		
+		
+		
+		/*****************************************************************************************
+		 * Return private member value --- _file_num
+		 *****************************************************************************************/
+
 };
 #endif

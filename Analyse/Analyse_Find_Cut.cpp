@@ -4,7 +4,7 @@ void Analyse_Find_Cut(CDraw &para){
 
 	AFile file_name;
 
-	get_file_name(para,file_name);
+	file_name.get_file_name(para);
 
 	std::vector<std::string> ana_out_name;
 	for(int i=0;i<file_name.Output_Num();i++){

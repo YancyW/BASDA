@@ -9,6 +9,7 @@
 #include "Analyse/Make_Table.h"
 class AFile_Name{
 	private:
+		std::string                 _output_lable ;
 	public:
 		std::string                 name      ;
 		std::string                 latex     ;
@@ -21,6 +22,12 @@ class AFile_Name{
 		std::string                 CUT_file  ;
 		std::string                 ana_data  ;
 		std::string                 ana_Unpol ;
+
+		AFile_Name(){
+			Init();
+		}
+
+		void Init();
 
 		void Clear(){
 			name      = ""    ;
@@ -35,6 +42,14 @@ class AFile_Name{
 		int Num(){
 			return(basic_file.size());
 		}
+
+		void Set_OutputLable(std::string file_type);
+
+		std::string Output_RootFile();
+
+		std::string Output_DataFile();
+
+		void Print();
 };
 
 class AFile{
@@ -69,13 +84,16 @@ class AFile{
 		}
 
 		void Clear();
+		void Print();
+		std::string  change_name(std::string arg_string);
+		void get_file_name(CDraw &para);
+
 };
 
 
+std::ostream & operator<<(std::ostream & ostr, AFile_Name &file_name);
 std::ostream & operator<<(std::ostream & ostr, AFile &file_name);
 
-std::string change_name(std::string arg_string);
-void get_file_name(CDraw &para, AFile &file_name);
 #endif
 
 
