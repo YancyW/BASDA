@@ -4,14 +4,14 @@ CXX=g++
 FLAGS=-std=c++14 -g 
 #-Wall
 
-RootPath=/home/yancy/Software/executable/root/build
-YAMLPath=/home/yancy/Software/lib/yaml-cpp/
+RootPath=/home/ywang/Software/executable/root
+YAMLPath=/home/ywang/Software/lib/yaml-cpp/
 
 INCLUDE = -I. -I..  -I$(RootPath)/include  \
 		  -I${YAMLPath}/include
 
 LIBS =  -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui ${YAMLPath}/libyaml-cpp.a 
-ROOTLIBS = -L/home/yancy/Software/executable/root/build/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic -lTreePlayer
+ROOTLIBS = -L/home/ywang/Software/executable/root/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic -lTreePlayer
 
 SRCS = \
 $(TARGET).cpp \
