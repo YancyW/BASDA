@@ -26,3 +26,5 @@ All operation can be done by only change the input config file.
 - 2018/04/04: v0.05
     - support double and integer input 
     - split setting for MVA into config file
+- 2018/12/26: v0.06
+    - reload after laptop broken..
