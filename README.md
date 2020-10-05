@@ -58,3 +58,5 @@ All operation can be done by only change the input config file.
     - further generallize more setting options.
     - put many setting (e.g. MVA, plot ...) into config file.
     - split more branch for development.
+- 2020/10/05: v0.07
+    - code has been tested in 2HDM/JEP/CNN/ExtraScalar paper 

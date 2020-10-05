@@ -74,7 +74,7 @@ float Make_Complete_Table(CDraw &para, float lumi, std::vector<std::string> yaml
 
 	ASort_List data;
 	Print_Complete_Channel(para,lumi,out_file,fileList,data);
-	Print_Complete_Sort   (para,lumi,out_file,fileList,data);
+	Print_Complete_Sort   (para,out_file,data);
 	float significance = data.Significance();
 	final_cut = data.Data_Final();
 	return(significance);
@@ -95,8 +95,13 @@ void Make_Complete_Table_Pre(CDraw &para){
 	std::ofstream sig_file;
 	std::string combined_folder = para.default_path.output_file+"/"+para.flow.signal_property+"/data_combine_"+para.flow.signal_property+".dat";
 	ShowMessage(2,"combined significance is in ",combined_folder);
-	Create_File_Folder(combined_folder);
-	sig_file.open(combined_folder);
+	if(!Is_File_Exist(combined_folder)){
+		Create_File_Folder(combined_folder);
+		sig_file.open(combined_folder);
+	}
+	else{
+		sig_file.open(combined_folder.c_str(), std::ios::out | std::ios::app  );
+	}
 
 	std::vector<std::vector<float> >final_cut;
 	final_cut.resize(para.scenario.Run_Ratio_Vec().size());
@@ -146,6 +151,7 @@ void Make_Complete_Table_Pre(CDraw &para){
 			index++;
 		}
 	}
+	para.path = para.default_path ;
 	Print_Item_End(sig_file);
 
 	Print_Complete_Combine(para, sig_file, final_cut);

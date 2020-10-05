@@ -12,4 +12,11 @@
 
 float Get_Significance(float sig, float bkg);
 
+float Get_S_over_B(float sig, float bkg);
+
+float Get_Efficiency(float current, float origin);
+
+float Calc_Round(float Value, int SignificantDigits);
+
+float Calc_Round_Decimal(float Value, int SignificantDigits);
 #endif

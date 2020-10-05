@@ -393,7 +393,7 @@ void Analyse_Summarize_Plot(CDraw &para, std::vector<std::string> &sig_name, AFi
 				}
 
 				if(i<para.signal_scan.property_num){
-					plot.Set_Line_Style(para,info,hvariable[i],i,i);
+					plot.Set_Line_Style(para,info,hvariable[i],i,i,info.norm_switch);
 					hvariable[i]->SetFillColor(_colornum[i]);
 					std::string legname=para.signal_scan.properties[i]+" GeV";
 					leg->AddEntry(hvariable[i],legname.c_str(),"l");

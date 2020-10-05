@@ -1,0 +1,13 @@
+# do not change the key name
+sort_num   : 4
+
+sub_sort_name : [sig, wtata, tt, ttll] 
+#sub_sort_num  : [1,   1,    3,  1  ] 
+sub_sort_num  : [1,   1,    1,  1  ] 
+# change below based on sub_sort names
+sig   : [HA]
+wtata : [l]
+#tt    : [ll,lj,jj]
+tt    : [ll]
+ttll  : [l]
+

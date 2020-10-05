@@ -1,0 +1,14 @@
+FILE_NUM          : 1
+FILE_0            : ./control_2hdm_bp2/xsection_a_bp2.dat
+
+CHANNEL_NUM       : 1
+FILE_DESCRIP_0    : all 
+#FILE_DESCRIP_0    : sig_{tj}^{HA} 
+#FILE_DESCRIP_1    : wtata_{l}^{l} 
+#FILE_DESCRIP_2    : tt_{l}^{l} 
+#FILE_DESCRIP_3    : tt_{sl}^{l} 
+#FILE_DESCRIP_4    : ttll_{l}^{l} 
+#FILE_DESCRIP_5    : ttll_{ta}^{l} 
+
+Root_Head_Name     : datatest
+Root_Head_MVA_Name : datatrain

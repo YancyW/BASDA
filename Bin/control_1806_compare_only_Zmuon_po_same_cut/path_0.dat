@@ -1,0 +1,23 @@
+PROCESS                 : zh
+
+OUTPUT_FOLDER    : '../../dust/Event_Analyse_nh_compare_only_Zmuon_po_same_cut'
+
+RECORD_FILE             : 'tmp/nh_0_compare_only_Zmuon_po_same_cut.dat' 
+OUTPUT_FILE             : 'data'
+EVENT_FILE              : 'results'
+SINGLE_PLOT             : 'plot'
+COMBINE_PLOT            : 'plot_compare'
+HORIZONTAL_SUMMARY_PLOT : 'plot_summary'
+
+DEBUG_FILE              : './control_1806_compare_only_Zmuon_po_same_cut/debug.dat'
+ANALYSIS_FILE           : './control_1806_compare_only_Zmuon_po_same_cut/Event.dat'
+FLOW_FILE               : './control_1806_compare_only_Zmuon_po_same_cut/flow_0.dat'
+PLOT_FILE               : './control_1806_compare_only_Zmuon_po_same_cut/Plot.dat'
+INPUT_FILE              : './control_1806_compare_only_Zmuon_po_same_cut/file.dat'
+
+CUT_FILE                : './control_1806_compare_only_Zmuon_po_same_cut/Cut/Cut_nh.dat'
+VAR_FILE                : './control_1806_compare_only_Zmuon_po_same_cut/Var/Var_nh_10.dat' 
+SENSITIVITY_FILE        : './control_1806_compare_only_Zmuon_po_same_cut/Sensitivity.dat'
+MASS_SCAN_FILE          : './control_1806_compare_only_Zmuon_po_same_cut/Mass_Scan.dat'
+BKG_SORT_FILE           : './control_1806_compare_only_Zmuon_po_same_cut/Bkg_Sort_10.dat'
+SCENARIO_FILE           : './control_1806_compare_only_Zmuon_po_same_cut/Scenario.dat'

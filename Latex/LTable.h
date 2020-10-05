@@ -10,22 +10,22 @@
 #include "Lib/MessageFormat.h"
 
 template<typename TPrint1>
-void Print_Table_First_Column(std::ostream& out, TPrint1 content, bool Is_Fomular = false){
+void Print_Table_First_Column(std::ostream& out, TPrint1 content, bool Is_Fomular = false, int width=20){
 	if( Is_Fomular ){
-		out<< " $" << content << " $ & " ;
+		out<< " $" << std::setw(width) << content << " $ & " ;
 	}
 	else{
-		out<< content << " & " ;
+		out<< std::setw(width+4) << content << " & " ;
 	}
 }
 
 template<typename TPrint1>
-void Print_Table_Last_Column (std::ostream& out, TPrint1 content, bool Is_Fomular = false ){
+void Print_Table_Last_Column (std::ostream& out, TPrint1 content, bool Is_Fomular = false , int width=20 ){
 	if( Is_Fomular ){
-		out<< " $" << content << "$ \\\\ " <<std::endl;
+		out<< " $" << std::setw(width) << content << "$ \\\\ " <<std::endl;
 	}
 	else{
-		out<< content << "\\\\ " <<std::endl;
+		out<< std::setw(width+4) << content << "\\\\ " <<std::endl;
 	}
 }
 

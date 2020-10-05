@@ -189,6 +189,7 @@ class Analyse_Multi_File : public APlot{
 
 		void Draw_Single            ( CDraw& para,AFile& file_name ,std::string hist_label                   ) ;
 		void Draw_Sort              ( CDraw& para,AFile& file_name ,std::string hist_label                   ) ;
+		void Draw_All_BKG           ( CDraw& para,AFile& file_name ,std::string hist_label                   ) ;
 
 		void Fill_Figure            ( );
 

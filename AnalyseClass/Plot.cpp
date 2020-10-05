@@ -56,7 +56,7 @@ bool APlot::Set_Line_Style_Test(CDraw& para, Avariable &info, TH1F * histo, Cplo
 	return(true);
 }
 
-bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color, int linestyle){
+bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color, int linestyle,bool norm_switch){
 	if(info.with_color_or_line==-1){
 		if(para.plot.setting.with_color_or_line == 1){
 			histo->SetLineColor(color+1);
@@ -83,13 +83,15 @@ bool APlot::Set_Line_Style(CDraw& para, Avariable &info, TH1F * histo, int color
 
 	}
 	if(info.line_width==-1){
+		std::cout<<"plot setting line width" << para.plot.setting.line_width << std::endl;
 		histo->SetLineWidth(para.plot.setting.line_width);
 	}
 	else{
 		histo->SetLineWidth(info.line_width);
 	}
 
-	if(info.norm_switch){
+	ShowMessage(2,"name in line plot",info.title_name,"norm",norm_switch);
+	if(norm_switch){
 		if(histo->GetEntries()!=0){
 			float norm=1./histo->Integral();
 			if(norm>0){histo->Scale(norm);}
@@ -117,12 +119,12 @@ void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualP
 		ss->SetMinimum(info.log_min);
 	}
 	std::string y_name;
+	ShowMessage(2,"name in stack plot",info.title_name,"norm",info.norm_switch);
 	if(info.norm_switch){
 		y_name = "Normalized "+info.y_name;
 		if(hist_label=="after"||hist_label=="final"){
 			TH1F* last_hist=(TH1F*) (ss->GetHists()->Last());
 			float sig_max=last_hist->GetMaximum();
-			std::cout<<"max y"<< sig_max << std::endl;
 			ss->GetHistogram()->SetMaximum(sig_max);
 		}
 	}
@@ -137,28 +139,58 @@ void APlot::Set_Stack_Style(CDraw& para, Avariable &info, THStack* ss, TVirtualP
 
 
 void APlot::Print_Plot(CDraw &para, Avariable& info, std::string name){
+	std::cout <<"plot type " <<  para.plot.drawing.plot_type << std::endl;
+	std::cout <<"plot name " <<  name << std::endl;
 	if(para.plot.drawing.plot_type == ".pdf"){
-		TPDF pdf(name.c_str(),-111);
 		info.c->Update();
-        //DrawLogo();
+		std::string pdfname=name+".pdf";
+		TPDF pdf(pdfname.c_str(),-111);
 		pdf.Close();
 	}
 	else if(para.plot.drawing.plot_type == ".eps"){
-		TPostScript ps(name.c_str(),113);
-	    ps.Range(16,24);
-        //DrawLogo();
 		info.c->Update();
+		std::string psname=name+".eps";
+		TPostScript ps(psname.c_str(),113);
+	    ps.Range(16,24);
 		ps.Close();
 	}
-	else{
-        //DrawLogo();
+	else if(para.plot.drawing.plot_type == ".C"){
+		info.c->Update();
+		std::string macroname=name+".C";
+		info.c->SaveSource(macroname.c_str());
+	}
+	else if(para.plot.drawing.plot_type == ".png"){
+		std::cout <<"plot here"  << std::endl;
 		info.c->Update();
 		TImage *img = TImage::Create();
 		img->FromPad(info.c);
-		img->WriteImage(name.c_str());
+		std::string imgname=name+".png";
+		img->WriteImage(imgname.c_str());
+		std::cout <<"plot end "  << std::endl;
 	}
+	else if(para.plot.drawing.plot_type == ".all"){
+		info.c->Update();
+		std::string pdfname=name+".pdf";
+		TPDF pdf(pdfname.c_str(),-111);
+		pdf.Close();
 
+		std::string macroname=name+".C";
+		info.c->SaveSource(macroname.c_str());
+
+		TImage *img = TImage::Create();
+		img->FromPad(info.c);
+		std::string imgname=name+".png";
+		img->WriteImage(imgname.c_str());
+	}
+	else{
+		info.c->Update();
+		TImage *img = TImage::Create();
+		img->FromPad(info.c);
+		std::string imgname=name+".png";
+		img->WriteImage(imgname.c_str());
+	}
 }
+
 
 bool APlot::Get_Input_File(CDraw &para, Avariable &info, std::vector<std::string> input_sig, std::vector<std::string> input_bkg){
 
@@ -252,7 +284,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 		}
 		ShowMessage(3,"MC number, simulated number",nEvent,weight_sig);
 		info.leg->AddEntry(_sig_histo[i],"sig","l");
-		Set_Line_Style(para,info,_sig_histo[i],i,i);
+		Set_Line_Style(para,info,_sig_histo[i],i,i,info.norm_switch);
 		ss->Add(_sig_histo[i]);
 	}
 
@@ -281,7 +313,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 ////	//std::string bkg_leg_name=dir.stem().string();
 ////	std::string bkg_leg_name="";
 		info.leg->AddEntry(_bkg_histo[i],bkg_leg_name.c_str(),"l");
-		Set_Line_Style(para,info,_bkg_histo[i],i+_bkg_num,i+_bkg_num);
+		Set_Line_Style(para,info,_bkg_histo[i],i+_bkg_num,i+_bkg_num,info.norm_switch);
 		ss->Add(_bkg_histo[i]);
 	}
 
@@ -310,8 +342,8 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 	info.leg->AddEntry(_sig_histo_total,"sig","l");
 	info.leg->AddEntry(_bkg_histo_total,"bkg","l");
 
-	Set_Line_Style(para,info,_sig_histo_total,0,0);
-	Set_Line_Style(para,info,_bkg_histo_total,1,1);
+	Set_Line_Style(para,info,_sig_histo_total,0,0,info.norm_switch);
+	Set_Line_Style(para,info,_bkg_histo_total,1,1,info.norm_switch);
 	ss_total->Add(_sig_histo_total);
 	ss_total->Add(_bkg_histo_total);
 

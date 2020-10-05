@@ -79,14 +79,14 @@ class Avariable{
 		std::vector<int> label_2d;
 
 		Avariable(){
-			minimum      =-100000.1;
-			maximum      = 100000.1;
-			minimum_d    =-100000.1;
-			maximum_d    = 100000.1;
-			minimum_i    =-100000;
-			maximum_i    = 100000;
+			minimum      =-100000.1 ;
+			maximum      = 100000.1 ;
+			minimum_d    =-100000.1 ;
+			maximum_d    = 100000.1 ;
+			minimum_i    =-100000   ;
+			maximum_i    = 100000   ;
 
-			variable_type= "F"   ;
+			variable_type= "F"      ;
 			setting_type = "default";
 
 			variable     = minimum  ;
@@ -107,33 +107,33 @@ class Avariable{
 			cut_min_pre_i= minimum_i; 
 			cut_max_pre_i= maximum_i; 
 
-		    c_name       = ""    ;
-		    c_width      = 1000.0   ;
-		    c_height     = 700.0   ;
-		    leg_left     = 0.6   ;
-		    leg_up       = 0.6   ;
-		    leg_right    = 0.9   ;
-		    leg_down     = 0.9   ;
-		    leg_header   = ""    ;
-		    title_name   = ""    ;
-		    latex_name   = ""    ;
-		    x_name       = ""    ;
-		    x_bin        = 1     ;
-		    x_min        = 0.0   ;
-		    x_max        = 1.0   ;
-		    y_name       = ""    ;
-		    y_bin        = 1     ;
-		    y_min        = 0.0   ;
-		    y_max        = 1.0   ;
-		    cut_switch   = false ;
-		    plot_switch  = false ;
-		    log_switch   = false ;
-			log_min      = 0.1   ;
-		    norm_switch  = false ;
-		    MVA_switch   = false ;
-			show_title   = false ;
-			with_color_or_line = -1;
-			line_width  = -1;
+		    c_name       = "canvas" ;
+		    c_width      = 800.0      ;
+		    c_height     = 600.0      ;
+		    leg_left     = 0.0      ;
+		    leg_up       = 0.0      ;
+		    leg_right    = 0.0      ;
+		    leg_down     = 0.0      ;
+		    leg_header   = ""       ;
+		    title_name   = ""       ;
+		    latex_name   = ""       ;
+		    x_name       = ""       ;
+		    x_bin        = 0        ;
+		    x_min        = 0.0      ;
+		    x_max        = 0.0      ;
+		    y_name       = ""       ;
+		    y_bin        = 0        ;
+		    y_min        = 0.0      ;
+		    y_max        = 0.0      ;
+		    cut_switch   = false    ;
+		    plot_switch  = false    ;
+		    log_switch   = false    ;
+			log_min      = 0.1      ;
+		    norm_switch  = false    ;
+		    MVA_switch   = false    ;
+			show_title   = false    ;
+			with_color_or_line = -1 ;
+			line_width  = -1        ;
 		}
 
 		void Copy(Avariable);
@@ -193,6 +193,8 @@ class Avariable{
 		float Maximum(){
 			return(maximum);
 		}
+
+		void Print(int i=2,bool has_title=false);
 };
 
 class Avariable_vec{

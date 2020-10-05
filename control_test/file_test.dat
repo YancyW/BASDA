@@ -1,8 +1,0 @@
-FILE_NUM          : 1
-FILE_0            : ./control_test/xection_a.dat
-
-CHANNEL_NUM       : 1
-FILE_DESCRIP_0    : s_{sj}^{l} 
-
-Root_Head_Name     : dataTree
-Root_Head_MVA_Name : datatrain

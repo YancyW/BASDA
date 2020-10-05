@@ -87,7 +87,7 @@ void Analyse_Complete_Pol(CDraw &para, bool MVA_train_switch,std::string &MVA_da
 				ana_out_name.push_back(file_name.output[i].ana_data);
 			}
 
-			float sig=Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table,true);
+			float sig=Make_Table(para,0,ana_out_name,file_name.output_table);
 
 			RecordMessage(sig_file,2,"significance is", sig);
 
@@ -144,7 +144,8 @@ void Analyse_Complete_Direct_Cut(CDraw &para){
     		for(int i=0;i<file_name.Output_Num();i++){
     			ana_out_name.push_back(file_name.output[i].ana_data);
     		}
-			float sig=Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table,true);
+			//float sig=Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table);
+			float sig=Make_Table(para,0,ana_out_name,file_name.output_table);
 
     		RecordMessage(sig_file,2,"significance is", sig);
 

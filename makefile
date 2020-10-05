@@ -4,14 +4,18 @@ CXX=g++
 FLAGS=-std=c++14 -g 
 #-Wall
 
-RootPath=/home/yancy/Software/executable/root/build
-YAMLPath=/home/yancy/Software/lib/yaml-cpp/
+#RootPath=/home/ywang/Software/executable/root/
+#YAMLPath=/home/ywang/Software/lib/yaml-cpp/
+#JPEGPath=/home/ywang/Software/executable/anaconda3/pkgs/jpeg-8d-2/lib/
+RootPath=${HOME}/Software/executable/root/
+YAMLPath=${HOME}/Software/lib/yaml-cpp/
+JPEGPath=${HOME}/Software/executable/anaconda3/pkgs/jpeg-8d-2/lib/
 
-INCLUDE = -I. -I..  -I$(RootPath)/include  \
-		  -I${YAMLPath}/include
+INCLUDE = -I. -I..  -I$(RootPath)/include  -I${YAMLPath}/include
+
 
 LIBS =  -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui ${YAMLPath}/libyaml-cpp.a 
-ROOTLIBS = -L/home/yancy/Software/executable/root/build/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic -lTreePlayer
+ROOTLIBS = -L${RootPath}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic -lTreePlayer
 
 SRCS = \
 $(TARGET).cpp \

@@ -569,8 +569,8 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 	for(int j=0;j<_var_num;j++){
 		Avariable info=var.var[j];
 		ShowMessage(3,"generate plot for variable",info.title_name);
+		info.Print();
 		if(info.plot_switch){
-			info.leg->Clear();
 			std::string leg_title = info.latex_name;
 			info.leg->SetHeader(leg_title.c_str(),"l");
 			std::string cname=info.c_name+"_"+Int_to_String(j);
@@ -578,6 +578,9 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 
 			gPad->SetGrid();
 			std::vector<std::string> stack_title= Set_Stack_Title(para,info.title_name+"_"+hist_label);
+			for (int i=0;i<stack_title.size();i++){
+				std::cout << "stack name:  " << stack_title[i]<<std::endl;
+			}
 			THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );
 
 			for(int nf=0;nf<file_name.Output_Num()+1;nf++){
@@ -591,7 +594,7 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 				}
 				TH1F* hist_tmp = (TH1F*) file[i].figure[j].Hist(hist_label)->Clone();
 				info.leg->AddEntry(hist_tmp,file_name.output[i].name.c_str(),"l");
-				bool set_line=Set_Line_Style(para,info,hist_tmp,i,i);
+				Set_Line_Style(para,info,hist_tmp,i,i,false);
 				ss->Add(hist_tmp);
 
 			}
@@ -610,10 +613,10 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 
 
 				//print to png
-				Print_Plot(para, info, file_name.folder[1]+info.title_name+"_"+hist_label+".png");
-				delete info.c;
-				info.leg->Clear();
+				Print_Plot(para, info, file_name.folder[1]+info.title_name+"_"+hist_label);
 			}
+			info.leg->Clear();
+			delete info.c;
 		}
 	}
 }
@@ -640,29 +643,25 @@ void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string his
 			}
 
 			int i=0;
-			std::cout << "sort: " << para.bkg_sort.Num() << std::endl;
 			for(int k=0;k<para.bkg_sort.Num();k++){
-				std::cout << "sub sort: " << para.bkg_sort.sort[k].Sub_Num() << std::endl;
 				for(int l=0;l<para.bkg_sort.sort[k].Sub_Num();l++){
 					if(k==0 && l==0 && (k!=(para.bkg_sort.Num()-1) || l!=(para.bkg_sort.sort[k].Sub_Num()-1))){i++;continue;}
 					double maxi = sort[k].second[l].figure[j].Hist(hist_label)->GetEntries();
-					std::cout << "sort: " <<para.bkg_sort.sort[k].Legend(l)<< " " << maxi <<std::endl;
 					if(maxi>0){
 						std::string sort_name = para.bkg_sort.sort[k].Legend(l); 
 						TH1F* hist_tmp = (TH1F*) sort[k].second[l].figure[j].Hist(hist_label)->Clone();
 						info.leg->AddEntry(hist_tmp,sort_name.c_str(),"l");
-						Set_Line_Style(para,info,hist_tmp,i,i);
+						Set_Line_Style(para,info,hist_tmp,i,i,info.norm_switch);
 						ss->Add(hist_tmp);
 						i++;
 					}
 					if(k==para.bkg_sort.Num()-1 && l==para.bkg_sort.sort[k].Sub_Num()-1){
 						double maxi0 = sort[0].second[0].figure[j].Hist(hist_label)->GetEntries();
-						std::cout << "sort: " <<para.bkg_sort.sort[0].Legend(0)<< std::endl;
 						if(maxi0>0){
 							std::string sort_name = para.bkg_sort.sort[0].Legend(0); 
 							TH1F* hist_tmp = (TH1F*) sort[0].second[0].figure[j].Hist(hist_label)->Clone();
 							info.leg->AddEntry(hist_tmp,sort_name.c_str(),"l");
-							Set_Line_Style(para,info,hist_tmp,0,0);
+							Set_Line_Style(para,info,hist_tmp,0,0,info.norm_switch);
 							ss->Add(hist_tmp);
 						}
 						i++;
@@ -685,9 +684,61 @@ void Analyse_Multi_File::Draw_Sort(CDraw& para, AFile& file_name,std::string his
 
 
 				//print to png
-				Print_Plot(para, info, file_name.folder[2]+info.title_name+"_"+hist_label+".png");
+				Print_Plot(para, info, file_name.folder[2]+info.title_name+"_"+hist_label);
 			}
 			delete info.c;
+			info.leg->Clear();
+		}
+	}
+}
+
+void Analyse_Multi_File::Draw_All_BKG(CDraw& para, AFile& file_name,std::string hist_label){
+	ShowMessage(2,"generate combined plot for sorted "+hist_label+" results!");
+	for(int j=0;j<_var_num;j++){
+		Avariable info=var.var[j];
+		ShowMessage(3,"generate plot for variable",info.title_name);
+		if(info.plot_switch){
+			info.leg->Clear();
+			std::string leg_header = info.latex_name;
+			info.leg->SetHeader(leg_header.c_str(),"l");
+			std::string cname=info.c_name+"_"+Int_to_String(j);
+			info.c=new TCanvas(cname.c_str()," ",info.c_width,info.c_height);
+
+			gPad->SetGrid();
+			std::vector<std::string> stack_title= Set_Stack_Title(para,info.title_name+"_allbkg_"+hist_label);
+	        THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );
+
+	        TH1F* hist_sig= (TH1F*) file[0].figure[j].Hist(hist_label)->Clone();
+			Set_Line_Style(para,info,hist_sig,0,0,info.norm_switch);
+			info.leg->AddEntry(hist_sig,"sig","l");
+	        ss->Add(hist_sig);
+
+	        TH1F* hist_bkg=(TH1F*) file[1].figure[j].Hist(hist_label)->Clone();
+	        for(unsigned int i=2;i<file.size()-1;i++){
+	          TH1F* hist_tmp= (TH1F*) file[i].figure[j].Hist(hist_label)->Clone();
+	          hist_bkg->Add(hist_tmp);
+	        }
+			Set_Line_Style(para,info,hist_bkg,1,1,info.norm_switch);
+			info.leg->AddEntry(hist_bkg,"bkg","l");
+            ss->Add(hist_bkg);
+
+	        if(ss->GetNhists()>0){
+	        	_root_file->cd();
+	        	ss->Draw("HIST,nostack");
+	        	ss->Write();
+	        	Set_Stack_Style(para,info,ss,gPad,hist_label);
+
+	        	std::string leg_name = stack_title[0]+"_legend";
+	        	info.leg->SetName(leg_name.c_str());
+	        	info.leg->Draw();
+	        	info.leg->Write();
+
+	        	_list->Add(ss);
+
+	        	//print to png
+	        	Print_Plot(para, info, file_name.folder[9]+info.title_name+"_"+hist_label);
+	        }
+	        delete info.c;
 			info.leg->Clear();
 		}
 	}
@@ -698,7 +749,6 @@ void Analyse_Multi_File::Fill_Figure(){
 	file[_file_num]._root_file->cd();
 	TObjLink *lnk = _list->FirstLink();
 	while (lnk) {
-		std::cout <<"list name: "<< lnk->GetObject()->GetName()<<std::endl;
 		lnk = lnk->Next();
 	}
 
@@ -714,43 +764,58 @@ void Analyse_Multi_File::Fill_Figure(){
 void Analyse_Multi_File::Draw_Figure(CDraw& para,AFile& file_name){
 	if(_plot_switch){
 		ShowMessage(2,"generate plot!");
-		if(!para.flow.record_output){
-			freopen(para.path.record_file.c_str() ,"a",stdout);
-		}
+    	if(!para.flow.record_output){
+    		freopen(para.path.record_file.c_str() ,"a",stdout);
+    	}
 		ShowMessage(2,"The plots will be stored in ",file_name.folder[1]);
 
-		if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
-			Draw_Single(para, file_name,"origin");
-		}
-		if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
-			Draw_Single(para, file_name,"before");
-		}
-		if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
-			Draw_Single(para, file_name,"after" );
-		}
-		if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
-			Draw_Single(para, file_name,"final" );
-		}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
+    		Draw_Single(para, file_name,"origin");
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
+    		Draw_Single(para, file_name,"before");
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
+    		Draw_Single(para, file_name,"after" );
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
+    		Draw_Single(para, file_name,"final" );
+    	}
 
-		ShowMessage(2,"generate combined plot!");
-		ShowMessage(2,"The plots will be stored in ",file_name.folder[2]);
-		if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
-			Draw_Sort(para, file_name,"origin");
-		}
-		if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
-			Draw_Sort(para, file_name,"before");
-		}
-		if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
-			Draw_Sort(para, file_name,"after" );
-		}
-		if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
-			Draw_Sort(para, file_name,"final" );
-		}
+    	ShowMessage(2,"generate combined plot!");
+    	ShowMessage(2,"The plots will be stored in ",file_name.folder[2]);
+    	if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
+    		Draw_Sort(para, file_name,"origin");
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
+    		Draw_Sort(para, file_name,"before");
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
+    		Draw_Sort(para, file_name,"after" );
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
+    		Draw_Sort(para, file_name,"final" );
+    	}
 
-		Fill_Figure();
-		if(!para.flow.record_output){
-			fclose(stdout);
-			freopen("/dev/tty","w",stdout);
-		}
+    	ShowMessage(2,"generate all bkg_combined plot!");
+    	ShowMessage(2,"The plots will be stored in ",file_name.folder.size(),file_name.folder[9]);
+    	if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
+    		Draw_All_BKG(para, file_name,"origin");
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
+    		Draw_All_BKG(para, file_name,"before");
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
+    		Draw_All_BKG(para, file_name,"after" );
+    	}
+    	if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
+    		Draw_All_BKG(para, file_name,"final" );
+    	}
+
+    	Fill_Figure();
+    	if(!para.flow.record_output){
+    		fclose(stdout);
+    		freopen("/dev/tty","w",stdout);
+    	}
 	}
 }

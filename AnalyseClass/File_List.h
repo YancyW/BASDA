@@ -4,16 +4,67 @@
 #include <string>
 #include <vector>
 #include "yaml-cpp/yaml.h"
-#include <iostream>
+#include "Lib/MessageFormat.h"
+
+//need to rewrite these class into general case
+//AFile_Data                  --- the most basic element block, a 1-1 array
+//Pair_File (ASub_Sort_Type)  --- 1-level mapping,                                                   std::pair< std::string, AFile_Data>       ;
+//AFile_List (ASort_Type)     --- 1-level extension,                                    std::vector< std::pair< std::string, AFile_Data> >     ;
+//ASort_Type                  --- 2-level mapping,                std::pair<std::string,std::vector< std::pair< std::string, AFile_Data> > >   ;
+//ASort_Type_List             --- 2-level extension, std::vector< std::pair<std::string,std::vector< std::pair< std::string, AFile_Data> > > > ;
 
 class AFile_Data{
 	public:
 		std::vector< std::pair<std::string,float> > data;
 		std::vector< std::pair<std::string,float> > event;
 		float weight;
+		float data_pos;
 
 		AFile_Data(){
 			weight=0;
+		}
+
+		int Data_Num(){
+			return(data.size());
+		}
+
+		std::string Data_Name(int i){
+			return(data[i].first);
+		}
+
+		float Data_Content(int i){
+			return(data[i].second);
+		}
+
+		void Set_Data_Pos(std::string input_name){
+			data_pos=-1;
+			for(unsigned int i=0;i<data.size();i++){
+				if(data[i].first==input_name){
+					data_pos =i;
+					break;
+				}
+			}
+		}
+
+		int Data_Pos(){
+			return(data_pos);
+		}
+
+
+		float Data_Content(std::string input_name){
+			int pos=-1;
+			for(unsigned int i=0;i<data.size();i++){
+				if(data[i].first==input_name){
+					pos =i;
+					break;
+				}
+			}
+			if(pos!=-1){
+				return(data[pos].second);
+			}
+			else{
+				return(0);
+			}
 		}
 
 		void Input_Element(std::string cut_name, float val);
@@ -38,6 +89,8 @@ class AFile_Data{
 				return(P1);
 			}
 		}
+
+		void Print(int i=2, bool has_title=false);
 };
 
 class AFile_List{
@@ -91,6 +144,8 @@ class AFile_List{
 		}
 
 		float Data_Bkg(int k);
+
+		void Print(int i=2, bool has_title=false);
 };
 
 typedef std::pair<std::string,AFile_Data> Pair_File;

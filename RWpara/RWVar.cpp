@@ -18,11 +18,13 @@ void AVariable::Read_Var(CPath &path){
 		if(k>0){
 			if(this->var[k].setting_type=="previous"){
 				this->var[k].Copy(this->var[k-1]);
+				this->var[k]=it->second.as<Avariable>();
 			}
 			else{
 				for(int newk=0;newk<k;newk++){
 					if(this->var[k].setting_type==this->var[newk].title_name){
 						this->var[k].Copy(this->var[newk]);
+						this->var[k]=it->second.as<Avariable>();
 						continue;
 					}
 				}

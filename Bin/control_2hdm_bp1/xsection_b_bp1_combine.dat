@@ -1,0 +1,19 @@
+root_file_125:
+    sig_{tj}^{HA}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_sig_bp1.root  : 0.236 
+    bkg_{l}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_wtatajj.root  : 1.519 
+    bkg_{ll}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_tt_lep_lep.root  : 4.26 
+    bkg_{ltau}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_tt_lep_tau.root  : 1.358 
+    bkg_{tautau}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_tt_tau_tau.root  : 0.165
+    bkg_{lquark}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_tt_lep_quark.root  : 1.48 
+    bkg_{tauquark}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_tt_tau_quark.root  : 0.087 
+    bkg_{l}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_ttll.root  :  0.0724
+    bkg_{ta}^{1}:
+        /home/ywang/Code/Workplace/ARCH/Event_Draw_2hdm//events_b/2hdm_tjtata.root  :  0.02345

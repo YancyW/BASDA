@@ -1,0 +1,8 @@
+FILE_NUM          : 1
+FILE_0            : ./control_2hdm_bp3/xsection_c_bp3.dat
+
+CHANNEL_NUM       : 1
+FILE_DESCRIP_0    : all 
+
+Root_Head_Name     : datatest
+Root_Head_MVA_Name : datatrain

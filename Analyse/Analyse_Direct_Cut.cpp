@@ -14,7 +14,7 @@ void Analyse_Direct_Cut_Pre(CDraw &para){
 	for(int i=0;i<file_name.Output_Num();i++){
 		ana_out_name.push_back(file_name.output[i].ana_data);
 	}
-	float sig=Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table,true);
+	float sig=Make_Table(para,0,ana_out_name,file_name.output_table);
 
 	RecordMessage(sig_file,2,"significance is", sig);
 
@@ -39,7 +39,9 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 		if( para.flow.begin_object  == "Direct_Cut" ||
 			(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()>1) ||
 			para.flow.begin_object  == "Complete_Direct_Cut"||
-			para.flow.begin_object  == "Complete_Run"){
+			para.flow.begin_object  == "Complete_Run"||
+			para.flow.begin_object  == "Complete_Pol"
+            ){
 
 			in_file                .push_back(new TFile(file_name.output[j].MVA_file.c_str()));
 			in_file[j]->cd();
@@ -130,6 +132,8 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 					analyse.var.var[k].variable = static_cast<float> (analyse.var.var[k].variable_d);
 				}
 			}
+
+
 			analyse.Root_Init_Var    ( cnum );
 
 			analyse.Root_Endow_Weight( cnum ) ;
@@ -148,13 +152,6 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 
 			analyse.Root_Fill        ( cnum ) ;
 
-			ShowMessage(2,"isolation1", analyse.var.var[33].title_name, analyse.var.var[33].variable);
-			ShowMessage(2,"isolation2", analyse.var.var[34].title_name, analyse.var.var[34].variable);
-			ShowMessage(2,"isolation3", analyse.var.var[35].title_name, analyse.var.var[35].variable);
-			ShowMessage(2,"pdg1", analyse.var.var[36].title_name, analyse.var.var[36].variable);
-			ShowMessage(2,"pdg2", analyse.var.var[37].title_name, analyse.var.var[37].variable);
-			ShowMessage(2,"pdg3", analyse.var.var[38].title_name, analyse.var.var[38].variable);
-			ShowMessage(2,"event", analyse.var.var[39].title_name, analyse.var.var[39].variable);
 		}                
 
 		analyse.Record_Information(cnum,myfile,file_name.output[cnum].latex);

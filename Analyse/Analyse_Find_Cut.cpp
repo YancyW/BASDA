@@ -23,7 +23,7 @@ void Analyse_Find_Cut(CDraw &para){
 	for (float i1=-1;i1<=1;i1=i1+0.05){
             para.var.var[12].cut_min = i1;
 			Analyse_Direct_Cut(para,file_name);
-			sig_tmp=Make_Table(para,0,ana_out_name,file_name.output_table,true);
+			sig_tmp=Make_Table(para,0,ana_out_name,file_name.output_table);
 			if(sig_tmp>sig_max){
 				sig_max=sig_tmp;
 				final_i1 = i1;

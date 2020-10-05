@@ -174,6 +174,9 @@ void get_file_name(CDraw &para, AFile &file_name){
 	std::string single_plot_folder_name = para.path.single_plot+"/"+para.flow.signal_property+"/single_plot/";
 	Create_Folder(single_plot_folder_name);
 
+	std::string plot_combine_bkg_folder_name= para.path.combine_plot+"_bkg/"+para.flow.signal_property+"/";
+	Create_Folder(plot_combine_bkg_folder_name);
+
 	file_name.folder.push_back(data_folder_name);
 	file_name.folder.push_back(plot_folder_name);
 	file_name.folder.push_back(plot_combine_folder_name);
@@ -183,6 +186,7 @@ void get_file_name(CDraw &para, AFile &file_name){
 	file_name.folder.push_back(plot_horizontal_summary_folder_name);
 	file_name.folder.push_back(event_LIMIT_folder_name);
 	file_name.folder.push_back(single_plot_folder_name);
+	file_name.folder.push_back(plot_combine_bkg_folder_name);
 
 	ShowMessage(2);
 
