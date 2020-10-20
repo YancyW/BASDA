@@ -1,8 +1,8 @@
 #include "Fvector.h"
-bool Vec_Exist(std::vector<std::string>V1, std::string input){
+bool Vec_Exist(WVecstring V1, std::string input){
 	if(V1.size()==0){return(false);}
 
-	std::vector<std::string>::iterator ret;
+	WVecstring::iterator ret;
 	ret = std::find(V1.begin(), V1.end(), input);
 	if(ret == V1.end()){
 		return(false);
@@ -12,49 +12,152 @@ bool Vec_Exist(std::vector<std::string>V1, std::string input){
 	}
 }
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<bool> flo){
-	printf("\n"); 
-	for(unsigned int i=0;i<flo.size()-1;i++){
-        ostr<<flo[i]<<", ";
+bool Vec_Exist(WVecbool V1, bool input){
+	if(V1.size()==0){return(false);}
+
+	WVecbool::iterator ret;
+	ret = std::find(V1.begin(), V1.end(), input);
+	if(ret == V1.end()){
+		return(false);
 	}
-    ostr<<flo[flo.size()-1]<<std::endl;
+	else{
+		return(true);
+	}
+}
+bool Vec_Exist(WVecfloat V1, float input){
+	if(V1.size()==0){return(false);}
+
+	WVecfloat::iterator ret;
+	ret = std::find(V1.begin(), V1.end(), input);
+	if(ret == V1.end()){
+		return(false);
+	}
+	else{
+		return(true);
+	}
+}
+bool Vec_Exist(WVecdouble V1, double input){
+	if(V1.size()==0){return(false);}
+
+	WVecdouble::iterator ret;
+	ret = std::find(V1.begin(), V1.end(), input);
+	if(ret == V1.end()){
+		return(false);
+	}
+	else{
+		return(true);
+	}
+}
+bool Vec_Exist(WVecint V1, int input){
+	if(V1.size()==0){return(false);}
+
+	WVecint::iterator ret;
+	ret = std::find(V1.begin(), V1.end(), input);
+	if(ret == V1.end()){
+		return(false);
+	}
+	else{
+		return(true);
+	}
+}
+std::ostream & operator<< (std::ostream & ostr, const WVecbool &flo){
+	printf("\n"); 
+	ostr << "(";
+    std::copy(flo.begin(), flo.end(), std::ostream_iterator<bool> (ostr,", "));
+	ostr << ")";
 	return ostr;
 }
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<double> flo){
+std::ostream & operator<< (std::ostream & ostr, const WVecdouble &flo){
 	printf("\n"); 
-	for(unsigned int i=0;i<flo.size()-1;i++){
-        ostr<<flo[i]<<", ";
-	}
-    ostr<<flo[flo.size()-1]<<std::endl;
+	ostr << "(";
+    std::copy(flo.begin(), flo.end(), std::ostream_iterator<double> (ostr,", "));
+	ostr << ")";
 	return ostr;
 }
 
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<int> flo){
+std::ostream & operator<< (std::ostream & ostr, const WVecint &flo){
 	printf("\n"); 
-	for(unsigned int i=0;i<flo.size()-1;i++){
-        ostr<<flo[i]<<", ";
-	}
-    ostr<<flo[flo.size()-1]<<std::endl;
+	ostr << "(";
+    std::copy(flo.begin(), flo.end(), std::ostream_iterator<int> (ostr,", "));
+	ostr << ")";
 	return ostr;
 }
 
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<float> flo){
+std::ostream & operator<< (std::ostream & ostr, const WVecfloat &flo){
 	printf("\n"); 
-	for(unsigned int i=0;i<flo.size()-1;i++){
-        ostr<<flo[i]<<", ";
-	}
-    ostr<<flo[flo.size()-1]<<std::endl;
+	ostr << "(";
+    std::copy(flo.begin(), flo.end(), std::ostream_iterator<float> (ostr,", "));
+	ostr << ")";
 	return ostr;
 }
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<std::string> str){
+std::ostream & operator<< (std::ostream & ostr, const WVecstring &flo){
 	printf("\n"); 
-	for(unsigned int i=0;i<str.size();i++){
-        ostr<<str[i]<<"\n";
-	}
+	ostr << "(";
+    std::copy(flo.begin(), flo.end(), std::ostream_iterator<std::string> (ostr,", "));
+	ostr << ")";
 	return ostr;
 }
 
+std::ostream & operator<< (std::ostream & ostr, const WVecVecint  &flo){
+	printf("\n"); 
+	ostr << "(\n";
+	for(std::vector<std::vector<int> >::const_iterator it=flo.begin();
+		it!=flo.end();
+		it++){
+		ostr << " " << *it << "\n";
+	}
+	ostr << ")";
+	return ostr;
+}
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecdouble &flo){
+	printf("\n"); 
+	ostr << "(\n";
+	for(std::vector<std::vector<double> >::const_iterator it=flo.begin();
+		it!=flo.end();
+		it++){
+		ostr << " " << *it << "\n";
+	}
+	ostr << ")";
+	return ostr;
+}
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecfloat &flo){
+	printf("\n"); 
+	ostr << "(\n";
+	for(std::vector<std::vector<float> >::const_iterator it=flo.begin();
+		it!=flo.end();
+		it++){
+		ostr << " " << *it << "\n";
+	}
+	ostr << ")";
+	return ostr;
+}
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecbool &flo){
+	printf("\n"); 
+	ostr << "(\n";
+	for(std::vector<std::vector<bool> >::const_iterator it=flo.begin();
+		it!=flo.end();
+		it++){
+		ostr << " " << *it << "\n";
+	}
+	ostr << ")";
+	return ostr;
+}
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecstring &flo){
+	printf("\n"); 
+	ostr << "(\n";
+	for(std::vector<std::vector<std::string> >::const_iterator it=flo.begin();
+		it!=flo.end();
+		it++){
+		ostr << " " << *it << "\n";
+	}
+	ostr << ")";
+	return ostr;
+}

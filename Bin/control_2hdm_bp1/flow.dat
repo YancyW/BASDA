@@ -1,5 +1,6 @@
 #operation
 
+BeginObject      : Find_Cut
 #BeginObject      : Complete_Run 
 #BeginObject      : Complete_Pol 
 #BeginObject      : Complete_Direct_Cut
@@ -8,7 +9,7 @@
 #BeginObject      : Pre_Cut 
 #BeginObject      : MVA_Train 
 #BeginObject      : MVA_Attach
-BeginObject      : Direct_Cut
+#BeginObject      : Direct_Cut
 #BeginObject      : Summarize_Plot 
 #BeginObject      : Make_Table 
 #BeginObject       : Direct_Cut_ReWeight

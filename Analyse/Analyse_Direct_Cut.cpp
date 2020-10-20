@@ -40,7 +40,8 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()>1) ||
 			para.flow.begin_object  == "Complete_Direct_Cut"||
 			para.flow.begin_object  == "Complete_Run"||
-			para.flow.begin_object  == "Complete_Pol"
+			para.flow.begin_object  == "Complete_Pol" ||
+			para.flow.begin_object  == "Find_Cut"
             ){
 
 			in_file                .push_back(new TFile(file_name.output[j].MVA_file.c_str()));

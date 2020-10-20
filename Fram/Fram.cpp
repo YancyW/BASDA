@@ -60,6 +60,9 @@ void Fram(CDraw &para)
 	else if (para.flow.begin_object == "Plot_Direct" ){
 		Analyse_Plot_Direct_Pre(para);
 	}
+	else if(para.flow.begin_object == "Test"){
+		Test_Function();
+	}
 	else{
 		ShowMessage(1,"wrong begin_object in control/flow.dat");
 		return;

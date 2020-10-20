@@ -52,6 +52,12 @@
 #include "Analyse_Direct_Cut.h"
 #include "AnalyseClass/File.h"
 
+#include <product.hpp>
+#include "helpers.hpp"
+#include <iterator>
+#include "catch.hpp"
+
 void Analyse_Find_Cut(CDraw &para);
+void get_combine(std::vector<std::vector<std::vector<float> > > arrayi, std::vector<std::vector<int> > & pos );
 
 #endif

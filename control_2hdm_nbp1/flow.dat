@@ -1,7 +1,8 @@
 #operation
 
+BeginObject      : Find_Cut 
 #BeginObject      : Complete_Run 
-BeginObject      : Complete_Pol 
+#BeginObject      : Complete_Pol 
 #BeginObject      : Complete_Direct_Cut
 #BeginObject      : Make_Complete_Table 
 #BeginObject      : Sensitivity 

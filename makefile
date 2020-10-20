@@ -10,8 +10,9 @@ FLAGS=-std=c++14 -g
 RootPath=${HOME}/Software/executable/root/
 YAMLPath=${HOME}/Software/lib/yaml-cpp/
 JPEGPath=${HOME}/Software/executable/anaconda3/pkgs/jpeg-8d-2/lib/
+CPPITERTOOL=${HOME}/Software/lib/cppitertools-1.0/
 
-INCLUDE = -I. -I..  -I$(RootPath)/include  -I${YAMLPath}/include
+INCLUDE = -I. -I..  -I$(RootPath)/include  -I${YAMLPath}/include -I${CPPITERTOOL}/ -I${CPPITERTOOL}/internal -I${CPPITERTOOL}/test
 
 
 LIBS =  -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui ${YAMLPath}/libyaml-cpp.a 
@@ -21,7 +22,7 @@ SRCS = \
 $(TARGET).cpp \
 Class/Path.cpp\
 Fram/Fram.cpp Fram/Fsection.cpp \
-Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp \
+Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp Function/Ftuple.cpp Function/Ftest.cpp\
 Latex/LTable.cpp Latex/LItem.cpp\
 Lib/MessageFormat.cpp Lib/PlotSetting.cpp Lib/Record.cpp Lib/YAML_Assistant.cpp\
 RWpara/RWFile.cpp RWpara/RWFlow.cpp RWpara/RWPath.cpp RWpara/RWDebug.cpp RWpara/RWDraw.cpp RWpara/RWbasic.cpp RWpara/RWEvent.cpp RWpara/RWVar.cpp\

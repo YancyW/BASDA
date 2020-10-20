@@ -5,8 +5,21 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <iterator>
 #include <algorithm>
 #include <typeinfo>
+
+typedef std::vector<int> WVecint;
+typedef std::vector<double> WVecdouble;
+typedef std::vector<float> WVecfloat;
+typedef std::vector<bool> WVecbool;
+typedef std::vector<std::string> WVecstring;
+
+typedef std::vector< std::vector<int> > WVecVecint;
+typedef std::vector< std::vector<double> > WVecVecdouble;
+typedef std::vector< std::vector<float> > WVecVecfloat;
+typedef std::vector< std::vector<bool> > WVecVecbool;
+typedef std::vector< std::vector<std::string> > WVecVecstring;
 
 /*
    template <typename TVector_equal>
@@ -150,16 +163,34 @@ bool Vec_Exist(std::vector<TVector_exist> &V1, TVector_exist input){
 }
 */
 
-bool Vec_Exist(std::vector<std::string> V1, std::string input);
+bool Vec_Exist(WVecstring V1, std::string input);
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<bool> flo);
+bool Vec_Exist(WVecint V1, int input);
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<double> flo);
+bool Vec_Exist(WVecfloat V1, float input);
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<int> flo);
+bool Vec_Exist(WVecdouble V1, double input);
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<float> flo);
+bool Vec_Exist(WVecbool V1, bool input);
 
-std::ostream & operator<< (std::ostream & ostr, std::vector<std::string> str);
+std::ostream & operator<< (std::ostream & ostr, const WVecbool &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecdouble &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecint &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecfloat &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecstring &str);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecint &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecdouble &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecfloat &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecbool &flo);
+
+std::ostream & operator<< (std::ostream & ostr, const WVecVecstring &flo);
 
 #endif

@@ -64,6 +64,7 @@ TH1F* Analyse_Figure::Hist(std::string label){
 	}
 	else{
 		ShowMessage(2,"wrong input for Analyse_Figure::Hist");
+		return(NULL);
 	}
 }
 
@@ -706,39 +707,39 @@ void Analyse_Multi_File::Draw_All_BKG(CDraw& para, AFile& file_name,std::string 
 
 			gPad->SetGrid();
 			std::vector<std::string> stack_title= Set_Stack_Title(para,info.title_name+"_allbkg_"+hist_label);
-	        THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );
+			THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );
 
-	        TH1F* hist_sig= (TH1F*) file[0].figure[j].Hist(hist_label)->Clone();
+			TH1F* hist_sig= (TH1F*) file[0].figure[j].Hist(hist_label)->Clone();
 			Set_Line_Style(para,info,hist_sig,0,0,info.norm_switch);
 			info.leg->AddEntry(hist_sig,"sig","l");
-	        ss->Add(hist_sig);
+			ss->Add(hist_sig);
 
-	        TH1F* hist_bkg=(TH1F*) file[1].figure[j].Hist(hist_label)->Clone();
-	        for(unsigned int i=2;i<file.size()-1;i++){
-	          TH1F* hist_tmp= (TH1F*) file[i].figure[j].Hist(hist_label)->Clone();
-	          hist_bkg->Add(hist_tmp);
-	        }
+			TH1F* hist_bkg=(TH1F*) file[1].figure[j].Hist(hist_label)->Clone();
+			for(unsigned int i=2;i<file.size()-1;i++){
+				TH1F* hist_tmp= (TH1F*) file[i].figure[j].Hist(hist_label)->Clone();
+				hist_bkg->Add(hist_tmp);
+			}
 			Set_Line_Style(para,info,hist_bkg,1,1,info.norm_switch);
 			info.leg->AddEntry(hist_bkg,"bkg","l");
-            ss->Add(hist_bkg);
+			ss->Add(hist_bkg);
 
-	        if(ss->GetNhists()>0){
-	        	_root_file->cd();
-	        	ss->Draw("HIST,nostack");
-	        	ss->Write();
-	        	Set_Stack_Style(para,info,ss,gPad,hist_label);
+			if(ss->GetNhists()>0){
+				_root_file->cd();
+				ss->Draw("HIST,nostack");
+				ss->Write();
+				Set_Stack_Style(para,info,ss,gPad,hist_label);
 
-	        	std::string leg_name = stack_title[0]+"_legend";
-	        	info.leg->SetName(leg_name.c_str());
-	        	info.leg->Draw();
-	        	info.leg->Write();
+				std::string leg_name = stack_title[0]+"_legend";
+				info.leg->SetName(leg_name.c_str());
+				info.leg->Draw();
+				info.leg->Write();
 
-	        	_list->Add(ss);
+				_list->Add(ss);
 
-	        	//print to png
-	        	Print_Plot(para, info, file_name.folder[9]+info.title_name+"_"+hist_label);
-	        }
-	        delete info.c;
+				//print to png
+				Print_Plot(para, info, file_name.folder[9]+info.title_name+"_"+hist_label);
+			}
+			delete info.c;
 			info.leg->Clear();
 		}
 	}
@@ -764,58 +765,73 @@ void Analyse_Multi_File::Fill_Figure(){
 void Analyse_Multi_File::Draw_Figure(CDraw& para,AFile& file_name){
 	if(_plot_switch){
 		ShowMessage(2,"generate plot!");
-    	if(!para.flow.record_output){
-    		freopen(para.path.record_file.c_str() ,"a",stdout);
-    	}
+		if(!para.flow.record_output){
+			freopen(para.path.record_file.c_str() ,"a",stdout);
+		}
 		ShowMessage(2,"The plots will be stored in ",file_name.folder[1]);
 
-    	if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
-    		Draw_Single(para, file_name,"origin");
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
-    		Draw_Single(para, file_name,"before");
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
-    		Draw_Single(para, file_name,"after" );
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
-    		Draw_Single(para, file_name,"final" );
-    	}
+		std::string plot_lable="origin";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Single(para, file_name,plot_lable);
+		}
 
-    	ShowMessage(2,"generate combined plot!");
-    	ShowMessage(2,"The plots will be stored in ",file_name.folder[2]);
-    	if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
-    		Draw_Sort(para, file_name,"origin");
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
-    		Draw_Sort(para, file_name,"before");
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
-    		Draw_Sort(para, file_name,"after" );
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
-    		Draw_Sort(para, file_name,"final" );
-    	}
+		plot_lable="before";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Single(para, file_name,plot_lable);
+		}
 
-    	ShowMessage(2,"generate all bkg_combined plot!");
-    	ShowMessage(2,"The plots will be stored in ",file_name.folder.size(),file_name.folder[9]);
-    	if(Vec_Exist(para.plot.drawing.single_plot,"origin")){	
-    		Draw_All_BKG(para, file_name,"origin");
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"before")){	
-    		Draw_All_BKG(para, file_name,"before");
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"after")){	
-    		Draw_All_BKG(para, file_name,"after" );
-    	}
-    	if(Vec_Exist(para.plot.drawing.single_plot,"final")){	
-    		Draw_All_BKG(para, file_name,"final" );
-    	}
+		plot_lable="after";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Single(para, file_name, plot_lable);
+		}
 
-    	Fill_Figure();
-    	if(!para.flow.record_output){
-    		fclose(stdout);
-    		freopen("/dev/tty","w",stdout);
-    	}
+		plot_lable="final";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Single(para, file_name, plot_lable);
+		}
+
+		ShowMessage(2,"generate combined plot!");
+		ShowMessage(2,"The plots will be stored in ",file_name.folder[2]);
+		plot_lable="origin";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Sort(para, file_name,plot_lable);
+		}
+		plot_lable="before";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Sort(para, file_name,plot_lable);
+		}
+		plot_lable="after";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Sort(para, file_name, plot_lable);
+		}
+		plot_lable="final";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_Sort(para, file_name, plot_lable);
+		}
+
+		ShowMessage(2,"generate all bkg_combined plot!");
+		ShowMessage(2,"The plots will be stored in ",file_name.folder.size(),file_name.folder[9]);
+		plot_lable="origin";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_All_BKG(para, file_name,plot_lable);
+		}
+		plot_lable="before";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_All_BKG(para, file_name,plot_lable);
+		}
+		plot_lable="after";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_All_BKG(para, file_name, plot_lable);
+		}
+		plot_lable="final";
+		if(Vec_Exist(para.plot.drawing.single_plot,plot_lable)){	
+			Draw_All_BKG(para, file_name, plot_lable);
+		}
+
+		Fill_Figure();
+		if(!para.flow.record_output){
+			fclose(stdout);
+			freopen("/dev/tty","w",stdout);
+		}
 	}
 }
