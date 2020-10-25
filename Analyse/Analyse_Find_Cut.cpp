@@ -75,9 +75,10 @@ void Analyse_Find_Cut(CDraw &para){
 	
 	auto p = product(n1, n2, n3);
 	ResType v(std::begin(p), std::end(p));
+	TPi typea;
 
     for(int i=0; i<v.size();i++){
-		int vi_size=std::tuple_size<decltype(v[0])>::value;
+		int vi_size=std::tuple_size<decltype(typea)>::value;
     	ShowMessage(2,"v0",std::get<0>(v[0]));
     	ShowMessage(2,"v1",std::get<1>(v[1]));
     }

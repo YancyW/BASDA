@@ -25,6 +25,7 @@
 #include "Class/MVA.h"
 #include "Class/Time.h"
 #include "AnalyseClass/Variable.h"
+#include "Class/Cut_Scan.h"
 
 
 //-----------------------------------------------------
@@ -46,6 +47,7 @@ class CDraw{
 		Bool_t                       Jplot               ;
 		Bool_t                       Jplot_direct        ;
 		Bool_t                       JMVA                ;
+		Bool_t                       Jcut_scan           ;
 
 		CPath                        path                ;
 		CPath                        default_path        ;
@@ -84,6 +86,9 @@ class CDraw{
 
 		CMVA                         MVA                 ;
 		CMVA                         default_MVA         ;
+
+		CCut_Scan                    cut_scan            ;
+		CCut_Scan                    default_cut_scan    ;
 
 		CTime                        time                ;
 

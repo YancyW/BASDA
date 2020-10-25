@@ -51,4 +51,8 @@ void CDraw::Read(){
     this->MVA.Read_MVA(path,flow);
 	default_MVA = MVA;
     JMVA= true;
+
+    this->cut_scan.Read_Cut_Scan(path.cut_scan_file);
+	default_cut_scan= cut_scan;
+    Jcut_scan= true;
 }

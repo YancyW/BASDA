@@ -4,13 +4,10 @@ CXX=g++
 FLAGS=-std=c++14 -g 
 #-Wall
 
-#RootPath=/home/ywang/Software/executable/root/
-#YAMLPath=/home/ywang/Software/lib/yaml-cpp/
-#JPEGPath=/home/ywang/Software/executable/anaconda3/pkgs/jpeg-8d-2/lib/
 RootPath=${HOME}/Software/executable/root/
 YAMLPath=${HOME}/Software/lib/yaml-cpp/
 JPEGPath=${HOME}/Software/executable/anaconda3/pkgs/jpeg-8d-2/lib/
-CPPITERTOOL=${HOME}/Software/lib/cppitertools-1.0/
+CPPITERTOOL=${HOME}/Software/lib/cppitertools-1.0
 
 INCLUDE = -I. -I..  -I$(RootPath)/include  -I${YAMLPath}/include -I${CPPITERTOOL}/ -I${CPPITERTOOL}/internal -I${CPPITERTOOL}/test
 
@@ -20,9 +17,10 @@ ROOTLIBS = -L${RootPath}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -l
 
 SRCS = \
 $(TARGET).cpp \
-Class/Path.cpp\
+Class/Path.cpp Class/Cut_Scan.cpp\
+Test/Test_Function.cpp Test/Test_Tuple.cpp\
 Fram/Fram.cpp Fram/Fsection.cpp \
-Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp Function/Ftuple.cpp Function/Ftest.cpp\
+Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp Function/Ftuple.hpp\
 Latex/LTable.cpp Latex/LItem.cpp\
 Lib/MessageFormat.cpp Lib/PlotSetting.cpp Lib/Record.cpp Lib/YAML_Assistant.cpp\
 RWpara/RWFile.cpp RWpara/RWFlow.cpp RWpara/RWPath.cpp RWpara/RWDebug.cpp RWpara/RWDraw.cpp RWpara/RWbasic.cpp RWpara/RWEvent.cpp RWpara/RWVar.cpp\

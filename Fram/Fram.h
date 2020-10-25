@@ -15,7 +15,7 @@
 #include "Analyse/Analyse_Complete.h"
 #include "Analyse/Make_Complete_Table.h"
 #include "Lib/Record.h"
-#include "Function/Ftest.h"
+#include "Test/Test_Function.h"
 	
 void Fram(CDraw &para);
 
