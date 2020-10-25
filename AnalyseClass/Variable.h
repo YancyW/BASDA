@@ -226,9 +226,10 @@ class AWeight{
 
 class AVariable: public AWeight{
 	public:
-		int num;
+		int num_var;
 		int num_vec;
-		int numMVA;
+		int num_MVA;
+		int num_MVA1;
 		int cut_level;
 		std::vector<Avariable> var;
 		std::vector<Avariable_vec> vec;
@@ -236,11 +237,30 @@ class AVariable: public AWeight{
 		void Read_Var(CPath &path);
 
 		AVariable(){
-			num=0;
+			num_var=0;
 			num_vec=0;
-			numMVA=0;
+			num_MVA=0;
+			num_MVA1=0;
 			var.clear();
 			MVA.clear();
+		}
+
+		int Find_Var(std::string input_name){
+			if(Is_Digits(input_name)){
+				int input_num=std::stoi(input_name);
+				return(input_num);
+			}
+			else{
+				for(int i=0;i<num_var;i++){
+					if(var[i].title_name==input_name){
+						return(i);
+					}
+					else{
+						continue;
+					}
+				}
+			}
+			return(-1);
 		}
 };
 

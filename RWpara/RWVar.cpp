@@ -32,10 +32,10 @@ void AVariable::Read_Var(CPath &path){
 		}
 		k++;
 	}
-	num = var.size();
-	for(int i=0;i<num;i++){
+	num_var = var.size();
+	for(int i=0;i<num_var;i++){
 		if(var[i].MVA_switch){
-			numMVA++;
+			num_MVA++;
 			MVA.push_back(var[i]);
 		}
 	}

@@ -18,14 +18,14 @@ ROOTLIBS = -L${RootPath}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -l
 SRCS = \
 $(TARGET).cpp \
 Class/Path.cpp Class/Cut_Scan.cpp\
-Test/Test_Function.cpp Test/Test_Tuple.cpp\
+Test/Test_Function.cpp Test/Test_Tuple.cpp Test/Test_CPPIterTools.cpp\
 Fram/Fram.cpp Fram/Fsection.cpp \
-Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp Function/Ftuple.hpp\
+Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp\
 Latex/LTable.cpp Latex/LItem.cpp\
 Lib/MessageFormat.cpp Lib/PlotSetting.cpp Lib/Record.cpp Lib/YAML_Assistant.cpp\
 RWpara/RWFile.cpp RWpara/RWFlow.cpp RWpara/RWPath.cpp RWpara/RWDebug.cpp RWpara/RWDraw.cpp RWpara/RWbasic.cpp RWpara/RWEvent.cpp RWpara/RWVar.cpp\
 RWpara/RWSensitivity.cpp RWpara/RWCut.cpp RWpara/RWPlot.cpp RWpara/RWSignal_Properties_Scan.cpp RWpara/RWBKG_Sort.cpp RWpara/RWScenario.cpp RWpara/RWMVA.cpp\
-RWpara/RWPlot_Direct.cpp\
+RWpara/RWPlot_Direct.cpp RWpara/RWCut_Scan.cpp\
 Analyse/Analyse_Find_Cut.cpp  Analyse/Make_Table.cpp \
 Analyse/Make_Complete_Table.cpp \
 Analyse/Analyse_Pre_Cut.cpp \

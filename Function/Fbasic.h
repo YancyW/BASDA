@@ -54,4 +54,5 @@ std::string Get_ClassName(TTname x){
 void CountNumber(Int_t variable, Int_t tot_num, Int_t slot,std::string  Message);
 
 
+bool Is_Digits(const std::string &str);
 #endif

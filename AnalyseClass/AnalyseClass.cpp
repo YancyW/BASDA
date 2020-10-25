@@ -123,7 +123,7 @@ void Analyse_Single_File::Init(AVariable &var, TFile* plot_file, float extra_wei
 	_plot_switch   = plot_switch   ;
 	_extra_weight  = extra_weight  ;
 
-	_var_num = var.num;
+	_var_num = var.num_var;
 	_tree_num= tree_name.size()    ;
 	_name    = file_name           ;
 
@@ -149,15 +149,15 @@ void Analyse_Single_File::Init(AVariable &var, TFile* plot_file, float extra_wei
 		}
 		_root_file->cd();
 
-		_rootvar .resize(var.num);
-		for(int i=0;i<var.num;i++){
+		_rootvar .resize(var.num_var);
+		for(int i=0;i<var.num_var;i++){
 			_rootvar[i]=-100.1;
 		}
 		for(int i=0;i<_tree_num;i++){
 			_tree.push_back(new TTree( tree_name[i].c_str() , "events" ));
 
 			_tree[i]->Branch( "weight"              , &_out_weight );        
-			for(int j=0;j<var.num;j++){
+			for(int j=0;j<var.num_var;j++){
 				_tree[i]->Branch( var.var[j].title_name.c_str() , &_rootvar[j] );        
 			}
 		}
@@ -183,7 +183,7 @@ void Analyse_Single_File::Root_Endow_Weight(){
 
 void Analyse_Single_File::Root_Endow_Unused_Var(AVariable &var, ACut &cut){
 	//for those variables not in the cut
-	for(int j=0;j<var.num;j++){
+	for(int j=0;j<var.num_var;j++){
 		bool counter=false;
 		for(int k=0;k<cut.cut_num;k++){
 			int index=cut.cut[k];
@@ -196,7 +196,7 @@ void Analyse_Single_File::Root_Endow_Unused_Var(AVariable &var, ACut &cut){
 }
 
 void Analyse_Single_File::Root_Endow_Var(AVariable &var){
-	for(int j=0;j<var.num;j++){
+	for(int j=0;j<var.num_var;j++){
 		_rootvar[j]=var.var[j].variable;
 	}
 }
@@ -376,7 +376,7 @@ void Analyse_Multi_File::Init(CDraw &para, AFile &file_name){
 		freopen(para.path.record_file.c_str() ,"a",stdout);
 	}
 	var=para.var;
-	_var_num = var.num;
+	_var_num = var.num_var;
 
 
 	_cut.Read_Cut(para.path);

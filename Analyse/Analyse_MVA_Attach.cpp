@@ -18,7 +18,7 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 
 
 	TMVA::Reader *reader= new TMVA::Reader("!Color:!Silent" );
-	for(int i=0;i<para.var.numMVA;i++){
+	for(int i=0;i<para.var.num_MVA;i++){
 		reader->AddVariable(para.var.MVA[i].title_name.c_str(), &para.var.MVA[i].variable);
 	}
 
@@ -56,8 +56,8 @@ void Analyse_MVA_Attach(CDraw &para, AFile &file_name)
 			tree->GetEntry(ievt);
 
 			std::vector<float> f;
-			f.resize(para.var.numMVA);
-			for(int nvar=0;nvar<para.var.numMVA;nvar++){
+			f.resize(para.var.num_MVA);
+			for(int nvar=0;nvar<para.var.num_MVA;nvar++){
 				TTreeFormula f1("n",para.var.MVA[nvar].title_name.c_str(),tree);
 				f[nvar] = f1.EvalInstance(ievt);
 			}

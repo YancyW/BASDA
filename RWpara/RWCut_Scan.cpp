@@ -2,7 +2,7 @@
 #include "Function/Fbasic.h"
 #include "RWpara/RWbasic.h"
 
-void CCut_Scan:: Read_Cut_Scan(std::string cut_scan_file){
+void CCut_Scan::Read_Cut_Scan(std::string cut_scan_file, AVariable var){
 	ShowMessage(3, "read Cut_Scan",cut_scan_file);
 	YAML::Node scan_node = YAML::LoadFile(cut_scan_file);
 
@@ -27,6 +27,7 @@ void CCut_Scan:: Read_Cut_Scan(std::string cut_scan_file){
 	}
 
 
+	Set_Which_Cut(var);
 	Set();
 	ShowMessage(3,"scan size",Num());
 	for(int i=0;i<Num();i++){

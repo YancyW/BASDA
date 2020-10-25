@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GLOBAL_PARA_scan_SCAN_H
-#define GLOBAL_PARA_scan_SCAN_H
+#ifndef GLOBAL_PARA_CUT_SCAN_H
+#define GLOBAL_PARA_CUT_SCAN_H
 #include "TStyle.h"
 #include <string> 
 #include <vector>
@@ -11,13 +11,14 @@
 #include "RWpara/RWbasic.h"
 #include "Lib/MessageFormat.h"
 #include "Class/Path.h"
+#include "AnalyseClass/Variable.h"
 
 
 typedef std::vector< std::pair<std::string,std::vector<std::string> > > CCut_Scan_String;
 
 class CCut_Scan_basic{
 	private:
-		std::string             _scan_name;
+		std::string        _scan_name;
 		AJudge             _Used;
 	public:
 		std::vector<float> scan;
@@ -77,6 +78,9 @@ class CCut_Scan_basic{
 class CCut_Scan{
 	private:
 		int              _scan_num;
+		std::vector<std::vector<std::vector<float> > > _all_cut_scan;
+		std::vector<int> _cut_num;
+		std::vector<std::vector<float> >  _cut_combine;
 	public:
 
 		std::vector<CCut_Scan_basic> scan;
@@ -85,12 +89,19 @@ class CCut_Scan{
 			_scan_num = scan.size();
 		}
 
+		void Set_All_Cut_Combination();
+
+		void Set_Which_Cut(AVariable var);
+
 		void Set(){
 			Set_Scan_Num();
 			for(int i=0;i<_scan_num;i++){
 				scan[i].Set();
 			}
+			Set_All_Cut();
+			Set_Cut_Combination();
 		}
+
 
 		std::string Name(int i){
 			return(scan[i].Name());
@@ -105,7 +116,19 @@ class CCut_Scan{
 			return(_scan_num);
 		}
 
-		void Read_Cut_Scan(std::string path);
+		std::vector<int> Cut_Num(){
+			return(_cut_num);
+		}
+
+		std::vector<std::vector<std::vector<float> > > All_Cut_Scan(){
+			return(_all_cut_scan);
+		}
+
+		std::vector<std::vector<float> > Cut_Combine(){
+			return(_cut_combine);
+		}
+
+		void Read_Cut_Scan(std::string path, AVariable var);
 
 		void Print();
 };

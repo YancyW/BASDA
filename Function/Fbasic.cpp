@@ -78,3 +78,6 @@ void CountNumber(Int_t variable, Int_t tot_num, Int_t slot,std::string  Message)
 }
 
 
+bool Is_Digits(const std::string &str){
+	return std::all_of(str.begin(), str.end(), ::isdigit);
+}

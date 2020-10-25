@@ -135,11 +135,11 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			otfile->cd();
 
 			datatrain= new TTree(para.file.root_head_MVA_name.c_str() , "events" );
-			rootvar     .resize(para.var.num);
+			rootvar     .resize(para.var.num_var);
 			rootvar_vec .resize(para.var.num_vec);
 
 			datatrain->Branch( "weight"              , &out_weight );        
-			for(int i=0;i<para.var.num;i++){
+			for(int i=0;i<para.var.num_var;i++){
 					if(para.var.var[i].title_name==para.flow.MVA_method){
 					continue;
 				}
@@ -152,7 +152,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			if(para.flow.MVA_training){
 				datatest= new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest->Branch( "weight"              , &out_weight );        
-				for(int i=0;i<para.var.num;i++){
+				for(int i=0;i<para.var.num_var;i++){
 					if(para.var.var[i].title_name==para.flow.MVA_method){
 						continue;
 					}
@@ -174,7 +174,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			if(para.flow.MVA_training){
 				datatest_MVA = new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest_MVA->Branch( "weight"              , &out_weight );        
-				for(int i=0;i<para.var.num;i++){
+				for(int i=0;i<para.var.num_var;i++){
 					if(para.var.var[i].title_name==para.flow.MVA_method){
 						continue;
 					}
@@ -204,7 +204,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 
 			//loop for init variables which are prepared for plot 
-			for(int j=0;j<para.var.num;j++){
+			for(int j=0;j<para.var.num_var;j++){
 				if(para.var.var[j].title_name==para.flow.MVA_method){
 					continue;
 				}
@@ -228,7 +228,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				MyLCTuple[cnum][i]->GetEntry(event);
 
 				if(para.flow.record_event){
-					for(int j=0;j<para.var.num;j++){
+					for(int j=0;j<para.var.num_var;j++){
 						if(para.var.var[j].title_name==para.flow.MVA_method){
 							continue;
 						}

@@ -53,6 +53,8 @@
 #include "Abasic.h"
 #include "Make_Table.h"
 #include "AnalyseClass/File.h"
+#include "AnalyseClass/File.h"
+#include "Function/Ftuple.hpp" 
 
 
 void Analyse_Direct_Cut_Pre(CDraw &para);
