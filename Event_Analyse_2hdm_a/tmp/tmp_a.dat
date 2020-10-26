@@ -1510,12 +1510,20 @@
       wrong input when load class CMVA_Basic                      :    MVA_factory_setting
       ************************************************* finish reading CMVA_Basic ********************************************
             read Cut_Scan                                         :    ./control_2hdm_bp1/advanced/Cut_Scan.dat
-                  scan_num is                                     :    2
-      *********************************** In CCut_Scan_basic, Name: This Scan didn't set first. ******************************
-      *********************************** In CCut_Scan_basic, Name: This Scan didn't set first. ******************************
-            scan size                                             :    2
+                  scan_num is                                     :    3
+      vsize                                                       :    8
+      i,j                                                         :    2, 0
+      i,j                                                         :    2, 1
+      i,j                                                         :    2, 2
+      i,j                                                         :    2, 3
+      i,j                                                         :    2, 4
+      i,j                                                         :    2, 5
+      i,j                                                         :    2, 6
+      i,j                                                         :    2, 7
+            scan size                                             :    3
                   scan                                            :    0, th scan name, 12, [-1,1,1]
                   scan                                            :    1, th scan name, 27, [-1,1,1]
+                  scan                                            :    2, th scan name, 13, [-1,1,1]
             **************************************************** The read files ****************************************
             The path                 is read                      :    1
             The file                 is read                      :    1
@@ -1577,55 +1585,55 @@ The file_name is:                                                 :
 
       The input            name :                                 :    sig_tj_HA
       The input      latex name :                                 :    sig_{tj}^{HA}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm_nbp1/events_a/2hdm_sig_nbp1.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm_nbp1/events_a/2hdm_sig_nbp1.root
       The input  ana_xsection  :                                  :    1.1895
 
 
       The input            name :                                 :    wtata_l_l
       The input      latex name :                                 :    wtata_{l}^{l}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_wtatajj.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_wtatajj.root
       The input  ana_xsection  :                                  :    1.57
 
 
       The input            name :                                 :    tt_ll_ll
       The input      latex name :                                 :    tt_{ll}^{ll}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_lep_lep.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_lep_lep.root
       The input  ana_xsection  :                                  :    2.773
 
 
       The input            name :                                 :    tt_ltau_ltau
       The input      latex name :                                 :    tt_{ltau}^{ltau}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_lep_tau.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_lep_tau.root
       The input  ana_xsection  :                                  :    28.63
 
 
       The input            name :                                 :    tt_tautau_tautau
       The input      latex name :                                 :    tt_{tautau}^{tautau}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_tau_tau.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_tau_tau.root
       The input  ana_xsection  :                                  :    3.449
 
 
       The input            name :                                 :    tt_lquark_lj
       The input      latex name :                                 :    tt_{lquark}^{lj}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_lep_quark.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_lep_quark.root
       The input  ana_xsection  :                                  :    25.01
 
 
       The input            name :                                 :    tt_tauquark_lj
       The input      latex name :                                 :    tt_{tauquark}^{lj}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_tau_quark.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tt_tau_quark.root
       The input  ana_xsection  :                                  :    3.18
 
 
       The input            name :                                 :    ttll_l_l
       The input      latex name :                                 :    ttll_{l}^{l}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_ttll.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_ttll.root
       The input  ana_xsection  :                                  :    0.0438
 
 
       The input            name :                                 :    ttll_ta_l
       The input      latex name :                                 :    ttll_{ta}^{l}
-      The input  ana_basic_file:                                  :    /home/yancy/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tjtata.root
+      The input  ana_basic_file:                                  :    /home/ywang/Code/Workplace/ARCH_data/Event_Draw_2hdm//events_a/2hdm_tjtata.root
       The input  ana_xsection  :                                  :    0.0495
 
 

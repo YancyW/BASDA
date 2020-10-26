@@ -1,9 +1,7 @@
 #include "Analyse_Find_Cut.h"
 using iter::product;
-using Vec = const std::vector<int>;
-using TPf= std::tuple<std::vector<float>,std::vector<float>,std::vector<float> >;
-using TPi= std::tuple<int,int,int>;
-using ResType = std::vector<TPi>;
+using TPf= std::tuple<std::vector<float>, std::vector<float> >;
+using ResType = std::vector<TPf>;
 
 void Analyse_Find_Cut(CDraw &para){
 
@@ -21,38 +19,30 @@ void Analyse_Find_Cut(CDraw &para){
 	sig_file.open(file_name.significance);
 
 	std::vector<std::vector<std::vector<float> > > all_cut=para.cut_scan.All_Cut_Scan();
+	std::vector<std::vector<std::vector<float> > > cut_combine=para.cut_scan.Cut_Combine();
 
-	for(int k=0; k<all_cut.size();k++){
-		ShowMessage(2,"all_cut",all_cut[k]);
-	}
+    ShowMessage(2,"cut combine",cut_combine.size());
+    for(int k=0; k<cut_combine.size();k++){
+    	ShowMessage(2,"cut combine",cut_combine[k]);
+    }
+
+//  auto p = product(all_cut[0], all_cut[1]);
+//  ResType v(std::begin(p), std::end(p));
+
+//  ShowMessage(2,"v_size",v.size());
+//  for(int i=0; i<v.size();i++){
+//  	std::vector<std::vector<float> > intvi=to_vector(v[i]); 
+//  	ShowMessage(2,"intvi",intvi);
+//  }
+ 
+    exit(0);
+//	get_combine(all_cut,pos);
+	std::vector<std::vector<int> > pos;
 
 	float final_j;
 	float sig_max=0;
 	float sig_tmp=0;
 
-	std::vector<std::vector<int> > pos;
-
-
-	auto p = product(all_cut[0], all_cut[1]);
-	ResType v(std::begin(p), std::end(p));
-	TPi typea;
-
-
-    ShowMessage(2,"v_size",v.size());
-    for(int i=0; i<v.size();i++){
-		std::vector<int> intvi=to_vector(v[i]); 
-		ShowMessage(2,"intvi",intvi);
-    }
- 
-////auto p = product(cut_scan[0], cut_scan[1],cut_scan[2]);
-////ResType v(std::begin(p),std::end(p));
-////for(int i=0; i<v.size();i++){
-////	for(int j=0; j<v[i].size();j++){
-////		ShowMessage(2,"v",j,v[i][j]);
-////	}
-////}
-    exit(0);
-//	get_combine(all_cut,pos);
 
 	ShowMessage(3,"pos",pos.size());
 	for(int k=0; k<pos.size();k++){

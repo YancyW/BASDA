@@ -1,8 +1,9 @@
 # do not change the key name
-scan_num   : 2
+scan_num   : 3
 
-sub_scan_name : [12, 27]
+sub_scan_name : [12, 27, 13]
 
 # change below based on sub_sort names
 12 : [-1, 1, 1]
 27 : [-1, 1, 1]
+13 : [-1, 1, 1]

@@ -27,8 +27,7 @@ void CCut_Scan::Read_Cut_Scan(std::string cut_scan_file, AVariable var){
 	}
 
 
-	Set_Which_Cut(var);
-	Set();
+	Set(var);
 	ShowMessage(3,"scan size",Num());
 	for(int i=0;i<Num();i++){
 		ShowMessage(4,"scan ",i,"th scan name",scan[i].Name(), scan[i].Cut_Value_Print());

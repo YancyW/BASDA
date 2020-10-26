@@ -1,5 +1,5 @@
 FILE_NUM          : 1
-FILE_0            : ./control_2hdm_bp1/xsection_a_bp1.dat
+FILE_0            : ./Bin/control_2hdm_bp1/xsection_a_bp1.dat
 
 CHANNEL_NUM       : 1
 FILE_DESCRIP_0    : all 
