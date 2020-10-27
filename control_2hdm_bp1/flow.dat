@@ -28,7 +28,7 @@ pol_setting       : ""
 
 cut              : true 
 record_output    : false 
-plot             : true 
+plot             : false 
 plot_object      : before_cut 
 record_event     : true 
 MVA_training     : true 

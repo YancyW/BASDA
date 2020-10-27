@@ -58,6 +58,6 @@
 #include "catch.hpp"
 
 void Analyse_Find_Cut(CDraw &para);
-void get_combine(std::vector<std::vector<std::vector<float> > > arrayi, std::vector<std::vector<int> > & pos );
+void get_compare_significance(std::ofstream& sig_file, CDraw &para, AFile& file_name, std::vector<std::vector<std::vector<float> > > array, std::vector<std::string> ana_out_name);
 
 #endif

@@ -29,10 +29,12 @@ TSysLimitScan::~TSysLimitScan(void) {
 
 TSysLimitResult const *TSysLimitScan::GetDataLimit(void) const {
 	if(fData>=0) return (TSysLimitResult const *)fResults[fData];
+	return (NULL);
 }
 
 TSysLimitResult const *TSysLimitScan::GetExpectedLimit(void) const {
 	if(fExpected>=0) return (TSysLimitResult const *)fResults[fExpected];
+	return (NULL);
 }
 
 void TSysLimitScan::Print(Int_t verbose) const {
