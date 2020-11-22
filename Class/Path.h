@@ -45,6 +45,8 @@ class CPath{
 
 		void          Read_Path(std::string steering_file)  ;
 		void          Create_Folder()  ;
+		void          Print()  ;
 };
 
+std::ostream & operator<< (std::ostream & ostr, CPath str);
 #endif

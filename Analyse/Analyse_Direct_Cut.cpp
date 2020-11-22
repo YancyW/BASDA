@@ -57,14 +57,14 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			MyLCTuple                 .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
 			nevent                    .push_back(MyLCTuple[j]->GetEntries()                     );
 		}
-		if(analyse.var.weight_exist){
-			if(analyse.var.weight_type=="F"){
+		if(analyse.var.exist){
+			if(analyse.var.type=="F"){
 				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight);
 			}
-			else if(analyse.var.weight_type=="D"){
+			else if(analyse.var.type=="D"){
 				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_d);
 			}
-			else if(analyse.var.weight_type=="I"){
+			else if(analyse.var.type=="I"){
 				MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight_i);
 			}
 		}
@@ -118,10 +118,10 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 
 			MyLCTuple[cnum]->GetEntry(event);
 
-			if(analyse.var.weight_type=="D"){
+			if(analyse.var.type=="D"){
 				analyse.file[cnum].in_weight = static_cast<float> (analyse.file[cnum].in_weight_d);
 			}
-			else if(analyse.var.weight_type=="I"){
+			else if(analyse.var.type=="I"){
 				analyse.file[cnum].in_weight = static_cast<float> (analyse.file[cnum].in_weight_i);
 			}
 

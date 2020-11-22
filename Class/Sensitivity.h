@@ -8,6 +8,7 @@
 
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
+#include "Lib/MessageFormat.h"
 
 
 class CSensitivity{
@@ -18,6 +19,7 @@ class CSensitivity{
 		double sig_scale_factor;
 		double sig_scale_pow;
 		void   Read_Sensitivity(CPath path);
+		void   Print();
 };
 
 #endif

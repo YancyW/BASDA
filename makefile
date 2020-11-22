@@ -17,7 +17,7 @@ ROOTLIBS = -L${RootPath}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -l
 
 SRCS = \
 $(TARGET).cpp \
-Class/Path.cpp Class/Cut_Scan.cpp\
+Class/Path.cpp Class/Cut_Scan.cpp Class/BKG_Sort.cpp Class/Debug.cpp Class/DrawClass.cpp Class/Event.cpp Class/File.cpp Class/Flow.cpp Class/MVA.cpp Class/Path.cpp Class/Plot.cpp Class/Scenario.cpp Class/Sensitivity.cpp Class/Signal_Properties_Scan.cpp \
 Test/Test_Function.cpp Test/Test_Tuple.cpp Test/Test_CPPIterTools.cpp\
 Fram/Fram.cpp Fram/Fsection.cpp \
 Function/Fbasic.cpp Function/Fvector.cpp Function/Ffile.cpp Function/FCalc.cpp Function/FString.cpp\

@@ -9,6 +9,7 @@
 #include "Function/Fbasic.h"
 #include "Class/Judge.h"
 #include "RWpara/RWbasic.h"
+#include "Lib/MessageFormat.h"
 #include "Class/Path.h"
 
 
@@ -151,6 +152,12 @@ class CBKG_Sort_basic{
 			std::pair<std::string, int> pos;
 			std::vector<std::string> strNew=Find_Str_in_Filename(str);
 
+
+		    if(_default_sub_class_legend[0]=="{all}"){
+		    	pos.first  = _default_sub_class_legend[0];
+		    	pos.second = 0;
+		    	return(pos);
+		    }
 			bool exist_sub_class= false;
 			for(int l=0;l<_sub_class_num;l++){
 				if ("{"+strNew[2]+"}" ==  _default_sub_class_legend[l]){
@@ -166,6 +173,7 @@ class CBKG_Sort_basic{
 			return(pos);
 		}
 
+		void Print();
 };
 
 
@@ -215,6 +223,9 @@ class CBKG_Sort{
 		void Read_BKG_Sort(CPath &path);
 
 		void Read_BKG_Sort_Test(CPath &path);
+		void Print();
 };
 
+std::ostream & operator<< (std::ostream & ostr, CBKG_Sort_basic str);
+std::ostream & operator<< (std::ostream & ostr, CBKG_Sort str);
 #endif

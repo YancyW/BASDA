@@ -7,8 +7,9 @@ void AVariable::Read_Var(CPath &path){
 	YAML::Node var_node = YAML::LoadFile(file_name);
 
 	YAML::Node weight_nodes = var_node["weight"];
-	RW_element("Exist"       , weight_nodes,this->weight_exist);
-	RW_element("Weight_Type" , weight_nodes,this->weight_type);
+	RW_element("Exist"       , weight_nodes,this->exist);
+	RW_element("Weight_Type" , weight_nodes,this->type);
+	RW_element("title_name"  , weight_nodes,this->title);
 
 	YAML::Node nodes = var_node["variable"];
 	int k=0;
@@ -36,7 +37,13 @@ void AVariable::Read_Var(CPath &path){
 	for(int i=0;i<num_var;i++){
 		if(var[i].MVA_switch){
 			num_MVA++;
-			MVA.push_back(var[i]);
+			MVA.push_back(&var[i]);
+			MVA_pos.push_back(i);
+		}
+		if(var[i].MVA1_switch){
+			num_MVA1++;
+			MVA1.push_back(&var[i]);
+			MVA1_pos.push_back(i);
 		}
 	}
 	YAML::Node nodes_vec = var_node["variable_vec"];
@@ -46,4 +53,28 @@ void AVariable::Read_Var(CPath &path){
 	}
 	num_vec = vec.size();
 }
+
+
+void AVariable::Copy(const AVariable &input_var){
+	this->num_var = input_var.num_var;
+	this->num_vec = input_var.num_vec;
+	this->num_MVA = input_var.num_MVA;
+	this->num_MVA1 = input_var.num_MVA1;
+	this->cut_level = input_var.cut_level;
+	this->var = input_var.var;
+	this->vec = input_var.vec;
+	this->MVA_pos = input_var.MVA_pos;
+	this->MVA.clear();
+	this->MVA1_pos = input_var.MVA1_pos;
+	this->MVA1.clear();
+	for(int i=0;i<num_var;i++){
+		if(var[i].MVA_switch){
+			MVA.push_back(&var[i]);
+		}
+		if(var[i].MVA1_switch){
+			MVA1.push_back(&var[i]);
+		}
+	}
+}
+
 

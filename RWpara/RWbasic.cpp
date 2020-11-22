@@ -13,6 +13,10 @@ void RW_element(std::string name, YAML::const_iterator it, Int_t    &variable_na
 	variable_name = it->second.as<int>();	
 	ShowMessage(4, name + " is         ",variable_name);
 }
+void RW_element(std::string name, YAML::const_iterator it, long int &variable_name){
+	variable_name = it->second.as<long>();	
+	ShowMessage(4, name + " is         ",variable_name);
+}
 void RW_element(std::string name, YAML::const_iterator it, Long64_t &variable_name){
 	variable_name = it->second.as<long>();	
 	ShowMessage(4, name + " is         ",variable_name);
@@ -36,6 +40,10 @@ void RW_element(std::string name, YAML::Node node_name, float &variable_name){
 }
 void RW_element(std::string name, YAML::Node node_name, Int_t    &variable_name){
 	variable_name = node_name[name].as<int>();	
+	ShowMessage(4, name + " is         ",variable_name);
+}
+void RW_element(std::string name, YAML::Node node_name, long int &variable_name){
+	variable_name = node_name[name].as<long>();	
 	ShowMessage(4, name + " is         ",variable_name);
 }
 void RW_element(std::string name, YAML::Node node_name, Long64_t &variable_name){
@@ -64,6 +72,11 @@ void RW_element(std::string particle_name, std::string name, YAML::Node node_nam
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Int_t    &variable_name){
 	std::string fname=name+"_"+particle_name;
 	variable_name = node_name[fname].as<int>();	
+	ShowMessage(4, fname + " is         ",variable_name);
+}
+void RW_element(std::string particle_name, std::string name, YAML::Node node_name, long int &variable_name){
+	std::string fname=name+"_"+particle_name;
+	variable_name = node_name[fname].as<long>();	
 	ShowMessage(4, fname + " is         ",variable_name);
 }
 void RW_element(std::string particle_name, std::string name, YAML::Node node_name, Long64_t &variable_name){
@@ -98,6 +111,12 @@ void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vec
 	std::string	fnum=Int_to_String(num) ;
 	std::string fname=name+"_"+fnum;
 	variable_name.push_back(node_name[fname].as<int>());	
+	ShowMessage(4, fname + " is         ",variable_name[num]);
+}
+void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<long int >    &variable_name){
+	std::string	fnum=Int_to_String(num) ;
+	std::string fname=name+"_"+fnum;
+	variable_name.push_back(node_name[fname].as<long>());	
 	ShowMessage(4, fname + " is         ",variable_name[num]);
 }
 void RW_vector_element(std::string name, int num, YAML::Node node_name, std::vector<Long64_t>    &variable_name){
@@ -135,6 +154,12 @@ void RW_vector_element(std::string particle_name, std::string name, int num, YAM
 	std::string	fnum=Int_to_String(num) ;
 	std::string fname=name+"_"+particle_name+"_"+fnum;
 	variable_name.push_back(node_name[fname].as<int>());	
+	ShowMessage(4, fname + " is         ",variable_name[num]);
+}
+void RW_vector_element(std::string particle_name, std::string name, int num, YAML::Node node_name, std::vector<long int>    &variable_name){
+	std::string	fnum=Int_to_String(num) ;
+	std::string fname=name+"_"+particle_name+"_"+fnum;
+	variable_name.push_back(node_name[fname].as<long>());	
 	ShowMessage(4, fname + " is         ",variable_name[num]);
 }
 void RW_vector_element(std::string particle_name, std::string name, int num, YAML::Node node_name, std::vector<Long64_t>    &variable_name){

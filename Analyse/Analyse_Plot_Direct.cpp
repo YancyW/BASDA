@@ -36,7 +36,7 @@ void Analyse_Plot_Direct(CDraw &para, std::string &sig_name, AFile& file_name){
 		int nevent = MyLCTuple->GetEntries();
 		float variable, weight;
 		MyLCTuple->SetBranchAddress(info.title_name.c_str(), &variable);
-		if(para.plot_direct.weight_exist){
+		if(para.plot_direct.exist){
 			MyLCTuple->SetBranchAddress("weight", &weight);
 		}
 		else{

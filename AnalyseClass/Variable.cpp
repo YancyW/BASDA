@@ -17,22 +17,22 @@ void Avariable::Copy(Avariable var){
 	if(this->c_name=="canvas"){
 		this->c_name= var.c_name;
 	}
-	if(this->c_width==1.0){
+	if(this->c_width==1000.0){
 		this->c_width= var.c_width;
 	}
-	if(this->c_height==1.0){
+	if(this->c_height==700.0){
 		this->c_height= var.c_height;
 	}
-	if(this->leg_left==0.0){
+	if(this->leg_left==0.6){
 		this->leg_left= var.leg_left;
 	}
-	if(this->leg_up==0.0){
+	if(this->leg_up==0.6){
 		this->leg_up= var.leg_up;
 	}
-	if(this->leg_right==0.0){
+	if(this->leg_right==0.9){
 		this->leg_right= var.leg_right;
 	}
-	if(this->leg_down==0.0){
+	if(this->leg_down==0.9){
 		this->leg_down= var.leg_down;
 	}
 	if(this->leg_header==""){
@@ -47,25 +47,25 @@ void Avariable::Copy(Avariable var){
 	if(this->x_name==""){
 		this->x_name= var.x_name;
 	}
-	if(this->x_bin==0){
+	if(this->x_bin==1){
 		this->x_bin= var.x_bin;
 	}
 	if(this->x_min==0.0){
 		this->x_min= var.x_min;
 	}
-	if(this->x_max==0.0){
+	if(this->x_max==1.0){
 		this->x_max= var.x_max;
 	}
 	if(this->y_name==""){
 		this->y_name= var.y_name;
 	}
-	if(this->y_bin==0){
+	if(this->y_bin==1){
 		this->y_bin= var.y_bin;
 	}
 	if(this->y_min==0.0){
 		this->y_min= var.y_min;
 	}
-	if(this->y_max==0.0){
+	if(this->y_max==1.0){
 		this->y_max= var.y_max;
 	}
 	if(this->cut_switch==false){
@@ -83,16 +83,27 @@ void Avariable::Copy(Avariable var){
 	if(this->norm_switch==false){
 		this->norm_switch= var.norm_switch;
 	}
+	if(this->MVA_switch==false){
+		this->MVA_switch= var.MVA_switch;
+	}
 	if(this->show_title==false){
 		this->show_title= var.show_title;
 	}
-	if(this->with_color_or_line==-1){
-		this->with_color_or_line= var.with_color_or_line;
-	}
-	if(this->line_width==-1){
-		this->line_width= var.line_width;
-	}
+	if(this->use_default_line_setting==-1){
+		this->use_default_line_setting= var.use_default_line_setting;
+		this->line_setting= var.line_setting;
+		if(this->with_color_or_line==-1){
+			this->with_color_or_line= var.with_color_or_line;
+		}
+		if(this->line_width==-1){
+			this->line_width= var.line_width;
+		}
+	};
 }
+
+int AVariable::Var_Num(){
+	return(num_var);
+};
 
 void Avariable::Print(int i,bool has_title){
 	if(has_title){
@@ -151,8 +162,21 @@ void Avariable::Print(int i,bool has_title){
 	ShowMessage(i+1, "show_title   "      , this->show_title);
 	ShowMessage(i+1, "with_color_or_line" , this->with_color_or_line); 
 	ShowMessage(i+1, "line_width   "      , this->line_width); 
-}
+};
+
+int AVariable::Vec_Num(){
+	return(num_vec);
+};
+
+int AVariable::MVA_Num(){
+	return(num_MVA);
+};
 
 
+void AVariable::Print(){
+	for(int i=0;i<num_var;i++){
+		var[i].Print();
+	}
+};
 
 

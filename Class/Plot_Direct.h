@@ -27,7 +27,7 @@ class CPlot_Direct: public AWeight{
 		CPlot_Direct(){
 			var_label = 0;
 			using_user_var  = false;
-			weight_exist = false;
+			exist = false;
 		}
 
 		Avariable Var(AVariable &var){

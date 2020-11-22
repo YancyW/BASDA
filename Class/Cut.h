@@ -21,6 +21,10 @@ class CCut{
 		std::vector<float> max;
 
 		void Read_Cut(CPath path,CFlow flow);
+
+		void Print();
 };
 
+std::ostream & operator<< (std::ostream & ostr, CCut str);
+std::ostream & operator<< (std::ostream & ostr, CCut str);
 #endif

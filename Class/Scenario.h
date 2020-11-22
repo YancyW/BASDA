@@ -9,6 +9,7 @@
 #include "Function/Fbasic.h"
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
+#include "Lib/MessageFormat.h"
 #include "Class/Flow.h"
 
 class CScenario_Basic{
@@ -23,6 +24,8 @@ class CScenario_Basic{
 		energy = 0;
 		lumi = 0;
 	}
+
+	void Print();
 };
 
 
@@ -32,6 +35,7 @@ class CScenario{
 		float                   elec_pol;
 		float                   posi_pol;
 		std::vector<float>      pol     ;
+		float                   pol_lumi;
 
 		std::vector<CScenario_Basic> scenario;
 		CScenario_Basic         default_scenario;
@@ -39,6 +43,7 @@ class CScenario{
 		CScenario(){
 			elec_pol = 0;
 			posi_pol = 0;
+			pol_lumi = 0;
 		}
 
 		~CScenario(){
@@ -46,6 +51,7 @@ class CScenario{
 		}
 
 		void                    Cal_Pol();
+		void                    Cal_Lumi(int i, int j);
 		void Read_Scenario      (CPath &path, CFlow &flow);
 
 		CScenario_Basic         Default_Scenario(){
@@ -64,8 +70,20 @@ class CScenario{
 			return(default_scenario.lumi);
 		}
 
+		float Pol_Lumi(){
+			return(pol_lumi);
+		}
+
+
+		void Print();
+
 		std::string Lumi_Tex(){
 	        std::string lumi_tex= " \\int L dt ="+Float_to_String(default_scenario.lumi)+" fb^{-1} ";
+			return(lumi_tex);
+		}
+
+		std::string Pol_Lumi_Tex(){
+	        std::string lumi_tex= " \\int L dt ="+Float_to_String(pol_lumi)+" fb^{-1} ";
 			return(lumi_tex);
 		}
 
@@ -86,6 +104,9 @@ class CScenario{
 			}
 			else if(i==1&&j==1){
 				ratio = default_scenario.run_ratio[3];
+			}
+			else if(i==0&&j==0){
+				ratio = 1;
 			}
 			else{
 				ShowMessage(2,"Error: in CScenario::Run_Ratio, no correct pol");
@@ -120,6 +141,9 @@ namespace YAML{
 	template<>
 		struct convert<CScenario_Basic>{
 			static bool decode(const Node& node, CScenario_Basic& sce){ 
+				for(int i=0;i<4;i++){
+					sce.run_ratio.push_back(-1.0);
+				}
 				sce.run_ratio.resize(4);
 				ShowMessage(3,"begin reading CScenario_Basic ");
 				for(YAML::const_iterator it=node.begin(); it != node.end(); ++it){
@@ -155,4 +179,9 @@ namespace YAML{
 			}
 		};
 };
+
+
+std::ostream & operator<< (std::ostream & ostr, CScenario_Basic str);
+std::ostream & operator<< (std::ostream & ostr, CScenario str);
+
 #endif

@@ -10,6 +10,7 @@
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
 #include "Class/Plot.h"
+#include "Lib/MessageFormat.h"
 
 
 class CSignal_Property_Scan{
@@ -19,9 +20,15 @@ class CSignal_Property_Scan{
 		std::vector<std::string> properties;
 		std::vector<std::string> observables;
 
-		void Read_Signal_Properties_Scan(CPath &path);
 		Cplot_line         plot_sig;
 		Cplot_line         plot_bkg;
+		Cplot_stack        plot_stack;
+		Cplot_legend       plot_legend;
+
+		void Read_Signal_Properties_Scan(CPath &path);
+		void Print();
 };
+
+std::ostream & operator<< (std::ostream & ostr, CSignal_Property_Scan str);
 
 #endif

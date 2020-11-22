@@ -1,6 +1,7 @@
 weight:
     Exist                    : True 
     Weight_Type              : "F"
+    title_name               : scale_factor
 variable:
    v0:
         title_name           : "jet_num"

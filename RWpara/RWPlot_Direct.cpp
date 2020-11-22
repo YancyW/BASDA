@@ -6,8 +6,8 @@ void CPlot_Direct::Read_Plot_Direct(CPath &path){
 
 	if(plot_node["weight"])  {
 		YAML::Node weight_nodes = plot_node["weight"];
-		RW_element("Exist"       , weight_nodes,this->weight_exist);
-		RW_element("Weight_Type" , weight_nodes,this->weight_type);
+		RW_element("Exist"       , weight_nodes,this->exist);
+		RW_element("Weight_Type" , weight_nodes,this->type);
 	}
 
 	if(plot_node["var_label"]&& !plot_node["using_user_var"])  {

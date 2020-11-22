@@ -12,6 +12,7 @@
 #include "TCanvas.h"
 #include "TLegend.h"
 #include "TSystem.h"
+#include "Class/Plot.h"
 
 
 
@@ -21,8 +22,8 @@ class Avariable{
 		float         maximum;
 		double        minimum_d;
 		double        maximum_d;
-		int           minimum_i;
-		int           maximum_i;
+		long int      minimum_i;
+		long int      maximum_i;
 	public:
 
 		std::string   variable_type;
@@ -33,18 +34,24 @@ class Avariable{
 		float         cut_max      ;
 		float         cut_min_pre  ;
 		float         cut_max_pre  ;
+		float         cut_min_drop ;
+		float         cut_max_drop ;
 
 		double        variable_d   ;
 		double        cut_min_d    ;
 		double        cut_max_d    ;
 		double        cut_min_pre_d;
 		double        cut_max_pre_d;
+		double        cut_min_drop_d;
+		double        cut_max_drop_d;
 
-		int           variable_i   ;
-		int           cut_min_i    ;
-		int           cut_max_i    ;
-		int           cut_min_pre_i;
-		int           cut_max_pre_i;
+		long int      variable_i   ;
+		long int      cut_min_i    ;
+		long int      cut_max_i    ;
+		long int      cut_min_pre_i;
+		long int      cut_max_pre_i;
+		long int      cut_min_drop_i;
+		long int      cut_max_drop_i;
 
 		TCanvas*      c          ;
 		std::string   c_name     ;
@@ -72,21 +79,24 @@ class Avariable{
 		float         log_min    ;
 		bool          norm_switch;
 		bool          MVA_switch ;
+		bool          MVA1_switch ;
 		bool          show_title ;
+		bool          use_default_line_setting;
 		int           with_color_or_line; 
 		int           line_width ; 
+		Cplot_basic_color_style line_setting;
 
 		std::vector<int> label_2d;
 
 		Avariable(){
-			minimum      =-100000.1 ;
-			maximum      = 100000.1 ;
-			minimum_d    =-100000.1 ;
-			maximum_d    = 100000.1 ;
-			minimum_i    =-100000   ;
-			maximum_i    = 100000   ;
+			minimum      =-100000.1;
+			maximum      = 100000.1;
+			minimum_d    =-100000.1;
+			maximum_d    = 100000.1;
+			minimum_i    =-100000;
+			maximum_i    = 100000;
 
-			variable_type= "F"      ;
+			variable_type= "F"   ;
 			setting_type = "default";
 
 			variable     = minimum  ;
@@ -94,44 +104,52 @@ class Avariable{
 			cut_max      = maximum  ;
 			cut_min_pre  = minimum  ;
 			cut_max_pre  = maximum  ;
+			cut_min_drop = minimum-0.1  ;
+			cut_max_drop = minimum+0.1;
 
 			variable_d   = minimum_d;
 			cut_min_d    = minimum_d;
 			cut_max_d    = maximum_d;
 			cut_min_pre_d= minimum_d;
 			cut_max_pre_d= maximum_d;
+			cut_min_drop_d= minimum_d-0.1;
+			cut_max_drop_d= minimum_d+0.1;
 
 			variable_i   = minimum_i; 
 			cut_min_i    = minimum_i; 
 			cut_max_i    = maximum_i; 
 			cut_min_pre_i= minimum_i; 
 			cut_max_pre_i= maximum_i; 
+			cut_min_drop_i= minimum_i-1; 
+			cut_max_drop_i= minimum_i+1; 
 
-		    c_name       = "canvas" ;
-		    c_width      = 800.0      ;
-		    c_height     = 600.0      ;
-		    leg_left     = 0.0      ;
-		    leg_up       = 0.0      ;
-		    leg_right    = 0.0      ;
-		    leg_down     = 0.0      ;
-		    leg_header   = ""       ;
-		    title_name   = ""       ;
-		    latex_name   = ""       ;
-		    x_name       = ""       ;
-		    x_bin        = 0        ;
-		    x_min        = 0.0      ;
-		    x_max        = 0.0      ;
-		    y_name       = ""       ;
-		    y_bin        = 0        ;
-		    y_min        = 0.0      ;
-		    y_max        = 0.0      ;
-		    cut_switch   = false    ;
-		    plot_switch  = false    ;
-		    log_switch   = false    ;
+			c_name       = "canvas" ;
+			c_width      = 1000.0   ;
+			c_height     = 700.0    ;
+			leg_left     = 0.6      ;
+			leg_up       = 0.6      ;
+			leg_right    = 0.9      ;
+			leg_down     = 0.9      ;
+			leg_header   = ""       ;
+			title_name   = ""       ;
+			latex_name   = ""       ;
+			x_name       = ""       ;
+			x_bin        = 1        ;
+			x_min        = 0.0      ;
+			x_max        = 1.0      ;
+			y_name       = ""       ;
+			y_bin        = 1        ;
+			y_min        = 0.0      ;
+			y_max        = 1.0      ;
+			cut_switch   = false    ;
+			plot_switch  = false    ;
+			log_switch   = false    ;
 			log_min      = 0.1      ;
-		    norm_switch  = false    ;
-		    MVA_switch   = false    ;
+			norm_switch  = false    ;
+			MVA_switch   = false    ;
+			MVA1_switch  = false ;
 			show_title   = false    ;
+			use_default_line_setting = true;
 			with_color_or_line = -1 ;
 			line_width  = -1        ;
 		}
@@ -158,7 +176,7 @@ class Avariable{
 			return(false);
 		}
 
-		bool Is_Minimum(int val){
+		bool Is_Minimum(long int val){
 			if(val==minimum_i){
 				return(true);
 			}
@@ -179,7 +197,7 @@ class Avariable{
 			return(false);
 		}
 
-		bool Is_Maximum(int val){
+		bool Is_Maximum(long int val){
 			if(val==maximum_i){
 				return(true);
 			}
@@ -194,6 +212,9 @@ class Avariable{
 			return(maximum);
 		}
 
+		bool Use_Default_Line_Setting(){
+			return(use_default_line_setting);
+		}
 		void Print(int i=2,bool has_title=false);
 };
 
@@ -207,7 +228,7 @@ class Avariable_vec{
 		std::string   title_name ;
 
 		Avariable_vec(){
-		    title_name  = ""    ;
+			title_name  = ""    ;
 			var_ptr = new std::vector<float>(); 
 		}
 };
@@ -215,12 +236,14 @@ class Avariable_vec{
 
 class AWeight{
 	public:
-		std::string weight_type;
-		bool        weight_exist;
-	
+		std::string type;
+		bool        exist;
+		std::string title;
+
 		AWeight(){
-			weight_exist= true;
-			weight_type = "F";
+			exist= true;
+			type = "F";
+			title= "weight";
 		}
 };
 
@@ -231,18 +254,30 @@ class AVariable: public AWeight{
 		int num_MVA;
 		int num_MVA1;
 		int cut_level;
+
+		bool        weight_exist;
+		Avariable   weight;
+
 		std::vector<Avariable> var;
 		std::vector<Avariable_vec> vec;
-		std::vector<Avariable> MVA;
+		std::vector<Avariable*> MVA;
+		std::vector<Avariable*> MVA1;
+
+		std::vector<int> MVA_pos;
+		std::vector<int> MVA1_pos;
 		void Read_Var(CPath &path);
 
 		AVariable(){
+			weight_exist = false;
 			num_var=0;
 			num_vec=0;
 			num_MVA=0;
 			num_MVA1=0;
 			var.clear();
 			MVA.clear();
+			MVA_pos.clear();
+			MVA1.clear();
+			MVA1_pos.clear();
 		}
 
 		int Find_Var(std::string input_name){
@@ -262,6 +297,12 @@ class AVariable: public AWeight{
 			}
 			return(-1);
 		}
+
+		int Var_Num();
+		int Vec_Num();
+		int MVA_Num();
+		void Copy(const AVariable &input_var);
+		void Print();
 };
 
 
@@ -391,6 +432,33 @@ namespace YAML{
 							var.cut_max_pre = static_cast<float> (var.cut_max_pre_i);
 						}
 					}
+					else if(it->first.as<std::string>()=="cut_min_drop"){
+						if(var.variable_type=="F"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_drop);
+						}
+						else if(var.variable_type=="D"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_drop_d);
+							var.cut_min_drop = static_cast<float> (var.cut_min_drop_d);
+						}
+						else if(var.variable_type=="I"){
+							RW_element(it->first.as<std::string>(), it, var.cut_min_drop_i);
+							var.cut_min_drop = static_cast<float> (var.cut_min_drop_i);
+						}
+					}
+					else if(it->first.as<std::string>()=="cut_max_drop"){
+						RW_element(it->first.as<std::string>(), it, var.cut_max_drop);
+						if(var.variable_type=="F"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_drop);
+						}
+						else if(var.variable_type=="D"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_drop_d);
+							var.cut_max_drop = static_cast<float> (var.cut_max_drop_d);
+						}
+						else if(var.variable_type=="I"){
+							RW_element(it->first.as<std::string>(), it, var.cut_max_drop_i);
+							var.cut_max_drop = static_cast<float> (var.cut_max_drop_i);
+						}
+					}
 					else if(it->first.as<std::string>()=="cut_switch"){
 						RW_element(it->first.as<std::string>(), it, var.cut_switch);
 					}
@@ -409,6 +477,9 @@ namespace YAML{
 					else if(it->first.as<std::string>()=="MVA"){
 						RW_element(it->first.as<std::string>(), it, var.MVA_switch);
 					}
+					else if(it->first.as<std::string>()=="MVA1"){
+						RW_element(it->first.as<std::string>(), it, var.MVA1_switch);
+					}
 					else if(it->first.as<std::string>()=="show_title"){
 						RW_element(it->first.as<std::string>(), it, var.show_title);
 					}
@@ -417,6 +488,14 @@ namespace YAML{
 					}
 					else if(it->first.as<std::string>()=="line_width"){
 						RW_element(it->first.as<std::string>(), it, var.line_width);
+					}
+					else if(it->first.as<std::string>()=="use_default_line_setting"){
+						RW_element(it->first.as<std::string>(), it, var.use_default_line_setting);
+						if(var.use_default_line_setting){
+							if(it->first.as<std::string>()=="line_setting"){
+								//var.line_setting = it->second.as<Cplot_basic_color_style>();
+							}
+						}
 					}
 					else if(it->first.as<std::string>()=="plot_2d"){
 						var.label_2d = it->second.as<std::vector<int> >();	

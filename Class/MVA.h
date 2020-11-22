@@ -6,6 +6,7 @@
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
 #include "Class/Flow.h"
+#include "Lib/MessageFormat.h"
 
 class CMVA_Basic{
 	private:
@@ -16,7 +17,10 @@ class CMVA_Basic{
 		std::string             MVA_event_setting    ;
 		std::string             MVA_method_setting   ;
 		std::string             MVA_factory_setting  ;
+		Int_t                    MVA_file_num        ;
+		std::vector<std::string> MVA_file            ;
 
+		void                    Print()              ;
 };
 
 
@@ -46,6 +50,7 @@ class CMVA{
 		}
 
 		void        Read_MVA(CPath &path, CFlow &flow);
+		void        Print();
 };
 
 
@@ -69,6 +74,17 @@ namespace YAML{
 					else if(it->first.as<std::string>()=="MVA_method_setting"){
 						RW_element(it->first.as<std::string>(), it, mva.MVA_method_setting);
 					}
+					else if(it->first.as<std::string>()=="MVA_factory_setting"){
+						RW_element(it->first.as<std::string>(), it, mva.MVA_factory_setting);
+					}
+					else if(it->first.as<std::string>()=="MVA_file_num"){
+						RW_element(it->first.as<std::string>(), it, mva.MVA_file_num);
+						for(int i=0;i<mva.MVA_file_num;i++){
+							RW_vector_element("MVA_file" , i, node, mva.MVA_file);
+						}
+					}
+					else if(it->first.as<std::string>().substr(0,8)=="MVA_file"){
+					}
 					else{
 						ShowMessage(2,"wrong input when load class CMVA_Basic",it->first.as<std::string>());
 					}
@@ -78,4 +94,8 @@ namespace YAML{
 			}
 		};
 };
+
+
+std::ostream & operator<< (std::ostream & ostr, CMVA_Basic str);
+std::ostream & operator<< (std::ostream & ostr, CMVA str);
 #endif

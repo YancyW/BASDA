@@ -37,11 +37,11 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name){
 	std::string cuts_des = "";
 	std::string cutb_des = "";
 	for(int i=0;i<para.var.num_MVA;i++){
-		dataloader->AddVariable(para.var.MVA[i].title_name.c_str(), 'F' );
+		dataloader->AddVariable(para.var.MVA[i]->title_name.c_str(), 'F' );
 	////cuts_des+=  para.var.MVA[i].title_name+">"+Float_to_String(para.var.var[0].Minimum());
 	////cutb_des+=  para.var.MVA[i].title_name+">"+Float_to_String(para.var.var[0].Minimum());
-		cuts_des+=  para.var.MVA[i].title_name+">-100.2";
-		cutb_des+=  para.var.MVA[i].title_name+">-100.2";
+		cuts_des+=  para.var.MVA[i]->title_name+">-100.2";
+		cutb_des+=  para.var.MVA[i]->title_name+">-100.2";
 		if(i!=para.var.num_MVA-1){
 			cuts_des+= "&&";
 			cutb_des+= "&&";

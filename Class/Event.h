@@ -6,6 +6,7 @@
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
 #include "TSystem.h"
+#include "Lib/MessageFormat.h"
 
 class CEvent{
 	private:
@@ -90,7 +91,9 @@ class CEvent{
 				_loop_end   = _tot_num;
 			}
 		}
+
+		void Print();
 };
 
-
+std::ostream & operator<< (std::ostream & ostr, CEvent str);
 #endif
