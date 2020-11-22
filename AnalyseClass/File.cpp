@@ -76,6 +76,10 @@ std::string change_name(std::string arg_string){
 }
 
 
+void AFile::Set_Property(std::string input_property){
+	_property = input_property;
+}
+
 void get_file_name(CDraw &para, AFile &file_name){
 	file_name.Clear();
 	freopen(para.path.record_file.c_str() ,"a",stdout);
@@ -234,6 +238,86 @@ void get_file_name(CDraw &para, AFile &file_name){
 	}
 }
 
+std::string AFile::Get_Output_Unpol_File(std::string input_file_name){
+	std::string output_file;
+	std::string selected_channel;
+	if(input_file_name=="nh"){
+		selected_channel=change_name("nh_{"+_property+"}^{"+_property+"}");
+	}
+	else if(input_file_name=="higgs"){
+		selected_channel=change_name("higgs_{"+_property+"}^{"+_property+"}");
+	}
+	else{
+		selected_channel=change_name(input_file_name);
+	}
+
+	AFile_Name out_tmp;
+	for(int i=0;i<Input_Num();i++){
+		if(selected_channel==input[i].name){
+			output_file=output[i].Unpol_file;
+			break;
+		}
+	}
+	return(output_file);
+}
+
+std::vector<std::string> AFile::Get_Output_Unpol_Files(std::vector<std::string> input_file_name){
+	std::vector<std::string> output_file;
+	for(unsigned int i=0;i<input_file_name.size();i++){
+		std::string out_tmp=Get_Output_Unpol_File(input_file_name[i]);
+        output_file.push_back(out_tmp);
+	}
+	return(output_file);
+}
+
+std::vector<std::string> AFile::Get_Output_Unpol_Files(){
+	std::vector<std::string> output_file;
+	for(int i=0;i<Input_Num();i++){
+        output_file.push_back(output[i].Unpol_file);
+	}
+	return(output_file);
+}
+
+std::string AFile::Get_Output_MVA_File(std::string input_file_name){
+	std::string output_file;
+	std::string selected_channel;
+	if(input_file_name=="nh"){
+		selected_channel=change_name("nh_{"+_property+"}^{"+_property+"}");
+	}
+	else if(input_file_name=="higgs"){
+		selected_channel=change_name("higgs_{"+_property+"}^{"+_property+"}");
+	}
+	else{
+		selected_channel=change_name(input_file_name);
+	}
+
+	AFile_Name out_tmp;
+	for(int i=0;i<Input_Num();i++){
+		if(selected_channel==input[i].name){
+			output_file=output[i].MVA_file;
+			break;
+		}
+	}
+	return(output_file);
+}
+
+std::vector<std::string> AFile::Get_Output_MVA_Files(std::vector<std::string> input_file_name){
+	std::vector<std::string> output_file;
+	for(unsigned int i=0;i<input_file_name.size();i++){
+		std::string out_tmp=Get_Output_MVA_File(input_file_name[i]);
+        output_file.push_back(out_tmp);
+	}
+	return(output_file);
+}
+
+
+std::vector<std::string> AFile::Get_Output_MVA_Files(){
+	std::vector<std::string> output_file;
+	for(int i=0;i<Input_Num();i++){
+        output_file.push_back(output[i].MVA_file);
+	}
+	return(output_file);
+}
 
 void AFile::Clear(){
 	input.clear();
@@ -242,9 +326,11 @@ void AFile::Clear(){
 	folder.clear();
 	significance  ="";
 	output_table  ="";
+	efficiency_plot="";
 	reweight_table="";
 	sensitivity   ="";
 	output_MVA    ="";
 	dataset_MVA   ="";
 
 }
+
