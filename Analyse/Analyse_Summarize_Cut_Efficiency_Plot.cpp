@@ -52,7 +52,7 @@ void Analyse_Summarize_Cut_Efficiency_Plot(CDraw &para){
 		if(!para.flow.record_output){
 			freopen(para.path.record_file.c_str() ,"a",stdout);
 		}
-		para.bkg_sort.Read_BKG_Sort(new_bkg_file);
+		para.bkg_sort.Read_BKG_Sort_Test(para.path);
 		if(!para.flow.record_output){
 			fclose(stdout);
 			freopen("/dev/tty","w",stdout);
