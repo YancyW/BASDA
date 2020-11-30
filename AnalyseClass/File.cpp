@@ -80,7 +80,8 @@ void AFile::Set_Property(std::string input_property){
 	_property = input_property;
 }
 
-void get_file_name(CDraw &para, AFile &file_name){
+void get_file_name(CDraw &para, AFile &file_name, bool record_switch){
+	file_name.Set_Property(para.flow.signal_property);
 	file_name.Clear();
 	freopen(para.path.record_file.c_str() ,"a",stdout);
 	ShowMessage(2,"get file name");
@@ -194,13 +195,14 @@ void get_file_name(CDraw &para, AFile &file_name){
 
 	ShowMessage(2);
 
-	file_name.significance  =data_folder_name     +"significance_" +para.flow.signal_property+".dat";
-	file_name.output_table  =data_folder_name     +"output_table_" +para.flow.signal_property+".dat";
-	file_name.reweight_table=data_folder_name     +"reweight_table"+para.flow.signal_property+".dat";
-	file_name.sensitivity   =event_LIMIT_folder_name+"sensitivity_"  +para.flow.signal_property+".root";
-	file_name.output_MVA    =event_MVA_folder_name+file_name.input[0].name+"_MVA.root";
-	file_name.dataset_MVA   =event_MVA_folder_name+file_name.input[0].name+"_dataset";
-	file_name.plot_CUT      =event_CUT_folder_name+"all_plots.root";
+	file_name.significance   =data_folder_name     +"significance_" +para.flow.signal_property+".dat";
+	file_name.output_table   =data_folder_name     +"output_table_" +para.flow.signal_property+".dat";
+	file_name.efficiency_plot=data_folder_name     +"efficiency_plot_"+para.flow.signal_property+".png";
+	file_name.reweight_table =data_folder_name     +"reweight_table"+para.flow.signal_property+".dat";
+	file_name.sensitivity    =event_LIMIT_folder_name+"sensitivity_"  +para.flow.signal_property+".root";
+	file_name.output_MVA     =event_MVA_folder_name+file_name.input[0].name+"_MVA.root";
+	file_name.dataset_MVA    =event_MVA_folder_name+file_name.input[0].name+"_dataset";
+	file_name.plot_CUT       =event_CUT_folder_name+"all_plots.root";
 	//file_name.dataset_MVA =file_name.input[0].name+"_dataset";
 
 	ShowMessage(2);
@@ -226,10 +228,20 @@ void get_file_name(CDraw &para, AFile &file_name){
 	file_name.output_total.Unpol_file= event_Unpol_folder_name+file_name.output_total.name+"_"+para.flow.signal_property+".root";
 	file_name.output_total.MVA_file  = event_MVA_folder_name  +file_name.output_total.name+"_"+para.flow.signal_property+".root";
 	file_name.output_total.CUT_file  = event_CUT_folder_name  +file_name.output_total.name+"_"+para.flow.signal_property+".root";
+	file_name.all_para_file          = event_CUT_folder_name  +"all_para_"+"_"+para.flow.signal_property+".root";
 	file_name.output_total.ana_Unpol = data_folder_name       +file_name.output_total.name+"_"+para.flow.signal_property+"_Unpol.dat";
 	file_name.output_total.ana_data  = data_folder_name       +file_name.output_total.name+"_"+para.flow.signal_property+".dat";
 
-	ShowMessage(1,"The file_name is:",file_name);
+	ShowMessage(2);
+
+	file_name.input_sort.Input_Element(para.bkg_sort);
+	file_name.output_sort.Input_Element(para.bkg_sort);
+	file_name.output_sort.Add_Name(event_CUT_folder_name+"sort_",".root");
+	file_name.output_sort.Print();
+
+	if(record_switch){
+		ShowMessage(1,"The file_name is:",file_name);
+	}
 
 
 	if(!para.flow.record_output){

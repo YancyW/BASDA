@@ -45,7 +45,7 @@ void Analyse_Summarize_Plot_Complete_Pre(CDraw &para){
 			para.flow.signal_property = "10";
 			get_file_name(para,file_name);
 			if(para.flow.plot_object=="before_cut"){
-				for(int i=1;i<file_name.output.size();i++){
+				for(unsigned int i=1;i<file_name.output.size();i++){
 					ShowMessage(2,"bkg",file_name.output[i].CUT_file);
 					sig_name_temp.push_back(file_name.output[i].CUT_file);
 				}
@@ -104,7 +104,7 @@ void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::s
 			std::vector<TH1F*> hvariable;
 			hvariable.resize(sig_name[0].size());
 			std::string title_name= info.title_name;
-			for(int i=0;i<sig_name[0].size();i++){
+			for(unsigned int i=0;i<sig_name[0].size();i++){
 				std::string hname=title_name+"_"+Int_to_String(i);
 				hvariable[i] = new TH1F(hname.c_str(),title_name.c_str(),x_bin,x_min,x_max);
 				hvariable[i]->SetTitle(hname.c_str());
@@ -172,7 +172,7 @@ void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::s
 				gPad->SetLogy();
 				ss_large->SetMinimum(info.log_min);
 			}
-    		for(int j=para.signal_scan.property_num;j<sig_name[0].size();j++){
+    		for(unsigned int j=para.signal_scan.property_num;j<sig_name[0].size();j++){
 ////			//int bkg_color=j-para.signal_scan.property_num+20;
 ////			int bkg_color=28;
     			if(hvariable[j]->GetEntries()!=0){
@@ -197,7 +197,7 @@ void Analyse_Summarize_Plot_Complete(CDraw &para, std::vector<std::vector<std::s
 					gPad->SetLogy();
 					ss->SetMinimum(info.log_min);
 				}
-    			for(int j=para.signal_scan.property_num;j<sig_name[0].size();j++){
+    			for(unsigned int j=para.signal_scan.property_num;j<sig_name[0].size();j++){
 ////				//int bkg_color=j-para.signal_scan.property_num+20;
 ////				int bkg_color=28;
     				if(hvariable[j]->GetEntries()!=0){
@@ -252,7 +252,7 @@ void Analyse_Summarize_Plot_Pre(CDraw &para){
 	para.flow.signal_property = "10";
 	get_file_name(para,file_name);
 	if(para.flow.plot_object=="before_cut"){
-		for(int i=1;i<file_name.output.size();i++){
+		for(unsigned int i=1;i<file_name.output.size();i++){
 			ShowMessage(2,"bkg",file_name.output[i].CUT_file);
 			sig_name.push_back(file_name.output[i].CUT_file);
 		}

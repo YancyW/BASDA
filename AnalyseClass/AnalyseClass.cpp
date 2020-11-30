@@ -579,7 +579,7 @@ void Analyse_Multi_File::Draw_Single(CDraw &para, AFile& file_name,std::string h
 
 			gPad->SetGrid();
 			std::vector<std::string> stack_title= Set_Stack_Title(para,info.title_name+"_"+hist_label);
-			for (int i=0;i<stack_title.size();i++){
+			for (unsigned int i=0;i<stack_title.size();i++){
 				std::cout << "stack name:  " << stack_title[i]<<std::endl;
 			}
 			THStack *ss = new THStack(stack_title[0].c_str(),stack_title[1].c_str() );

@@ -1,7 +1,12 @@
 #include "Analyse_Pre_Cut.h"
 void Analyse_Pre_Cut(CDraw &para){
 	AFile file_name;
-	get_file_name(para,file_name);
+	if(para.flow.flow_level==0){
+		get_file_name(para,file_name,true);
+	}
+	else{
+		get_file_name(para,file_name);
+	}
 
 	std::ofstream sig_file;
 	sig_file.open(file_name.significance);
@@ -12,7 +17,7 @@ void Analyse_Pre_Cut(CDraw &para){
 	for(int i=0;i<file_name.Output_Num();i++){
 		ana_out_name.push_back(file_name.output[i].ana_Unpol);
 	}
-	Make_Table(para,para.scenario.Lumi(),ana_out_name,file_name.output_table);
+	Make_Table(para,para.scenario.Pol_Lumi(),ana_out_name,file_name.output_table);
 
 	sig_file.close();
 }
@@ -109,7 +114,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 	for(int cnum=0;cnum<filenum;cnum++){
 		ShowMessage(1,"dealing with", file_name.output[cnum].name);
 		std::ofstream myfile;
-	    if(para.flow.begin_object == "Pre_Cut"||para.flow.begin_object == "Complete_Pol"){
+	    if(para.flow.begin_object == "Pre_Cut"||para.flow.begin_object == "Complete_Pol"||para.flow.begin_object == "Full_Pol"){
 			ShowMessage(1,"the analyse file is", file_name.output[cnum].ana_Unpol);
 			myfile.open(file_name.output[cnum].ana_Unpol);
 			RecordMessage(myfile,1,"filenum", "");
@@ -153,7 +158,10 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				datatest= new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num_var;i++){
-					if(para.var.var[i].title_name==para.flow.MVA_method){
+					if(para.var.var[i].title_name=="MVA"){
+						continue;
+					}
+					if(para.var.var[i].title_name=="MVA1"){
 						continue;
 					}
 					datatest->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -175,7 +183,10 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				datatest_MVA = new TTree( para.file.root_head_name.c_str() , "events" );
 				datatest_MVA->Branch( "weight"              , &out_weight );        
 				for(int i=0;i<para.var.num_var;i++){
-					if(para.var.var[i].title_name==para.flow.MVA_method){
+					if(para.var.var[i].title_name=="MVA"){
+						continue;
+					}
+					if(para.var.var[i].title_name=="MVA1"){
 						continue;
 					}
 					datatest_MVA->Branch( para.var.var[i].title_name.c_str() , &rootvar[i] );        
@@ -205,7 +216,10 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			//loop for init variables which are prepared for plot 
 			for(int j=0;j<para.var.num_var;j++){
-				if(para.var.var[j].title_name==para.flow.MVA_method){
+				if(para.var.var[j].title_name=="MVA"){
+					continue;
+				}
+				if(para.var.var[j].title_name=="MVA1"){
 					continue;
 				}
 				Avariable info=para.var.var[j];
@@ -229,7 +243,10 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 				if(para.flow.record_event){
 					for(int j=0;j<para.var.num_var;j++){
-						if(para.var.var[j].title_name==para.flow.MVA_method){
+						if(para.var.var[j].title_name=="MVA"){
+							continue;
+						}
+						if(para.var.var[j].title_name=="MVA1"){
 							continue;
 						}
 						rootvar[j]=para.var.var[j].variable;
@@ -240,7 +257,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 				// add cuts
 				float event_rate=event/(float)total_event;
 
-				if(para.flow.begin_object == "Pre_Cut"||para.flow.begin_object == "Complete_Pol"){
+				if(para.flow.begin_object == "Pre_Cut"||para.flow.begin_object == "Complete_Pol"||para.flow.begin_object == "Full_Pol"){
 					if(para.flow.MVA_level==1){
 						Fill_Tree(para,event_rate,datatest_MVA);
 					}
@@ -274,7 +291,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 			}
 
-			if(para.flow.begin_object == "Pre_Cut"||para.flow.begin_object == "Complete_Pol"){
+			if(para.flow.begin_object == "Pre_Cut"||para.flow.begin_object == "Complete_Pol"||para.flow.begin_object== "Full_Pol"){
 				for(int icut=0;icut<=cut.pre_cut_num+1;icut++){
 					pass[cnum][filenum_i[cnum]][icut]+=pass[cnum][i][icut];
 					pass_wo_weight[cnum][filenum_i[cnum]][icut]+=pass_wo_weight[cnum][i][icut];

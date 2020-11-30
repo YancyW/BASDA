@@ -27,6 +27,6 @@
 using namespace TMVA;
 
 void Analyse_MVA_Train_Pre(CDraw &para);
-void Analyse_MVA_Train(CDraw &para, AFile &file_name);
+void Analyse_MVA_Train(CDraw &para, AFile &file_name,int MVA_layer=1);
 
 #endif

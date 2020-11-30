@@ -9,8 +9,6 @@ void CScenario:: Read_Scenario(CPath &path, CFlow &flow){
 	RW_element("elec_pol" ,scenario_node,this->elec_pol);
 	RW_element("posi_pol" ,scenario_node,this->posi_pol);
 
-    Cal_Pol();
-
 	YAML::Node nodes = scenario_node["Scenario"];
 	for(YAML::const_iterator it=nodes.begin(); it != nodes.end(); ++it){
 		ShowMessage(3, "scenario name",it->first.as<std::string>());
@@ -29,6 +27,36 @@ void CScenario:: Read_Scenario(CPath &path, CFlow &flow){
 		ShowMessage(2,"do NOT have correct running scenario");
 		exit(0);
 	}
+
+
+    bool JCom=Find_Str(flow.begin_object,"Complete");
+    bool JSum=Find_Str(flow.begin_object,"Summarize");
+	if(!JCom&&!JSum){
+		int i = 0;
+		int j = 0;
+		if(flow.pol_setting=="-1-1"){
+			i = -1;
+			j = -1;
+		}
+		else if(flow.pol_setting=="-11"){
+			i = -1;
+			j = 1;
+		}
+		else if(flow.pol_setting=="1-1"){
+			i = 1;
+			j = -1;
+		}
+		else if(flow.pol_setting=="11"){
+			i = 1;
+			j = 1;
+		}
+		this->elec_pol     = i * elec_pol;
+		this->posi_pol     = j * posi_pol;
+		this->Cal_Lumi(i,j);
+	}
+
+    Cal_Pol();
+
 }
 
 void CScenario::Cal_Pol(){
@@ -42,4 +70,9 @@ void CScenario::Cal_Pol(){
 	pol.push_back( elecr * posil);
 	pol.push_back( elecl * posil);
 	pol.push_back( elecr * posir);
+}
+
+
+void CScenario::Cal_Lumi(int i, int j){
+	pol_lumi = Run_Ratio(i,j)*default_scenario.lumi;
 }

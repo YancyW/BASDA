@@ -1,17 +1,21 @@
 TARGET=BASDA
 CXX=g++
+#FLAGS=-std=c++14  -Wextra  -Wall ${shell root-config --cflags} -DBOOST_NO_CXX11_SCOPED_ENUMS
 FLAGS=-std=c++14  -Wextra  -Wall ${shell root-config --cflags}
 
 RootPath=/cvmfs/ilc.desy.de/sw/x86_64_gcc82_sl6/v02-01-02/root/6.18.04
-YAMLPath=/afs/desy.de/user/y/ywang/Software/Lib/yaml-cpp-master/
+YAMLPath=/afs/desy.de/user/y/ywang/Software/Lib/yaml-cpp-master_gcc8/
 JPEGPath=${HOME}/Software/executable/anaconda3/pkgs/jpeg-8d-2/lib/
 CPPITERTOOL=${HOME}/Software/Lib/cppitertools-1.0
+BOOSTPath=${HOME}/Software/Lib/boost_1_74_0
 
 INCLUDE = -I. -I..  -I$(RootPath)/include  \
-		  -I${YAMLPath}/include -I${CPPITERTOOL}/ -I${CPPITERTOOL}/internal -I${CPPITERTOOL}/test
+		  -I${YAMLPath}/include -I${CPPITERTOOL}/ -I${CPPITERTOOL}/internal -I${CPPITERTOOL}/test \
+		  -I${BOOSTPath}
 
-LIBS =  -L${YAMLPath} -lyaml-cpp -L/Software/Lib/boost/ -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui 
-ROOTLIBS := $(shell root-config --libs) -lXMLIO
+#LIBS =  -L${YAMLPath}/build -lyaml-cpp -L${HOME}/Software/Lib/boost/ -lboost_filesystem  -L${HOME}/Software/Lib/boost/  -lboost_system -lTMVA -lTMVAGui 
+LIBS =  -L${YAMLPath}/build -lyaml-cpp ${BOOSTPath}/stage/lib/libboost_filesystem.so    ${BOOSTPath}/stage/lib/libboost_system.so -lTMVA -lTMVAGui 
+ROOTLIBS := $(shell root-config --libs) -lXMLIO -lImt
 
 SRCS = \
 $(TARGET).cpp \

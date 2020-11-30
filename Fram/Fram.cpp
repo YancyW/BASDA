@@ -31,9 +31,8 @@ void Fram(CDraw &para)
 	else if (para.flow.begin_object == "Complete_Run" ){
 		Analyse_Complete(para);
 	}
-	else if (para.flow.begin_object == "Complete_Pol" ){
-		std::string MVA_dataset="../../Event_Analyse_nh/results-1-1/115_MVA/nh_115_115_dataset";
-		Analyse_Complete_Pol(para,true,MVA_dataset);
+	else if (para.flow.begin_object == "Full_Pol" ){
+		Analyse_Complete_Pol(para);
 	}
 	else if (para.flow.begin_object == "Complete_Direct_Cut" ){
 		Analyse_Complete_Direct_Cut(para);

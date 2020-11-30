@@ -213,7 +213,7 @@ bool APlot::Get_Input_File(CDraw &para, Avariable &info, std::vector<std::string
 	}
 
 
-	for(unsigned int i=0;i<_sig_num;i++){
+	for(int i=0;i<_sig_num;i++){
 		_sig_File.push_back(new TFile(input_sig[i].c_str(),"READ"));
 		_sig_File[i]->cd();
 		_sig_Tree.push_back((TTree*) _sig_File[i]->Get(para.file.root_head_name.c_str()));
@@ -227,7 +227,7 @@ bool APlot::Get_Input_File(CDraw &para, Avariable &info, std::vector<std::string
 	std::string sig_histo_name=info.title_name+"_sig";
 	_sig_histo_total   = new TH1F("new sig total",sig_histo_name.c_str(),info.x_bin,info.x_min,info.x_max);
 
-	for(unsigned int i=0;i<_bkg_num;i++){
+	for(int i=0;i<_bkg_num;i++){
 		_bkg_File.push_back(new TFile(input_bkg[i].c_str(),"READ")) ;
 		_bkg_File[i]->cd();
 		_bkg_Tree.push_back((TTree*) _bkg_File[i]->Get(para.file.root_head_name.c_str()));
@@ -267,7 +267,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 	ShowMessage(2,"Begin to fill data for signal.");
 	float weight_sig_total = 0;
 	float weight_bkg_total = 0;
-	for(unsigned int i=0;i<_sig_num;i++){
+	for(int i=0;i<_sig_num;i++){
 		_sig_File[i]->cd();
 		Long64_t nEvent = _sig_Tree[i]->GetEntries();
 		ShowMessage(3,"signal",_sig_File[i]->GetName());
@@ -290,7 +290,7 @@ bool APlot::Get_Histogram(CDraw &para, Avariable &input_info,std::string output_
 
 
 	ShowMessage(2,"Begin to fill data for background.");
-	for(unsigned int i=0;i<_bkg_num;i++){
+	for(int i=0;i<_bkg_num;i++){
 		_bkg_File[i]->cd();
 		Int_t nEvent = _bkg_Tree[i]->GetEntries();
 		ShowMessage(3,"background",_bkg_File[i]->GetName());

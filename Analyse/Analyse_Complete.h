@@ -56,9 +56,14 @@
 #include "Make_Complete_Table.h"
 #include "AnalyseClass/File.h"
 #include "Analyse_Sensitivity.h"
+#include "Make_Complete_Efficiency_Plot.h"
 
 void Analyse_Complete(CDraw &para);
-void Analyse_Complete_Pol(CDraw &para, bool MVA_train_switch,std::string &MVA_dataset);
+void Analyse_Complete_Pol(CDraw &para);
 void Analyse_Complete_Direct_Cut(CDraw &para);
+void Analyse_Complete_MVA_Train(CDraw &para);
+void Analyse_Complete_MVA_Attach(CDraw &para);
+void Analyse_Complete_Direct_Cut_And_After(CDraw &para);
+void Analyse_Complete_Pol_Direct_Cut_And_After(CDraw &para);
 
 #endif

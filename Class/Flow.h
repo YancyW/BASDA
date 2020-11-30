@@ -33,7 +33,7 @@ class CFlow{
 
 		Int_t                   level                ;
 		Int_t                   flow_level           ;
-		void                    Read_Flow(CPath path);
+		void                    Read_Flow(CPath &path);
 		void                    Print()              ;
 };
 

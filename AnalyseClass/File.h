@@ -178,7 +178,7 @@ class AFile{
 std::ostream & operator<<(std::ostream & ostr, AFile &file_name);
 
 std::string change_name(std::string arg_string);
-void get_file_name(CDraw &para, AFile &file_name);
+void get_file_name(CDraw &para, AFile &file_name, bool record_switch=false);
 #endif
 
 

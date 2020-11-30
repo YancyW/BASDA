@@ -3,7 +3,12 @@
 
 void Analyse_Direct_Cut_Pre(CDraw &para){
 	AFile file_name;
-	get_file_name(para,file_name);
+	if(para.flow.flow_level==0){
+		get_file_name(para,file_name,true);
+	}
+	else{
+		get_file_name(para,file_name);
+	}
 
 	std::ofstream sig_file;
 	sig_file.open(file_name.significance);
@@ -41,13 +46,15 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			para.flow.begin_object  == "Complete_Direct_Cut"||
 			para.flow.begin_object  == "Complete_Run"||
 			para.flow.begin_object  == "Complete_Pol" ||
-			para.flow.begin_object  == "Find_Cut"
+			para.flow.begin_object  == "Find_Cut" ||
+			para.flow.begin_object  == "Full_Pol"
             ){
 
 			in_file                .push_back(new TFile(file_name.output[j].MVA_file.c_str()));
 			in_file[j]->cd();
 			MyLCTuple              .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
 			nevent                 .push_back(MyLCTuple[j]->GetEntries()                     );
+			MyLCTuple[j]->SetBranchAddress("weight", &analyse.file[j].in_weight);
 
 		}
 		else if(para.flow.begin_object == "Direct_Cut_NoMVA" && file_name.input[0].basic_file.size()==1){
@@ -56,6 +63,11 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 			in_file[j]                ->cd();
 			MyLCTuple                 .push_back((TTree*)in_file[j]->Get(para.file.root_head_name.c_str()));
 			nevent                    .push_back(MyLCTuple[j]->GetEntries()                     );
+			analyse.file[j].in_weight = file_name.input[j].xection[0]/nevent[j];  
+		}
+		else{
+			ShowMessage(2,"Error:: in Analyse_Direct_Cut::wrong input para.flow.begin_object",para.flow.begin_object);
+			exit(0);
 		}
 		if(analyse.var.exist){
 			if(analyse.var.type=="F"){
@@ -116,8 +128,6 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 
 			para.Get_Event(event);
 
-			MyLCTuple[cnum]->GetEntry(event);
-
 			if(analyse.var.type=="D"){
 				analyse.file[cnum].in_weight = static_cast<float> (analyse.file[cnum].in_weight_d);
 			}
@@ -137,22 +147,31 @@ void Analyse_Direct_Cut(CDraw &para, AFile &file_name){
 
 			analyse.Root_Init_Var    ( cnum );
 
+			MyLCTuple[cnum]->GetEntry(event);
+
 			analyse.Root_Endow_Weight( cnum ) ;
 
 			analyse.Plot_Origin      ( cnum ) ;
 
 			analyse.Add_Pass_NoCut   ( cnum ) ;
 
-			if( !analyse.Get_Cut     ( cnum ) ) {continue;}
+			if( !analyse.Get_Cut     ( cnum ) ) { 
 
-			//analyse.Root_Endow_Var   ( cnum   ) ;
+				analyse.Root_Endow_Var   ( cnum ) ; 
 
-			analyse.Add_Pass_AllCut  ( cnum ) ;
+				analyse.Root_Fill        ( cnum ) ; 
 
-			analyse.Plot_Final       ( cnum ) ;
-
-			analyse.Root_Fill        ( cnum ) ;
-
+			}
+			else{
+				analyse.Root_Endow_Var   ( cnum ) ;
+		
+				analyse.Add_Pass_AllCut  ( cnum ) ;
+		
+				analyse.Plot_Final       ( cnum ) ;
+		
+				analyse.Root_Fill        ( cnum ) ;
+				
+			}
 		}                
 
 		analyse.Record_Information(cnum,myfile,file_name.output[cnum].latex);

@@ -25,5 +25,5 @@
 #include "AnalyseClass/File.h"
 
 void Analyse_MVA_Attach_Pre(CDraw &para);
-void Analyse_MVA_Attach(CDraw &para, AFile &file_name);
+void Analyse_MVA_Attach(CDraw &para, AFile &file_name,int MVA_layer);
 #endif

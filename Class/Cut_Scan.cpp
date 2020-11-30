@@ -107,7 +107,7 @@ void CCut_Scan::Set_Cut_Combination(){
 
 
 		std::vector<std::vector<std::vector<float> > > cut_product12 ;
-		for(int j=0; j<v.size();j++){
+		for(unsigned int j=0; j<v.size();j++){
 			std::vector<std::vector<float> > cut_product_to_vector = to_vector(v[j]); 
 			cut_product12.push_back(cut_product_to_vector);
 		}
@@ -120,7 +120,7 @@ void CCut_Scan::Set_Cut_Combination(){
 				auto p=product(cut_product12,second);
 				ResTCut_Scan_Product_multi v(std::begin(p), std::end(p));
 				ShowMessage(2,"vsize",v.size());
-				for(int j=0; j<v.size();j++){
+				for(unsigned int j=0; j<v.size();j++){
 					std::vector<std::vector<float> > product_first_element= std::get<0>(v[j]); 
 					std::vector<float>               product_second_element = std::get<1>(v[j]); 
 					product_first_element.push_back(product_second_element);
