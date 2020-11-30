@@ -2,6 +2,7 @@
 #ifndef FFILE_H
 #define FFILE_H
 #include <string> 
+#include <set> 
 #include <sys/stat.h> 
 #include <iostream>
 #include "TSystem.h"
