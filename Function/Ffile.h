@@ -49,4 +49,6 @@ void Is_File_Exist_And_Exit(const std::string& fname);
 
 std::string Get_File_Folder(std::string input);
 std::string Get_File_Ext(std::string input);
+
+std::string Get_File_Name_wo_Ext_From_Dir(std::string directory_name);
 #endif
