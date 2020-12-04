@@ -1,9 +1,9 @@
 #operation
 
 #BeginObject      : Test 
-BeginObject      : Find_Cut 
+BeginObject      : Full_Pol 
 #BeginObject      : Complete_Run 
-#BeginObject      : Complete_Pol 
+#BeginObject      : Full_Pol 
 #BeginObject      : Complete_Direct_Cut
 #BeginObject      : Make_Complete_Table 
 #BeginObject      : Sensitivity 
@@ -19,7 +19,7 @@ BeginObject      : Find_Cut
 
 # choose signal process and work scenario
 signal_property   : 125 
-working_scenario  : running-lhc
+working_scenario  : running-CEPC-5000fb
 MVA_method        : "BDTG" 
 pol_setting       : ""
 
@@ -28,11 +28,11 @@ pol_setting       : ""
 
 cut              : true 
 record_output    : false 
-plot             : false 
+plot             : true 
 plot_object      : before_cut 
 record_event     : true 
 MVA_training     : true 
-MVA_level        : 1
+MVA_level        : 2
 MVA_weight       : 2 
 
 

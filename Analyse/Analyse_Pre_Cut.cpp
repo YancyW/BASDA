@@ -25,7 +25,7 @@ void Analyse_Pre_Cut(CDraw &para){
 
 void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
-	ShowMessage(2,"analyse events");
+	ShowMessage(2,"in Analyse_Pre_Cut_Content:: analyse events");
 
 	int filenum=file_name.Input_Num();
 
@@ -54,10 +54,12 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 	std::vector<float> pass_i_cut;
 
 	ACut cut;
-	cut.Read_Cut(para.path);
+	cut.Read_Cut(para.path,  para.var);
 
+	ShowMessage(2,"in Analyse_Pre_Cut_Content:: load file", filenum);
 	for(int i=0;i<filenum;i++){
 		for(int j=0;j<filenum_i[i];j++){
+			ShowMessage(3,"in Analyse_Pre_Cut_Content:: file name", file_name.input[i].basic_file[j],i,filenum_i[i]);
 			xection_i                .push_back(file_name.input[i].xection[j]            );
 			filename_i               .push_back(file_name.input[i].basic_file[j]         );
 			in_file_i                .push_back(new TFile(filename_i[j].c_str())         );
@@ -111,6 +113,7 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 
 	//loop for all input files
+	ShowMessage(2,"in Analyse_Pre_Cut_Content:: begin to read file");
 	for(int cnum=0;cnum<filenum;cnum++){
 		ShowMessage(1,"dealing with", file_name.output[cnum].name);
 		std::ofstream myfile;
@@ -200,17 +203,30 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 
 		for(int i=0;i<filenum_i[cnum];i++){
 
-			if(i==0){
-				ShowMessage(2,"dealing with pol LR");
+			if(filenum_i.size()==1){
+				ShowMessage(2,"dealing with no pol file");
 			}
-			else if(i==1){
-				ShowMessage(2,"dealing with pol RL");
+			else if(filenum_i.size()==2){
+				if(i==0){
+					ShowMessage(2,"dealing with pol LR");
+				}
+				else if(i==1){
+					ShowMessage(2,"dealing with pol RL");
+				}
 			}
-			else if(i==2){
-				ShowMessage(2,"dealing with pol LL");
-			}
-			else if(i==3){
-				ShowMessage(2,"dealing with pol RR");
+			else if(filenum_i.size()==4){
+				if(i==0){
+					ShowMessage(2,"dealing with pol LR");
+				}
+				else if(i==1){
+					ShowMessage(2,"dealing with pol RL");
+				}
+				else if(i==2){
+					ShowMessage(2,"dealing with pol LL");
+				}
+				else if(i==3){
+					ShowMessage(2,"dealing with pol RR");
+				}
 			}
 
 

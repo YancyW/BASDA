@@ -283,7 +283,12 @@ class AVariable: public AWeight{
 		int Find_Var(std::string input_name){
 			if(Is_Digits(input_name)){
 				int input_num=std::stoi(input_name);
-				return(input_num);
+				if(input_num<num_var){
+					return(input_num);
+				}
+				else{
+					return(-1);
+				}
 			}
 			else{
 				for(int i=0;i<num_var;i++){
@@ -297,6 +302,16 @@ class AVariable: public AWeight{
 			}
 			return(-1);
 		}
+
+		int Find_Var(int input_num){
+			if(input_num<num_var){
+				return(input_num);
+			}
+			else{
+				return(-1);
+			}
+		}
+
 
 		int Var_Num();
 		int Vec_Num();

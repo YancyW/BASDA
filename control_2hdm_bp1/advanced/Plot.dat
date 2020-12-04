@@ -1,6 +1,7 @@
 drawing:
     single_plot            : ["origin", "before", "after", "final"]
     class_plot             : ["origin", "before", "after", "final"]
+    plot_type              : "C"
 
 setting:
     show_title         : false 

@@ -79,9 +79,9 @@ namespace YAML{
 					}
 					else if(it->first.as<std::string>()=="MVA_file_num"){
 						RW_element(it->first.as<std::string>(), it, mva.MVA_file_num);
-						for(int i=0;i<mva.MVA_file_num;i++){
-							RW_vector_element("MVA_file" , i, node, mva.MVA_file);
-						}
+					}
+					else if(node["MVA_file"]){
+						mva.MVA_file= node["MVA_file"].as<std::vector<std::string> >();
 					}
 					else if(it->first.as<std::string>().substr(0,8)=="MVA_file"){
 					}

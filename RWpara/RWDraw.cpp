@@ -51,6 +51,11 @@ void CDraw::Read(){
     this->MVA.Read_MVA(path,flow);
 	default_MVA = MVA;
     JMVA= true;
+	for(unsigned int i=0;i<this->MVA.mva.size();i++){
+		if(this->MVA.mva[i].MVA_file_num==1&&this->MVA.mva[i].MVA_file[0]=="all"){
+			this->MVA.mva[i].MVA_file=this->file.file;
+		}
+	}
 
     this->cut_scan.Read_Cut_Scan(path.cut_scan_file,var);
 	default_cut_scan= cut_scan;

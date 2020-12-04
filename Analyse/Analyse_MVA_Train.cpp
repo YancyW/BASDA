@@ -42,8 +42,8 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name, int MVA_layer){
 	}
 	
 
-	TFile* outputFile = TFile::Open( file_name.output_MVA.c_str(), "RECREATE" );
-	ShowMessage(2,"The output file is",file_name.output_MVA);
+	TFile* outputFile = TFile::Open( MVA_outfile_name.c_str(), "RECREATE" );
+	ShowMessage(2,"The output file is",MVA_outfile_name);
 
 	//TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
 	//		"!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
@@ -53,10 +53,10 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name, int MVA_layer){
 
 	std::string dataset_name;
 	if(MVA_layer==1){
-		dataset_name="MVA_dataset_"+para.path.output_folder.substr(11)+"_1_"+para.flow.signal_property;
+		dataset_name="MVA_dataset_1_"+para.flow.signal_property;
 	}
 	else if(MVA_layer==2){
-		dataset_name="MVA_dataset_"+para.path.output_folder.substr(11)+"_2_"+para.flow.signal_property;
+		dataset_name="MVA_dataset_2_"+para.flow.signal_property;
 	}
 	TMVA::DataLoader *dataloader=new TMVA::DataLoader(dataset_name.c_str());
 	ShowMessage(2,"The dataset for MVA is",dataset_name);
@@ -65,7 +65,7 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name, int MVA_layer){
 	std::string cutb_des = "";
 	if(MVA_layer==1){
 		for(int i=0;i<para.var.num_MVA;i++){
-			dataloader->AddVariable(para.var.MVA1[i]->title_name.c_str(), 'F' );
+			dataloader->AddVariable(para.var.MVA[i]->title_name.c_str(), 'F' );
 			cuts_des+=  para.var.MVA[i]->title_name+">-100.2";
 			cutb_des+=  para.var.MVA[i]->title_name+">-100.2";
 			if(i!=para.var.num_MVA-1){
@@ -176,6 +176,6 @@ void Analyse_MVA_Train(CDraw &para, AFile &file_name, int MVA_layer){
 	// Clean up
 	delete factory;
 	delete dataloader;
-	if(!gROOT->IsBatch()) TMVA::TMVAGui( file_name.output_MVA.c_str());
+	if(!gROOT->IsBatch()) TMVA::TMVAGui( MVA_outfile_name.c_str());
 }
 

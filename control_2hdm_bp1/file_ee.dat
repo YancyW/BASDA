@@ -1,0 +1,14 @@
+FILE_NUM          : 1
+FILE_0            : ./control_2hdm_bp1/xsection_ee_nbp1.dat
+
+CHANNEL_NUM       : 1
+FILE_DESCRIP_0    : all 
+#FILE_DESCRIP_0    : sig_{2e2b}^{IDM}
+#FILE_DESCRIP_1    : tt_{ll}^{ll}
+#FILE_DESCRIP_2    : tt_{ltau}^{lj}
+#FILE_DESCRIP_3    : tt_{tautau}^{jj}
+#FILE_DESCRIP_4    : tt_{lquark}^{lj}
+#FILE_DESCRIP_5    : tt_{tauquark}^{jj}
+
+Root_Head_Name     : datatest
+Root_Head_MVA_Name : datatrain

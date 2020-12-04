@@ -24,15 +24,17 @@ void CFlow::   Read_Flow(CPath &path){
     bool JSum=Find_Str(this->begin_object,"Summarize");
     bool JSep=Find_Str(this->begin_object,"Separate");
 	if(!JCom&&!JSum&&!JSep){
-		if(this->pol_setting!="-1-1"&&this->pol_setting!="11"&&this->pol_setting!="-11"&&this->pol_setting!="1-1"){
-			ShowMessage(2,"Error: in CFlow::Read_Flow", "wrong input for pol_setting, when single pol calculation, it should be like -1-1, 11, -11, 11",this->pol_setting);
+		if(this->pol_setting!="-1-1"&&this->pol_setting!="11"&&this->pol_setting!="-11"&&this->pol_setting!="1-1"&&this->pol_setting!=""){
+			ShowMessage(2,"Error: in CFlow::Read_Flow", "wrong input for pol_setting, when single pol calculation, it should be like -1-1, 11, -11, 11, or empty",this->pol_setting);
 			exit(0);
 		}
-		path.event_file   = path.event_file   + this->pol_setting;
-		path.output_file  = path.output_file  + this->pol_setting;
-		path.single_plot  = path.single_plot  + this->pol_setting;
-		path.combine_plot = path.combine_plot + this->pol_setting;
-		path.horizontal_summary_plot = path.horizontal_summary_plot + this->pol_setting;
+		else if(this->pol_setting=="-1-1"&&this->pol_setting=="11"&&this->pol_setting=="-11"&&this->pol_setting=="1-1"){
+			path.event_file   = path.event_file   + this->pol_setting;
+			path.output_file  = path.output_file  + this->pol_setting;
+			path.single_plot  = path.single_plot  + this->pol_setting;
+			path.combine_plot = path.combine_plot + this->pol_setting;
+			path.horizontal_summary_plot = path.horizontal_summary_plot + this->pol_setting;
+		}
 	}
 
 	ShowMessage(2,"event_file",path.event_file);

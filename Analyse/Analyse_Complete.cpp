@@ -63,13 +63,13 @@ void Analyse_Complete_Pol(CDraw &para){
 
 			get_file_name(para,file_name, true);
 
-			ShowMessage(2,"open record significance file");
+			ShowMessage(2,"in Analyse_Complete_Pol::open record significance file");
 			std::ofstream sig_file;
 			sig_file.open(file_name.significance);
 
 			RecordMessage(sig_file,2,"electron pol       ",para.scenario.elec_pol);
 			RecordMessage(sig_file,2,"positron pol       ",para.scenario.posi_pol);
-			RecordMessage(sig_file,2,"running luminosity ",para.scenario.scenario[0].lumi);
+			RecordMessage(sig_file,2,"running luminosity ",para.scenario.default_scenario.lumi);
 
 			RecordMessage(sig_file,2,"event file         ",para.path.event_file);
 			RecordMessage(sig_file,2,"output file        ",para.path.output_file);

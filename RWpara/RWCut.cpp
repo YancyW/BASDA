@@ -1,7 +1,7 @@
 #include "AnalyseClass/Cut.h"
 #include "Function/Fbasic.h"
 
-void ACut:: Read_Cut(CPath &path){
+void ACut:: Read_Cut(CPath &path, AVariable &var){
 	ShowMessage(3, "read Cut");
 	YAML::Node cut_node = YAML::LoadFile(path.cut_file);
 
@@ -22,6 +22,23 @@ void ACut:: Read_Cut(CPath &path){
 		ShowMessage(3,"normal cut is",cut);
 	}
 
+	if(!Check_Cut(var)){
+		ShowMessage(2,"in Read_Cut::The input cut is not included in the var!");
+		exit(0);
+	}
 
 }
 
+bool ACut::Check_Cut(AVariable &var){
+	for(int i=0; i<pre_cut_num; i++){
+		if(var.Find_Var(pre_cut[i])==-1){
+			return(false);
+		}
+	}
+	for(int i=0; i<cut_num; i++){
+		if(var.Find_Var(cut[i])==-1){
+			return(false);
+		}
+	}
+	return(true);
+}

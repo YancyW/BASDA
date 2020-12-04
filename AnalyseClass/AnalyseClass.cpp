@@ -379,7 +379,7 @@ void Analyse_Multi_File::Init(CDraw &para, AFile &file_name){
 	_var_num = var.num_var;
 
 
-	_cut.Read_Cut(para.path);
+	_cut.Read_Cut(para.path, para.var);
 
 	ShowMessage(2,"finish input para, begin to analyse part");
 	if(!para.flow.record_output){

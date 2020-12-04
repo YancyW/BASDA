@@ -10,6 +10,7 @@
 #include "RWpara/RWbasic.h"
 #include "Class/Path.h"
 #include "Class/DrawClass.h"
+#include "AnalyseClass/Variable.h"
 
 
 class ACut{
@@ -20,7 +21,8 @@ class ACut{
 		std::vector<int> cut;
 		std::vector<int> pre_cut;
 
-		void Read_Cut(CPath &path);
+		void Read_Cut(CPath &path, AVariable &var);
+		bool Check_Cut(AVariable &var);
 };
 
 

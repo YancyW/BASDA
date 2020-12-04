@@ -1,0 +1,31 @@
+MVA :
+    method1 :
+         MVA_type            : "BDTG"
+         MVA_level           : 2 
+         MVA_weight          : 2
+         MVA_event_setting   : "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V"
+         MVA_method_setting  : "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=5"
+         MVA_factory_setting : "!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" 
+         MVA_file_num        : 5
+         MVA_file            : ["sig_{2mu2b}^{IDM}",     "4f_{l0mu_sw}^{swsz}",     "4f_{l0tau_sw}^{swsz}",  "4f_{sl0qq_sw}^{swsz}",  "4f_{l0mu_sz}^{swsz}"
+                               ,"4f_{l0nunu_sz}^{swsz}", "4f_{l0tau_sz}^{swsz}",    "4f_{sl0dd_sz}^{swsz}",  "4f_{sl0uu_sz}^{swsz}",  "4f_{l0l_swsz}^{swsz}"
+                               ,"4f_{sl0muq}^{ww}",      "4f_{sl0tauq}^{ww}",       "4f_{h0dtdt}^{zz}",      "4f_{h0utut}^{zz}",      "4f_{h0uu}^{zz}" 
+                               ,"4f_{l04mu}^{zz}",       "4f_{l04tau}^{zz}",        "4f_{l0mumu}^{zz}",      "4f_{l0taumu}^{zz}",     "4f_{l0tautau}^{zz}" 
+                               ,"4f_{sl0mud}^{zz}",      "4f_{sl0muu}^{zz}",        "4f_{sl0nud}^{zz}",      "4f_{sl0nuu}^{zz}",      "4f_{sl0taud}^{zz}" 
+                               ,"4f_{sl0tauu}^{zz}",     "4f_{h0cscs_zzww}^{ww}",   "4f_{h0udud_zzww}^{ww}", "4f_{l0mumu_zzww}^{ww}", "4f_{l0tautau_zzww}^{ww}" 
+                               ,"h_{2e2b_e1}^{125}",     "h_{2e2c_e1}^{125}",       "h_{2e2g_e1}^{125}",     "h_{2e2w_e1}^{125}",     "h_{2e2z_e1}^{125}" 
+                               ,"4f_{h0ccds}^{ww}",      "4f_{h0cuxx}^{ww}",        "4f_{h0uubd}^{ww}",      "4f_{h0uusd}^{ww}",      "4f_{l0ll}^{ww}" 
+                               ,"h_{2j2b_q}^{125}",      "h_{2j2c_q}^{125}",        "h_{2j2g_q}^{125}",      "h_{2mu2c_e2}^{125}",    "h_{2mu2g_e2}^{125}" 
+                               ,"h_{2mu2w_e2}^{125}",    "h_{2mu2z_e2}^{125}",      "h_{2tau2j_e3}^{125}",   "h_{2v2b_n}^{125}",      "h_{2v2c_n}^{125}" 
+                               ,"4f_{l0mumu_sz}^{swsz}", "4f_{l0tautau_sz}^{swsz}", "4f_{sl0nud_sz}^{swsz}", "4f_{sl0nuu_sz}^{swsz}", "4f_{h0ccbs}^{ww}" 
+                               ,"h_{2v2g_n}^{125}"
+                               ]
+    method2 :
+         MVA_type            : "BDTG"
+         MVA_level           : 2
+         MVA_weight          : 2
+         MVA_event_setting   : "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V"
+         MVA_method_setting  : "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=5"
+         MVA_factory_setting : "!V:!Silent:Color:!DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification"
+         MVA_file_num        : 5
+         MVA_file            : ["sig_{2mu2b}^{IDM}", "4f_{sl0mud}^{zz}", "4f_{sl0taud}^{zz}", "h_{2mu2z}^{e2}", "h_{2mu2g}^{e2}"]

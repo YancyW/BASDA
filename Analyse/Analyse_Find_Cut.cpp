@@ -21,15 +21,9 @@ void Analyse_Find_Cut(CDraw &para){
 	std::vector<std::vector<std::vector<float> > > all_cut=para.cut_scan.All_Cut_Scan();
 	std::vector<std::vector<std::vector<float> > > cut_combine=para.cut_scan.Cut_Combine();
 
-	for(int k=0; k<cut_combine.size();k++){
-		ShowMessage(2,"cut combine",cut_combine[k]);
-	}
-
 	get_compare_significance(sig_file,para, file_name, cut_combine, ana_out_name);
 
-
 	sig_file.close();
-
 }
 
 void get_compare_significance(std::ofstream& sig_file, CDraw &para, AFile& file_name, std::vector<std::vector<std::vector<float> > > array, std::vector<std::string> ana_out_name){
@@ -38,9 +32,9 @@ void get_compare_significance(std::ofstream& sig_file, CDraw &para, AFile& file_
 	float sig_tmp=0;
 
 
-	for(int k=0; k<array.size();k++){
+	for(unsigned int k=0; k<array.size();k++){
 		// give value to all cuts
-		for (int j=0;j<array[k].size();j++){
+		for (unsigned int j=0;j<array[k].size();j++){
 			int which_cut=para.var.Find_Var(para.cut_scan.Name(j));
 			para.var.var[which_cut].cut_min = array[k][j][0];
 			para.var.var[which_cut].cut_max = array[k][j][1];

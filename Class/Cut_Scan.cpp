@@ -76,14 +76,36 @@ void CCut_Scan::Set_Which_Cut(AVariable var){
 
 void CCut_Scan::Set_All_Cut(){
 	for(int i=0; i<_scan_num;i++){
+		// first cut min
+		// second cut max
+		// third cut inc 
+		// fourth  --- 
+		// fifth   1  --- fix cut max = fourth para
+		//         -1 --- fix cut min = fourth para
+		//         0  --- fix cut min = first ; cut max = second
 		std::vector<std::vector<float> > new_cut;
 		float cut_min = scan[i].scan[0];
 		float cut_max = scan[i].scan[1];
 		float cut_inc = scan[i].scan[2];
+		float cut_fix = scan[i].scan[3];                                                                                                                                                                                                   
+		float cut_label = scan[i].scan[4];
+
 		for(float j=cut_min; j<cut_max; j=j+cut_inc){
 			std::vector<float> new_cut_first_level;
-			new_cut_first_level.push_back(j);
-			new_cut_first_level.push_back(j+cut_inc);
+
+			if(cut_label>0){
+				new_cut_first_level.push_back(j);
+				new_cut_first_level.push_back(cut_fix);
+			}
+			else if(cut_label<0){
+				new_cut_first_level.push_back(cut_fix);
+				new_cut_first_level.push_back(j);
+			}
+
+			else if(cut_label==0){
+				new_cut_first_level.push_back(j);
+				new_cut_first_level.push_back(j+cut_inc);
+			}
 			new_cut.push_back(new_cut_first_level);
 		}
 		_all_cut_scan.push_back(new_cut);
