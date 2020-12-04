@@ -10,6 +10,7 @@
 #include <inttypes.h>
 #include "yaml-cpp/yaml.h"
 #include <cmath>
+#include <omp.h>
 
 
 #include "TCanvas.h"

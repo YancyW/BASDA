@@ -250,6 +250,9 @@ void Analyse_Pre_Cut_Content(CDraw &para, AFile &file_name){
 			//loop for reading variables and setting cuts 
 			long int total_event=nevent[cnum][i];
 			para.event.Init(total_event);
+
+			//parallel calculation
+#pragma omp parallel for
 			for(long int event = para.event.Begin_Event(); event < para.event.End_Event(); ++event){
 
 				para.Get_Event(event);

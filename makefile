@@ -1,8 +1,8 @@
 TARGET=BASDA
 
 CXX=g++
-FLAGS=-std=c++14 -g 
-#-Wall
+FLAGS=-std=c++14  -g
+#-Wextra  -Wall ${shell root-config --cflags}
 
 RootPath=${HOME}/Software/executable/root/
 YAMLPath=${HOME}/Software/lib/yaml-cpp/
@@ -12,8 +12,8 @@ CPPITERTOOL=${HOME}/Software/lib/cppitertools-1.0
 INCLUDE = -I. -I..  -I$(RootPath)/include  -I${YAMLPath}/include -I${CPPITERTOOL}/ -I${CPPITERTOOL}/internal -I${CPPITERTOOL}/test
 
 
-LIBS =  -lboost_filesystem  -lboost_system -lTMVA -lTMVAGui ${YAMLPath}/libyaml-cpp.a 
-ROOTLIBS = -L${RootPath}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic -lTreePlayer
+LIBS =  -lboost_filesystem  -lboost_system ${YAMLPath}/libyaml-cpp.a 
+ROOTLIBS = -L${RootPath}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lEG -lm -ldl -rdynamic -lTreePlayer -lTMVA -lTMVAGui
 
 SRCS = \
 $(TARGET).cpp \
@@ -45,15 +45,13 @@ AnalyseClass/AnalyseClass.cpp\
 AnalyseClass/Variable.cpp\
 AnalyseClass/Plot.cpp\
 TSysLimit/TSysLimit.cpp TSysLimit/TSysLimitChannel.cpp TSysLimit/TSysLimitResult.cpp TSysLimit/TSysLimitResultLogL.cpp TSysLimit/TSysLimitResultPBock.cpp TSysLimit/TSysLimitScan.cpp
-
-
 OBJS=$(patsubst %.cpp, %.o, $(SRCS))
 
 $(TARGET): $(OBJS)
-	$(CXX) $(FLAGS) $(INCLUDE) -o $@ $^ $(FASTLIBS) $(ROOTLIBS)  $(LIBS)
+	$(CXX) $(FLAGS) $(INCLUDE) -o $@ $^ $(FASTLIBS) $(ROOTLIBS)  $(LIBS) -fopenmp
 
 %.o: %.cpp
-	$(CXX) $(FLAGS) $(INCLUDE) -c $<  -o  $@
+	$(CXX) $(FLAGS) $(INCLUDE) -c $<  -o  $@ 
 
 clean:
 	-rm $(TARGET) $(OBJS)
