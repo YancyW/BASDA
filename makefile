@@ -1,7 +1,7 @@
 TARGET=BASDA
 
 CXX=g++
-FLAGS=-std=c++14  -g
+FLAGS=-std=c++14  -g -Wall
 #-Wextra  -Wall ${shell root-config --cflags}
 
 RootPath=${HOME}/Software/executable/root/
@@ -48,10 +48,10 @@ TSysLimit/TSysLimit.cpp TSysLimit/TSysLimitChannel.cpp TSysLimit/TSysLimitResult
 OBJS=$(patsubst %.cpp, %.o, $(SRCS))
 
 $(TARGET): $(OBJS)
-	$(CXX) $(FLAGS) $(INCLUDE) -o $@ $^ $(FASTLIBS) $(ROOTLIBS)  $(LIBS) -fopenmp
+	$(CXX) $(FLAGS) $(INCLUDE) -o $@ $^ $(FASTLIBS) $(ROOTLIBS)  $(LIBS) -fopenmp  
 
 %.o: %.cpp
-	$(CXX) $(FLAGS) $(INCLUDE) -c $<  -o  $@ 
+	$(CXX) $(FLAGS) $(INCLUDE) -c $<  -o  $@ -fopenmp 
 
 clean:
 	-rm $(TARGET) $(OBJS)
